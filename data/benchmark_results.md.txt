@@ -1,0 +1,26 @@
+# Benchmarks
+
+This project aims for roughly O(n^2) behavior given:
+- bounded-radius detection of configurations,
+- O(n) reductions,
+- constant-size lifting patches.
+
+In this reference implementation:
+- configuration detection is O(n) by scanning darts/edges,
+- lifting uses constant-size subset enumeration,
+- optional 3-connectivity checking is O(n^3) and should be disabled for performance.
+
+## Run quick timing
+
+```bash
+python - <<'PY'
+import time
+import barnette_proof as bp
+
+for n in [8,16,24,32]:
+    G = bp.make_prism(max(4, n//2))
+    t0=time.time()
+    C = bp.find_hamiltonian_cycle(G, check_3conn_each_step=False, debug=False)
+    t1=time.time()
+    print("n=",len(G.adj),"time=",t1-t0)
+PY

@@ -1,0 +1,97 @@
+BURNETT SOLVER COMPREHENSIVE TEST SUITE
+============================================================
+============================================================
+BASIC FUNCTIONALITY TESTS
+============================================================
+
+Testing: Cube (8 vertices)
+  Graph has 8 vertices, 12 edges
+  PASS: Found Hamiltonian cycle in 0.0003 seconds
+     Cycle length: 8 vertices
+
+Testing: Prism-12 (12 vertices)
+  Graph has 12 vertices, 18 edges
+  PASS: Found Hamiltonian cycle in 0.0003 seconds
+     Cycle length: 12 vertices
+
+Testing: Prism-16 (16 vertices)
+  Graph has 16 vertices, 24 edges
+  PASS: Found Hamiltonian cycle in 0.0017 seconds
+     Cycle length: 16 vertices
+
+Testing: Prism-24 (24 vertices)
+  Graph has 24 vertices, 36 edges
+  PASS: Found Hamiltonian cycle in 0.0053 seconds
+     Cycle length: 24 vertices
+
+Testing: Custom pinch example
+  Graph has 20 vertices, 30 edges
+  ERROR: Euler fails: V=20 E=30 F=10
+
+============================================================
+PERFORMANCE SCALING TESTS
+============================================================
+
+Testing on prism graphs (2n vertices):
+----------------------------------------
+ n-gon   Vertices   Time (s)    Found
+----------------------------------------
+     4      ERROR        --- cycle uses non-edge 
+     6         12     0.0002     True
+     8         16     0.0015     True
+    10         20     0.0033     True
+    12         24     0.0059     True
+    16         32     0.0078     True
+    20         40     0.0115     True
+    24         48     0.0162     True
+    32         64     0.0281     True
+    40         80     0.0447     True
+    48         96     0.0650     True
+    64        128     0.1121     True
+
+============================================================
+MEMORY USAGE TEST
+============================================================
+
+Testing memory usage on progressively larger graphs:
+--------------------------------------------------
+  Vertices   Time (s)  Memory (MB)
+--------------------------------------------------
+
+Traceback (most recent call last):
+  File "C:\Users\charl\Documents\New Math Problem\complete_test.py", line 35, in run_basic_tests
+    cycle = bp.find_hamiltonian_cycle(
+        G,
+        check_3conn_each_step=False,
+        debug=False
+    )
+  File "C:\Users\charl\Documents\New Math Problem\barnette_proof.py", line 1314, in find_hamiltonian_cycle
+    validate_in_Q(G, check_3conn=check_3conn_each_step)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\charl\Documents\New Math Problem\barnette_proof.py", line 366, in validate_in_Q
+    G.validate_rotation_embedding()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\charl\Documents\New Math Problem\barnette_proof.py", line 178, in validate_rotation_embedding
+    raise AssertionError(f"Euler fails: V={V} E={E} F={faces}")
+AssertionError: Euler fails: V=20 E=30 F=10
+Traceback (most recent call last):
+  File "C:\Users\charl\Documents\New Math Problem\complete_test.py", line 226, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\charl\Documents\New Math Problem\complete_test.py", line 193, in main
+    run_memory_test()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\charl\Documents\New Math Problem\complete_test.py", line 129, in run_memory_test
+    cycle = bp.find_hamiltonian_cycle(
+        G,
+        check_3conn_each_step=False,
+        debug=False
+    )
+  File "C:\Users\charl\Documents\New Math Problem\barnette_proof.py", line 1318, in find_hamiltonian_cycle
+    return cube_hamilton_cycle(G)
+  File "C:\Users\charl\Documents\New Math Problem\barnette_proof.py", line 774, in cube_hamilton_cycle
+    C.validate_hamiltonian(G)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\charl\Documents\New Math Problem\barnette_proof.py", line 286, in validate_hamiltonian
+    raise AssertionError(f"cycle uses non-edge {a}-{b}")
+AssertionError: cycle uses non-edge 1-3

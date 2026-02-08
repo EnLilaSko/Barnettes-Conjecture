@@ -1,0 +1,59 @@
+import unittest
+import random
+import barnette_proof as bp
+
+
+class TestCompleteness(unittest.TestCase):
+
+    def test_total_charge_cube(self):
+        G = bp.make_cube()
+        self.assertEqual(bp.total_initial_charge(G), -8)
+
+    def test_discharging_quad_exists(self):
+        G = bp.make_prism(8)
+        self.assertTrue(bp.discharging_implies_quad_exists(G))
+
+    def test_verify_completeness_examples(self):
+        makers = [
+            bp.make_cube,
+            lambda: bp.make_prism(8),
+            bp.make_custom_pinch_example,
+            bp.make_truncated_octahedron,
+        ]
+        for mk in makers:
+            G = mk()
+            w = bp.verify_completeness(G, check_3conn=False)
+            self.assertIn(w.kind, {"C2", "C4", "PINCH"})
+
+    def test_solver_examples(self):
+        examples = [
+            ("cube", bp.make_cube()),
+            ("prism8", bp.make_prism(8)),
+            ("pinch", bp.make_custom_pinch_example()),
+        ]
+        for _, G in examples:
+            C = bp.find_hamiltonian_cycle(G, check_3conn_each_step=False, debug=False)
+            C.validate_hamiltonian(G)
+
+    def test_reduction_then_lift_small(self):
+        # Expand one cube edge into a C4 gadget, then solve.
+        G = bp.make_cube()
+        # Here we treat (0,1) as the edge to expand.
+        H = bp.expand_refined_C4_from_edge(G, 0, 1)
+        w = bp.verify_completeness(H, check_3conn=False)
+        self.assertIn(w.kind, {"C2", "C4", "PINCH"})
+        C = bp.find_hamiltonian_cycle(H, check_3conn_each_step=False, debug=False)
+        C.validate_hamiltonian(H)
+
+    def test_random_prisms(self):
+        rng = random.Random(0)
+        for n in [4, 6, 8, 10]:
+            G = bp.make_prism(n)
+            w = bp.verify_completeness(G, check_3conn=False)
+            self.assertIn(w.kind, {"C2", "C4", "PINCH"})
+            C = bp.find_hamiltonian_cycle(G, check_3conn_each_step=False, debug=False)
+            C.validate_hamiltonian(G)
+
+
+if __name__ == "__main__":
+    unittest.main()

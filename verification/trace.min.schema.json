@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/crf/trace.min.schema.json",
+  "title": "CRF certificate trace (minimal)",
+  "type": "object",
+  "required": ["schema_version", "initial", "steps"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.0\\.\\d+$"
+    },
+
+    "initial": { "$ref": "#/$defs/embedded_graph" },
+
+    "steps": {
+      "type": "array",
+      "minItems": 0,
+      "items": { "$ref": "#/$defs/step" }
+    },
+
+    "final": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "type": "string", "enum": ["hamiltonian_found"] },
+        "hamilton_cycle": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 3
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+
+  "additionalProperties": false,
+
+  "$defs": {
+    "embedded_graph": {
+      "type": "object",
+      "required": ["vertex_ids", "edges", "rotation"],
+      "properties": {
+        "vertex_ids": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "edges": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/undirected_edge" },
+          "minItems": 1
+        },
+        "rotation": {
+          "type": "object",
+          "description": "Map: vertex_id (string key) -> cyclic neighbor list (length=3).",
+          "additionalProperties": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "minItems": 3,
+            "maxItems": 3,
+            "uniqueItems": true
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "undirected_edge": {
+      "type": "array",
+      "prefixItems": [{ "type": "integer" }, { "type": "integer" }],
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "Undirected edge [u,v] with u != v."
+    },
+
+    "step": {
+      "type": "object",
+      "required": ["step_id", "rule", "match", "edit", "check"],
+      "properties": {
+        "step_id": { "type": "integer", "minimum": 1 },
+
+        "rule": {
+          "type": "object",
+          "required": ["name", "variant"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "enum": ["C2", "pinch_ii", "refined_C4"]
+            },
+            "variant": {
+              "type": "string",
+              "description": "Exact gadget model ID you chose, e.g. 'C2.g4v.v1', 'pinch_ii.g4v.v2', 'refined_C4.g2v.v1'."
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "match": {
+          "type": "object",
+          "required": ["boundary", "interior", "local_labels"],
+          "properties": {
+            "boundary": {
+              "type": "array",
+              "description": "Boundary terminals in canonical cyclic order for this config (as required by the rule).",
+              "items": { "type": "integer" },
+              "minItems": 2,
+              "uniqueItems": true
+            },
+            "interior": {
+              "type": "array",
+              "description": "Vertices to be deleted (the configuration patch H).",
+              "items": { "type": "integer" },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "local_labels": {
+              "type": "object",
+              "description": "Names used in the paper/appendix mapped to global vertex IDs. Example: {\"v1\":12,\"v2\":13,\"u1\":5,...}.",
+              "additionalProperties": { "type": "integer" }
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "edit": {
+          "type": "object",
+          "required": [
+            "remove_vertices",
+            "add_vertices",
+            "remove_edges",
+            "add_edges",
+            "rotation_updates"
+          ],
+          "properties": {
+            "remove_vertices": {
+              "type": "array",
+              "items": { "type": "integer" },
+              "uniqueItems": true
+            },
+            "add_vertices": {
+              "type": "array",
+              "items": { "type": "integer" },
+              "uniqueItems": true
+            },
+            "remove_edges": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/undirected_edge" }
+            },
+            "add_edges": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/undirected_edge" }
+            },
+            "rotation_updates": {
+              "type": "object",
+              "description": "Map: vertex_id (string key) -> NEW cyclic neighbor list after surgery.",
+              "additionalProperties": {
+                "type": "array",
+                "items": { "type": "integer" },
+                "minItems": 3,
+                "maxItems": 3,
+                "uniqueItems": true
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "check": {
+          "type": "object",
+          "required": ["n_before", "n_after", "delta_n"],
+          "properties": {
+            "n_before": { "type": "integer", "minimum": 1 },
+            "n_after": { "type": "integer", "minimum": 1 },
+            "delta_n": { "type": "integer", "enum": [-2] },
+
+            "mu_before": {
+              "type": "array",
+              "description": "Optional lex measure tuple, e.g. [n,f4,c1,c2,c3].",
+              "items": { "type": "integer" }
+            },
+            "mu_after": {
+              "type": "array",
+              "items": { "type": "integer" }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

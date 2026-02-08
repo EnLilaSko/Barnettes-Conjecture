@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/crf/trace.full.schema.json",
+  "title": "CRF certificate trace (full)",
+  "type": "object",
+  "required": ["schema_version", "provenance", "initial", "steps"],
+  "properties": {
+    "schema_version": { "type": "string" },
+
+    "provenance": {
+      "type": "object",
+      "required": ["git_commit", "generator", "reducer", "checker"],
+      "properties": {
+        "git_commit": { "type": "string", "minLength": 7 },
+        "generator": {
+          "type": "object",
+          "required": ["name", "version"],
+          "properties": {
+            "name": { "type": "string" },
+            "version": { "type": "string" },
+            "args": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": false
+        },
+        "reducer": {
+          "type": "object",
+          "required": ["name", "version"],
+          "properties": {
+            "name": { "type": "string" },
+            "version": { "type": "string" },
+            "seed": { "type": "integer" }
+          },
+          "additionalProperties": false
+        },
+        "checker": {
+          "type": "object",
+          "required": ["name", "version"],
+          "properties": {
+            "name": { "type": "string" },
+            "version": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "solver": {
+          "type": "object",
+          "description": "Only if you include SAT/SMT artifacts.",
+          "properties": {
+            "name": { "type": "string" },
+            "version": { "type": "string" },
+            "encoding_id": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "initial": { "$ref": "trace.min.schema.json#/$defs/embedded_graph" },
+
+    "steps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/step_full" }
+    },
+
+    "artifacts": {
+      "type": "object",
+      "properties": {
+        "gadget_exhaustive_log_sha256": { "type": "string" },
+        "sat_unsat_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "kind", "sha256"],
+            "properties": {
+              "id": { "type": "string" },
+              "kind": { "type": "string", "enum": ["sat", "unsat"] },
+              "sha256": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+
+  "additionalProperties": false,
+
+  "$defs": {
+    "step_full": {
+      "allOf": [
+        { "$ref": "trace.min.schema.json#/$defs/step" },
+        {
+          "type": "object",
+          "required": ["hash"],
+          "properties": {
+            "hash": {
+              "type": "object",
+              "required": ["pre_state_sha256", "post_state_sha256"],
+              "properties": {
+                "pre_state_sha256": { "type": "string" },
+                "post_state_sha256": { "type": "string" }
+              },
+              "additionalProperties": false
+            },
+            "witness": {
+              "type": "object",
+              "description": "Optional extra evidence: face cycles, chosen half-edges, etc.",
+              "properties": {
+                "faces_touched": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": { "type": "integer" },
+                    "minItems": 3
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}
