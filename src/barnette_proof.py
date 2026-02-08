@@ -362,14 +362,31 @@ def is_3_connected(adj: Dict[int, Set[int]]) -> bool:
                 return False
     return True
 
-def validate_in_Q(G: EmbeddedGraph, check_3conn: bool = True) -> None:
+def validate_in_Q(G: EmbeddedGraph) -> None:
     G.validate_rotation_embedding()
     if any(len(G.adj[v]) != 3 for v in G.adj):
         raise AssertionError("not cubic")
     if not is_bipartite(G.adj):
         raise AssertionError("not bipartite")
-    if check_3conn and not is_3_connected(G.adj):
+    if not is_3_connected(G.adj):
         raise AssertionError("not 3-connected")
+
+
+# =============================================================================
+# Measure invariants (Delta N check)
+# =============================================================================
+
+DELTA_N = {
+    "C2": -4,
+    "pinch(ii)": -4,
+    "refined_C4": -2,
+}
+
+def check_delta_n(n_before: int, n_after: int, step_type: str) -> None:
+    expected = DELTA_N[step_type]
+    got = n_after - n_before
+    if got != expected:
+        raise ValueError(f"Δn mismatch for {step_type}: got {got}, expected {expected}")
 
 
 # =============================================================================
@@ -647,7 +664,7 @@ class CompletenessWitness:
     kind: str  # "C2" | "C4" | "PINCH"
     certificate: object  # OccC2 | OccC4 | OccPinch
 
-def verify_completeness(G: EmbeddedGraph, check_3conn: bool = True) -> CompletenessWitness:
+def verify_completeness(G: EmbeddedGraph) -> CompletenessWitness:
     """
     Constructive completeness witness:
 
@@ -659,7 +676,7 @@ def verify_completeness(G: EmbeddedGraph, check_3conn: bool = True) -> Completen
     Deterministic priority:
       C2, then PINCH(ii), then refined C4.
     """
-    validate_in_Q(G, check_3conn=check_3conn)
+    validate_in_Q(G)
     tot = total_initial_charge(G)
     if tot != -8:
         raise AssertionError(f"total initial charge != -8: {tot}")
@@ -743,7 +760,7 @@ def is_cube(G: EmbeddedGraph) -> bool:
     if len(G.adj) != 8:
         return False
     try:
-        validate_in_Q(G, check_3conn=False)
+        validate_in_Q(G)
     except Exception:
         return False
     if len(G.edges()) != 12:
@@ -1334,7 +1351,6 @@ def lift_C2(original: EmbeddedGraph, reduced: EmbeddedGraph, rec: RecC2, cycle_r
 
 def find_hamiltonian_cycle(
     G: EmbeddedGraph,
-    check_3conn_each_step: bool = False,
     debug: bool = False,
 ) -> Cycle:
     """
@@ -1348,7 +1364,7 @@ def find_hamiltonian_cycle(
       - Reduce in priority order: C2, PINCH(ii), refined C4.
       - Recurse and lift by deterministic patch search.
     """
-    validate_in_Q(G, check_3conn=check_3conn_each_step)
+    validate_in_Q(G)
 
     n = len(G.adj)
     if is_cube(G):
@@ -1360,8 +1376,10 @@ def find_hamiltonian_cycle(
     if occ2 is not None:
         if debug:
             print(f"[reduce] C2: {occ2}")
+        n_before = len(G.adj)
         Gred, rec = reduce_C2(G, occ2)
-        Cred = find_hamiltonian_cycle(Gred, check_3conn_each_step=check_3conn_each_step, debug=debug)
+        check_delta_n(n_before, len(Gred.adj), "C2")
+        Cred = find_hamiltonian_cycle(Gred, debug=debug)
         Clift = lift_C2(G, Gred, rec, Cred)
         if debug:
             Clift.validate_hamiltonian(G)
@@ -1371,8 +1389,10 @@ def find_hamiltonian_cycle(
     if occp is not None:
         if debug:
             print(f"[reduce] PINCH(ii): {occp}")
+        n_before = len(G.adj)
         Gred, rec = reduce_pinch(G, occp)
-        Cred = find_hamiltonian_cycle(Gred, check_3conn_each_step=check_3conn_each_step, debug=debug)
+        check_delta_n(n_before, len(Gred.adj), "pinch(ii)")
+        Cred = find_hamiltonian_cycle(Gred, debug=debug)
         Clift = lift_pinch(G, Gred, rec, Cred)
         if debug:
             Clift.validate_hamiltonian(G)
@@ -1382,8 +1402,10 @@ def find_hamiltonian_cycle(
     if occ4 is not None:
         if debug:
             print(f"[reduce] C4: {occ4}")
+        n_before = len(G.adj)
         Gred, rec = reduce_C4(G, occ4)
-        Cred = find_hamiltonian_cycle(Gred, check_3conn_each_step=check_3conn_each_step, debug=debug)
+        check_delta_n(n_before, len(Gred.adj), "refined_C4")
+        Cred = find_hamiltonian_cycle(Gred, debug=debug)
         Clift = lift_C4(G, Gred, rec, Cred)
         if debug:
             Clift.validate_hamiltonian(G)
@@ -1399,28 +1421,28 @@ def find_hamiltonian_cycle(
 def run_examples() -> None:
     print("=== Cube ===")
     G = make_cube()
-    w = verify_completeness(G, check_3conn=False)
+    w = verify_completeness(G)
     print("Witness:", w.kind)
     C = find_hamiltonian_cycle(G, debug=False)
     print("Cycle:", C.as_ordered_cycle(G))
 
     print("\n=== Octagonal prism (P8) ===")
     P8 = make_prism(8)
-    w = verify_completeness(P8, check_3conn=False)
+    w = verify_completeness(P8)
     print("Witness:", w.kind, w.certificate)
     C = find_hamiltonian_cycle(P8, debug=False)
     print("Cycle length:", len(C.as_ordered_cycle(P8)))
 
     print("\n=== Custom pinch(ii) example ===")
     H = make_custom_pinch_example()
-    w = verify_completeness(H, check_3conn=False)
+    w = verify_completeness(H)
     print("Witness:", w.kind, w.certificate)
     C = find_hamiltonian_cycle(H, debug=False)
     print("Cycle length:", len(C.as_ordered_cycle(H)))
 
     print("\n=== Truncated octahedron ===")
     TO = make_truncated_octahedron()
-    w = verify_completeness(TO, check_3conn=False)
+    w = verify_completeness(TO)
     print("Witness:", w.kind, w.certificate)
     C = find_hamiltonian_cycle(TO, debug=False)
     print("Cycle length:", len(C.as_ordered_cycle(TO)))

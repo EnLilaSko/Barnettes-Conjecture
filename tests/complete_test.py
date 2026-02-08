@@ -34,7 +34,6 @@ def run_basic_tests():
             start_time = time.time()
             cycle = bp.find_hamiltonian_cycle(
                 G, 
-                check_3conn_each_step=False,
                 debug=False
             )
             end_time = time.time()
@@ -81,7 +80,6 @@ def run_performance_scaling():
             start_time = time.time()
             cycle = bp.find_hamiltonian_cycle(
                 G,
-                check_3conn_each_step=False,
                 debug=False
             )
             end_time = time.time()
@@ -128,7 +126,6 @@ def run_memory_test():
             start_time = time.time()
             cycle = bp.find_hamiltonian_cycle(
                 G,
-                check_3conn_each_step=False,
                 debug=False
             )
             end_time = time.time()
@@ -159,7 +156,7 @@ def run_configuration_frequency():
     for step in range(10):
         try:
             # Find a configuration
-            witness = bp.verify_completeness(G, check_3conn=False)
+            witness = bp.verify_completeness(G)
             config_type = witness.kind
             
             if config_type in config_counts:

@@ -31,6 +31,13 @@ The checker MUST reject the trace if:
 - Any edge incident to `add_vertices` is missing from `add_edges`.
 - Any entry in `rotation_updates` does not list exactly 3 neighbors.
 
+### Rule C: Global Topology
+
+The checker MUST reject the trace if:
+
+- The graph is not 3-vertex-connected at any step.
+- The graph is not bipartite at any step.
+
 ## 3. Schema Definitions
 
 - `trace.min.schema.json`: Minimal schema for deterministic replay and audit.

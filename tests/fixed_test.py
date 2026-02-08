@@ -43,7 +43,7 @@ def run_fixed_scaling_test():
     print("FIXED PERFORMANCE SCALING TESTS (skipping n=4)")
     print("=" * 60)
     
-    print("\nTesting on prism graphs (2n vertices, n\u22656):")
+    print("\nTesting on prism graphs (2n vertices, n≥6):")
     print("-" * 50)
     print(f"{'n-gon':>6} {'Vertices':>10} {'Time (s)':>10} {'Found':>8} {'Valid':>8}")
     print("-" * 50)
@@ -58,7 +58,6 @@ def run_fixed_scaling_test():
             start_time = time.time()
             cycle = bp.find_hamiltonian_cycle(
                 G,
-                check_3conn_each_step=False,
                 debug=False
             )
             end_time = time.time()
@@ -92,7 +91,7 @@ def analyze_performance_trend(results):
     
     print("\nGrowth ratios (time vs vertices):")
     print("-" * 50)
-    print(f"{'Vertices':>10} \u2192 {'Vertices':>10} {'Time Ratio':>12} {'n Ratio':>10} {'Implied O()':>12}")
+    print(f"{'Vertices':>10} → {'Vertices':>10} {'Time Ratio':>12} {'n Ratio':>10} {'Implied O()':>12}")
     print("-" * 50)
     
     for i in range(1, len(results)):
@@ -103,7 +102,7 @@ def analyze_performance_trend(results):
             time_ratio = t2 / t1
             n_ratio = n2 / n1
             
-            # Estimate exponent: time \u221d n^k => k = log(time_ratio)/log(n_ratio)
+            # Estimate exponent: time ∝ n^k => k = log(time_ratio)/log(n_ratio)
             if n_ratio > 1 and time_ratio > 0:
                 k = (time_ratio ** (1 / n_ratio))  # Simplified estimate
                 
@@ -112,11 +111,11 @@ def analyze_performance_trend(results):
                 elif time_ratio < n_ratio ** 1.5:
                     complexity = "O(n log n)"
                 elif time_ratio < n_ratio ** 2.2:
-                    complexity = "O(n\u00b2)"
+                    complexity = "O(n²)"
                 else:
-                    complexity = "O(n\u00b3) or worse"
+                    complexity = "O(n³) or worse"
                 
-                print(f"{n1:10d} \u2192 {n2:10d} {time_ratio:12.3f} {n_ratio:10.3f} {complexity:>12}")
+                print(f"{n1:10d} → {n2:10d} {time_ratio:12.3f} {n_ratio:10.3f} {complexity:>12}")
 
 def test_memory_scaling():
     """Test memory usage with larger graphs"""
@@ -149,7 +148,6 @@ def test_memory_scaling():
                 start_time = time.time()
                 cycle = bp.find_hamiltonian_cycle(
                     G,
-                    check_3conn_each_step=False,
                     debug=False
                 )
                 end_time = time.time()

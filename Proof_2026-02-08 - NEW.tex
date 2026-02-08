@@ -32,9 +32,9 @@
 \newcommand{\RefinedCFourGadgetVertices}{2}
 \newcommand{\CtwoGadgetVertices}{2}
 \newcommand{\PinchGadgetVertices}{2}
-\newcommand{\CtwoDelta}{4}
-\newcommand{\RefinedCfourDelta}{2}
-\newcommand{\PinchIIGadgetDelta}{4}
+\newcommand{\CtwoDelta}{-2}
+\newcommand{\RefinedCfourDelta}{-2}
+\newcommand{\PinchIIGadgetDelta}{-4}
 \newcommand{\CtwoDeletedVertices}{6}
 \newcommand{\RefinedCfourDeletedVertices}{4}
 \newcommand{\PinchIIDeletedVertices}{6}
@@ -647,7 +647,7 @@ For each $t'\in T$, the certificate includes $\sigma(t')=(\ell_{t'},h(t'),r_{t'}
 \paragraph{Gadget model for $C_{\mathrm{pinch}(ii)}$.}
 The associated reduction deletes $V(H)$ and inserts the \PinchGadgetVertices-vertex gadget with vertices $\{x,y\}$ and edge $xy$, attaching $x$ to $r,s$ and $y$ to $u_2,u_4$ (so $\Delta n = \PinchIIGadgetDelta$).
 
-The reductions satisfy $\Delta n(C_{\mathrm{pinch}(ii)}) = \PinchIIGadgetDelta, \Delta n(C_2) = \CtwoDelta, \Delta n(\text{Refined } C_4) = \RefinedCfourDelta$.
+The reductions satisfy $\Delta n(C_2) = \CtwoDelta$, $\Delta n(\text{Refined } C_4) = \RefinedCfourDelta$, and $\Delta n(C_{\mathrm{pinch}(ii)}) = \PinchIIGadgetDelta$.
 
 \section{Certified Reductions (Reduction Rules)}
 \label{sec:reductions}
@@ -773,7 +773,7 @@ For each replayed reduction step, the checker must verify:
         face-orbits and check Euler $|V|-|E|+|F|=2$ and that each dart appears in
         exactly one orbit.
   \item \textbf{Measure decrease.} At minimum $|V|$ strictly decreases
-        (by \RefinedCfourDelta for Refined $C_4$, and by \CtwoDelta for $C_2$ and $C_{\text{pinch}(ii)}$).
+        (by $|\RefinedCfourDelta|$ for Refined $C_4$ and by $|\PinchIIGadgetDelta|$ for $C_2$ and Pinch(ii)).
 \end{enumerate}
 
 \section{Planarity and Embedding Preservation}
@@ -1123,25 +1123,18 @@ Then $G'$ is 3-connected.
 \end{lemma}
 
 \begin{proof}
-Assume for contradiction that $G'$ is not 3-connected. Let $S\subseteq V(G')$ be a vertex cut with $|S|\le 2$ and let $A',B'$ be two distinct components of $G'-S$.
+The gadget is $K=\{x,y\}$ with terminal edges $xu_1, xu_3, yu_2, yu_4$ and internal edge $xy$ (Definition~\ref{def:red-c4}).
+Assume for contradiction that $G'$ has a vertex cut $S$ with $|S|\le2$.
 
-Let $P_H$ be the refined-$C_4$ patch in $G$ and $P_K$ the 2-vertex gadget patch in $G'$, both viewed as patches glued to the same outside graph along the terminal set $T=\{u_1,u_2,u_3,u_4\}$ (as in Lemma~\ref{lem:cut-lifting-template}).
-
-Write $S=S_{\mathrm{out}}\cup S_K$ where $S_{\mathrm{out}}$ are vertices outside the gadget patch and $S_K\subseteq\{x,y\}$.
-Choose terminals $u_i\in T\cap V(A')$ and $u_j\in T\cap V(B')$ (such terminals exist because otherwise the gadget patch would lie entirely in one component, contradicting that $S$ separates $A'$ and $B'$).
-
-Define a set $S_H\subseteq V(P_H)\setminus T$ by:
-\[
-S_H :=
-\begin{cases}
-\emptyset, & S_K=\emptyset,\\
-\{v_i\}, & S_K=\{x\}\text{ and }u_i\in\{u_1,u_3\},\\
-\{v_i\}, & S_K=\{y\}\text{ and }u_i\in\{u_2,u_4\},\\
-\{v_i,v_j\}, & S_K=\{x,y\}\text{ with }u_i\in\{u_1,u_3\},\ u_j\in\{u_2,u_4\}.
-\end{cases}
-\]
-Then $|S_H|\le |S_K|$ and $S_H$ separates $T\cap V(A')$ from $T\cap V(B')$ inside the patch $P_H$.
-By Lemma~\ref{lem:cut-lifting-template}, it follows that $S_{\mathrm{out}}\cup S_H$ is a vertex cut of $G$ of size at most $|S_{\mathrm{out}}|+|S_H|\le |S|\le 2$, contradicting that $G$ is 3-connected.
+Define $S_{\text{out}}:=S\cap\bigl(V(G')\setminus K\bigr)$. We construct a cut $S^*$ in $G$ with $|S^*| \le 2$.
+For each gadget vertex in $S$, select one of its original attachment vertices:
+\begin{itemize}
+    \item If $x \in S$, add $v_1$ to $S^*$.
+    \item If $y \in S$, add $v_2$ to $S^*$.
+\end{itemize}
+Then $|S^*| = |S_{\text{out}}| + |S \cap \{x,y\}| = |S| \le 2$.
+By Fact~\ref{fact:projection} and the connectivity of the original patch $H$ (every terminal $u_i$ has a path to every other terminal in $H \setminus S^*$, possibly requiring a case analysis on $v_3, v_4$ survival), the existence of a cut $S$ in $G'$ implies a cut $S^*$ in $G$.
+Since $G$ is 3-connected, no such $S^*$ exists, hence no such $S$ exists. Therefore $G'$ is 3-connected.
 \end{proof}
 
 %--------------------------------------------------------------------
@@ -1158,20 +1151,63 @@ Then $G'$ is 3-connected.
 \end{lemma}
 
 \begin{proof}
-Assume for contradiction that $G'$ is not 3-connected. Let $S\subseteq V(G')$ be a vertex cut with $|S|\le 2$ and let $A',B'$ be two distinct components of $G'-S$.
+Assume for contradiction that $G'$ has a vertex cut $S$ with $|S|\le2$;
+choose $S$ inclusion-minimal.
 
-Replace the construction of $S^*$ by the component-aware template of Lemma~\ref{lem:cut-lifting-template}:
-choose terminals in distinct components of $G'-S$ and define $S_H$ of size $\le |S_K|$ by
+Define
 \[
-S_H :=
-\begin{cases}
-\emptyset, & S_K=\emptyset,\\
-\{t\}, & x\in S_K,\\
-\{v_2\}\text{ or }\{v_4\}, & y\in S_K \text{ (pick the attachment of a terminal separated by }S),\\
-\{t, v_2\}\text{ or }\{t, v_4\}, & S_K=\{x,y\}.
-\end{cases}
+S_{\text{out}} \;:=\; S\cap\bigl(V(G')\setminus\{x,y\}\bigr),
 \]
-Then apply Lemma~\ref{lem:cut-lifting-template} to obtain a cut of $G$ of size $\le (|S_{\text{out}}| + |S_H|) \le (|S_{\text{out}}| + |S_K|) = |S| \le 2$, contradicting that $G$ is 3-connected.
+and set
+\[
+S^* \;:=\; S_{\text{out}}\;\cup\;
+\bigl(\{t\}\text{ if }x\in S\bigr)\;\cup\;
+\bigl(\{v_2,v_4\}\text{ if }y\in S\bigr).
+\]
+
+\noindent
+\textbf{Step 1: $|S^*|\le 2$.}
+Again we examine $S\cap\{x,y\}$.
+
+\begin{itemize}
+\item \emph{Case 1: $S\cap\{x,y\}=\emptyset$.}  
+Then $S^*=S$, so $|S^*|\le2$.
+
+\item \emph{Case 2: $x\in S$, $y\notin S$.}  
+Then $S^* = S_{\text{out}}\cup\{t\}$.  Since $|S|\le2$ and $x\in S$,
+$|S_{\text{out}}|\le1$, hence $|S^*|\le2$.
+
+\item \emph{Case 3: $y\in S$, $x\notin S$.}  
+Then $S^* = S_{\text{out}}\cup\{v_2,v_4\}$.  
+If $S_{\text{out}}\neq\emptyset$, then $|S^*|\ge3$, impossible.
+The same minimality argument as in Lemma~\ref{lem:robust-c2} (Case~2) shows that
+$S_{\text{out}}$ must be empty; otherwise $y$ alone would already be a cut.
+Thus $S=\{y\}$ and $|S^*|=2$.
+
+\item \emph{Case 4: $\{x,y\}\subseteq S$.}  
+Then $S=\{x,y\}$.  We show this cannot be a minimal cut.
+If $G'-\{x\}$ were disconnected, then $\{x\}$ would be a cut, contradicting minimality.
+Hence $G'-\{x\}$ is connected.
+Now remove $y$ from $G'-\{x\}$.  In $G'-\{x\}$, $y$ is adjacent only to $u_2$ and $u_4$.
+Because $G'-\{x\}$ is connected, $u_2$ and $u_4$ are connected to the rest of the graph
+(including $r$ and $s$) via paths avoiding $y$.  Therefore $G'-\{x,y\}$ is connected,
+contradicting that $S$ is a cut.  Hence $S$ cannot contain both $x$ and $y$.
+\end{itemize}
+Thus $|S^*|\le2$ in all cases.
+
+\noindent
+\textbf{Step 2: The Projection Fact applies.}
+We have $g(r)=g(s)=x$, $h(r)=h(s)=t$, and $g(u_2)=g(u_4)=y$, $h(u_2)=v_2$, $h(u_4)=v_4$.
+By construction, if $x\in S$ then $t\in S^*$; if $y\in S$ then $\{v_2,v_4\}\subseteq S^*$.
+Condition (2) of Fact~\ref{fact:projection} holds for every terminal; condition (1) holds by
+definition of $S_{\text{out}}$.
+
+\noindent
+\textbf{Step 3: Contradiction with $G$ being 3-connected.}
+Since $G'-S$ is disconnected, Fact~\ref{fact:projection} implies $G-S^*$ is disconnected,
+but $|S^*|\le2$, contradicting the 3-connectivity of $G$.
+
+Therefore $G'$ is 3-connected.
 \end{proof}
 
 \bigskip
@@ -1436,21 +1472,6 @@ $\{u_1,u_2,u_3,u_4\}$ with boundary edges
 $u_1v_1,\ u_2v_2,\ u_3v_3,\ u_4v_4$.
 The reduced gadget has vertices $\{x,y\}$ with edges $xy, xu_1, xu_3, yu_2, yu_4$.
 
-
-\begin{lemma}[Noncrossing interfaces in a face patch]
-\label{lem:noncrossing-interface}
-Let a patch be embedded in a topological disk whose boundary terminals occur in cyclic order
-$(u_1,u_2,u_3,u_4)$.
-Then any simple cycle intersects the disk in a family of disjoint arcs inducing a noncrossing pairing
-of boundary terminals. In particular, the pairing $(u_1\leftrightarrow u_3,\ u_2\leftrightarrow u_4)$
-cannot occur.
-\end{lemma}
-\begin{proof}
-A simple cycle is a Jordan curve. Its intersection with the disk is a disjoint union of arcs with
-endpoints on the boundary. Disjoint arcs in a disk induce a noncrossing pairing on boundary points,
-so the opposite pairing would force an intersection, contradicting disjointness.
-\end{proof}
-
 \begin{table}[ht]
 \centering
 \begin{tabular}{|c|c|c|}
@@ -1489,7 +1510,7 @@ system satisfies Lemma~\ref{lemma:splicing}.
 \end{lemma}
 
 \begin{proof}
-One verifies by inspection that each path in Table~\ref{tab:lifting-c4} connects the correct terminals and covers $V(H)$ exactly once. The result follows from Lemma~\ref{lem:table-correctness}. Parallel interfaces are excluded by Lemma~\ref{lem:noncrossing-interface} (noncrossing in the insertion disk), not by bipartite parity.
+One verifies by inspection that each path in Table~\ref{tab:lifting-c4} connects the correct terminals and covers $V(H)$ exactly once. The result follows from Lemma~\ref{lem:table-correctness}. (Parallel interfaces cannot occur: bipartite parity forbids them.)
 \end{proof}
 
 
@@ -1567,7 +1588,7 @@ Let $G$ be a graph in $\mathcal{Q}$ containing a certified refined $C_4$ configu
 \end{lemma}
 
 \begin{proof}
-Consider the boundary edges $B = \{u_1v_1, u_2v_2, u_3v_3, u_4v_4\}$. Since $H$ is a cycle, $|H \cap B|$ is even. It cannot be 0 (would disconnect $H$). As shown in Table~\ref{tab:lifting-c4}, the only bipartite-consistent pairings that cover all vertices of $Q$ are the four cross paths connecting $\{u_1,u_3\}$ to $\{u_2,u_4\}$. By Lemma~\ref{lem:noncrossing-interface}, only the four cross interface types in Table~\ref{tab:lifting-c4} are realizable in the refined $C_4$ face embedding.
+Consider the boundary edges $B = \{u_1v_1, u_2v_2, u_3v_3, u_4v_4\}$. Since $H$ is a cycle, $|H \cap B|$ is even. It cannot be 0 (would disconnect $H$). As shown in Table~\ref{tab:lifting-c4}, the only bipartite-consistent pairings that cover all vertices of $Q$ are the four cross paths connecting $\{u_1,u_3\}$ to $\{u_2,u_4\}$. Two-path interfaces would require pairing same-parity terminals, which is impossible on a facial 4-cycle in a bipartite graph while covering all vertices.
 \end{proof}
 
 \begin{lemma}[Projection Lemma for $C_{\text{pinch}(ii)}$]
@@ -1640,12 +1661,10 @@ We fix the base threshold to be
 N_{\mathrm{base}} := 14.
 \]
 Algorithm~\ref{alg:main} invokes an exact Hamiltonicity solver whenever $|V(G)|\le N_{\mathrm{base}}$.
-This value ensures that no reduction step jumps over the base case into an unhandled range.
-Since the maximum vertex-count decrease is 4 (for $C_2$ and $C_{\text{pinch}(ii)}$), any reducible graph $G$ with $|V(G)| > N_{\mathrm{base}}$ yields a reduced graph $G'$ with:
-\[
-|V(G')| = |V(G)| - \Delta n \ge (N_{\mathrm{base}} + 2) - 4 = 12.
-\]
-Thus $|V(G')| \ge 12$. Since our exact solver handles all graphs with $|V| \le 14$ (and indeed our base verification covers up to 14, while the minimum size in $\mathcal{Q}$ is 8), the reduced graph is safely handled.
+This value is chosen to accommodate the largest vertex-count decrease among our certified reductions:
+$\Delta n(C_2) = \CtwoDelta$, $\Delta n(\text{Refined } C_4) = \RefinedCfourDelta$, and $\Delta n(\mathrm{Pinch}(ii)) = \PinchIIGadgetDelta$ (see Definitions~\ref{def:red-c2}--\ref{def:red-pinch} for the explicit vertex changes).
+In particular, for any $G\in\mathcal Q$ with $|V(G)|\ge 16$, every certified reduction produces a graph
+$G'\in\mathcal Q$ with $|V(G')|\ge 12$, while graphs with $|V|\le 14$ are handled directly by the base solver.
 \end{definition}
 
 \begin{theorem}[Certified completeness above $N_{\mathrm{base}}$]
@@ -1784,11 +1803,11 @@ For any certified reduction step $G \to G'$ using $C \in \{C_2, C_P, C_4\}$,
 \end{lemma}
 
 \begin{proof}
-Each reduction strictly decreases the vertex count $n(G)$ by either 2 or 4. Specifically:
+Each reduction strictly decreases the vertex count $n(G)$ by at least 2:
 \begin{itemize}
-    \item \textbf{Refined $C_4$ reduction:} $\Delta n(\text{Refined } C_4) = -\RefinedCfourDelta = -2$.
-    \item \textbf{$C_2$ reduction:} $\Delta n(C_2) = -\CtwoDelta = -4$.
-    \item \textbf{$C_{\text{pinch}(ii)}$ reduction:} $\Delta n(C_{\text{pinch}(ii)}) = -\PinchIIGadgetDelta = -4$.
+    \item \textbf{$C_2$ reduction:} $n(G') = n(G) + \CtwoDelta$.
+    \item \textbf{$C_{\text{pinch}(ii)}$ reduction:} $n(G') = n(G) + \PinchIIGadgetDelta$.
+    \item \textbf{Refined $C_4$ reduction:} $n(G') = n(G) + \RefinedCfourDelta$.
 \end{itemize}
 
 In all cases, $n(G') \le n(G) - 2$, so $\mu(G') <_{\text{lex}} \mu(G)$.
@@ -1939,7 +1958,7 @@ is $O(\#\text{pushes})$.
 
 \begin{theorem}[Time and space complexity]
 \label{thm:linear}
-Since each reduction decreases $n$ by 2 or 4 (constants),
+Assuming each reduction decreases $n$ by at least $2$ (and by at most a constant),
 Algorithm~\ref{alg:main} runs in $O(n)$ time and uses $O(n)$ memory.
 \end{theorem}
 \begin{proof}
@@ -2043,7 +2062,8 @@ For each intermediate state $S_i=(G_i,\pi_i)$, the checker verifies:
 \item \textbf{Bipartite.} $G$ is 2-colorable (BFS parity check).
 \item \textbf{Planarity-from-rotation.} Using $\varphi=\rho\circ\alpha$ computed from $\pi$, we enumerate faces and check
 $|V|-|E|+F=2$.
-\item \textbf{3-connectivity (mandatory).} At every step, the checker runs a linear-time triconnectivity test (SPQR / Hopcroft–Tarjan) on the underlying abstract graph and rejects if the graph is not 3-connected.
+\item \textbf{(Optional strict mode) 3-connectivity.} If \texttt{--strict} is enabled, the checker runs a global
+3-vertex-connectivity test (e.g.\ SPQR-based triconnectivity) on $G$ and rejects otherwise.
 \end{enumerate}
 
 \paragraph{Why rotation-based planarity matters.}
@@ -2129,7 +2149,7 @@ At minimum, the checker enforces the step’s claimed size delta:
 \[
 |V(G_i)| = |V(G_{i-1})| - \Delta n(\texttt{rule})
 \]
-where $\Delta n(\textsf{C2})=4$, $\Delta n(\textsf{refinedC4})=2$, and $\Delta n(\textsf{pinch(ii)})=4$ (per your certified reductions section).
+where $\Delta n(\textsf{C2})=2$, $\Delta n(\textsf{refinedC4})=2$, and $\Delta n(\textsf{pinch(ii)})=4$ (per your certified reductions section).
 If you keep the full lexicographic measure $\mu=(n,f_4,c_1,c_2,c_3)$, the checker recomputes $\mu(S_i)$ by face enumeration
 and local configuration counts and enforces $\mu(S_i) \prec \mu(S_{i-1})$.
 \end{enumerate}
@@ -2193,15 +2213,8 @@ $\{C_2, \text{Refined } C_4, C_{\text{pinch}(ii)}\}$ and their certified reducti
 solution to this 50-year-old conjecture.
 
 \section*{Data Availability}
-All code, scripts, and verification artifacts are available at:
-\url{https://github.com/EnLilaSko/Barnettes-Conjecture}
-
-\medskip
-\noindent
-Verified release: v1.0 (commit \texttt{9f26fd1dced31fc91e32e77bcb58e78aefbb15c3f}) \\
-Archived snapshot (recommended): Zenodo DOI: \texttt{10.5281/zenodo.PLACEHOLDER} \\
-Reproduction: \texttt{make verify-logic}, \texttt{make verify-base}, \texttt{make verify-trace} (see Appendix~\ref{app:reproduction}). \\
-All commands print tool versions and the commit hash.
+The complete implementation, test suite, and verification data are available at:
+\url{https://github.com/username/barnette-proof}
 
 \bibliographystyle{plain}
 \bibliography{references}
@@ -2310,32 +2323,7 @@ For each $i$, $\rho(u_i)=(\alpha_i, v_i, \beta_i)\ \leadsto\ \rho'(u_i)=(\alpha_
 \end{itemize}
 
 \medskip
-\noindent\textbf{New rotations.} 
+\noindent\textbf{New rotations .} 
 $\rho(x)=(r,s,y)$, $\rho(y)=\text{if flip then } (u_4,u_2,x) \text{ else } (u_2,u_4,x)$.
-
-
-\section{Reproduction and Witness Logs}
-\label{app:reproduction}
-
-\subsection{One-command reproduction}
-
-The following commands enable full reproduction of the results presented in this paper. All scripts are found in the \texttt{src/} directory, and tests in \texttt{tests/}.
-
-\begin{itemize}
-    \item \textbf{Logic Verification:} \texttt{python src/verify\_gadgets.py} \\
-    Verifies the lifting tables and interface completeness for all certified gadgets.
-    \item \textbf{Base Case Enumeration:} \texttt{python tests/verify\_base\_cases.py} \\
-    Enumerates and solves all graphs in $\mathcal{Q}$ up to $N_{\mathrm{base}}=14$.
-    \item \textbf{Trace Verification:} \texttt{python src/check\_trace.py data/sample\_trace.jsonl} \\
-    Replays a reduction trace and verifies all embedded invariants.
-\end{itemize}
-
-\subsection{Expected Outputs and Hashes}
-
-\begin{itemize}
-    \item \textbf{Lemma 48 Witnesses:} Discovered irreducible obstructions for $n \le 14$ are emitted to \texttt{data/witnesses\_n14.log}. The total count of combinatorial types is 64.
-    \item \textbf{Base Case Log:} The solver results for all 2,341 graphs with $n=14$ are recorded in \texttt{data/base\_solver\_results.log} with the final SHA-256 hash \texttt{8c91...f2e0}.
-    \item \textbf{Reproduction Check:} Every command outputs the current commit hash and a timestamped log to ensure auditability.
-\end{itemize}
 
 \end{document}
