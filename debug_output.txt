@@ -1,0 +1,5 @@
+Generating sample trace for Prism-12...
+Generated data/sample_trace.jsonl with 4 steps.
+Replaying trace: data/sample_trace.jsonl
+  Step 0: n=24... FAILED: 'EmbeddedGraph' object has no attribute 'is_bipartite'
+Trace verification FAILED at step 0

@@ -1,0 +1,64 @@
+
+--- Processing n=8 ---
+Generating trace for n=8...
+Replaying trace: artifacts/traces\trace_n8.jsonl
+  Step 0: n=8... OK
+Trace verification PASSED (1 steps)
+
+--- Processing n=12 ---
+Generating trace for n=12...
+Replaying trace: artifacts/traces\trace_n12.jsonl
+  Step 0: n=12... OK
+Trace verification PASSED (1 steps)
+
+--- Processing n=48 ---
+Generating trace for n=48...
+Replaying trace: artifacts/traces\trace_n48.jsonl
+  Step 0: n=48... OK
+  Step 1: n=44... OK
+  Step 2: n=40... OK
+  Step 3: n=36... OK
+  Step 4: n=32... OK
+  Step 5: n=28... OK
+  Step 6: n=24... OK
+  Step 7: n=20... OK
+  Step 8: n=16... OK
+  Step 9: n=12... OK
+Trace verification PASSED (10 steps)
+
+--- Processing n=128 ---
+Generating trace for n=128...
+Replaying trace: artifacts/traces\trace_n128.jsonl
+  Step 0: n=128... OK
+  Step 1: n=124... OK
+  Step 2: n=120... OK
+  Step 3: n=116... OK
+  Step 4: n=112... OK
+  Step 5: n=108... OK
+  Step 6: n=104... OK
+  Step 7: n=100... OK
+  Step 8: n=96... OK
+  Step 9: n=92... OK
+  Step 10: n=88... OK
+  Step 11: n=84... OK
+  Step 12: n=80... OK
+  Step 13: n=76... OK
+  Step 14: n=72... OK
+  Step 15: n=68... OK
+  Step 16: n=64... OK
+  Step 17: n=60... OK
+  Step 18: n=56... OK
+  Step 19: n=52... OK
+  Step 20: n=48... OK
+  Step 21: n=44... OK
+  Step 22: n=40... OK
+  Step 23: n=36... OK
+  Step 24: n=32... OK
+  Step 25: n=28... OK
+  Step 26: n=24... OK
+  Step 27: n=20... OK
+  Step 28: n=16... OK
+  Step 29: n=12... OK
+Trace verification PASSED (30 steps)
+
+Batch verification complete. Summary saved to artifacts/traces\batch_verification.json

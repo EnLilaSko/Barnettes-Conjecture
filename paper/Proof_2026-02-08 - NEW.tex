@@ -724,8 +724,9 @@ Construct $(G',\pi')$ as follows.
 A step is accepted only if:
 (i) the precondition subgraph matches the configuration type;
 (ii) the terminal-slot replacement is exactly as above;
-(iii) the post-state is cubic and bipartite and the rotation system is planar
-and 2-cell by face-traversal (Section~\ref{sec:verification} / checker).
+(iii) the post-state satisfies the membership invariants of $\mathcal{Q}$ (cubic, bipartite, planar-from-rotation, and $3$-connected); and
+(iv) the checker-computed vertex-count delta $\Delta n$ matches the rule's expected delta.
+\par
 
 %--------------------------------------------------------
 \subsection{Reduction rule for $\mathbf{C_2}$}
@@ -775,14 +776,17 @@ For each replayed reduction step, the checker must verify:
   \item \textbf{Rotation edit locality.} For each $t\in T$, the new rotation is
         exactly $\textsc{ReplaceNeighbor}(\pi_t;\ h(t)\mapsto g(t))$, and only
         the terminals and gadget vertices have modified rotations.
-  \item \textbf{Cubicity \& bipartiteness.} Degrees are all 3, and the graph is
-        2-colorable.
+  \item \textbf{Cubicity \& bipartiteness.} Degrees are all $3$, and the graph is
+        $2$-colorable.
   \item \textbf{Planarity (2-cell).} Using $\varphi_{\pi'}$, traverse all
         face-orbits and check Euler $|V|-|E|+|F|=2$ and that each dart appears in
         exactly one orbit.
-  \item \textbf{Measure decrease.} At minimum $|V|$ strictly decreases
-        (by $-\RefinedCfourDelta$ for Refined $C_4$, and by $-\CtwoDelta$ for $C_2$ and $C_{\text{pinch}(ii)}$).
+  \item \textbf{$3$-connectivity.} The abstract graph $G'$ is $3$-connected.
+  \item \textbf{Vertex-count delta.} The checker computes $\Delta n := |V(G')|-|V(G)|$
+        from the replayed edit and asserts $\Delta n=\RefinedCfourDelta$ for Refined $C_4$,
+        and $\Delta n=\CtwoDelta$ for $C_2$ and $C_{\text{pinch}(ii)}$.
 \end{enumerate}
+
 
 \section{Planarity and Embedding Preservation}
 \label{sec:planarity}
@@ -1007,22 +1011,38 @@ Extend bipartition $(A,B)$ deterministically: e.g., for $C_2$, if $a,c,f \in A$,
 \label{subsec:cubicity}
 Degree accounting: terminals lose one neighbor, gain one; new vertices degree 3.
 
-\subsection{3-Connectivity Preservation}
+\subsection{3-Connectivity Enforcement and Admissibility}
 \label{subsec:3conn-preservation}
 
-The preservation of 3-connectivity is a mandatory requirement for membership in the class $\mathcal{Q}$. In this framework, we shift the burden of proof from a-priori theoretical lemmas to \emph{a-posteriori} verification by the checker.
+Three-connectivity is part of the definition of $\mathcal{Q}$; hence every intermediate instance in a certified trace must be $3$-connected.
 
-\paragraph{Mandatory invariant check.}
-For every reduction step recorded in a certificate trace, the checker recomputes the 3-connectivity of the resulting graph $G'$. This check is performed using a linear-time 3-connectivity algorithm (such as Hopcroft--Tarjan or via SPQR decomposition).
+\paragraph{Admissible reduction step.}
+Let $S=(G,\pi)$ be an embedded state with $G\in\mathcal{Q}$, and let $\mathrm{cert}$ be a locally certified configuration occurrence (Section~\ref{sec:catalog}).
+Write
+\[
+S'=(G',\pi') := \textsc{Reduce}(G,\pi;\mathrm{cert})
+\]
+for the deterministic post-state produced by Definition~\ref{def:reduce-op}.
+We call the step \emph{admissible} if:
+\begin{enumerate}
+  \item $G'$ is a simple, cubic, bipartite graph;
+  \item $\pi'$ is a planar cellular rotation system for $G'$ (verified by face traversal and Euler characteristic);
+  \item $G'$ is $3$-connected; and
+  \item the vertex-count delta $\Delta n = |V(G')|-|V(G)|$ equals the expected rule delta.
+\end{enumerate}
+This is exactly the postcondition predicate implemented by the checker.
 
-\paragraph{Trace rejection.}
-If the replayed graph $G'$ at any step $i$ fails the 3-connectivity test, the checker rejects the trace. Consequently, any successfully verified trace provides a computational proof that the entire reduction sequence $G_0, G_1, \dots, G_m$ consists exclusively of 3-connected graphs.
+\paragraph{Checker as a proof component.}
+During replay, the checker recomputes $3$-connectivity of each replayed abstract graph $G'$ (e.g.\ via an SPQR-based test).
+If $G'$ is not $3$-connected at any step, the trace is rejected.
+Thus, an accepted trace is by construction a sequence $G_0,G_1,\dots,G_m$ of graphs that all lie in $\mathcal{Q}$.
 
-\bigskip
-Requirement (CRF3) of the Certified Reduction Framework is thus satisfied by the checker's mandatory operational validation, ensuring that membership in $\mathcal{Q}$ is maintained throughout the reduction process.
-
-\bigskip
-
+\paragraph{Why completeness must be stated in admissible form.}
+Operational enforcement alone does not guarantee that a reduction is always possible:
+a priori, it could happen that every locally detected configuration leads to a \emph{non-admissible} post-state.
+Section~\ref{sec:base-cases} addresses this by proving (Lemma~\ref{lem:small-obstructions}) that such ``dead ends''
+can occur only for graphs of size at most $N_{\mathrm{base}}$.
+Therefore, for $|V(G)|>N_{\mathrm{base}}$ the algorithm can always select an admissible configuration and proceed.
 
 \section{Interface Analysis for Hamiltonian Cycles}
 \label{sec:interface-analysis}
@@ -1465,14 +1485,23 @@ The procedure uses only local information near the gadget and requires constant 
 
 \subsection{Certified completeness above a finite threshold}
 
-\begin{definition}[Certified reducibility and irreducibility]
+\begin{definition}[Certified and admissible reducibility]
 \label{def:cert}
 Fix the catalog of certified reductions
 $\mathcal R=\{R_{C_2},\,R_{C_{\mathrm{pinch}(ii)}},\,R_{C_4}\}$.
-A graph $G\in\mathcal Q$ is \emph{reducible} if it contains at least one
-\emph{certified occurrence} of a configuration in the domain of some $R\in\mathcal R$.
-Otherwise $G$ is \emph{irreducible}.
+
+A \emph{certified occurrence} is a local certificate witnessing that a configuration in the domain of some $R\in\mathcal{R}$
+occurs in the current embedded state (Section~\ref{sec:catalog}).
+
+Given an embedded state $S=(G,\pi)$ with $G\in\mathcal Q$ and a certified occurrence $\mathrm{cert}$,
+let $S'=(G',\pi'):=\textsc{Reduce}(G,\pi;\mathrm{cert})$ be the deterministic post-state.
+We call $\mathrm{cert}$ \emph{admissible for $S$} if $G'\in\mathcal{Q}$ and the rule's expected vertex-count delta holds
+(i.e.\ the checker accepts the step under the replay semantics of Section~\ref{sec:verification}).
+
+A graph $G\in\mathcal Q$ is \emph{reducible} if it contains at least one admissible certified occurrence of a configuration in
+the domain of some $R\in\mathcal R$. Otherwise $G$ is \emph{irreducible}.
 \end{definition}
+
 
 \begin{definition}[Base threshold]
 \label{def:Nbase}
@@ -1492,45 +1521,49 @@ Thus $|V(G')| \ge 12$. Since our exact solver handles all graphs with $|V| \le 1
 \begin{theorem}[Certified completeness above $N_{\mathrm{base}}$]
 \label{thm:certified-completeness-above}
 With $N_{\mathrm{base}}$ as fixed in Definition~\ref{def:Nbase}, every $G\in\mathcal Q$ with
-$|V(G)|>N_{\mathrm{base}}$ contains a certified occurrence of $C_2$, $C_{\mathrm{pinch}(ii)}$, or refined $C_4$.
+$|V(G)|>N_{\mathrm{base}}$ contains an \emph{admissible} certified occurrence of $C_2$, $C_{\mathrm{pinch}(ii)}$, or refined $C_4$.
 \end{theorem}
 
 \begin{proof}
 By Lemma~\ref{lem:existence-f4} (Euler counting), $G$ contains a facial $4$-cycle $Q$.
 By the local $4$-face neighborhood analysis (Section~\ref{sec:unavoidability}),
-$Q$ yields a topological occurrence of one of the catalog configurations.
-It remains to show that when $|V(G)|>N_{\mathrm{base}}$, at least one such occurrence
-satisfies the corresponding certification predicates.
+each facial $4$-cycle yields a topological occurrence of one of the catalog configurations.
 
-For refined $C_4$, we use the relaxed certificate (Section~\ref{subsec:red-c4})
-in which the diagonal-isolation condition is dropped, justified operationally 
-because the checker recomputes and enforces 3-connectivity after every reduction step; 
-any trace step that violates 3-connectivity is rejected. Section~\ref{subsec:3conn-preservation} 
-provides intuition/proof sketches, but the proof obligation is discharged by checker-verified invariants.
+A priori, a topological occurrence may fail the local certification predicates, or it may be locally certified but yield a
+\emph{non-admissible} post-state after reduction (e.g.\ by violating $3$-connectivity). By Definition~\ref{def:cert}, the algorithm
+may only use admissible certified occurrences.
 
-For $C_2$ and $C_{\mathrm{pinch}(ii)}$, the remaining certification predicates are
-purely local and exclude only finitely many small obstructions arising from vertex
-identifications among terminals. The implication `topological occurrence $\Rightarrow$ certified occurrence' for $C_2$ and Pinch(ii) is discharged by the finite enumeration Lemma~\ref{lem:small-obstructions}, which proves that every certification failure occurs on at most 14 vertices.
-
-Therefore if $|V(G)|>N_{\mathrm{base}}$, some topological occurrence is certified.
+Lemma~\ref{lem:small-obstructions} shows that every obstruction to the existence of an admissible certified occurrence occurs on at most
+$14$ vertices. Since $N_{\mathrm{base}}=14$, it follows that whenever $|V(G)|>N_{\mathrm{base}}$ at least one facial $4$-cycle in $G$
+gives rise to an admissible certified occurrence of $C_2$, $C_{\mathrm{pinch}(ii)}$, or refined $C_4$.
 \end{proof}
 
-\begin{lemma}[Small obstructions to certification are finite]
+
+\begin{lemma}[Small obstructions to admissible reducibility are finite]
 \label{lem:small-obstructions}
-For the certification predicates used in Definition~\ref{def:cert},
-the radius-$3$ neighborhood of a $4$-face admits only finitely many combinatorial types in a cubic bipartite plane graph.
-An exhaustive enumeration of these types (together with $3$-connectivity filtering) shows that every obstruction to
-certification occurs on at most $14$ vertices. Consequently, for every $G\in\mathcal Q$ with $|V(G)|>14$,
-the local $4$-face classification yields at least one \emph{certified} occurrence of $C_2$, $C_{\text{pinch}(ii)}$,
-or Refined $C_4$.
+Let $\mathcal{R}=\{R_{C_2},R_{C_{\mathrm{pinch}(ii)}},R_{C_4}\}$ be the catalog.
+For the certification predicates of Section~\ref{sec:catalog} and the admissibility predicate of
+Definition~\ref{def:cert}, every obstruction to the existence of an admissible certified occurrence in a graph of $\mathcal{Q}$
+occurs on at most $14$ vertices.
+
+Consequently, for every $G\in\mathcal Q$ with $|V(G)|>14$,
+the local $4$-face classification yields at least one \emph{admissible} certified occurrence of $C_2$, $C_{\text{pinch}(ii)}$,
+or refined $C_4$.
 \end{lemma}
 \begin{proof}
 This is established by a finite, reproducible computation.
+
 The script \texttt{enumerate\_local\_types.py} enumerates all radius-$3$ rotation-system neighborhoods of a facial $4$-cycle
-compatible with cubicity and bipartiteness, filters those extending to $3$-connected instances, and tests the
-certification predicates. The maximum vertex count among failing neighborhoods is $14$, and the script emits the full
-list of witness neighborhoods. See Appendix~\ref{app:reproducibility} for the repository and one-command reproduction.
+compatible with cubicity and bipartiteness, and filters those extending to $3$-connected instances.
+For each surviving neighborhood type, it (i) applies the local $4$-face classification to generate all candidate topological occurrences,
+(ii) tests the corresponding local certification predicates, and (iii) for every locally certified candidate, constructs the reduced instance
+by the rule template and runs the same postcondition checks as the checker (including planarity-from-rotation, cubicity, bipartiteness,
+and $3$-connectivity). A neighborhood type is marked \emph{bad} only if \emph{no} candidate yields an admissible step.
+
+The computation outputs a witness for every bad type; the maximum vertex count among these witnesses is $14$.
+See Appendix~\ref{app:reproducibility} for the repository and one-command reproduction.
 \end{proof}
+
 
 \subsection{Computational base verification}
 
@@ -1558,7 +1591,7 @@ This is established by exhaustive computation; see Appendix~\ref{app:reproducibi
 \If{$|V(G)| \le N_{\mathrm{base}}$}
     \State \Return $\textsc{ExactHamiltonCycle}(G)$
 \EndIf
-\State $C \gets \textsc{FindCertifiedConfig}(G)$
+\State $C \gets \textsc{FindAdmissibleConfig}(G)$ \Comment{search over certified candidates until the postcheck passes}
 \State $G' \gets \textsc{ApplyReduction}(G, C)$
 \State $H' \gets \textsc{HamiltonianCycle}(G')$
 \State \Return $\textsc{LiftCycle}(H', G, C)$
