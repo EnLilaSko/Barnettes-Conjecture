@@ -58,7 +58,6 @@ def run_fixed_scaling_test():
             start_time = time.time()
             cycle = bp.find_hamiltonian_cycle(
                 G,
-                check_3conn_each_step=False,
                 debug=False
             )
             end_time = time.time()
@@ -149,7 +148,6 @@ def test_memory_scaling():
                 start_time = time.time()
                 cycle = bp.find_hamiltonian_cycle(
                     G,
-                    check_3conn_each_step=False,
                     debug=False
                 )
                 end_time = time.time()

@@ -27,7 +27,7 @@ def test_family_prisms(max_n=500):
         
         start = time.time()
         # Using the standard recursive solver
-        cycle = find_hamiltonian_cycle(G, check_3conn_each_step=False)
+        cycle = find_hamiltonian_cycle(G)
         elapsed = time.time() - start
         
         if cycle and validate_cycle(G, cycle):
@@ -56,7 +56,7 @@ def test_random_barnette_graphs(num_graphs=20, max_vertices=100):
         
         try:
             start = time.time()
-            cycle = find_hamiltonian_cycle(G, check_3conn_each_step=False)
+            cycle = find_hamiltonian_cycle(G)
             elapsed = time.time() - start
             
             if cycle and validate_cycle(G, cycle):
@@ -89,7 +89,7 @@ def stress_test_large():
             print(f"  Size: {size} vertices")
             
             start = time.time()
-            cycle = find_hamiltonian_cycle(G, check_3conn_each_step=False)
+            cycle = find_hamiltonian_cycle(G)
             elapsed = time.time() - start
             
             if cycle and validate_cycle(G, cycle):

@@ -81,7 +81,7 @@ def solve_graph_file(input_file, output_file=None, validate=False):
     start = time.time()
     
     try:
-        cycle = bp.find_hamiltonian_cycle(G, check_3conn_each_step=False)
+        cycle = bp.find_hamiltonian_cycle(G)
     except Exception as e:
         print(f"Solver error: {e}")
         return False

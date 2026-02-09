@@ -491,7 +491,7 @@ class OccPinch:
     v1: int; v2: int; v3: int; v4: int
     w: int; t: int; r: int; s: int
     u2: int; u4: int
-    between: str  # informational
+    epsilon: int  # flip bit
 
 @dataclass(frozen=True, order=True)
 class OccC2:
@@ -583,12 +583,8 @@ def detect_C_pinch_ii(G: EmbeddedGraph) -> Optional[OccPinch]:
             if any(G.other_face_is_quad(a, b) for a, b in quad_edges):
                 continue
 
-            # informational "between" marker
-            p = G.rot[w][(G.pos[w][t] + 1) % 3]
-            q = G.rot[p][(G.pos[p][w] + 1) % 3]
-            between = "u2" if q == v2 else "u4"
-
-            occ = OccPinch(v1, v2, v3, v4, w, t, r, s, u2, u4, between)
+            epsilon = 0 if q == v2 else 1
+            occ = OccPinch(v1, v2, v3, v4, w, t, r, s, u2, u4, epsilon)
             if best is None or occ < best:
                 best = occ
     return best
@@ -965,10 +961,17 @@ def expand_refined_C4_from_edge(G: EmbeddedGraph, x: int, y: int) -> EmbeddedGra
     H.set_vertex_rotation(v3, [v2, v4, u3])
     H.set_vertex_rotation(v4, [v3, v1, u4])
 
-    H.rot[u1].insert(idx_u1, v1); H.adj[u1].add(v1)
-    H.rot[u3].insert(idx_u3, v3); H.adj[u3].add(v3)
-    H.rot[u2].insert(idx_u2, v2); H.adj[u2].add(v2)
-    H.rot[u4].insert(idx_u4, v4); H.adj[u4].add(v4)
+    # Connect to rest of graph
+    def safer_insert(v, idx, new_neighbor):
+        current_rot = list(H.rot[v])
+        current_rot.insert(idx, new_neighbor)
+        H.set_vertex_rotation(v, current_rot)
+        H.adj[v].add(new_neighbor)
+
+    safer_insert(u1, idx_u1, v1)
+    safer_insert(u3, idx_u3, v3)
+    safer_insert(u2, idx_u2, v2)
+    safer_insert(u4, idx_u4, v4)
 
     H.assert_consistent()
     return H
@@ -1011,10 +1014,16 @@ def expand_pinch_from_edge(G: EmbeddedGraph, x: int, y: int) -> EmbeddedGraph:
     H.set_vertex_rotation(t,  [r, s, w])
 
     # Connect to rest of graph
-    H.rot[r].insert(idx_r, t); H.adj[r].add(t)
-    H.rot[s].insert(idx_s, t); H.adj[s].add(t)
-    H.rot[u2].insert(idx_u2, v2); H.adj[u2].add(v2)
-    H.rot[u4].insert(idx_u4, v4); H.adj[u4].add(v4)
+    def safer_insert(v, idx, new_neighbor):
+        current_rot = list(H.rot[v])
+        current_rot.insert(idx, new_neighbor)
+        H.set_vertex_rotation(v, current_rot)
+        H.adj[v].add(new_neighbor)
+
+    safer_insert(r, idx_r, t)
+    safer_insert(s, idx_s, t)
+    safer_insert(u2, idx_u2, v2)
+    safer_insert(u4, idx_u4, v4)
 
     H.assert_consistent()
     return H
@@ -1082,6 +1091,8 @@ class RecC4:
     x: int; y: int
     v1: int; v2: int; v3: int; v4: int
     u1: int; u2: int; u3: int; u4: int
+    sigma: List[int]
+    epsilon: int
 
 @dataclass
 class RecPinch:
@@ -1090,12 +1101,16 @@ class RecPinch:
     w: int; t: int
     r: int; s: int
     u2: int; u4: int
+    sigma: List[int]
+    epsilon: int
 
 @dataclass
 class RecC2:
     x: int; y: int
     a: int; b: int; c: int; d: int; e: int; f: int
     u1: int; u4: int; u5: int; u6: int
+    sigma: List[int]
+    epsilon: int
 
 
 # =============================================================================
@@ -1132,7 +1147,7 @@ def reduce_C4(G: EmbeddedGraph, occ: OccC4) -> Tuple[EmbeddedGraph, RecC4]:
     H.set_vertex_rotation(y, [u2, u4, x])
 
     H.assert_consistent()
-    return H, RecC4(x, y, v1, v2, v3, v4, u1, u2, u3, u4)
+    return H, RecC4(x, y, v1, v2, v3, v4, u1, u2, u3, u4, [u1, u2, u3, u4], 0)
 
 def reduce_pinch(G: EmbeddedGraph, occ: OccPinch) -> Tuple[EmbeddedGraph, RecPinch]:
     """
@@ -1165,7 +1180,7 @@ def reduce_pinch(G: EmbeddedGraph, occ: OccPinch) -> Tuple[EmbeddedGraph, RecPin
     H.set_vertex_rotation(y, [u2, u4, x])
 
     H.assert_consistent()
-    return H, RecPinch(x, y, v1, v2, v3, v4, w, t, r, s, u2, u4)
+    return H, RecPinch(x, y, v1, v2, v3, v4, w, t, r, s, u2, u4, [r, s, u4, u2], occ.epsilon)
 
 def reduce_C2(G: EmbeddedGraph, occ: OccC2) -> Tuple[EmbeddedGraph, RecC2]:
     """
@@ -1197,7 +1212,7 @@ def reduce_C2(G: EmbeddedGraph, occ: OccC2) -> Tuple[EmbeddedGraph, RecC2]:
     H.set_vertex_rotation(y, [u4, u5, x])
 
     H.assert_consistent()
-    return H, RecC2(x, y, a, b, c, d, e, f, u1, u4, u5, u6)
+    return H, RecC2(x, y, a, b, c, d, e, f, u1, u4, u5, u6, [u1, u6, u5, u4], 0)
 
 
 # =============================================================================

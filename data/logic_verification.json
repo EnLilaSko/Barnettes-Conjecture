@@ -1,0 +1,20 @@
+{
+    "version": "821779f90e35e2946c0613338e45c285a9d130f2c",
+    "summary": [
+        {
+            "name": "Refined C4",
+            "status": "PASS",
+            "verified_count": 5
+        },
+        {
+            "name": "C2",
+            "status": "PASS",
+            "verified_count": 5
+        },
+        {
+            "name": "Pinch(ii)",
+            "status": "PASS",
+            "verified_count": 5
+        }
+    ]
+}

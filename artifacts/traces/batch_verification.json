@@ -1,0 +1,33 @@
+{
+    "version": "821779f90e35e2946c0613338e45c285a9d130f2c",
+    "results": [
+        {
+            "n": 8,
+            "graph_path": "artifacts/traces\\graph_n8.json",
+            "trace_path": "artifacts/traces\\trace_n8.jsonl",
+            "success": true,
+            "trace_sha256": "c1b143133e29dd576a9a0e26e529dae8365f4ea8e488d591e7200e5d7e32ab31"
+        },
+        {
+            "n": 12,
+            "graph_path": "artifacts/traces\\graph_n12.json",
+            "trace_path": "artifacts/traces\\trace_n12.jsonl",
+            "success": true,
+            "trace_sha256": "5df9396cb2f44b1c81f12259d8be3c3d29c472391e289411bc9f5a455b76d5eb"
+        },
+        {
+            "n": 48,
+            "graph_path": "artifacts/traces\\graph_n48.json",
+            "trace_path": "artifacts/traces\\trace_n48.jsonl",
+            "success": true,
+            "trace_sha256": "ce02b44b98ed3daa8137c35ef2e3692eeefb6884fb72007291056ea1801157ec"
+        },
+        {
+            "n": 128,
+            "graph_path": "artifacts/traces\\graph_n128.json",
+            "trace_path": "artifacts/traces\\trace_n128.jsonl",
+            "success": true,
+            "trace_sha256": "fe5138e9b480b6dd63133cfd08d25ba0791c968294dbe2bca191cb53b41371b9"
+        }
+    ]
+}

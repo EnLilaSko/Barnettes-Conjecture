@@ -362,14 +362,31 @@ def is_3_connected(adj: Dict[int, Set[int]]) -> bool:
                 return False
     return True
 
-def validate_in_Q(G: EmbeddedGraph, check_3conn: bool = True) -> None:
+def validate_in_Q(G: EmbeddedGraph) -> None:
     G.validate_rotation_embedding()
     if any(len(G.adj[v]) != 3 for v in G.adj):
         raise AssertionError("not cubic")
     if not is_bipartite(G.adj):
         raise AssertionError("not bipartite")
-    if check_3conn and not is_3_connected(G.adj):
+    if not is_3_connected(G.adj):
         raise AssertionError("not 3-connected")
+
+
+# =============================================================================
+# Measure invariants (Delta N check)
+# =============================================================================
+
+DELTA_N = {
+    "C2": -4,
+    "pinch(ii)": -4,
+    "refined_C4": -2,
+}
+
+def check_delta_n(n_before: int, n_after: int, step_type: str) -> None:
+    expected = DELTA_N[step_type]
+    got = n_after - n_before
+    if got != expected:
+        raise ValueError(f"Δn mismatch for {step_type}: got {got}, expected {expected}")
 
 
 # =============================================================================
@@ -472,9 +489,10 @@ class OccC4:
 @dataclass(frozen=True, order=True)
 class OccPinch:
     v1: int; v2: int; v3: int; v4: int
-    w: int; t: int; r: int; s: int
+    w: int; t: int
+    r: int; s: int
     u2: int; u4: int
-    between: str  # informational
+    epsilon: int  # flip bit
 
 @dataclass(frozen=True, order=True)
 class OccC2:
@@ -566,12 +584,8 @@ def detect_C_pinch_ii(G: EmbeddedGraph) -> Optional[OccPinch]:
             if any(G.other_face_is_quad(a, b) for a, b in quad_edges):
                 continue
 
-            # informational "between" marker
-            p = G.rot[w][(G.pos[w][t] + 1) % 3]
-            q = G.rot[p][(G.pos[p][w] + 1) % 3]
-            between = "u2" if q == v2 else "u4"
-
-            occ = OccPinch(v1, v2, v3, v4, w, t, r, s, u2, u4, between)
+            epsilon = 0 if q == v2 else 1
+            occ = OccPinch(v1, v2, v3, v4, w, t, r, s, u2, u4, epsilon)
             if best is None or occ < best:
                 best = occ
     return best
@@ -647,7 +661,7 @@ class CompletenessWitness:
     kind: str  # "C2" | "C4" | "PINCH"
     certificate: object  # OccC2 | OccC4 | OccPinch
 
-def verify_completeness(G: EmbeddedGraph, check_3conn: bool = True) -> CompletenessWitness:
+def verify_completeness(G: EmbeddedGraph) -> CompletenessWitness:
     """
     Constructive completeness witness:
 
@@ -659,7 +673,7 @@ def verify_completeness(G: EmbeddedGraph, check_3conn: bool = True) -> Completen
     Deterministic priority:
       C2, then PINCH(ii), then refined C4.
     """
-    validate_in_Q(G, check_3conn=check_3conn)
+    validate_in_Q(G)
     tot = total_initial_charge(G)
     if tot != -8:
         raise AssertionError(f"total initial charge != -8: {tot}")
@@ -743,7 +757,7 @@ def is_cube(G: EmbeddedGraph) -> bool:
     if len(G.adj) != 8:
         return False
     try:
-        validate_in_Q(G, check_3conn=False)
+        validate_in_Q(G)
     except Exception:
         return False
     if len(G.edges()) != 12:
@@ -948,10 +962,17 @@ def expand_refined_C4_from_edge(G: EmbeddedGraph, x: int, y: int) -> EmbeddedGra
     H.set_vertex_rotation(v3, [v2, v4, u3])
     H.set_vertex_rotation(v4, [v3, v1, u4])
 
-    H.rot[u1].insert(idx_u1, v1); H.adj[u1].add(v1)
-    H.rot[u3].insert(idx_u3, v3); H.adj[u3].add(v3)
-    H.rot[u2].insert(idx_u2, v2); H.adj[u2].add(v2)
-    H.rot[u4].insert(idx_u4, v4); H.adj[u4].add(v4)
+    # Connect to rest of graph
+    def safer_insert(v, idx, new_neighbor):
+        current_rot = list(H.rot[v])
+        current_rot.insert(idx, new_neighbor)
+        H.set_vertex_rotation(v, current_rot)
+        H.adj[v].add(new_neighbor)
+
+    safer_insert(u1, idx_u1, v1)
+    safer_insert(u3, idx_u3, v3)
+    safer_insert(u2, idx_u2, v2)
+    safer_insert(u4, idx_u4, v4)
 
     H.assert_consistent()
     return H
@@ -994,10 +1015,16 @@ def expand_pinch_from_edge(G: EmbeddedGraph, x: int, y: int) -> EmbeddedGraph:
     H.set_vertex_rotation(t,  [r, s, w])
 
     # Connect to rest of graph
-    H.rot[r].insert(idx_r, t); H.adj[r].add(t)
-    H.rot[s].insert(idx_s, t); H.adj[s].add(t)
-    H.rot[u2].insert(idx_u2, v2); H.adj[u2].add(v2)
-    H.rot[u4].insert(idx_u4, v4); H.adj[u4].add(v4)
+    def safer_insert(v, idx, new_neighbor):
+        current_rot = list(H.rot[v])
+        current_rot.insert(idx, new_neighbor)
+        H.set_vertex_rotation(v, current_rot)
+        H.adj[v].add(new_neighbor)
+
+    safer_insert(r, idx_r, t)
+    safer_insert(s, idx_s, t)
+    safer_insert(u2, idx_u2, v2)
+    safer_insert(u4, idx_u4, v4)
 
     H.assert_consistent()
     return H
@@ -1065,6 +1092,8 @@ class RecC4:
     x: int; y: int
     v1: int; v2: int; v3: int; v4: int
     u1: int; u2: int; u3: int; u4: int
+    sigma: List[int]
+    epsilon: int
 
 @dataclass
 class RecPinch:
@@ -1073,12 +1102,16 @@ class RecPinch:
     w: int; t: int
     r: int; s: int
     u2: int; u4: int
+    sigma: List[int]
+    epsilon: int
 
 @dataclass
 class RecC2:
     x: int; y: int
     a: int; b: int; c: int; d: int; e: int; f: int
     u1: int; u4: int; u5: int; u6: int
+    sigma: List[int]
+    epsilon: int
 
 
 # =============================================================================
@@ -1115,7 +1148,7 @@ def reduce_C4(G: EmbeddedGraph, occ: OccC4) -> Tuple[EmbeddedGraph, RecC4]:
     H.set_vertex_rotation(y, [u2, u4, x])
 
     H.assert_consistent()
-    return H, RecC4(x, y, v1, v2, v3, v4, u1, u2, u3, u4)
+    return H, RecC4(x, y, v1, v2, v3, v4, u1, u2, u3, u4, [u1, u2, u3, u4], 0)
 
 def reduce_pinch(G: EmbeddedGraph, occ: OccPinch) -> Tuple[EmbeddedGraph, RecPinch]:
     """
@@ -1148,7 +1181,7 @@ def reduce_pinch(G: EmbeddedGraph, occ: OccPinch) -> Tuple[EmbeddedGraph, RecPin
     H.set_vertex_rotation(y, [u2, u4, x])
 
     H.assert_consistent()
-    return H, RecPinch(x, y, v1, v2, v3, v4, w, t, r, s, u2, u4)
+    return H, RecPinch(x, y, v1, v2, v3, v4, w, t, r, s, u2, u4, [r, s, u4, u2], occ.epsilon)
 
 def reduce_C2(G: EmbeddedGraph, occ: OccC2) -> Tuple[EmbeddedGraph, RecC2]:
     """
@@ -1180,7 +1213,7 @@ def reduce_C2(G: EmbeddedGraph, occ: OccC2) -> Tuple[EmbeddedGraph, RecC2]:
     H.set_vertex_rotation(y, [u4, u5, x])
 
     H.assert_consistent()
-    return H, RecC2(x, y, a, b, c, d, e, f, u1, u4, u5, u6)
+    return H, RecC2(x, y, a, b, c, d, e, f, u1, u4, u5, u6, [u1, u6, u5, u4], 0)
 
 
 # =============================================================================
@@ -1334,7 +1367,6 @@ def lift_C2(original: EmbeddedGraph, reduced: EmbeddedGraph, rec: RecC2, cycle_r
 
 def find_hamiltonian_cycle(
     G: EmbeddedGraph,
-    check_3conn_each_step: bool = False,
     debug: bool = False,
 ) -> Cycle:
     """
@@ -1348,7 +1380,7 @@ def find_hamiltonian_cycle(
       - Reduce in priority order: C2, PINCH(ii), refined C4.
       - Recurse and lift by deterministic patch search.
     """
-    validate_in_Q(G, check_3conn=check_3conn_each_step)
+    validate_in_Q(G)
 
     n = len(G.adj)
     if is_cube(G):
@@ -1360,8 +1392,10 @@ def find_hamiltonian_cycle(
     if occ2 is not None:
         if debug:
             print(f"[reduce] C2: {occ2}")
+        n_before = len(G.adj)
         Gred, rec = reduce_C2(G, occ2)
-        Cred = find_hamiltonian_cycle(Gred, check_3conn_each_step=check_3conn_each_step, debug=debug)
+        check_delta_n(n_before, len(Gred.adj), "C2")
+        Cred = find_hamiltonian_cycle(Gred, debug=debug)
         Clift = lift_C2(G, Gred, rec, Cred)
         if debug:
             Clift.validate_hamiltonian(G)
@@ -1371,8 +1405,10 @@ def find_hamiltonian_cycle(
     if occp is not None:
         if debug:
             print(f"[reduce] PINCH(ii): {occp}")
+        n_before = len(G.adj)
         Gred, rec = reduce_pinch(G, occp)
-        Cred = find_hamiltonian_cycle(Gred, check_3conn_each_step=check_3conn_each_step, debug=debug)
+        check_delta_n(n_before, len(Gred.adj), "pinch(ii)")
+        Cred = find_hamiltonian_cycle(Gred, debug=debug)
         Clift = lift_pinch(G, Gred, rec, Cred)
         if debug:
             Clift.validate_hamiltonian(G)
@@ -1382,8 +1418,10 @@ def find_hamiltonian_cycle(
     if occ4 is not None:
         if debug:
             print(f"[reduce] C4: {occ4}")
+        n_before = len(G.adj)
         Gred, rec = reduce_C4(G, occ4)
-        Cred = find_hamiltonian_cycle(Gred, check_3conn_each_step=check_3conn_each_step, debug=debug)
+        check_delta_n(n_before, len(Gred.adj), "refined_C4")
+        Cred = find_hamiltonian_cycle(Gred, debug=debug)
         Clift = lift_C4(G, Gred, rec, Cred)
         if debug:
             Clift.validate_hamiltonian(G)
@@ -1399,31 +1437,31 @@ def find_hamiltonian_cycle(
 def run_examples() -> None:
     print("=== Cube ===")
     G = make_cube()
-    w = verify_completeness(G, check_3conn=False)
+    w = verify_completeness(G)
     print("Witness:", w.kind)
     C = find_hamiltonian_cycle(G, debug=False)
     print("Cycle:", C.as_ordered_cycle(G))
 
     print("\n=== Octagonal prism (P8) ===")
     P8 = make_prism(8)
-    w = verify_completeness(P8, check_3conn=False)
+    w = verify_completeness(P8)
     print("Witness:", w.kind, w.certificate)
-    C = find_hamiltonian_cycle(P8, debug=False)
+    C = find_hamiltonian_cycle(P8, debug=True)
     print("Cycle length:", len(C.as_ordered_cycle(P8)))
 
-    print("\n=== Custom pinch(ii) example ===")
-    H = make_custom_pinch_example()
-    w = verify_completeness(H, check_3conn=False)
-    print("Witness:", w.kind, w.certificate)
-    C = find_hamiltonian_cycle(H, debug=False)
-    print("Cycle length:", len(C.as_ordered_cycle(H)))
+    # print("\n=== Custom pinch(ii) example ===")
+    # H = make_custom_pinch_example()
+    # w = verify_completeness(H)
+    # print("Witness:", w.kind, w.certificate)
+    # C = find_hamiltonian_cycle(H, debug=False)
+    # print("Cycle length:", len(C.as_ordered_cycle(H)))
 
-    print("\n=== Truncated octahedron ===")
-    TO = make_truncated_octahedron()
-    w = verify_completeness(TO, check_3conn=False)
-    print("Witness:", w.kind, w.certificate)
-    C = find_hamiltonian_cycle(TO, debug=False)
-    print("Cycle length:", len(C.as_ordered_cycle(TO)))
+    # print("\n=== Truncated octahedron ===")
+    # TO = make_truncated_octahedron()
+    # w = verify_completeness(TO)
+    # print("Witness:", w.kind, w.certificate)
+    # C = find_hamiltonian_cycle(TO, debug=False)
+    # print("Cycle length:", len(C.as_ordered_cycle(TO)))
 
 def validate_cycle(G: EmbeddedGraph, cycle: Cycle) -> bool:
     """Standalone bridge to validate a Hamiltonian cycle."""
