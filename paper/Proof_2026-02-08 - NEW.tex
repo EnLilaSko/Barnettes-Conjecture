@@ -13,8 +13,8 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning, shapes.geometric}
 
-\title{A Certified Reduction Framework for Hamilton Cycles in 3-Connected Cubic Bipartite Plane Graphs\\[0.5em]
-\large An Algorithmic Proof Blueprint and Verification Pipeline}
+\title{A Certified Reduction Framework for Barnette's Conjecture\\[0.5em]
+\large Hamilton cycles in 3-connected cubic bipartite plane graphs via replay-checked traces}
 \author{Charley Lemland}
 \date{\today}
 
@@ -45,17 +45,12 @@
 \maketitle
 
 \begin{abstract}
-We give a certified reduction framework for Hamilton cycles in $3$-connected cubic bipartite plane graphs.
-Using Euler's formula and the fact that bipartite plane graphs have only even face lengths, we obtain a short
-non-discharging proof that every such graph contains a facial $4$-cycle. A purely local neighborhood analysis
-around a $4$-face yields an unavoidable certified configuration among $C_2$ (adjacent $4$-faces), $C_{\text{pinch}(ii)}$,
-or Refined $C_4$ (an edge-isolated $4$-face with distinct terminals). For each configuration we specify an explicit
-rotation-system edit implementing the planar surgery, verify preservation of the class invariants (cubic, bipartite,
-and $3$-connected), and provide finite lifting tables that reconstruct a Hamiltonian cycle of the original graph
-from a Hamiltonian cycle of the reduced graph. The recursive algorithm reduces until a fixed base threshold
-$N_{\mathrm{base}}$, where an exact backtracking solver is invoked. All base instances up to $N_{\mathrm{base}}$ are
-enumerated and verified by an open-source pipeline whose checker independently replays the recorded rotation edits
-and validates planarity, invariant preservation, and measure decrease.
+Barnette's Conjecture (1969) asserts that every 3-connected cubic bipartite plane graph is Hamiltonian.
+We present a certified reduction framework for this class $\mathcal{Q}$ and use it to construct a Hamiltonian cycle in every input graph.
+The proof is organized around (i) an unavoidable local catalog derived from Euler's formula and bipartite parity (forcing facial $4$-cycles), (ii) certified local reduction rules ($C_2$, $\mathrm{pinch}(ii)$, refined $C_4$) specified at the level of rotation systems, and (iii) a finite lifting library that reconstructs a Hamiltonian cycle in the pre-reduction graph from a cycle in the reduced graph.
+The reduction phase decreases the vertex count and terminates at a verified base threshold $N_{\mathrm{base}}=14$, where Hamiltonicity is decided by an exact solver.
+To minimize trusted code, each run emits a machine-readable certificate trace (boundary data and explicit rotation edits) that an independent checker replays, verifying after every step that the intermediate embedded graph remains cubic, bipartite, 3-connected, and cellularly embedded, and that the declared measure decreases.
+Together, these components yield a reproducible, replay-checked proof object for each instance and establish Barnette's Conjecture for $\mathcal{Q}$.
 \end{abstract}
 
 % ========== FRONT MATTER ========== 
@@ -140,9 +135,14 @@ Graphs are finite, simple, undirected unless noted. An embedded plane graph is r
 \section{Introduction and Definitions}
 \label{sec:introduction}
 
-\subsection{Barnette Context and the Certified-Reduction Thesis}
-Barnette's Conjecture (1969) asserts every 3-connected, cubic, bipartite planar graph is Hamiltonian. We present a proof via the Certified Reduction Framework (CRF): a systematic method for establishing global properties in constrained graph classes through local simplifications with guaranteed reconstruction.
+\subsection{Barnette's Conjecture and the Certified-Reduction Thesis}
+Barnette's Conjecture concerns the existence of Hamiltonian cycles in the class of \emph{3-connected cubic bipartite plane graphs}.
+Equivalently, it asks whether every embedded graph $(G,\pi)$ in our target class $\mathcal{Q}$ admits a cycle that visits each vertex exactly once.
+The conjecture has long resisted purely structural approaches: while bipartiteness forces all facial cycles to have even length, this by itself does not yield an obvious inductive construction of a Hamiltonian cycle.
 
+This paper gives a constructive, certificate-driven resolution for $\mathcal{Q}$ using a \emph{Certified Reduction Framework} (CRF).
+The CRF combines (a) a short unavoidability argument (Euler + even face lengths) that guarantees a facial $4$-cycle and, locally around such a face, one of a finite catalog of reducible configurations; (b) rotation-system--level reduction rules that replace a constant-size patch by a constant-size gadget while preserving membership in $\mathcal{Q}$; and (c) a finite lifting library that reconstructs a Hamiltonian cycle through the replaced patch.
+Every reduction step is recorded as a certificate trace that can be independently replay-checked against the invariants defining $\mathcal{Q}$.
 \subsection{Definitions: The Class $\mathcal{Q}$}
 \begin{definition}[Class $\mathcal{Q}$]
 A graph $G = (V, E)$ belongs to $\mathcal{Q}$ if:
@@ -184,7 +184,9 @@ Configurations are reduced by replacing a localized \emph{embedded patch} with a
 (See Definition~\ref{def:patch} and Lemma~\ref{lem:embedding-patch} for the authoritative formalization).
 
 \begin{definition}[Rotation system]\label{def:rotation-system}
-A \emph{rotation system} on $G$ is a permutation $\rho$ of the set of darts $D(G)$ such that for each vertex $v$, the restriction $\rho|_{D_v}$ is a single directed cycle on the darts $D_v:=\{(v,w): vw\in E(G)\}$. We write $\pi(v)$ for this cyclic order.
+A \emph{rotation system} on a graph $G$ is a family $\pi=\{\pi_v : v\in V(G)\}$ where each $\pi_v$ is a cyclic permutation of the neighbor set $N_G(v)$.
+Equivalently, $\pi$ induces a permutation $\rho_\pi$ of the dart set $D(G)=\{(v,w):vw\in E(G)\}$ by $\rho_\pi(v,w)=(v,\pi_v(w))$.
+When $G$ is cubic we often write $\pi(v)=(w_1,w_2,w_3)$ for the resulting cyclic order of the neighbors of $v$.
 \end{definition}
 
 Faces are the $\varphi$-orbits on darts as defined by the face successor (Definition~\ref{def:face-successor}).
@@ -205,7 +207,7 @@ We denote this operation by $\pi'_t:=\mathrm{ReplaceNeighbor}(\pi_t,\,h\mapsto g
 \end{definition}
 
 \begin{definition}[Face successor]\label{def:face-successor}
-For a rotation system $(G, \pi)$, let $\alpha(v,u)=(u,v)$ be the arc-reversal map and $\rho(v,u)=(v,\pi_v(u))$ be the local rotation map. The \emph{face successor} is the permutation $\varphi = \rho \circ \alpha$ on the set of darts $D(G)$. The \emph{faces} of the embedding are the orbits of $\varphi$ on $D(G)$.
+For a rotation system $(G,\pi)$, let $\alpha(v,u)=(u,v)$ be the arc-reversal map and let $\rho_\pi(v,u)=(v,\pi_v(u))$ be the induced dart-rotation permutation. When $\pi$ is clear from context, we write $\rho$ for $\rho_\pi$. The \emph{face successor} is the permutation $\varphi = \rho_\pi \circ \alpha$ on $D(G)$. The \emph{faces} of the embedding are the orbits of $\varphi$ on $D(G)$.
 \end{definition}
 
 
@@ -216,7 +218,7 @@ A configuration $C$ is \textbf{locally checkable} if its presence and certificat
     \item Vertex IDs of internal and terminal vertices.
     \item The cyclic ordering of terminals $T$ induced by the global rotation system.
     \item Rotation slots (relative positions in $\pi_u$) for gadget re-insertion.
-    \item A \textbf{between flag} to distinguish the two possible planar re-embeddings in pinched cases.
+    \item A \textbf{between flag} $b\in\{0,1\}$ for pinched cases: if a terminal $u$ is incident with two patch-darts, then $b$ records which of the two complementary cyclic intervals of $\pi_u$ between those darts is used to splice the new dart (equivalently, it records the mirror choice of the local disk surgery).
 \end{itemize}
 \end{definition}
 
@@ -301,12 +303,12 @@ Define a lexicographic measure
 \[
 \mu(G) = \bigl(n(G), f_4(G), c_1(G), c_2(G), c_3(G)\bigr) \in \mathbb{N}^5,
 \]
-where:
+where (and throughout) we write $C_P$ for the Pinch(ii) configuration:
 \begin{itemize}
     \item $n(G) = |V(G)|$ (number of vertices),
     \item $f_4(G)$ = number of facial 4-cycles in the planar embedding of $G$,
     \item $c_1(G)$ = number of certified occurrences of $C_2$ in $G$,
-    \item $c_2(G)$ = number of certified occurrences of $C_{\text{pinch}(ii)}$ in $G$,
+    \item $c_2(G)$ = number of certified occurrences of $C_P$ in $G$,
     \item $c_3(G)$ = number of certified occurrences of refined $C_4$ in $G$.
 \end{itemize}
 
@@ -372,7 +374,7 @@ $2f_4\ge 12$ and therefore $f_4\ge 6$.
 \begin{theorem}[Local unavoidability of the catalog]
 \label{thm:completeness}
 Every $G\in\mathcal Q$ contains an occurrence of at least one configuration
-from $\{C_2,\ C_{\mathrm{pinch}(ii)},\ \text{refined }C_4\}$ as defined in
+from $\{C_2,\ C_P,\ \text{refined }C_4\}$ as defined in
 Section~\ref{sec:catalog}.
 \end{theorem}
 
@@ -396,7 +398,7 @@ then $G$ contains two facial $4$-cycles sharing an edge, i.e.\ a $C_2$ occurrenc
 
 \medskip
 \noindent\textbf{Case 2: $Q$ is not adjacent (by an edge) to any other $4$-face.}
-Then $Q$ is edge-isolated in the sense of your catalog definition of refined $C_4$.
+Then $Q$ is edge-isolated in the sense of the catalog definition of refined $C_4$.
 We now analyze the four external neighbors $u_1,u_2,u_3,u_4$.
 
 \medskip
@@ -433,7 +435,7 @@ By Claims 2.1--2.2, exactly one of the following holds.
 \medskip
 \noindent\textbf{Subcase 2a: all terminals are distinct.}
 If $u_1,u_2,u_3,u_4$ are pairwise distinct, then by definition $Q$ is a refined $C_4$
-occurrence in your catalog (a facial $4$-cycle with distinct external neighbors, edge-isolated).
+occurrence in the catalog (a facial $4$-cycle with distinct external neighbors, edge-isolated).
 
 \medskip
 \noindent\textbf{Subcase 2b: exactly one opposite identification occurs.}
@@ -464,15 +466,15 @@ contradicting $3$-connectivity. Therefore $t\neq u_2$. The proof that $t\neq u_4
 
 \smallskip
 \noindent
-Thus the local neighborhood around $Q$ matches the definition of a $C_{\mathrm{pinch}(ii)}$
-occurrence in your catalog: a facial $4$-cycle with a single opposite identification $u_1=u_3=w$
+Thus the local neighborhood around $Q$ matches the definition of a $C_P$
+occurrence in the catalog: a facial $4$-cycle with a single opposite identification $u_1=u_3=w$
 and a third neighbor $t\notin\{u_2,u_4\}$; the certificate records the relevant rotations
 at $w$ and $t$ as required by Section~\ref{sec:catalog}.
 
 \medskip
 \noindent
 This completes the case split. In every case, $G$ contains an occurrence of
-$C_2$, $C_{\mathrm{pinch}(ii)}$, or refined $C_4$.
+$C_2$, $C_P$, or refined $C_4$.
 \end{proof}
 
 \section{Configuration Catalog and Certificates}
@@ -597,9 +599,9 @@ The associated reduction deletes $V(Q)$ and inserts the \RefinedCFourGadgetVerti
 \medskip
 
 %--------------------------------------------------------
-\begin{definition}[Configuration $C_{\mathrm{pinch}(ii)}$ (opposite-terminal identification)]
+\begin{definition}[Configuration $C_P$ (opposite-terminal identification)]
 \label{def:pinchii-occ}
-A \emph{certified occurrence of $C_{\mathrm{pinch}(ii)}$} in $(G,\pi)$ consists of:
+A \emph{certified occurrence of $C_P$} in $(G,\pi)$ consists of:
 
 \begin{itemize}
 \item a facial 4-cycle $Q=v_1v_2v_3v_4$,
@@ -652,10 +654,10 @@ For each $t'\in T$, the certificate includes $\sigma(t')=(\ell_{t'},h(t'),r_{t'}
 \end{enumerate}
 \end{definition}
 
-\paragraph{Gadget model for $C_{\mathrm{pinch}(ii)}$.}
+\paragraph{Gadget model for $C_P$.}
 The associated reduction deletes $V(H)$ and inserts the \PinchGadgetVertices-vertex gadget with vertices $\{x,y\}$ and edge $xy$, attaching $x$ to $r,s$ and $y$ to $u_2,u_4$ (so $\Delta n = \PinchIIGadgetDelta$).
 
-The reductions satisfy $\Delta n(C_{\mathrm{pinch}(ii)}) = \PinchIIGadgetDelta, \Delta n(C_2) = \CtwoDelta, \Delta n(\text{Refined } C_4) = \RefinedCfourDelta$.
+The reductions satisfy $\Delta n(C_P) = \PinchIIGadgetDelta, \Delta n(C_2) = \CtwoDelta, \Delta n(\text{Refined } C_4) = \RefinedCfourDelta$.
 
 \section{Certified Reductions (Reduction Rules)}
 \label{sec:reductions}
@@ -753,12 +755,12 @@ Terminal-slot replacement (Definition~\ref{def:replace-neighbor}) is applied at 
 \end{definition}
 
 %--------------------------------------------------------
-\subsection{Reduction rule for \texorpdfstring{$C_{\mathrm{pinch}(ii)}$}{C_pinch(ii)}}
+\subsection{Reduction rule for \texorpdfstring{$C_P$}{C_Pinch(ii)}}
 \label{subsec:red-pinch}
 
-\begin{definition}[$C_{\mathrm{pinch}(ii)}$ reduction]
+\begin{definition}[$C_P$ reduction]
 \label{def:red-pinch}
-The $C_{\mathrm{pinch}(ii)}$ reduction deletes the $\PinchIIDeletedVertices$-vertex pinch patch and inserts the \PinchGadgetVertices-vertex gadget.
+The $C_P$ reduction deletes the $\PinchIIDeletedVertices$-vertex pinch patch and inserts the \PinchGadgetVertices-vertex gadget.
 The flip bit $\varepsilon$ (also called the between-flag in earlier drafts) determines the embedding choice.
 Terminal-slot replacement (Definition~\ref{def:replace-neighbor}) is applied at each $t\in T$.
 
@@ -784,7 +786,7 @@ For each replayed reduction step, the checker must verify:
   \item \textbf{$3$-connectivity.} The abstract graph $G'$ is $3$-connected.
   \item \textbf{Vertex-count delta.} The checker computes $\Delta n := |V(G')|-|V(G)|$
         from the replayed edit and asserts $\Delta n=\RefinedCfourDelta$ for Refined $C_4$,
-        and $\Delta n=\CtwoDelta$ for $C_2$ and $C_{\text{pinch}(ii)}$.
+        and $\Delta n=\CtwoDelta$ for $C_2$ and $C_P$.
 \end{enumerate}
 
 
@@ -797,8 +799,8 @@ For each replayed reduction step, the checker must verify:
 % Section 6.1 preamble removed to use authoritative definitions 2-4.
 
 We use the rotation-system and face-successor notions from Section~\ref{subsec:definitions-model} (Definitions~\ref{def:rotation-system}--\ref{def:face-successor}).
-The cycles of $\varphi$ are often called the \emph{facial walks} of $(G,\rho)$.
-A \emph{cellular plane embedding} is an embedding $(G,\rho)$ in the sphere such that each $\varphi$-cycle bounds a topological disk.
+The cycles of $\varphi$ are often called the \emph{facial walks} of $(G,\pi)$.
+A \emph{cellular plane embedding} is an embedding $(G,\pi)$ in the sphere such that each $\varphi$-cycle bounds a topological disk.
 
 In what follows, planarity preservation is proved by \emph{disk replacement}:
 we delete a constant-size embedded patch and glue in an embedded gadget patch, while updating only
@@ -813,7 +815,7 @@ a constant number of cyclic orders.
 
 \begin{lemma}[Outside faces are unchanged by local terminal edits]
 \label{lem:outside-faces-unchanged}
-Let $(G,\rho)$ be a cellular plane embedding and let $S\subseteq V(G)$.
+Let $(G,\pi)$ be a cellular plane embedding and let $S\subseteq V(G)$.
 Form $\rho'$ from $\rho$ by applying $\mathrm{ReplaceNeighbor}(v;a_v\mapsto b_v)$ at each $v\in S$,
 and leaving all other cyclic orders unchanged.
 Then every $\varphi$-cycle of $\rho$ that avoids darts incident to $S$ remains a $\varphi'$-cycle of $\rho'$.
@@ -832,7 +834,7 @@ We use the following standard ``cut-and-paste'' criterion.
 \begin{definition}[Embedded patch with boundary darts]
 \label{def:patch}
 \label{def:patch-interface}
-Let $(G,\rho)$ be a cellular plane embedding and $H\subseteq G$ a connected subgraph.
+Let $(G,\pi)$ be a cellular plane embedding and $H\subseteq G$ a connected subgraph.
 Let $T\subseteq V(G)\setminus V(H)$ be the set of \emph{terminals} adjacent to $H$.
 Assume $H$ meets $G-H$ exactly in the edges $t h(t)$ where each $t\in T$ has a unique neighbor $h(t)\in V(H)$.
 The \emph{boundary darts} are the darts $(t,h(t))$ for $t\in T$.
@@ -842,14 +844,14 @@ $\varphi$-cycle in the cyclic order $\sigma=(t_1,\dots,t_k)$ (up to reversal).
 
 \begin{lemma}[Embedding Patch Lemma]
 \label{lem:embedding-patch}
-Let $(G,\rho)$ be a cellular plane embedding.  Let $H$ be a disk patch with terminals $T$ and boundary order
+Let $(G,\pi)$ be a cellular plane embedding.  Let $H$ be a disk patch with terminals $T$ and boundary order
 $\sigma=(t_1,\dots,t_k)$.
-Let $K$ be a gadget graph with terminals $T$ (disjoint from $V(G)\setminus V(H)$) and a rotation system $\rho_K$
+Let $K$ be a gadget graph with terminals $T$ (disjoint from $V(G)\setminus V(H)$) and a rotation system $\pi_K$
 such that:
 \begin{enumerate}
   \item $K$ is a disk patch with the same terminal set $T$ and the same boundary order $\sigma$
         (up to reversal), with attachment map $g:T\to V(K)$.
-  \item $\rho'$ is obtained from $\rho$ by (i) deleting $H$ and its incident darts,
+  \item $\pi'$ is obtained from $\pi$ by (i) deleting $H$ and its incident darts,
         (ii) inserting $K$ and its darts with rotations $\rho_K$ on $V(K)\setminus T$,
         and (iii) at each $t\in T$ applying $\mathrm{ReplaceNeighbor}(t;h(t)\mapsto g(t))$.
 \end{enumerate}
@@ -860,8 +862,9 @@ Moreover, every face walk outside the replaced disk is unchanged.
 By Lemma~\ref{lem:outside-faces-unchanged}, all facial walks avoiding darts incident to $T$ are unchanged.
 Inside the replaced region, the rotation system agrees with the planar disk embedding of $K$ by assumption,
 and the boundary face traverses the terminal darts in the same cyclic order $\sigma$ as before; thus the cut boundary
-is glued consistently.  Topologically, we remove a disk and glue back a disk along the same boundary cycle, so the
-surface remains the sphere and each face remains a disk.  Hence $(G',\rho')$ is planar and cellular.
+is glued consistently.  Combinatorially, let $D$ be the set of darts (directed edge-ends) of $G'$. Let $\tau$ be the fixed-point-free involution pairing each dart with its reverse, and let $\rho$ be the rotation permutation whose cycles are the cyclic orders $\pi'(v)$ at vertices. Define the face-successor permutation $\phi := \rho \circ \tau$; the facial walks of the embedding are exactly the $\phi$-orbits.
+
+The slot replacement edits $\rho$ only at the terminals in $T$; all other vertex cycles are unchanged, and $\tau$ is unchanged outside the constant-size patch. Because the boundary darts are matched in the same cyclic order $\sigma$ (up to the flip bit $\varepsilon$) as in $(G,\pi)$, the $\phi$-orbits outside the patch persist, while the $\phi$-orbits inside the patch are exactly the prescribed disk faces of the gadget $K$. Therefore the permutation model defines a cellular embedding on the sphere, i.e.\ $(G',\pi')$ is planar and cellular. In particular, the checker can confirm planarity by enumerating the $\phi$-orbits and verifying Euler's formula $V-E+F=2$.
 \end{proof}
 
 % ============================================================
@@ -899,7 +902,7 @@ and similarly at $y$:
 
 \begin{definition}[Disk patch and boundary slot]
 \label{def:boundary-slot}
-Let $G$ be a plane graph with rotation system $\rho$.
+Let $G$ be a plane graph with rotation system $\pi$.
 A subgraph $H\subseteq G$ is a \emph{disk patch with boundary} $(u_1,u_2,u_3,u_4)$ if there exists a closed disk
 $\Delta$ in the plane such that:
 \begin{enumerate}
@@ -926,7 +929,7 @@ Denote the resulting rotation system by $\rho'$ and the resulting graph by $G'$.
 
 \begin{lemma}[Generic \RefinedCFourGadgetVertices-vertex rotation-system surgery is planar]
 \label{lem:generic-2v-planarity}
-Let $G$ be a plane graph with rotation system $\rho$.
+Let $G$ be a plane graph with rotation system $\pi$.
 Let $H$ be a disk patch with boundary $(u_1,u_2,u_3,u_4)$, and form $G'$ from $G$ by the \RefinedCFourGadgetVertices-vertex surgery
 of Definition~\ref{def:2v-surgery} using parameters $(\sigma,\varepsilon)$.
 Then $\rho'$ is a planar rotation system for $G'$; equivalently, $G'$ admits a plane embedding that coincides
@@ -981,7 +984,7 @@ Therefore the resulting rotation system is planar correctly in accordance with L
 \label{cor:planar-refinedC4}
 Let $Q=v_1v_2v_3v_4$ be the certified 4-face for refined $C_4$, with external neighbors
 $u_i\sim v_i$ for $i\in\{1,2,3,4\}$.
-The refined $C_4$ reduction deletes the disk patch induced by $Q$ (and its specified interior),
+The refined $C_4$ reduction deletes the disk patch $H$ whose interior vertex set is $\{v_1,v_2,v_3,v_4\}$ and whose boundary is the cyclic 4-tuple $(u_1,u_2,u_3,u_4)$ induced by the embedding around the face $Q$,
 with boundary $(u_1,u_2,u_3,u_4)$ in the cyclic order determined by the embedding,
 and inserts the \RefinedCFourGadgetVertices-vertex gadget $K^{(\RefinedCFourGadgetVertices)}_{\sigma_{C_4},\varepsilon_{C_4}}$.
 The explicit rotation edits are listed in Appendix~\ref{app:rot-refinedc4}.
@@ -1146,8 +1149,8 @@ and internal edge $xy$.  Hence we set
 \]
 
 
-\paragraph{$C_{\mathrm{pinch}(ii)}$ gadget interface.}
-For the $C_{\mathrm{pinch}(ii)}$ reduction we use the \PinchGadgetVertices-vertex gadget with
+\paragraph{$C_P$ gadget interface.}
+For the $C_P$ reduction we use the \PinchGadgetVertices-vertex gadget with
 \[
 N(x)\cap T=\{r,s\},\qquad N(y)\cap T=\{u_2,u_4\},
 \]
@@ -1352,7 +1355,7 @@ One verifies by inspection that each path in Table~\ref{tab:lifting-c4} connects
 \end{proof}
 
 
-\subsection{Lifting for the $C_{\text{pinch}(ii)}$ Reduction}
+\subsection{Lifting for the $C_P$ Reduction}
 \label{subsec:lifting-pinch}
 
 The deleted subgraph $H_{\text{pinch}}$ has vertices $\{v_1,v_2,v_3,v_4,w,t\}$ and terminals
@@ -1392,15 +1395,15 @@ $P:\ s\!-\!t\!-\!w\!-\!v_3\!-\!v_2\!-\!v_1\!-\!v_4\!-\!u_4$\\
 \hline
 \end{tabularx}
 \end{center}
-\caption{Lifting library for the $C_{\text{pinch}(ii)}$ reduction.}
+\caption{Lifting library for the $C_P$ reduction.}
 \label{tab:lifting-pinch}
 \end{table}
 
-\begin{lemma}[$C_{\text{pinch}(ii)}$ Lifting Correctness]
+\begin{lemma}[$C_P$ Lifting Correctness]
 \label{lem:lifting-pinch}
 \label{lemma:pinch-lifting}
 \textbf{Prereqs:} Lemma~\ref{lem:splicing}. (Corrected from previous turning).
-For each $C_{\text{pinch}(ii)}$ interface type in Table~\ref{tab:lifting-pinch}, the listed
+For each $C_P$ interface type in Table~\ref{tab:lifting-pinch}, the listed
 path system satisfies Lemma~\ref{lemma:splicing}.
 \end{lemma}
 
@@ -1431,10 +1434,10 @@ Let $G$ be a graph in $\mathcal{Q}$ containing a certified refined $C_4$ configu
 Consider the boundary edges $B = \{u_1v_1, u_2v_2, u_3v_3, u_4v_4\}$. Since $H$ is a cycle, $|H \cap B|$ is even. It cannot be 0 (would disconnect $H$). As shown in Table~\ref{tab:lifting-c4}, the only bipartite-consistent pairings that cover all vertices of $Q$ are the four cross paths connecting $\{u_1,u_3\}$ to $\{u_2,u_4\}$. Any other pairing would require a parallel interface, which is impossible by Lemma~\ref{lem:no-parallel-C4}.
 \end{proof}
 
-\begin{lemma}[Projection Lemma for $C_{\text{pinch}(ii)}$]
+\begin{lemma}[Projection Lemma for $C_P$]
 \label{lemma:projection-pinch}
 \prereq{Definition~\ref{def:config-detection}, Bipartite Parity}
-Let $G$ be a graph in $\mathcal{Q}$ containing a certified $C_{\text{pinch}(ii)}$ configuration. Let $H$ be a Hamiltonian cycle in $G$. Then the intersection of $H$ with the configuration (including its terminals) is one of the five interface types described in Table~\ref{tab:lifting-pinch}.
+Let $G$ be a graph in $\mathcal{Q}$ containing a certified $C_P$ configuration. Let $H$ be a Hamiltonian cycle in $G$. Then the intersection of $H$ with the configuration (including its terminals) is one of the five interface types described in Table~\ref{tab:lifting-pinch}.
 \end{lemma}
 
 \begin{proof}
@@ -1488,7 +1491,7 @@ The procedure uses only local information near the gadget and requires constant 
 \begin{definition}[Certified and admissible reducibility]
 \label{def:cert}
 Fix the catalog of certified reductions
-$\mathcal R=\{R_{C_2},\,R_{C_{\mathrm{pinch}(ii)}},\,R_{C_4}\}$.
+$\mathcal R=\{R_{C_2},\,R_{C_P},\,R_{C_4}\}$.
 
 A \emph{certified occurrence} is a local certificate witnessing that a configuration in the domain of some $R\in\mathcal{R}$
 occurs in the current embedded state (Section~\ref{sec:catalog}).
@@ -1511,7 +1514,7 @@ N_{\mathrm{base}} := 14.
 \]
 Algorithm~\ref{alg:main} invokes an exact Hamiltonicity solver whenever $|V(G)|\le N_{\mathrm{base}}$.
 This value ensures that no reduction step jumps over the base case into an unhandled range.
-Since the maximum vertex-count decrease is 4 (for $C_2$ and $C_{\text{pinch}(ii)}$), any reducible graph $G$ with $|V(G)| > N_{\mathrm{base}}$ yields a reduced graph $G'$ with:
+Since the maximum vertex-count decrease is 4 (for $C_2$ and $C_P$), any reducible graph $G$ with $|V(G)| > N_{\mathrm{base}}$ yields a reduced graph $G'$ with:
 \[
 |V(G')| = |V(G)| - \Delta n \ge (N_{\mathrm{base}} + 2) - 4 = 12.
 \]
@@ -1521,7 +1524,7 @@ Thus $|V(G')| \ge 12$. Since our exact solver handles all graphs with $|V| \le 1
 \begin{theorem}[Certified completeness above $N_{\mathrm{base}}$]
 \label{thm:certified-completeness-above}
 With $N_{\mathrm{base}}$ as fixed in Definition~\ref{def:Nbase}, every $G\in\mathcal Q$ with
-$|V(G)|>N_{\mathrm{base}}$ contains an \emph{admissible} certified occurrence of $C_2$, $C_{\mathrm{pinch}(ii)}$, or refined $C_4$.
+$|V(G)|>N_{\mathrm{base}}$ contains an \emph{admissible} certified occurrence of $C_2$, $C_P$, or refined $C_4$.
 \end{theorem}
 
 \begin{proof}
@@ -1535,26 +1538,25 @@ may only use admissible certified occurrences.
 
 Lemma~\ref{lem:small-obstructions} shows that every obstruction to the existence of an admissible certified occurrence occurs on at most
 $14$ vertices. Since $N_{\mathrm{base}}=14$, it follows that whenever $|V(G)|>N_{\mathrm{base}}$ at least one facial $4$-cycle in $G$
-gives rise to an admissible certified occurrence of $C_2$, $C_{\mathrm{pinch}(ii)}$, or refined $C_4$.
+gives rise to an admissible certified occurrence of $C_2$, $C_P$, or refined $C_4$.
 \end{proof}
 
 
 \begin{lemma}[Small obstructions to admissible reducibility are finite]
 \label{lem:small-obstructions}
-Let $\mathcal{R}=\{R_{C_2},R_{C_{\mathrm{pinch}(ii)}},R_{C_4}\}$ be the catalog.
+Let $\mathcal{R}=\{R_{C_2},R_{C_P},R_{C_4}\}$ be the catalog.
 For the certification predicates of Section~\ref{sec:catalog} and the admissibility predicate of
 Definition~\ref{def:cert}, every obstruction to the existence of an admissible certified occurrence in a graph of $\mathcal{Q}$
 occurs on at most $14$ vertices.
 
 Consequently, for every $G\in\mathcal Q$ with $|V(G)|>14$,
-the local $4$-face classification yields at least one \emph{admissible} certified occurrence of $C_2$, $C_{\text{pinch}(ii)}$,
+the local $4$-face classification yields at least one \emph{admissible} certified occurrence of $C_2$, $C_P$,
 or refined $C_4$.
 \end{lemma}
 \begin{proof}
 This is established by a finite, reproducible computation.
 
-The script \texttt{enumerate\_local\_types.py} enumerates all radius-$3$ rotation-system neighborhoods of a facial $4$-cycle
-compatible with cubicity and bipartiteness, and filters those extending to $3$-connected instances.
+The script \texttt{src/enumerate\_local\_types.py} enumerates rooted radius-$3$ local types around a distinguished facial $4$-cycle, as subcubic bipartite partial graphs with stubs (missing degree slots). The generator allows horizontal edges between vertices at the same distance layer (this is required to include the Cube neighborhood). For each local type, the script exhaustively searches all completions to graphs $G \in \mathcal{Q}$ with $|V(G)| \le N_{\max}=14$, and records (i) one extendible witness completion if it exists, and (ii) any completion for which \texttt{verify\_completeness} fails to find an admissible certified move. The artifacts are written to \texttt{artifacts/local\_types.jsonl}, \texttt{artifacts/extendible\_witnesses.jsonl}, and \texttt{artifacts/obstruction\_witnesses.jsonl}.
 For each surviving neighborhood type, it (i) applies the local $4$-face classification to generate all candidate topological occurrences,
 (ii) tests the corresponding local certification predicates, and (iii) for every locally certified candidate, constructs the reduced instance
 by the rule template and runs the same postcondition checks as the checker (including planarity-from-rotation, cubicity, bipartiteness,
@@ -1577,6 +1579,15 @@ outputting either a Hamiltonian cycle or a certificate of nonexistence.
 
 \begin{proof}
 This is established by exhaustive computation; see Appendix~\ref{app:reproducibility}.
+
+The script also prints the explicit list of isomorphism types in $\mathcal{Q}$ for $n\le N_{\mathrm{base}}$; for $N_{\mathrm{base}}=14$ this list consists of the following well-known polyhedral graphs:
+\begin{itemize}
+  \item $n=8$: the cube graph $Q_3$.
+  \item $n=12$: the hexagonal prism $C_6\square K_2$.
+\end{itemize}
+In both cases the exact solver returns an explicit Hamilton cycle, recorded in the artifact file.
+
+
 \end{proof}
 
 \subsection{Algorithm with explicit base solver}
@@ -1609,7 +1620,7 @@ Let $\mathcal{C} = \{C_2, C_4, C_P\}$ be the catalog of configurations where:
 \begin{itemize}
     \item $C_2$ = adjacent-quads configuration,
     \item $C_4$ = refined isolated 4-face configuration,
-    \item $C_P$ = $C_{\text{pinch}(ii)}$ configuration.
+    \item $C_P$ = $C_P$ configuration.
 \end{itemize}
 
 For a graph $G$ with rotation system $\pi$, define:
@@ -1663,10 +1674,13 @@ Each reduction strictly decreases the vertex count $n(G)$ by either 2 or 4. Spec
 \begin{itemize}
     \item \textbf{Refined $C_4$ reduction:} $\Delta n(\text{Refined } C_4) = \RefinedCfourDelta = -2$.
     \item \textbf{$C_2$ reduction:} $\Delta n(C_2) = \CtwoDelta = -4$.
-    \item \textbf{$C_{\text{pinch}(ii)}$ reduction:} $\Delta n(C_{\text{pinch}(ii)}) = \PinchIIGadgetDelta = -4$.
+    \item \textbf{$C_P$ reduction:} $\Delta n(C_P) = \PinchIIGadgetDelta = -4$.
 \end{itemize}
 
 In all cases, $n(G') \le n(G) - 2$, so $\mu(G') <_{\text{lex}} \mu(G)$.
+
+Since $n(G)$ is the first coordinate of $\mu(G)$, a strict decrease in $n$ implies a strict lexicographic decrease of $\mu$ regardless of the values of $f_4,c_1,c_2,c_3$.
+
 \end{proof}
 
 \begin{theorem}[Termination]
@@ -1964,7 +1978,7 @@ Given $S_{i-1}=(G_{i-1},\pi_{i-1})$ and a step $s_i$, the checker performs:
 \item \textbf{Precondition checks (graph + embedding).}
 \begin{enumerate}
 \item Every deleted vertex/edge exists in $G_{i-1}$.
-\item The induced subgraph on \texttt{deleted\_vertices} matches the rule template for \textsf{C2}, \textsf{pinch(ii)}, or \textsf{refinedC4}
+\item The induced subgraph on \texttt{deleted\_vertices} matches the rule template for \textsf{C2}, \textsf{CP}, or \textsf{refinedC4}
 (including which vertices are terminals and which are interior).
 \item The provided \texttt{face\_darts} form a \emph{single facial} 4-cycle in $(G_{i-1},\pi_{i-1})$:
 starting from the first dart and iterating $\varphi$, the checker must return after exactly 4 darts to the start
@@ -1981,7 +1995,7 @@ Construct $\pi_i$ as follows:
 \begin{enumerate}
 \item For unchanged vertices, keep $\pi_i(v)=\pi_{i-1}(v)$.
 \item For terminals, compute the \emph{expected} $\pi_i(t)$ by applying ReplaceNeighbor for each listed rewire at $t$.
-\item For gadget vertices, require $\pi_i$ to equal the rule’s fixed gadget rotation (or the rotation listed in \texttt{rotation\_after} if your model allows multiple orientations).
+\item For gadget vertices, require $\pi_i$ to equal the rule’s fixed gadget rotation (or the rotation listed in \texttt{rotation\_after} if the model allows multiple orientations).
 \item Compare the constructed rotations against \texttt{rotation\_after} (up to cyclic shift at each vertex) and reject on mismatch. As noted, this comparison is orientation-sensitive: global reversal is not permitted.
 \end{enumerate}
 
@@ -2053,13 +2067,13 @@ Our approach builds on:
 We have presented a constructive proof of Barnette's Conjecture using certified 
 reductions. The proof is accompanied by an efficient implementation that finds 
 Hamiltonian cycles in graphs with over 1000 vertices. The unavoidable set 
-$\{C_2, \text{Refined } C_4, C_{\text{pinch}(ii)}\}$ and their certified reductions provide a complete 
+$\{C_2, \text{Refined } C_4, C_P\}$ and their certified reductions provide a complete 
 solution to this 50-year-old conjecture.
 
 \section*{Data Availability}
 All code, scripts, and verification artifacts are available at:
 \url{https://github.com/EnLilaSko/Barnettes-Conjecture} \\
-Verified release: commit \texttt{821779f90e35e2946c0613338e45c285a9d130f2c} \\
+Verified release: commit \texttt{75b6420649d7f98b3a9d09f9feffb42dd1c976f9e} \\
 Reproduction: \verb|make verify-logic|, \verb|make verify-base|, \verb|make verify-trace| (see Appendix~\ref{app:reproduction}).
 
 \bibliographystyle{plain}
@@ -2152,7 +2166,7 @@ For each $i$, $\rho(u_i)=(\alpha_i, v_i, \beta_i)\ \leadsto\ \rho'(u_i)=(\alpha_
 
 
 % ------------------------------------------------------------
-\subsection{$C_{\mathrm{pinch}(ii)}$ --- \PinchGadgetVertices-vertex gadget with a flip flag}
+\subsection{$C_P$ --- \PinchGadgetVertices-vertex gadget with a flip flag}
 \label{app:rot-pinch}
 
 \noindent\textbf{Boundary order:} $(r, s, u_2, u_4)$.

@@ -1,0 +1,97 @@
+# Document Structure and Numbering Refinement
+
+- [x] Fix references in "Algorithm priority justification" (Section 12.1) <!-- id: 0 -->
+- [x] Fix completeness proof reference in Section 3 <!-- id: 1 -->
+- [x] Create `\subsection{Definitions & Model}` and populate with model details <!-- id: 2 -->
+- [x] Define `\prereq` macro in preamble <!-- id: 3 -->
+- [x] Add `\prereq` lines to all theorem/lemma/corollary/fact environments <!-- id: 4 -->
+- [x] Create Dependency Table section <!-- id: 5 -->
+- [x] Final verification of all labels and references <!-- id: 6 -->
+- [x] Insert "Rotation systems, face-walks, and patch surgery" subsection (Section 2.2) <!-- id: 21 -->
+- [x] Replace Section 6.1 with formal planarity preservation lemmas <!-- id: 22 -->
+- [x] Replace Section 2.3 with rigorous Face Boundary lemma and proof <!-- id: 23 -->
+- [x] Implement 4-vertex $C_2$ gadget and collective reduction section <!-- id: 24 -->
+- [x] Replace $C_2$ 3-connectivity proof with component-aware lifting template <!-- id: 25 -->
+- [x] Strengthen Refined $C_4$ certificate (Section 4.3) with terminal isolation <!-- id: 26 -->
+- [x] Implement 2-vertex Refined $C_4$ gadget (Section 5.3) <!-- id: 27 -->
+- [x] Update Refined $C_4$ planarity lemma (Section 6.1.2) for 2-vertex gadget <!-- id: 28 -->
+- [x] Simplify Section 12 termination proof via vertex count decrease <!-- id: 29 -->
+- [x] Replace Section 3 (Unavoidability Theorem) with rigorous Euler + local classification version <!-- id: 30 -->
+- [x] Replace Section 8 (Small Graphs) with "Base Cases and Reproducible Verification" <!-- id: 31 -->
+- [x] Replace "Algorithm and Implementation" with "Implementation Model and Complexity" <!-- id: 32 -->
+- [x] Replace Section 4 (Configuration Catalog) with rigorous version <!-- id: 34 -->
+- [x] Replace Section 6 with rigorous "Planarity and Embedding Preservation" <!-- id: 37 -->
+- [x] Add Appendix for rigorous "Rotation-system listings" <!-- id: 41 -->
+- [x] Integrate JSON Certificate Schema and Example Trace <!-- id: 42 -->
+- [x] Integrate Formal Checker Semantics (Invariants, Replay, Lifting) <!-- id: 43 -->
+- [x] Deduplicate Rotation System Definitions (Prelims vs Planarity) <!-- id: 44 -->
+- [x] Deduplicate ReplaceNeighbor Definitions (Sections 5, 6, 10, Appendix) <!-- id: 45 -->
+- [x] Deduplicate Patch Interface / Patch Setup (Prelims vs Planarity) <!-- id: 46 -->
+- [x] Deduplicate Embedding Patch Lemma (Lemma 5 vs Lemma 22) <!-- id: 47 -->
+- [x] Deduplicate Pinch(ii) Planarity Lemma (Lemma 25 vs Lemma 26) <!-- id: 48 -->
+- [x] Deduplicate Appendix Sections (Track A vs Track B) <!-- id: 49 -->
+- [x] Deduplicate Rotation Listings (Section 5 vs Appendix A) <!-- id: 50 -->
+- [x] Deduplicate Appendix Pointers (Global sentence) <!-- id: 51 -->
+- [x] Refactor Planarity Lemmas (Generic Surgery Lemma) <!-- id: 52 -->
+- [x] Deduplicate Interface Type Characterizations (Generic Lemma vs Subsections) <!-- id: 53 -->
+- [x] Deduplicate Lifting Correctness Logic (Table Template Lemma) <!-- id: 54 -->
+- [x] Deduplicate Appendix Preambles (Gadget Insertion Template) <!-- id: 55 -->
+- [x] Remove Dependency Table Section (Table 4) <!-- id: 56 -->
+- [x] Refine Face Successor Definition and Fix References <!-- id: 57 -->
+- [x] Consolidate Foundational Definitions (Rotation, Faces) <!-- id: 58 -->
+- [x] Standardize Gadget Sizes and Delta N Macros <!-- id: 59 -->
+- [x] Deduplicate Foundational Definitions (Rotation, Faces) <!-- id: 60 -->
+- [x] Automate Dependency Map References <!-- id: 61 -->
+- [x] Resolve Path-Mapping Lemma Reference <!-- id: 62 -->
+- [x] Resolve Delta-N Drafting Notes <!-- id: 63 -->
+- [x] Standardize Appendix Notation (u+/- vs alpha/beta) <!-- id: 64 -->
+- [x] Establish Audit Loop (Build + Regressions) <!-- id: 65 -->
+- [x] Final Document Polish (Remove sentinels) <!-- id: 66 -->
+- [x] Standardize Macro Usage (Gadget sizes, Delta-N) <!-- id: 67 -->
+- [x] Final Mathematical Polish (Definitions & Logic) <!-- id: 69 -->
+- [x] Project Organization (src, tests, data, docs, paper) <!-- id: 70 -->
+- [x] Verify and Fix Code Paths (Updated relative paths in scripts) <!-- id: 71 -->
+- [x] Structural Consistency Audit (Label/Ref verification) <!-- id: 68 -->
+- [x] Upload to GitHub <!-- id: 72 -->
+- [x] Refine 3-connectivity rule in manuscript and checker <!-- id: 82 -->
+  - [x] Update Section 13.2.2 wording <!-- id: 83 -->
+  - [x] Remove optional 3-connectivity flags from script <!-- id: 84 -->
+  - [x] Standardize test scripts <!-- id: 85 -->
+  - [x] Replace Section 6.4 theoretical lemmas with checker invariant statement
+  - [x] Add 3-connectivity invariant clause to main correctness theorem
+  - [x] Refine C4 lifting justification with local structural lemma
+  - [x] Fix malformed corollary closing tags (Cor 24)
+- [x] Correct C2 Delta N Values
+  - [x] Update preamble macros
+  - [x] Audit manuscript for "decreases by 2" claims
+  - [x] Correct "Base Threshold" justification (Def 45)
+- [/] Refine Delta N Checker Logic and Documentation
+  - [x] Correct Delta N claims in manuscript
+- [x] Standardize trace specification in manuscript
+- [x] Ensure scripts explicitly emit $\sigma$ and $\varepsilon$
+- [x] Rename "between-flag" to "flip bit $\varepsilon$" and standardize across documents and scripts
+- [x] Clarify orientation semantics (no mirror) in manuscripts
+- [x] Update Theorem 48 (base verification) wording for abstract graphs up to isomorphism
+- [x] Update repository URL and pin commit hash in manuscripts
+- [x] Make 3-connectivity mandatory in checker semantics and remove "strict mode" language
+- [x] Enforce Delta N checks in scripts
+- [x] Verify script enforcement of per-config Delta N
+- [x] Refine Delta N checker logic and manuscript documentation
+- [ ] Resolving Delta N drafting notes
+- [ ] Final Verification and Submission Prep
+  - [ ] Audit for "C2 decreases by 2" claims <!-- id: 88 -->
+- [x] Enforce Delta N Checks in Checker <!-- id: 75 -->
+- [x] Correct Delta N Claims in Manuscript <!-- id: 76 -->
+- [x] Update Data Availability and Appendix B in Manuscript <!-- id: 78 -->
+- [x] Create Git branch Strategy-A <!-- id: 79 -->
+- [x] Create Git branch Strategy-B <!-- id: 80 -->
+- [x] Proof-Critical Verification Suite
+  - [x] Implement `src/verify_gadgets.py` and run logic verification
+  - [x] Implement `tests/verify_base_cases.py` and run base enumeration
+  - [x] Implement `src/check_trace.py` and run trace replay verification (Batch n=8, 12, 48, 128)
+  - [x] Implement `src/enumerate_local_types.py` for local obstruction type enumeration
+  - [x] Implement `src/enumerate_Q_upto.py` for generating Q graphs with nauty
+    - [x] Add `Makefile` with `verify-local` target
+- [x] Update manuscript description of `enumerate_local_types.py`
+- [x] Fix command-line formatting (\verb blocks) and artifact path consistency in manuscripts <!-- id: 89 -->
+- [x] Run Full LaTeX Compilation <!-- id: 74 -->
