@@ -3,6 +3,10 @@ files = ['artifacts/local_types.jsonl', 'artifacts/extendible_witnesses.jsonl', 
 for f in files:
     if os.path.exists(f):
         data = open(f, 'rb').read()
-        print(f"{f}: {hashlib.md5(data).hexdigest()} ({len(data)} bytes)")
+        h = hashlib.sha256(data).hexdigest()
+        print(f"FILE: {f}")
+        print(f"HASH: {h}")
+        print(f"SIZE: {len(data)} bytes")
+        print("-" * 20)
     else:
-        print(f"{f}: MISSING")
+        print(f"MISSING: {f}")
