@@ -150,7 +150,7 @@ The CRF combines (a) a short unavoidability argument (Euler + even face lengths)
 and (c) a finite lifting library that reconstructs a Hamiltonian cycle through the replaced patch.
 Every reduction step is recorded as a certificate trace that can be independently replay-checked against the invariants defining $\mathcal{Q}$.
 
-\subsection{Definitions: The Class $\mathcal{Q}$}
+\subsection{Definitions: The Class \texorpdfstring{$\mathcal{Q}$}{Q}}
 \begin{definition}[Class $\mathcal{Q}$]
 A graph $G = (V, E)$ belongs to $\mathcal{Q}$ if:
 \begin{enumerate}
@@ -720,7 +720,7 @@ A step is accepted only if:
 \par
 
 %--------------------------------------------------------
-\subsection{Reduction rule for $\mathbf{C_2}$}
+\subsection{Reduction rule for \texorpdfstring{$\mathbf{C_2}$}{C2}}
 \label{subsec:red-c2}
 
 \begin{definition}[$C_2$ reduction]
@@ -1159,7 +1159,7 @@ A lifting table is correct if for every row, the specified path system $\mathcal
 (ii) the paths are vertex-disjoint and cover each deleted vertex $V(H)$ exactly once.
 \end{lemma}
 
-\subsection{Lifting for the $C_2$ Reduction}
+\subsection{Lifting for the \texorpdfstring{$C_2$}{C2} Reduction}
 \label{subsec:lifting-c2}
 
 The deleted subgraph $H_{C_2}$ has vertices $\{a,b,c,d,e,f\}$ and terminals
@@ -1215,7 +1215,7 @@ satisfies Lemma~\ref{lem:splicing}.
 Apply Lemma~\ref{lem:table-correctness}; one verifies by inspection that each row in Table~\ref{tab:lifting-c2} connects the correct terminals and covers the vertices $\{a,b,c,d,e,f\}$ exactly once.
 \end{proof}
 
-\subsection{Lifting for the Refined $C_4$ Reduction}
+\subsection{Lifting for the Refined \texorpdfstring{$C_4$}{C4} Reduction}
 \label{subsec:lifting-c4}
 
 The deleted subgraph $H_{C_4}$ has vertices $\{v_1,v_2,v_3,v_4\}$ and terminals
@@ -1275,7 +1275,7 @@ system satisfies Lemma~\ref{lem:splicing}.
 One verifies by inspection that each path in Table~\ref{tab:lifting-c4} connects the correct terminals and covers $V(H)$ exactly once. The result follows from Lemma~\ref{lem:table-correctness}. Parallel interfaces are excluded by Lemma~\ref{lem:no-parallel-C4}.
 \end{proof}
 
-\subsection{Lifting for the $C_P$ Reduction}
+\subsection{Lifting for the \texorpdfstring{$C_P$}{CP} Reduction}
 \label{subsec:lifting-pinch}
 
 The deleted subgraph $H_{\text{pinch}}$ has vertices $\{v_1,v_2,v_3,v_4,w,t\}$ and terminals
@@ -1856,7 +1856,7 @@ In actual traces, the boundary order $\sigma$ is read from the current embedding
 
 All graphs are embedded as combinatorial maps (rotation systems). For a cubic embedded graph we write $\pi(v)=(a,b,c)$ to denote the cyclic order of neighbors at $v$ (up to cyclic shift). All rotations at vertices not mentioned explicitly are unchanged.
 
-\subsection{$C_2$ --- \CtwoGadgetVertices-vertex gadget}
+\subsection{\texorpdfstring{$C_2$}{C2} --- \texorpdfstring{\CtwoGadgetVertices}{2}-vertex gadget}
 \label{app:rot-c2}
 
 \noindent\textbf{Vertices added:} $x,y$. \\
@@ -1864,7 +1864,7 @@ All graphs are embedded as combinatorial maps (rotation systems). For a cubic em
 \noindent\textbf{Canonical gadget rotations:} $\pi(x)=(u_1,y,u_6)$ and $\pi(y)=(u_4,x,u_5)$. \\
 \noindent\textbf{Terminal edits:} for each terminal $t\in\{u_1,u_6,u_4,u_5\}$ replace the deleted neighbor in its slot by the indicated gadget neighbor using \textsc{ReplaceNeighbor}.
 
-\subsection{Refined $C_4$ --- \RefinedCFourGadgetVertices-vertex gadget}
+\subsection{Refined \texorpdfstring{$C_4$}{C4} --- \texorpdfstring{\RefinedCFourGadgetVertices}{2}-vertex gadget}
 \label{app:rot-refinedc4}
 
 \noindent\textbf{Vertices added:} $x,y$. \\
@@ -1872,7 +1872,7 @@ All graphs are embedded as combinatorial maps (rotation systems). For a cubic em
 \noindent\textbf{Canonical gadget rotations:} $\pi(x)=(u_1,y,u_3)$ and $\pi(y)=(u_2,x,u_4)$. \\
 \noindent\textbf{Terminal edits:} for each $u_i$, replace $v_i$ in its slot by $x$ (if $i\in\{1,3\}$) or $y$ (if $i\in\{2,4\}$).
 
-\subsection{$C_P$ ($=\mathrm{pinch}(ii)$) --- \PinchGadgetVertices-vertex gadget with flip bit}
+\subsection{\texorpdfstring{$C_P$}{CP} (\texorpdfstring{$=\mathrm{pinch}(ii)$}{=pinch(ii)}) --- \texorpdfstring{\PinchGadgetVertices}{2}-vertex gadget with flip bit}
 \label{app:rot-pinch}
 
 \noindent\textbf{Vertices added:} $x,y$. \\
