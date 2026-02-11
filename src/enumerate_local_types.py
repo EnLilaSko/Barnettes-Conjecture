@@ -1,10 +1,20 @@
 #!/usr/bin/env python3
 """
-Enumerate radius-3 rotation-system neighborhoods of a facial 4-cycle
-compatible with cubicity + bipartiteness, and filter those extendible
-to 3-connected instances (within N_max).
+src/enumerate_local_types.py
 
-Outputs:
+Enumerate radius-3 *rotation-system* neighborhoods of a *facial* 4-cycle
+compatible with cubicity + bipartiteness, and (optionally) search for
+completions to full graphs in Q up to a vertex bound.
+
+Key correction vs the earlier draft:
+  - The earlier generator forced a tree-like outward expansion (dist2 slots),
+    which *cannot* realize the Cube neighborhood around a 4-face, because the
+    Cube needs "horizontal" edges among the distance-1 neighbors.
+  - This version allows those horizontal edges (and more generally, any edge
+    additions consistent with bipartite+cubic+planar+radius constraints),
+    so the Cube local type (n=8) is generated and is extendible.
+
+Outputs (JSONL):
   - artifacts/local_types.jsonl
   - artifacts/extendible_witnesses.jsonl
   - artifacts/obstruction_witnesses.jsonl
@@ -16,27 +26,22 @@ import argparse
 import json
 import os
 from dataclasses import dataclass, asdict
-from typing import Dict, List, Tuple, Set, Optional
+from typing import Dict, List, Tuple, Optional, Set
 
 import networkx as nx
 
 # -------------------------
-# Adapt these imports to your repo
+# Import your proof objects
 # -------------------------
 try:
     from barnette_proof import EmbeddedGraph, verify_completeness
 except ImportError:
-    try:
-        from src.barnette_proof import EmbeddedGraph, verify_completeness
-    except ImportError:
-        import sys
-        sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-        from barnette_proof import EmbeddedGraph, verify_completeness
+    from src.barnette_proof import EmbeddedGraph, verify_completeness
 
 
-# -------------------------
-# Basic predicates
-# -------------------------
+# =============================================================================
+# Basic graph predicates (NetworkX)
+# =============================================================================
 
 def is_cubic(G: nx.Graph) -> bool:
     return all(d == 3 for _, d in G.degree())
@@ -56,81 +61,73 @@ def is_3connected(G: nx.Graph) -> bool:
 def in_Q(G: nx.Graph) -> bool:
     return is_cubic(G) and is_bipartite(G) and is_planar(G) and is_3connected(G)
 
-def nx_to_embedded(G: nx.Graph) -> EmbeddedGraph:
-    """
-    Convert a NetworkX graph into your EmbeddedGraph using a planar embedding
-    returned by nx.check_planarity. For 3-connected planar graphs, embedding is
-    unique up to reflection, so any returned embedding is acceptable.
-    """
-    ok, embedding = nx.check_planarity(G)
-    if not ok:
-        raise ValueError("Graph is not planar, cannot convert to EmbeddedGraph")
 
-    adj: Dict[int, Set[int]] = {}
-    rot: Dict[int, List[int]] = {}
-    for v in G.nodes():
-        adj[v] = set(G.neighbors(v))
-        rot[v] = list(embedding.neighbors(v))
-    return EmbeddedGraph(adj, rot)
+# =============================================================================
+# EmbeddedGraph conversion + "root face is facial" check
+# =============================================================================
 
-def cyclic_equal(a: List[int], b: List[int]) -> bool:
-    """Equality up to cyclic shift."""
-    if len(a) != len(b):
-        return False
-    if not a:
-        return True
-    s = a + a
-    for i in range(len(a)):
-        if s[i:i+len(a)] == b:
-            return True
-    return False
+def _embedding_neighbors_clockwise(emb: nx.PlanarEmbedding, v: int) -> List[int]:
+    # NetworkX API differs slightly between versions; support both.
+    if hasattr(emb, "neighbors_cw_order"):
+        return list(emb.neighbors_cw_order(v))
+    return list(emb.neighbors(v))  # typically clockwise order
 
-def face_is_root(face: List[int], root: Tuple[int,int,int,int]) -> bool:
-    """Check whether `face` equals root cycle up to rotation and reversal."""
-    if len(face) != 4:
-        return False
-    r = list(root)
-    return cyclic_equal(face, r) or cyclic_equal(face, list(reversed(r)))
-
-def has_facial_root_cycle(G: nx.Graph, root: Tuple[int,int,int,int]) -> bool:
-    """
-    Verify the 4-cycle `root` appears as a facial cycle in *some* planar embedding
-    returned by nx.check_planarity. For 3-connected planar graphs this is fine.
-    """
+def root_quad_is_face(G: nx.Graph, root: Tuple[int, int, int, int]) -> bool:
     ok, emb = nx.check_planarity(G, counterexample=False)
     if not ok:
         return False
 
-    # Iterate directed edges and traverse faces.
-    seen_darts: Set[Tuple[int,int]] = set()
-    for u, v in G.edges():
-        for a, b in [(u, v), (v, u)]:
-            if (a, b) in seen_darts:
-                continue
-            try:
-                f = emb.traverse_face(a, b)
-            except Exception:
-                continue
-            # mark all darts on this face as seen
-            for i in range(len(f)):
-                x, y = f[i], f[(i+1) % len(f)]
-                seen_darts.add((x, y))
-            if face_is_root(f, root):
-                return True
+    cycle = list(root)
+    edges = [(cycle[i], cycle[(i + 1) % 4]) for i in range(4)]
+    if any(not G.has_edge(a, b) for a, b in edges):
+        return False
+
+    target = cycle
+    target_rev = [cycle[0], cycle[3], cycle[2], cycle[1]]
+
+    # Try traversing each directed edge of the root 4-cycle;
+    # if any face traversal gives that 4-cycle, accept.
+    darts = edges + [(b, a) for (a, b) in edges]
+    for (u, v) in darts:
+        try:
+            face = list(emb.traverse_face(u, v))
+        except Exception:
+            continue
+        if len(face) == 4 and (face == target or face == target_rev):
+            return True
     return False
 
+def nx_to_embedded(G: nx.Graph) -> EmbeddedGraph:
+    ok, emb = nx.check_planarity(G, counterexample=False)
+    if not ok:
+        raise ValueError("Graph is not planar")
 
-# -------------------------
-# Data model: local neighborhood with stubs
-# -------------------------
+    adj: Dict[int, Set[int]] = {int(v): set(int(u) for u in G.neighbors(v)) for v in G.nodes()}
+    rot: Dict[int, List[int]] = {int(v): [int(u) for u in _embedding_neighbors_clockwise(emb, v)] for v in G.nodes()}
+    return EmbeddedGraph(adj, rot)
+
+
+# =============================================================================
+# Data model: LocalType (graph + stubs + bipartite colors + distances)
+# =============================================================================
 
 @dataclass(frozen=True)
 class LocalType:
+    """
+    Radius-3 neighborhood around a rooted facial 4-cycle.
+
+    - vertices are labeled 0..n-1 in this local object
+    - root_face is (0,1,2,3) in cyclic order
+    - dist[v] is graph distance to the root-face vertex set {0,1,2,3}
+    - vertices with dist <= 2 are fully cubic *inside* the neighborhood (degree==3)
+    - vertices with dist == 3 may have missing degree slots, recorded as "stubs"
+    """
     n: int
     edges: List[Tuple[int, int]]
     root_face: Tuple[int, int, int, int]
     stubs: List[Tuple[int, int]]
     color: List[int]
+    dist: List[int]
 
     def to_nx_partial(self) -> nx.Graph:
         G = nx.Graph()
@@ -140,172 +137,203 @@ class LocalType:
 
     def canonical_key(self) -> str:
         ed = sorted((min(u, v), max(u, v)) for u, v in self.edges)
-        return json.dumps({"root": self.root_face, "edges": ed, "color": self.color}, separators=(",", ":"))
+        return json.dumps(
+            {"root": self.root_face, "edges": ed, "color": self.color, "dist": self.dist},
+            separators=(",", ":"),
+        )
 
 
-# -------------------------
-# (A) Generate local radius-3 neighborhoods (partial)
-# -------------------------
+# =============================================================================
+# Radius computation
+# =============================================================================
+
+def multi_source_dist(G: nx.Graph, sources: List[int]) -> Dict[int, int]:
+    dist = {v: 10**9 for v in G.nodes()}
+    for s in sources:
+        dist[s] = 0
+    q = list(sources)
+    while q:
+        v = q.pop(0)
+        for u in G.neighbors(v):
+            if dist[u] > dist[v] + 1:
+                dist[u] = dist[v] + 1
+                q.append(u)
+    return dist
+
+
+# =============================================================================
+# (A) Enumerate local types
+# =============================================================================
 
 def generate_radius3_local_types(n_cap: int) -> List[LocalType]:
     """
-    Enumerate partial neighborhoods around a rooted 4-face (q0q1q2q3),
-    under subcubic + bipartite constraints, allowing *horizontal edges*
-    between same-layer vertices (this is essential to include the Cube).
+    Backtracking generator for rooted radius-3 neighborhoods of a facial 4-cycle.
 
-    This is a conservative generator: it explores small partial graphs with
-    stubs and deduplicates them by a rooted key. It does not claim to
-    enumerate all combinatorial maps; it enumerates the local "types" used
-    by the manuscript's computational Lemma 41 pipeline.
+    Notes:
+      - We *do not* pre-impose a tree-like structure on the distance-1 layer.
+        Horizontal edges (like the Cube's opposite 4-face) are allowed and required.
+      - We maintain bipartite coloring seeded by the root cycle.
+      - We require planarity throughout, and at finalization we also require the root
+        4-cycle is facial in the planarity embedding returned by NetworkX.
     """
+    root = (0, 1, 2, 3)
+    roots = [0, 1, 2, 3]
 
-    q0, q1, q2, q3 = 0, 1, 2, 3
-    root = (q0, q1, q2, q3)
+    # Seed bipartition on the root 4-cycle: 0/2 in part 0, 1/3 in part 1
+    base_color: Dict[int, int] = {0: 0, 1: 1, 2: 0, 3: 1}
 
-    base_color = {q0: 0, q1: 1, q2: 0, q3: 1}
-    base_edges = {(0, 1), (1, 2), (2, 3), (0, 3)}
+    # Start with the 4-cycle
+    base = nx.Graph()
+    base.add_nodes_from(range(4))
+    base.add_edges_from([(0, 1), (1, 2), (2, 3), (3, 0)])
 
-    local_types: Dict[str, LocalType] = {}
+    types: Dict[str, LocalType] = {}
 
-    def add_edge(edges: Set[Tuple[int, int]], u: int, v: int) -> None:
-        if u == v:
-            return
-        a, b = (u, v) if u < v else (v, u)
-        edges.add((a, b))
-
-    def build_from_assignment(u_map: Dict[int, int], next_vid: int) -> None:
-        edges = set(base_edges)
-        color = dict(base_color)
-
-        # add attachments qi-ui
-        for qi, ui in u_map.items():
-            if ui not in color:
-                color[ui] = 1 - color[qi]
-            if color[ui] != 1 - color[qi]:
-                return
-            add_edge(edges, qi, ui)
-
-        # early prune: subcubic + bipartite
-        G = nx.Graph()
-        G.add_nodes_from(range(next_vid))
-        G.add_edges_from(edges)
+    def ok_partial(G: nx.Graph) -> bool:
         if any(G.degree(v) > 3 for v in G.nodes()):
-            return
+            return False
         if not nx.is_bipartite(G):
+            return False
+        return is_planar(G)
+
+    def finalize(G: nx.Graph, color: Dict[int, int], next_id: int) -> None:
+        dist = multi_source_dist(G, roots)
+        if max(dist.values()) > 3:
             return
 
-        dist1 = sorted(set(u_map.values()))
+        internal = [v for v in range(next_id) if dist[v] <= 2]
+        boundary = [v for v in range(next_id) if dist[v] == 3]
 
-        # each dist1 vertex needs two more incident edges (unless it already merged)
-        slots: List[int] = []
-        for ui in dist1:
-            need = 3 - G.degree(ui)
-            if need < 0:
-                return
-            slots.extend([ui] * need)
+        if any(G.degree(v) != 3 for v in internal):
+            return
+        if any(G.degree(v) > 3 for v in boundary):
+            return
 
-        def backtrack_slots(i: int, edges2: Set[Tuple[int, int]], color2: Dict[int, int], next_id: int) -> None:
-            if next_id > n_cap:
-                return
+        if not root_quad_is_face(G, root):
+            return
 
-            # rebuild graph for degree checks (small, OK)
-            Gtmp = nx.Graph()
-            Gtmp.add_nodes_from(range(next_id))
-            Gtmp.add_edges_from(edges2)
-            if any(Gtmp.degree(v) > 3 for v in Gtmp.nodes()):
-                return
-            if not nx.is_bipartite(Gtmp):
-                return
+        stubs: List[Tuple[int, int]] = []
+        for v in boundary:
+            for k in range(3 - G.degree(v)):
+                stubs.append((v, k))
 
-            if i == len(slots):
-                # record as a LocalType with stubs = remaining deficits everywhere
-                stubs: List[Tuple[int, int]] = []
-                for v in range(next_id):
-                    deficit = 3 - Gtmp.degree(v)
-                    for k in range(deficit):
-                        stubs.append((v, k))
+        edge_list = sorted((min(a, b), max(a, b)) for (a, b) in G.edges())
+        color_list = [int(color[v]) for v in range(next_id)]
+        dist_list = [int(dist[v]) for v in range(next_id)]
 
-                edge_list = sorted((min(a, b), max(a, b)) for a, b in edges2)
-                color_list = [color2[v] for v in range(next_id)]
-                lt = LocalType(
-                    n=next_id,
-                    edges=edge_list,
-                    root_face=root,
-                    stubs=stubs,
-                    color=color_list,
-                )
-                local_types[lt.canonical_key()] = lt
-                return
+        lt = LocalType(
+            n=next_id,
+            edges=edge_list,
+            root_face=root,
+            stubs=stubs,
+            color=color_list,
+            dist=dist_list,
+        )
+        types[lt.canonical_key()] = lt
 
-            ui = slots[i]
-            needed_color = 1 - color2[ui]
+    def fill_degrees(G: nx.Graph, color: Dict[int, int], next_id: int) -> None:
+        if next_id > n_cap:
+            return
+        if not ok_partial(G):
+            return
 
-            # Candidate targets: ANY existing vertex (including other dist1 vertices),
-            # as long as it matches bipartite color and has free degree.
-            for v in range(next_id):
-                if v == ui:
-                    continue
-                if color2.get(v, None) is None:
-                    continue
-                if color2[v] != needed_color:
-                    continue
-                a, b = (ui, v) if ui < v else (v, ui)
-                if (a, b) in edges2:
-                    continue
-                if Gtmp.degree(ui) >= 3 or Gtmp.degree(v) >= 3:
-                    continue
+        dist = multi_source_dist(G, roots)
+        if max(dist.values()) > 3:
+            return
 
-                edges_next = set(edges2)
-                edges_next.add((a, b))
-                backtrack_slots(i + 1, edges_next, color2, next_id)
+        internal = [v for v in range(next_id) if dist[v] <= 2]
 
-            # Option: create new vertex and attach ui-new
-            if next_id < n_cap:
-                v = next_id
-                color_next = dict(color2)
-                color_next[v] = needed_color
-                edges_next = set(edges2)
-                add_edge(edges_next, ui, v)
-                backtrack_slots(i + 1, edges_next, color_next, next_id + 1)
+        v_need: Optional[int] = None
+        for v in sorted(internal):
+            if G.degree(v) < 3:
+                v_need = v
+                break
 
-        backtrack_slots(0, edges, color, next_vid)
+        if v_need is None:
+            finalize(G, color, next_id)
+            return
 
-    # enumerate possible identifications for the four distance-1 neighbors
-    def backtrack_u(i: int, u_vertices: List[int], u_map: Dict[int, int], next_vid: int) -> None:
-        qs = [q0, q1, q2, q3]
+        need_color = 1 - color[v_need]
+
+        for u in range(next_id):
+            if u == v_need:
+                continue
+            if color.get(u) != need_color:
+                continue
+            if G.has_edge(v_need, u):
+                continue
+            if G.degree(u) >= 3:
+                continue
+            if G.degree(v_need) >= 3:
+                continue
+
+            G2 = G.copy()
+            G2.add_edge(v_need, u)
+            if ok_partial(G2):
+                fill_degrees(G2, color, next_id)
+
+        if next_id < n_cap:
+            u = next_id
+            G2 = G.copy()
+            G2.add_node(u)
+            G2.add_edge(v_need, u)
+            color2 = dict(color)
+            color2[u] = need_color
+
+            if ok_partial(G2):
+                fill_degrees(G2, color2, next_id + 1)
+
+    def attach_third_neighbors(i: int, G: nx.Graph, color: Dict[int, int], next_id: int) -> None:
+        if next_id > n_cap:
+            return
         if i == 4:
-            build_from_assignment(u_map, next_vid)
+            fill_degrees(G, color, next_id)
             return
-        qi = qs[i]
 
-        # reuse existing
-        for u in u_vertices:
-            u_map2 = dict(u_map)
-            u_map2[qi] = u
-            backtrack_u(i + 1, u_vertices, u_map2, next_vid)
+        qi = roots[i]
+        needed_color = 1 - base_color[qi]
 
-        # create new
-        if next_vid < n_cap:
-            u_new = next_vid
-            u_map2 = dict(u_map)
-            u_map2[qi] = u_new
-            backtrack_u(i + 1, u_vertices + [u_new], u_map2, next_vid + 1)
+        for u in range(4, next_id):
+            if color.get(u) != needed_color:
+                continue
+            if G.has_edge(qi, u):
+                continue
+            if G.degree(u) >= 3:
+                continue
+            if G.degree(qi) >= 3:
+                continue
 
-    backtrack_u(0, [], {}, 4)
-    return list(local_types.values())
+            G2 = G.copy()
+            G2.add_edge(qi, u)
+            attach_third_neighbors(i + 1, G2, color, next_id)
+
+        if next_id < n_cap:
+            u = next_id
+            G2 = G.copy()
+            G2.add_node(u)
+            G2.add_edge(qi, u)
+            color2 = dict(color)
+            color2[u] = needed_color
+            attach_third_neighbors(i + 1, G2, color2, next_id + 1)
+
+    attach_third_neighbors(0, base, dict(base_color), 4)
+    return list(types.values())
 
 
-# -------------------------
+# =============================================================================
 # (B) Completion search to full graphs in Q (within a vertex cap)
-# -------------------------
+# =============================================================================
 
-def complete_to_Q(local: LocalType, n_max: int, max_witnesses: int = 1,
-                  require_facial_root: bool = True) -> List[nx.Graph]:
+def complete_to_Q(local: LocalType, n_max: int, max_witnesses: int = 1) -> List[nx.Graph]:
     """
-    Complete a local partial type to a full graph in Q with <= n_max vertices.
-    Exhaustive backtracking for small n_max (<=14).
+    Given a local type (with boundary stubs), try to complete it into a full cubic bipartite planar
+    3-connected graph with <= n_max vertices.
     """
     G0 = local.to_nx_partial()
+
+    if all(G0.degree(v) == 3 for v in G0.nodes()) and in_Q(G0):
+        return [G0.copy()]
+
     color = {v: local.color[v] for v in range(local.n)}
 
     if any(G0.degree(v) > 3 for v in G0.nodes()):
@@ -320,21 +348,19 @@ def complete_to_Q(local: LocalType, n_max: int, max_witnesses: int = 1,
     witnesses: List[nx.Graph] = []
 
     def backtrack(G: nx.Graph, color_map: Dict[int, int], stub_list: List[int], next_vid: int) -> None:
+        nonlocal witnesses
         if len(witnesses) >= max_witnesses:
             return
         if next_vid > n_max:
             return
-
         if not stub_list:
             if in_Q(G):
-                if (not require_facial_root) or has_facial_root_cycle(G, local.root_face):
-                    witnesses.append(G.copy())
+                witnesses.append(G.copy())
             return
 
         v = stub_list[0]
         rest = stub_list[1:]
 
-        # pair v with some other existing stub endpoint u
         seen_u: Set[int] = set()
         for j, u in enumerate(rest):
             if u in seen_u:
@@ -349,23 +375,20 @@ def complete_to_Q(local: LocalType, n_max: int, max_witnesses: int = 1,
                 continue
 
             G.add_edge(v, u)
-            ok = nx.is_bipartite(G) and nx.check_planarity(G, counterexample=False)[0]
-            if ok:
-                new_rest = rest[:j] + rest[j+1:]
-                backtrack(G, color_map, new_rest, next_vid)
+            if nx.is_bipartite(G) and is_planar(G):
+                backtrack(G, color_map, rest[:j] + rest[j + 1 :], next_vid)
             G.remove_edge(v, u)
 
-        # create new vertex w and connect v-w
         if next_vid < n_max:
             w = next_vid
             G.add_node(w)
-            color_map2 = dict(color_map)
-            color_map2[w] = 1 - color_map[v]
+            color2 = dict(color_map)
+            color2[w] = 1 - color_map[v]
             G.add_edge(v, w)
 
-            ok = nx.is_bipartite(G) and nx.check_planarity(G, counterexample=False)[0]
-            if ok:
-                backtrack(G, color_map2, rest + [w, w], next_vid + 1)
+            new_stubs = rest + [w, w]
+            if nx.is_bipartite(G) and is_planar(G):
+                backtrack(G, color2, new_stubs, next_vid + 1)
 
             G.remove_edge(v, w)
             G.remove_node(w)
@@ -374,26 +397,24 @@ def complete_to_Q(local: LocalType, n_max: int, max_witnesses: int = 1,
     return witnesses
 
 
-# -------------------------
-# (C) Main driver
-# -------------------------
+# =============================================================================
+# (C) Driver
+# =============================================================================
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--ncap", type=int, default=14)
-    ap.add_argument("--nmax", type=int, default=14)
+    ap.add_argument("--ncap", type=int, default=14, help="max vertices in local type generation")
+    ap.add_argument("--nmax", type=int, default=14, help="max vertices in completion to Q")
     ap.add_argument("--out-types", default="artifacts/local_types.jsonl")
     ap.add_argument("--out-extendible", default="artifacts/extendible_witnesses.jsonl")
     ap.add_argument("--out-obstructions", default="artifacts/obstruction_witnesses.jsonl")
     ap.add_argument("--max-witnesses-per-type", type=int, default=1)
-    ap.add_argument("--no-facial-root-check", action="store_true",
-                    help="Do not require the rooted 4-cycle to be facial in completions.")
     args = ap.parse_args()
 
     for fpath in [args.out_types, args.out_extendible, args.out_obstructions]:
         d = os.path.dirname(fpath)
         if d and not os.path.exists(d):
-            os.makedirs(d)
+            os.makedirs(d, exist_ok=True)
 
     locals_ = generate_radius3_local_types(n_cap=args.ncap)
     print(f"[enumerate] generated {len(locals_)} candidate local types (<= {args.ncap} vertices).")
@@ -405,26 +426,18 @@ def main() -> None:
     extendible = 0
     obstructions = 0
 
-    require_facial_root = not args.no_facial_root_check
-
-    with open(args.out_extendible, "w", encoding="utf-8") as f_ext, \
-         open(args.out_obstructions, "w", encoding="utf-8") as f_obs:
-
+    with open(args.out_extendible, "w", encoding="utf-8") as f_ext, open(args.out_obstructions, "w", encoding="utf-8") as f_obs:
         for idx, lt in enumerate(locals_):
-            if idx % 20 == 0:
+            if idx % 10 == 0:
                 print(f"... processing type {idx+1}/{len(locals_)}", end="\r")
 
-            witnesses = complete_to_Q(
-                lt,
-                n_max=args.nmax,
-                max_witnesses=args.max_witnesses_per_type,
-                require_facial_root=require_facial_root,
-            )
+            witnesses = complete_to_Q(lt, n_max=args.nmax, max_witnesses=args.max_witnesses_per_type)
             if not witnesses:
                 continue
 
             extendible += 1
             Gw = witnesses[0]
+
             f_ext.write(json.dumps({
                 "local_type_key": lt.canonical_key(),
                 "n_local": lt.n,
@@ -432,19 +445,14 @@ def main() -> None:
                 "edges_witness": sorted((int(u), int(v)) for u, v in Gw.edges()),
             }) + "\n")
 
-            # Run your completeness / admissible-config finder on the witness.
-            # Support either API: verify_completeness(nx.Graph) OR verify_completeness(EmbeddedGraph).
-            failed = False
-            note = ""
             try:
-                try:
-                    EG = nx_to_embedded(Gw)
-                    _ = verify_completeness(EG)
-                except TypeError:
-                    _ = verify_completeness(Gw)
+                EG = nx_to_embedded(Gw)
+                verify_completeness(EG)
+                failed = False
+                note = ""
             except Exception as e:
                 failed = True
-                note = str(e)
+                note = repr(e)
 
             if failed:
                 obstructions += 1

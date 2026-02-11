@@ -548,13 +548,18 @@ def detect_C_pinch_ii(G: EmbeddedGraph) -> Optional[OccPinch]:
       - quad is edge-isolated (no adjacent 4-face across any edge)
 
     Radius <= 3: obtains t and its other neighbors r,s.
+
+    epsilon is an orientation bit derived from the rotation at w:
+      epsilon = 0 if (in rot[w]) the successor of v1 is t, else 1.
+    (This metadata is safe even if unused by lifting.)
     """
     best = None
     for v1 in G.vertices():
-        for v2 in sorted(G.adj[v1]):
-            darts, end = G.trace_face_darts((v1, v2), steps=4)
-            if end != (v1, v2):
+        for v2cand in sorted(G.adj[v1]):
+            darts, end = G.trace_face_darts((v1, v2cand), steps=4)
+            if end != (v1, v2cand):
                 continue
+
             v2 = darts[0][1]
             v3 = darts[1][1]
             v4 = darts[2][1]
@@ -569,9 +574,10 @@ def detect_C_pinch_ii(G: EmbeddedGraph) -> Optional[OccPinch]:
             if u1 != u3:
                 continue
             w = u1
+
             t = G.third_neighbor(w, {v1, v3})
             if t in {u2, u4}:
-                # By Lemma 4.2 this would force adjacent quad (C2), so pinch(ii) excludes it.
+                # pinch(ii) excludes the Lemma-4.2 adjacent-quad forcing case
                 continue
 
             rs = sorted(list(G.adj[t] - {w}))
@@ -583,11 +589,16 @@ def detect_C_pinch_ii(G: EmbeddedGraph) -> Optional[OccPinch]:
             if any(G.other_face_is_quad(a, b) for a, b in quad_edges):
                 continue
 
-            epsilon = 0 if q == v2 else 1
+            # orientation bit from rotation at w
+            rotw = G.rot[w]
+            i1 = G.pos[w][v1]
+            epsilon = 0 if rotw[(i1 + 1) % 3] == t else 1
+
             occ = OccPinch(v1, v2, v3, v4, w, t, r, s, u2, u4, epsilon)
             if best is None or occ < best:
                 best = occ
     return best
+
 
 def _canonicalize_adjacent_quads(G: EmbeddedGraph, L: List[int], R: List[int]) -> Optional[OccC2]:
     """
@@ -1383,7 +1394,8 @@ def find_hamiltonian_cycle(
 
     n = len(G.adj)
     if is_cube(G):
-        return brute_force_hamiltonian(G)
+        return brute_force_hamiltonian_cycle(G)
+
     if n <= 12:
         return brute_force_hamiltonian_cycle(G)
 
