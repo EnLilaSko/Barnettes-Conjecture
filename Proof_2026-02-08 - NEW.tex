@@ -1459,7 +1459,7 @@ For the certification predicates of Section~\ref{sec:catalog} and the admissibil
 Definition~\ref{def:cert}, every obstruction to the existence of an admissible certified occurrence in a graph of $\mathcal{Q}$
 occurs on at most $14$ vertices.
 
-In the current verified run, the local-type enumeration found \textbf{77} rooted radius-$3$ local types around a facial $4$-cycle, \textbf{11} extendible witness completions (including the cube at $n=8$), and \textbf{0} obstruction witnesses up to $N_{\max}=14$.
+In the current verified run, the local-type enumeration found \textbf{77} rooted radius-$3$ local types around a facial $4$-cycle, \textbf{11} extendible witness completions (including the cube at $n=8$), and \textbf{0} obstruction witnesses up to $N_{\max}=14$. See Appendix~\ref{app:reproduction} for reproducibility parameters and SHA-256 audit hashes.
 \end{lemma}
 
 \begin{proof}
@@ -1837,7 +1837,7 @@ The unavoidable set $\{C_2,\text{refined }C_4,C_P\}$, together with certified re
 \section*{Data Availability}
 All code, scripts, and verification artifacts are available at:
 \url{https://github.com/EnLilaSko/Barnettes-Conjecture} \\
-Verified release: commit \texttt{75b6420649d7f98b3a9d09f9feffb42dd1c976f9e} \\
+Verified release: commit \texttt{7ef267f675136003180a38877a5615bf5e047c1ee} \\
 Reproduction: \verb|make verify-logic|, \verb|make verify-base|, \verb|make verify-trace| (see Appendix~\ref{app:reproduction}).
 
 \bibliographystyle{plain}
@@ -1906,12 +1906,30 @@ The following commands enable full reproduction of the results presented in this
     Runs \verb|python src/check_trace.py <tracefile>| to replay a certificate trace and verify all embedded invariants step-by-step, then lifts a base-case Hamiltonian cycle back to the original instance.
 \end{itemize}
 
-\subsection{Expected Outputs and Hashes}
+\subsection{Expected Outputs and Audit Hashes}
+\label{app:hashes}
 
+The following results and hashes are associated with the verified commit \texttt{7ef267f}. All hashes are SHA-256.
+
+\paragraph{Primary Result ($N_{\max}=14$):}
 \begin{itemize}
-    \item \textbf{Base Cases:} \verb|artifacts/Q_upto_14.jsonl| contains the cube ($n=8$) and hexagonal prism ($n=12$). The Hamilton cycles returned by the solver are recorded in the base-case artifacts/logs.
-    \item \textbf{Local Types:} \verb|artifacts/local_types.jsonl| contains 77 rooted local types in the verified run; \verb|artifacts/extendible_witnesses.jsonl| contains 11 extendible witnesses; \verb|artifacts/obstruction_witnesses.jsonl| is empty in the verified run (0 obstructions up to $N_{\max}=14$).
-    \item \textbf{Auditability:} each command prints the current commit hash and emits a timestamped log.
+    \item \textbf{Counts:} 77 local types, 11 extendible witnesses, 0 obstructions.
+    \item \verb|local_types.jsonl|: \texttt{33ddafc1b4e2ade35bc399bab78509069de68564f91...}
+    \item \verb|extendible_witnesses.jsonl|: \texttt{8ca386973b1060453a877b732420f5ebf1401a95...}
+\end{itemize}
+
+\paragraph{Sanity Check ($N_{\max}=12$):}
+\begin{itemize}
+    \item \textbf{Counts:} 7 local types, 3 extendible witnesses, 0 obstructions.
+\end{itemize}
+
+\paragraph{Reproducibility Notes:}
+Counts may change across commits as the local-type generator evolves (e.g., historical runs at $n=12$ yielded 0 extendible types without horizontal edge support). The audit trail is established by the hashes recorded per commit.
+
+\paragraph{Verification Environment:}
+\begin{itemize}
+    \item \textbf{Python:} 3.13.1
+    \item \textbf{OS:} Microsoft Windows 10.0.26200
 \end{itemize}
 
 \end{document}
