@@ -25,6 +25,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{observation}[theorem]{Observation}
 \newtheorem{fact}[theorem]{Fact}
+\newtheorem{remark}[theorem]{Remark}
 
 \newcommand{\prereq}[1]{\par\noindent\textbf{Prereqs:} #1\par}
 \newcommand{\secref}[1]{\S\ref{#1}}
@@ -1642,7 +1643,7 @@ and the corresponding certificate check still passes. Otherwise the entry is sta
 Given a 4-face $Q=v_1v_2v_3v_4$ (obtained by following $\varphi$ exactly 4 steps from \texttt{rep[f]}),
 the external neighbor $u_i$ of each $v_i$ is found by scanning the three outgoing half-edges at $v_i$ and picking the
 unique neighbor not in $\{v_{i-1},v_{i+1}\}$.
-Adjacency to another 4-face across edge $v_iv_{i+1}$ is read as \texttt{len[ face[twin(h_i)] ]}.
+Adjacency to another 4-face across edge $v_iv_{i+1}$ is read as \texttt{len[ face[twin(h\_i)] ]}.
 Pinch equalities $u_1=u_3$ or $u_2=u_4$ are direct pointer comparisons.
 Rotation constraints are checked by inspecting the cyclic order of the three half-edges at $w$ or $t$.
 All checks use only $O(1)$ pointer traversals.
