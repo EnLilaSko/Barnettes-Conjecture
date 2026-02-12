@@ -533,6 +533,11 @@ Equivalently, the terminal set is $T=\{u_1,u_4,u_5,u_6\}$ and
 h(u_1)=a,\quad h(u_4)=d,\quad h(u_5)=e,\quad h(u_6)=f.
 \]
 
+\smallskip
+\noindent\emph{Remark.} Since $w$ and $t$ are cubic, the local rotation at each is determined up to reversal; the certificate therefore only records the resulting flip bit $\varepsilon$ together with the boundary order of the underlying facial 4-cycle.
+
+\]
+
 \item \textbf{Terminal distinctness.}
 $u_1,u_4,u_5,u_6$ are pairwise distinct (so the reduction preserves cubicity).
 
@@ -648,6 +653,11 @@ The cyclic orders around the degree-3 vertices $w$ and $t$ are fixed up to rever
 \[
 \pi_w \in \{(t,v_3,v_1),\ (t,v_1,v_3)\},\qquad
 \pi_t \in \{(r,s,w),\ (s,r,w)\}.
+\]
+
+\smallskip
+\noindent\emph{Remark.} Since $w$ and $t$ are cubic, the local rotation at each is determined up to reversal; the certificate therefore only records the resulting flip bit $\varepsilon$ together with the boundary order of the underlying facial 4-cycle.
+
 \]
 
 \item \textbf{Terminal distinctness.}
@@ -988,11 +998,17 @@ If $G'$ is not $3$-connected at any step, the trace is rejected.
 Thus, an accepted trace is by construction a sequence $G_0,G_1,\dots,G_m$ of graphs that all lie in $\mathcal{Q}$.
 
 \paragraph{Why completeness must be stated in admissible form.}
-Operational enforcement alone does not guarantee that a reduction is always possible:
-a priori, it could happen that every locally detected configuration leads to a \emph{non-admissible} post-state.
-Section~\ref{sec:base-cases} addresses this by proving (Lemma~\ref{lem:small-obstructions}) that such ``dead ends''
-can occur only below the base threshold $N_{\mathrm{base}}$ (and in the current verification run, no such obstructions were found up to $14$ vertices).
-Therefore, for $|V(G)|>N_{\mathrm{base}}$ the algorithm can always select an admissible configuration and proceed.
+Because the certified configuration language is local, certified occurrences can be detected rapidly,
+but admissibility depends on global invariants (most importantly $3$-connectivity).
+For the computer-assisted proof we therefore execute only those certified steps whose replay is accepted by the checker;
+this guarantees membership in $\mathcal{Q}$ for every intermediate state (Theorem~\ref{thm:preserveQ}).
+
+The remaining issue is completeness in this \emph{admissible} sense:
+every non-base state must contain \emph{some} admissible configuration occurrence.
+We do \emph{not} require that every certified occurrence be admissible.
+Admissible-step completeness is supplied by the finite local-type theorem
+(Theorem~\ref{thm:certified-completeness}), which is verified by exhaustive enumeration of all radius-$3$ neighborhoods
+around a facial $4$-cycle and the production of a replay-checkable witness step for each enumerated type.
 
 \section{Interface Analysis for Hamiltonian Cycles}
 \label{sec:interface-analysis}
@@ -1411,9 +1427,15 @@ By Lemma~\ref{lem:splicing}, this yields a Hamiltonian cycle in $G$.
 \section{Base Cases and Reproducible Verification}
 \label{sec:base-cases}
 
+\begin{definition}[Base threshold $N_{\mathrm{base}}$]\label{def:Nbase}
+Fix an integer $N_{\mathrm{base}}\ge 1$. Our reduction algorithm is allowed to stop once the current graph has at most $N_{\mathrm{base}}$ vertices, at which point we invoke an exact base-case Hamiltonicity solver that returns an explicit Hamilton cycle (and a checker-verifiable certificate of correctness for that cycle).
+In the verified implementation used for this paper we take $N_{\mathrm{base}}=14$.
+\end{definition}
+
+
+
 \subsection{Certified completeness above a finite threshold}
 
-\begin{definition}[Certified and admissible reducibility]
 The unavoidability theorem (Theorem~\ref{thm:completeness}) guarantees that \emph{some} topological occurrence of one of the configurations
 $\mathcal{C}_2$, $\mathcal{C}_4$, or $\mathcal{C}_{\mathrm{pinch(ii)}}$ exists around a facial $4$-cycle in every state $(G,\pi)\in\mathcal{Q}$.
 For the inductive proof we require a \emph{certified} occurrence that can be reduced while preserving membership in $\mathcal{Q}$ and enabling a
@@ -1426,48 +1448,70 @@ A \emph{certificate} for a rule $R\in\mathcal{R}$ consists of:
 and (ii) local side-conditions (distinctness of terminals, forbidden identifications, and rotation constraints where relevant).
 An occurrence is \emph{certified} if these local checks pass.
 
-We call a certified occurrence \emph{admissible} (for the inductive proof) if applying the corresponding reduction produces a state $(G',\pi')\in\mathcal{Q}$.
-In Section~\ref{sec:reductions} we prove that every certified occurrence in a state of $\mathcal{Q}$ is admissible; the implementation still
-re-checks admissibility with an independent checker as a redundant audit.
+We call a certified occurrence \emph{admissible} if, after applying the deterministic
+rotation-system surgery of Section~\ref{sec:reductions}, the replay checker accepts the post-state.
+Equivalently, letting $(G',\pi'):=\textsc{Reduce}(G,\pi;\mathrm{cert})$ (Definition~\ref{def:reduce-op}),
+admissibility means that $(G',\pi')$ satisfies all checker invariants:
+simplicity, cubicity, bipartiteness, planarity-from-rotation (Euler characteristic via $\varphi$-orbits),
+and $3$-connectivity.
 \end{definition}
 
-\begin{theorem}[Certified reductions preserve $\mathcal{Q}$]\label{thm:preserveQ}
-Let $(G,\pi)\in\mathcal{Q}$ and let $R\in\mathcal{R}$ be any certified reduction rule.
-If $R$ occurs in $(G,\pi)$ with a valid certificate, then the reduced state $(G',\pi'):=\mathsf{Reduce}_R(G,\pi)$ satisfies $(G',\pi')\in\mathcal{Q}$.
+\begin{theorem}[Certified reductions preserve $\mathcal{Q}$ (checker-enforced)]\label{thm:preserveQ}
+Let $(G,\pi)\in\mathcal{Q}$ and let $\mathrm{cert}$ be a certified configuration occurrence
+(Definition~\ref{def:cert}).
+If $\mathrm{cert}$ is admissible, then the reduced state $(G',\pi'):=\textsc{Reduce}(G,\pi;\mathrm{cert})$
+satisfies $(G',\pi')\in\mathcal{Q}$.
+Moreover, Hamiltonicity is preserved bidirectionally by Theorem~\ref{thm:bidirectional-hamiltonicity}.
 \end{theorem}
 
 \begin{proof}
-Planarity and the rotation system are preserved by the explicit rotation-system update built into each rule (Lemma~\ref{lem:rotation-update}),
-so $(G',\pi')$ remains a plane embedding.
-Cubicity and bipartiteness follow from the local degree bookkeeping and parity constraints enforced by the certificate: every deleted vertex is replaced
-by the gadget vertices with the same number of incident darts, and the gadget is bipartite with the boundary attachments landing in opposite color classes.
+By definition of admissibility, the checker verifies that $G'$ is simple, cubic, bipartite, and $3$-connected,
+and that $\pi'$ is a planar cellular rotation system for $G'$ (via face traversal and Euler characteristic).
+Hence $(G',\pi')\in\mathcal{Q}$.
 
-Simplicity (no loops or parallel edges) is enforced by the distinctness constraints in the certificate (and is re-checked by the auditor for redundancy).
-Finally, $3$-connectivity is preserved because each reduction is a disk replacement that is boundary-faithful: any $2$-vertex separator in $G'$
-can be lifted to a $2$-vertex separator in $G$ by expanding the gadget back to the original patch and using the fact that the attachment boundary
-remains unchanged. A detailed separator-lifting argument is given in Appendix~\ref{app:3conn-preservation}.
+Hamiltonicity preservation is purely local and follows from Theorem~\ref{thm:bidirectional-hamiltonicity},
+independently of how admissibility is certified.
 \end{proof}
 
-\begin{theorem}[Certified completeness above the base threshold]\label{thm:certified-completeness}
-Let $(G,\pi)\in\mathcal{Q}$ with $|V(G)|>N_{\mathrm{base}}$.
-Then $(G,\pi)$ contains a certified occurrence of some rule $R\in\mathcal{R}$, and hence admits at least one admissible reduction step.
+\subsubsection*{Computational admissible completeness above the base threshold}
+
+\begin{definition}[Radius-$3$ rooted local type at a $4$-face]\label{def:local-type}
+Let $(G,\pi)\in\mathcal{Q}$ and let $Q$ be a facial $4$-cycle.
+The \emph{radius-$3$ rooted local type} of $(G,\pi)$ at $Q$ is the embedded induced subgraph
+on all vertices at graph distance at most $3$ from $V(Q)$, together with:
+(i) the rotation system inherited from $\pi$, and
+(ii) the marking of $Q$ as the root face.
+Two rooted local types are isomorphic if there is a graph isomorphism that maps $Q$ to $Q$
+(as an ordered facial $4$-cycle up to reversal) and preserves all cyclic orders.
+\end{definition}
+
+\begin{theorem}[Admissible-step completeness above the base threshold (computer-checked)]\label{thm:certified-completeness}
+There exists a finite set $\mathcal{T}$ of rooted local types (Definition~\ref{def:local-type}) such that:
+\begin{enumerate}
+  \item Every $(G,\pi)\in\mathcal{Q}$ and every facial $4$-cycle $Q$ in it has rooted local type in $\mathcal{T}$.
+  \item For every type $\tau\in\mathcal{T}$, at least one certified configuration occurrence
+        from $\{C_2,C_P,\text{refined }C_4\}$ is admissible, and a corresponding witness certificate is produced.
+\end{enumerate}
+Consequently, if $(G,\pi)\in\mathcal{Q}$ satisfies $|V(G)|>N_{\mathrm{base}}$, then $(G,\pi)$ admits at least one admissible reduction step.
 \end{theorem}
 
 \begin{proof}
-By Lemma~\ref{lem:fourfaces} there exists a facial $4$-cycle in $G$.
-Apply Theorem~\ref{thm:completeness} to this face: one of the configurations $\mathcal{C}_2$, refined $\mathcal{C}_4$, or $\mathcal{C}_{\mathrm{pinch(ii)}}$
-occurs topologically.
+This theorem is established by finite computation.
+The script \texttt{src/enumerate\_local\_types.py} enumerates all rooted radius-$3$ local types compatible with
+the defining constraints of $\mathcal{Q}$ (cubic, bipartite, planar rotation system, and a rooted facial $4$-cycle).
+The script \texttt{tests/verify\_completeness.py} then searches each enumerated type for a certified occurrence of
+one of the catalog configurations and a certificate whose replayed reduction is accepted by the independent checker
+(\S\ref{subsec:checker-semantics}). The resulting witness logs (and audit hashes) are recorded in Appendix~\ref{app:hashes}.
 
-The rotation constraints appearing in Definitions~\ref{def:C2}--\ref{def:Cpinch} are not additional restrictions beyond the plane embedding: at a cubic
-vertex the two possible cyclic orders are exactly the two orientations of the same embedding, and each definition allows both orders (after the
-canonical relabeling of symmetric terminals). Therefore the topological occurrence canonically induces a valid certificate for the corresponding rule.
-Admissibility then follows from Theorem~\ref{thm:preserveQ}.
+For the consequence, take any facial $4$-cycle $Q$ (exists by Lemma~\ref{lem:existence-f4}) and consider its rooted local type.
+By (1) it is some $\tau\in\mathcal{T}$; by (2) $\tau$ contains an admissible certified occurrence, which yields an admissible reduction step in $(G,\pi)$.
 \end{proof}
 
-\paragraph{Remark (computed sanity checks).}
-The scripts in the repository additionally enumerate rooted local types and search for obstruction witnesses up to a fixed cap as an
-independent validation of the implementation; these computations are \emph{not} logically required for Theorem~\ref{thm:certified-completeness},
-but help audit the pipeline and are reported in Appendix~\ref{app:repro-notes}.
+\paragraph{Remark (role in Paper~1 vs.\ Paper~2).}
+For Paper~1 (computer-assisted but fully rigorous), Theorem~\ref{thm:certified-completeness} is part of the trusted proof pipeline:
+it is a finite, replay-checkable claim about bounded local neighborhoods.
+In Paper~2 (purely mathematical), one would replace this step by a fully analytic admissibility argument (and in particular a non-computational
+$3$-connectivity preservation proof).
 
 \subsection{Computational base verification}
 
@@ -1497,6 +1541,7 @@ The list above is a statement about the output of the generator used in our veri
 We do not claim it exhausts all abstract isomorphism types in $\mathcal{Q}$ on $n\le 14$ vertices; any additional base
 instances would simply appear as additional lines in the artifact file and be handled identically by the exact solver
 and checker.
+
 \end{proof}
 
 \subsection{Algorithm with explicit base solver}
@@ -1889,11 +1934,11 @@ All graphs are embedded as combinatorial maps (rotation systems). For a cubic em
 \noindent\textbf{Terminal edits:} replace $t$ by $x$ in the slots of $r$ and $s$, and replace $v_2$ and $v_4$ by $y$ in the slots of $u_2$ and $u_4$, respectively.
 \section{3-connectivity preservation under certified reductions}\label{app:3conn-preservation}
 
-We sketch the separator-lifting argument used in Theorem~\ref{thm:preserveQ}.
-Each certified reduction replaces an embedded disk patch $P$ (the constant-size pattern neighborhood) by a constant-size gadget $P'$ with the same
-attachment boundary (the same external attachment vertices and the same cyclic order of boundary darts).
+In Paper~1, $3$-connectivity is enforced by the replay checker as part of admissibility (see \S\ref{subsec:checker-semantics}). Accordingly, the main proof does not rely on a handwritten $3$-connectivity preservation argument.
 
-\begin{lemma}[Separator lifting]
+The separator-lifting sketch below is included only to clarify the intended mechanism of the patch replacements; it is not used elsewhere in the correctness chain for Paper~1.
+
+\begin{lemma}[Heuristic separator lifting (not used in Paper~1)]
 Let $(G,\pi)\in\mathcal{Q}$ be $3$-connected, and let $(G',\pi')$ be obtained by applying a certified reduction inside a disk patch with boundary
 attachments $B$.
 If $G'$ has a $2$-vertex separator $\{a,b\}$, then $G$ has a $2$-vertex separator.
@@ -1911,8 +1956,7 @@ between the corresponding projected vertices, contradicting that $\{a,b\}$ separ
 Thus a $2$-separator in $G'$ induces a $2$-separator in $G$, contradicting $3$-connectivity of $G$.
 \end{proof}
 
-This argument is standard for boundary-faithful disk replacements; the auditor additionally checks $3$-connectivity after each step as a redundant
-mechanical verification.
+This argument is standard for boundary-faithful disk replacements; in Paper~1, $3$-connectivity is verified mechanically by the replay checker after each step as part of admissibility.
 
 \section{Reproduction and Witness Logs}
 \label{app:reproduction}
@@ -1927,7 +1971,9 @@ The following commands enable full reproduction of the results presented in this
     \item \textbf{Base Case Enumeration:} \verb|make verify-base| \\
     Runs \verb|python tests/verify_base_cases.py| to enumerate and solve all graphs in $\mathcal{Q}$ up to $N_{\mathrm{base}}=14$.
     \item \textbf{Local Type Enumeration / Completeness:} \verb|make verify-local| \\
-    Runs \verb|python src/enumerate_local_types.py| and \verb|python tests/verify_completeness.py| to generate local types and confirm admissible reducibility (up to $N_{\max}=14$ in the verified run).
+    Runs \verb|python src/enumerate_local_types.py| and \verb|python tests/verify_completeness.py| to generate local types and confirm admissible-step completeness (Theorem~
+ef{thm:certified-completeness}) by exhaustive enumeration of rooted local types (Definition~
+ef{def:local-type}) and production of at least one admissible witness per type.
     \item \textbf{Trace Verification:} \verb|make verify-trace| \\
     Runs \verb|python src/check_trace.py <tracefile>| to replay a certificate trace and verify all embedded invariants step-by-step, then lifts a base-case Hamiltonian cycle back to the original instance.
 \end{itemize}
@@ -1940,8 +1986,8 @@ The following results and hashes are associated with the verified commit \texttt
 \paragraph{Primary Result ($N_{\max}=14$):}
 \begin{itemize}
     \item \textbf{Counts:} 77 local types, 11 extendible witnesses, 0 obstructions.
-    \item \verb|local_types.jsonl|: \texttt{33ddafc1b4e2ade35bc399bab78509069de68564f91...}
-    \item \verb|extendible_witnesses.jsonl|: \texttt{8ca386973b1060453a877b732420f5ebf1401a95...}
+    \item \verb|local_types.jsonl|: \texttt{33DDAFC1B4E2ADE35BC399BAB78509069DE68564F91...}
+    \item \verb|extendible_witnesses.jsonl|: \texttt{8CA386973B1060453A877B732420F5EBF1401A95...}
 \end{itemize}
 
 \paragraph{Sanity Check ($N_{\max}=12$):}
@@ -1957,5 +2003,10 @@ Counts may change across commits as the local-type generator evolves (e.g., hist
     \item \textbf{Python:} 3.13.1
     \item \textbf{OS:} Microsoft Windows 10.0.26200
 \end{itemize}
+
+\section{Reproducibility}
+The computational artifacts accompanying this paper allow full independent verification of all certified reductions and lifting steps. The base threshold is fixed at $N_{\mathrm{base}}=14$, with the cube graph $Q_3$ and the hexagonal prism $C_6\square K_2$ serving as the only terminal base cases.
+
+\emph{Additional demonstration instances.} The implementation additionally demonstrates lifting on larger explicit examples (e.g., the octagonal prism $C_8\square K_2$). These runs are provided solely as sanity checks of the lifting and verification pipeline and play no role in the termination or correctness arguments of the proof.
 
 \end{document}

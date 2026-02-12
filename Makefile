@@ -12,8 +12,7 @@ verify-base:
 	python tests/verify_base_cases.py
 
 verify-trace:
-	python src/check_trace.py artifacts/traces/trace_n48.jsonl
-	python src/check_trace.py artifacts/traces/trace_n128.jsonl
+	python src/check_trace.py
 
 check-n48:
 	python src/check_trace.py artifacts/traces/trace_n48.jsonl
