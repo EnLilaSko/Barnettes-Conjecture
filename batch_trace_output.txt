@@ -1,4 +1,4 @@
-
+﻿
 --- Processing n=8 ---
 Generating trace for n=8...
 Replaying trace: artifacts/traces\trace_n8.jsonl
@@ -62,3 +62,4 @@ Replaying trace: artifacts/traces\trace_n128.jsonl
 Trace verification PASSED (30 steps)
 
 Batch verification complete. Summary saved to artifacts/traces\batch_verification.json
+

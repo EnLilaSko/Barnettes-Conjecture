@@ -1,5 +1,11 @@
 import hashlib, os
-files = ['artifacts/local_types.jsonl', 'artifacts/extendible_witnesses.jsonl', 'artifacts/obstruction_witnesses.jsonl']
+files = [
+    'artifacts/local_types.jsonl', 
+    'artifacts/extendible_witnesses.jsonl', 
+    'artifacts/obstruction_witnesses.jsonl',
+    'artifacts/basecases.jsonl',
+    'artifacts/lift_library.json'
+]
 with open('hashes_output.txt', 'w', encoding='utf-8') as f_out:
     for f in files:
         if os.path.exists(f):

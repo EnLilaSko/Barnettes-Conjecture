@@ -1,0 +1,16 @@
+# Binaries
+*.exe
+plantri
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Artifacts
+# We WANT basecases and lift_library, so we don't ignore artifacts/ by default
+# but maybe ignore some large or temp ones if they appear.
+# artifacts/
+
+# Data
+data/
+# Actually, the user might want data in git. For now let's keep it minimal.

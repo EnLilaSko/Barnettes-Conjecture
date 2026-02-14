@@ -44,6 +44,9 @@ import math
 import random
 
 
+_LIFT_CACHE = {}  # key -> chosen internal-edge subset (as sorted pairs)
+
+
 # =============================================================================
 # Embedded planar graph with rotation system
 # =============================================================================
@@ -223,6 +226,17 @@ class EmbeddedGraph:
                 return u
         raise ValueError("third_neighbor: no candidate")
 
+    def canonical_hash(self) -> str:
+        """
+        Return a SHA256 hash of the canonicalized adjacency structure.
+        Uses sorted vertex keys and sorted neighbor lists.
+        """
+        import hashlib
+        import json
+        adj_canonical = {str(v): sorted(list(self.adj[v])) for v in sorted(self.adj.keys())}
+        data = json.dumps(adj_canonical, sort_keys=True).encode("utf-8")
+        return hashlib.sha256(data).hexdigest()
+
 
 # =============================================================================
 # Hamiltonian cycle representation
@@ -308,6 +322,16 @@ class Cycle:
         p1 = walk(neigh[0])
         p2 = walk(neigh[1])
         return p1 if tuple(p1) < tuple(p2) else p2
+
+    def edges_as_sorted_pairs(self) -> List[Tuple[int, int]]:
+        """
+        Return the undirected edges of the cycle as a sorted list of pairs (u, v) with u < v.
+        """
+        res = []
+        for e in self.E:
+            u, v = tuple(e)
+            res.append(tuple(sorted((int(u), int(v)))))
+        return sorted(res)
 
 
 # =============================================================================
@@ -1238,77 +1262,62 @@ def _cycle_neighbors_from_edge_set(E: Set[FrozenSet[int]], v: int) -> List[int]:
             out.append(b if a == v else a)
     return out
 
-def _patch_search(
-    original: EmbeddedGraph,
-    reduced: EmbeddedGraph,
-    cycle_reduced: Cycle,
-    removed_vs: Set[int],
-    x: int,
-    y: int,
-    attach_map: Dict[int, Tuple[int, int]],
-    internal_edges: Set[Tuple[int, int]],
-) -> Cycle:
-    """
-    Generic deterministic lift patch search.
-
-    - Start from reduced Hamilton cycle edges.
-    - Remove edges incident to x or y.
-    - For each terminal used at x or y in the reduced cycle, add the corresponding attachment edge
-      (terminal -> gadget boundary vertex) in the original.
-    - Choose an internal-edge subset on the gadget vertices so all gadget vertices have degree 2
-      in the final cycle.
-    - Deterministically pick the first (lexicographically) subset that yields a Hamilton cycle.
-
-    internal_edges is constant-size for each gadget, so 2^m search is constant-time per lift.
-    """
+def _lift_signature(reduced: EmbeddedGraph, cycle_reduced: Cycle, x: int, y: int, attach_map):
     Ered = set(cycle_reduced.E)
+    # signature bits: whether each terminal edge (u -> x or u -> y side) is used,
+    # plus whether xy is used
+    terms = sorted(attach_map.keys())
+    bits = tuple(1 if (frozenset((u, x)) in Ered or frozenset((u, y)) in Ered) else 0 for u in terms)
+    xy = 1 if frozenset((x, y)) in Ered else 0
+    return (xy, terms, bits)
 
+def _patch_search(original: EmbeddedGraph, reduced: EmbeddedGraph, cycle_reduced: Cycle,
+                  removed_vs: Set[int], x: int, y: int,
+                  attach_map, internal_edges: Set[Tuple[int, int]]) -> Cycle:
+    sig = _lift_signature(reduced, cycle_reduced, x, y, attach_map)
+    key = (sig, tuple(sorted(tuple(sorted(e)) for e in internal_edges)), tuple(sorted(removed_vs)))
+
+    # If cached, just apply the chosen subset
+    chosen = _LIFT_CACHE.get(key)
+    if chosen is not None:
+        return _apply_patch_subset(original, reduced, cycle_reduced, removed_vs, x, y, attach_map, internal_edges, chosen)
+
+    # Otherwise, enumerate all feasible subsets ONCE, choose canonical one, cache it.
+    feasible = []
+    cand = sorted({tuple(sorted(e)) for e in internal_edges})
+    m = len(cand)
+
+    Ered = set(cycle_reduced.E)
+    # Remove the incident edges at x,y and rebuild base (your existing logic)
     Nx = sorted(_cycle_neighbors_from_edge_set(Ered, x))
     Ny = sorted(_cycle_neighbors_from_edge_set(Ered, y))
-    if len(Nx) != 2 or len(Ny) != 2:
-        raise AssertionError("reduced cycle not degree-2 at x/y")
-
-    incident = set()
-    for nb in Nx:
-        incident.add(frozenset((x, nb)))
-    for nb in Ny:
-        incident.add(frozenset((y, nb)))
+    incident = set(frozenset((x, nb)) for nb in Nx) | set(frozenset((y, nb)) for nb in Ny)
     Ebase = {e for e in Ered if e not in incident}
 
-    active_terminals: Set[int] = set()
+    active_terminals = set()
     for nb in Nx:
-        if nb != y:
-            active_terminals.add(nb)
+        if nb != y: active_terminals.add(nb)
     for nb in Ny:
-        if nb != x:
-            active_terminals.add(nb)
-
-    Elift = set(Ebase)
+        if nb != x: active_terminals.add(nb)
 
     attachment_edges = []
-    attach_vertices: Set[int] = set()
+    attach_vertices = set()
     for u in sorted(active_terminals):
-        if u not in attach_map:
-            raise AssertionError(f"terminal {u} missing in attach_map")
         uu, v_attach = attach_map[u]
         attachment_edges.append((uu, v_attach))
         attach_vertices.add(v_attach)
-    for a, b in attachment_edges:
-        Elift.add(frozenset((a, b)))
-
-    cand = sorted({tuple(sorted(e)) for e in internal_edges})
 
     gadget_vertices = set(removed_vs) | set(attach_vertices)
 
-    def deg_in(E: Set[FrozenSet[int]], v: int) -> int:
-        return sum(1 for e in E if v in e)
+    def deg_in(E, v): return sum(1 for e in E if v in e)
 
-    if any(deg_in(Elift, v) > 2 for v in gadget_vertices):
-        raise AssertionError("partial lift already exceeds degree 2 in gadget region")
+    # Base edge-set
+    Elift0 = set(Ebase)
+    for a, b in attachment_edges:
+        Elift0.add(frozenset((a, b)))
 
-    m = len(cand)
     for mask in range(1 << m):
-        Etry = set(Elift)
+        Etry = set(Elift0)
         for i in range(m):
             if (mask >> i) & 1:
                 a, b = cand[i]
@@ -1327,9 +1336,73 @@ def _patch_search(
             Ctry.validate_hamiltonian(original)
         except Exception:
             continue
-        return Ctry
 
-    raise AssertionError("No valid lift patch found (lifting library incomplete for this embedding)")
+        feasible.append(tuple(sorted(tuple(sorted(e)) for e in (Etry - Elift0))))
+
+    if not feasible:
+        raise AssertionError("No valid lift patch found (library incomplete for this interface)")
+
+    feasible.sort()
+    chosen = feasible[0]
+    _LIFT_CACHE[key] = chosen
+    return _apply_patch_subset(original, reduced, cycle_reduced, removed_vs, x, y, attach_map, internal_edges, chosen)
+
+def _apply_patch_subset(original, reduced, cycle_reduced, removed_vs, x, y, attach_map, internal_edges, chosen_subset):
+    # Rebuild exactly as above, but add chosen_subset (list of internal edges) only.
+    # (Implementation is the same as the enumeration skeleton; keep it minimal + deterministic.)
+    Ered = set(cycle_reduced.E)
+    Nx = sorted(_cycle_neighbors_from_edge_set(Ered, x))
+    Ny = sorted(_cycle_neighbors_from_edge_set(Ered, y))
+    incident = set(frozenset((x, nb)) for nb in Nx) | set(frozenset((y, nb)) for nb in Ny)
+    Ebase = {e for e in Ered if e not in incident}
+
+    active_terminals = set()
+    for nb in Nx:
+        if nb != y: active_terminals.add(nb)
+    for nb in Ny:
+        if nb != x: active_terminals.add(nb)
+
+    Etry = set(Ebase)
+    for u in sorted(active_terminals):
+        uu, v_attach = attach_map[u]
+        Etry.add(frozenset((uu, v_attach)))
+
+    for a, b in chosen_subset:
+        Etry.add(frozenset((a, b)))
+
+    C = Cycle([tuple(e) for e in Etry])
+    C.validate_hamiltonian(original)
+    return C
+
+def get_lift_cache_json() -> str:
+    """
+    Return a JSON string representation of the _LIFT_CACHE.
+    Keys are serialized to strings.
+    """
+    import json
+    
+    # helper to make keys JSON-serializable
+    def serializable_key(k):
+        # k is ((xy, terms, bits), internal_edges_tuple, removed_vs_tuple)
+        sig, edges, vs = k
+        return {
+            "signature": {
+                "xy": sig[0],
+                "terms": sig[1],
+                "bits": sig[2]
+            },
+            "internal_edges": edges,
+            "removed_vs": vs
+        }
+
+    exported = []
+    for k, v in _LIFT_CACHE.items():
+        exported.append({
+            "key": serializable_key(k),
+            "value": v
+        })
+    
+    return json.dumps(exported, indent=2)
 
 def lift_C4(original: EmbeddedGraph, reduced: EmbeddedGraph, rec: RecC4, cycle_reduced: Cycle) -> Cycle:
     removed = {rec.v1, rec.v2, rec.v3, rec.v4}
