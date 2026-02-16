@@ -18,10 +18,20 @@ import json
 import os
 from typing import Dict, List, Set
 
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "src"))
 try:
     from barnette_proof import EmbeddedGraph, validate_in_Q, find_hamiltonian_cycle
 except ImportError:
-    from src.barnette_proof import EmbeddedGraph, validate_in_Q, find_hamiltonian_cycle
+    # If running from root without package structure
+    try:
+        from src.barnette_proof import EmbeddedGraph, validate_in_Q, find_hamiltonian_cycle
+    except ImportError:
+        # Fallback: assume barnette_proof is in path
+        import barnette_proof
+        EmbeddedGraph = barnette_proof.EmbeddedGraph
+        validate_in_Q = barnette_proof.validate_in_Q
+        find_hamiltonian_cycle = barnette_proof.find_hamiltonian_cycle
 
 
 def record_to_embedded(rec: dict) -> EmbeddedGraph:

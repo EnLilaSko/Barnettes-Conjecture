@@ -686,6 +686,108 @@ def detect_C2(G: EmbeddedGraph) -> Optional[OccC2]:
     return best
 
 
+
+
+# =============================================================================
+# Occurrence enumeration helpers (Theorem 41 tooling)
+# =============================================================================
+
+def all_C2_occurrences(G: EmbeddedGraph) -> List[OccC2]:
+    """Return *all* certified C2 occurrences in G, sorted and de-duplicated."""
+    occs: List[OccC2] = []
+    for a, b in G.edges():
+        if not (G.face_is_quad_from_dart((a, b)) and G.face_is_quad_from_dart((b, a))):
+            continue
+        L = G.trace_face_vertices((a, b), steps=4)
+        R = G.trace_face_vertices((b, a), steps=4)
+        occ = _canonicalize_adjacent_quads(G, L, R)
+        if occ is None:
+            continue
+        # Certified side-condition: terminals must be pairwise distinct (prevents loops/multiedges)
+        if len({occ.u1, occ.u4, occ.u5, occ.u6}) != 4:
+            continue
+        occs.append(occ)
+    occs = sorted(set(occs))
+    return occs
+
+
+def all_refined_C4_occurrences(G: EmbeddedGraph) -> List[OccC4]:
+    """Return *all* refined C4 occurrences in G, sorted and de-duplicated."""
+    occs: List[OccC4] = []
+    for v1 in G.vertices():
+        for v2cand in sorted(G.adj[v1]):
+            darts, end = G.trace_face_darts((v1, v2cand), steps=4)
+            if end != (v1, v2cand):
+                continue
+            v2 = darts[0][1]
+            v3 = darts[1][1]
+            v4 = darts[2][1]
+            if len({v1, v2, v3, v4}) != 4:
+                continue
+
+            quad_edges = [(v1, v2), (v2, v3), (v3, v4), (v4, v1)]
+            if any(G.other_face_is_quad(a, b) for a, b in quad_edges):
+                continue
+
+            u1 = G.third_neighbor(v1, {v2, v4})
+            u2 = G.third_neighbor(v2, {v1, v3})
+            u3 = G.third_neighbor(v3, {v2, v4})
+            u4 = G.third_neighbor(v4, {v1, v3})
+            if len({u1, u2, u3, u4}) != 4:
+                continue
+
+            # epsilon is unused for refined C4 lifting in this codebase; keep 0.
+            occs.append(OccC4(v1, v2, v3, v4, u1, u2, u3, u4, epsilon=0))
+
+    occs = sorted(set(occs))
+    return occs
+
+
+def all_C_pinch_ii_occurrences(G: EmbeddedGraph) -> List[OccPinch]:
+    """Return *all* pinch(ii) occurrences in G, sorted and de-duplicated."""
+    occs: List[OccPinch] = []
+    for v1 in G.vertices():
+        for v2cand in sorted(G.adj[v1]):
+            darts, end = G.trace_face_darts((v1, v2cand), steps=4)
+            if end != (v1, v2cand):
+                continue
+
+            v2 = darts[0][1]
+            v3 = darts[1][1]
+            v4 = darts[2][1]
+            if len({v1, v2, v3, v4}) != 4:
+                continue
+
+            u1 = G.third_neighbor(v1, {v2, v4})
+            u2 = G.third_neighbor(v2, {v1, v3})
+            u3 = G.third_neighbor(v3, {v2, v4})
+            u4 = G.third_neighbor(v4, {v1, v3})
+
+            if u1 != u3:
+                continue
+            w = u1
+
+            t = G.third_neighbor(w, {v1, v3})
+            if t in {u2, u4}:
+                continue
+
+            rs = sorted(list(G.adj[t] - {w}))
+            if len(rs) != 2:
+                continue
+            r, s = rs
+
+            quad_edges = [(v1, v2), (v2, v3), (v3, v4), (v4, v1)]
+            if any(G.other_face_is_quad(a, b) for a, b in quad_edges):
+                continue
+
+            rotw = G.rot[w]
+            i1 = G.pos[w][v1]
+            epsilon = 0 if rotw[(i1 + 1) % len(rotw)] == t else 1
+            occs.append(OccPinch(v1, v2, v3, v4, w, t, r, s, u2, u4, epsilon))
+
+    occs = sorted(set(occs))
+    return occs
+
 # =============================================================================
 # Completeness witness (Theorem 5.1)
 # =============================================================================

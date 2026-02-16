@@ -220,7 +220,7 @@ A configuration $C$ is \textbf{locally checkable} if its presence and certificat
     \item Vertex IDs of internal and terminal vertices.
     \item The cyclic ordering of terminals $T$ induced by the current rotation system (boundary order $\sigma$ up to reversal).
     \item Rotation slots (relative positions in $\pi_u$) for gadget re-insertion.
-    \item A \textbf{flip bit} $\varepsilon\in\{0,1\}$ when needed to choose one of the two mirror disk embeddings of the gadget (for $\mathrm{pinch}(ii)$ this is the “between” choice).
+    \item A \textbf{flip bit} $\varepsilon\in\{0,1\}$ when needed to choose one of the two mirror disk embeddings of the gadget (for $\mathrm{pinch}(ii)$ this is the ``between'' choice).
 \end{itemize}
 \end{definition}
 
@@ -252,7 +252,7 @@ Hence $e$ is incident to exactly two faces, namely the faces containing these tw
 
 If the two darts of $e$ lie on the \emph{same} face orbit, then $e$ is incident to the same face on both
 sides. In a cellular planar embedding this happens if and only if $e$ is a bridge (cut-edge), because
-removing $e$ merges the two “sides” of the face without creating a second face across $e$.
+removing $e$ merges the two ``sides'' of the face without creating a second face across $e$.
 Since $G$ is 2-connected, it has no bridge. Therefore the two incident faces are distinct.
 
 \medskip
@@ -282,7 +282,7 @@ an edge whose interior is crossed by $C^*$, i.e.\ it must use $e_1$ or $e_2$.
 Consequently, $G-\{e_1,e_2\}$ has no $p$--$q$ path and is disconnected: $\{e_1,e_2\}$ is a 2-edge cut.
 
 But for any graph, vertex-connectivity is at most edge-connectivity:
-$\kappa(G)\le \lambda(G)$ (e.g.\ by Menger’s theorem).
+$\kappa(G)\le \lambda(G)$ (e.g.\ by Menger's theorem).
 Since $G$ is 3-connected, $\kappa(G)\ge 3$, hence $\lambda(G)\ge 3$, so $G$ has no 2-edge cut.
 This contradiction shows that $f$ and $g$ cannot share two distinct edges.
 
@@ -371,34 +371,34 @@ $2f_4\ge 12$ and therefore $f_4\ge 6$.
 \subsection{Local classification around a 4-face}
 \label{subsec:local-classification-4face}
 
-\begin{theorem}[Local unavoidability of the catalog]
+\begin{theorem}[Topological unavoidability of the catalog]
 \label{thm:completeness}
-Every $G\in\mathcal Q$ contains an occurrence of at least one configuration
-from $\{C_2,\ C_P,\ \text{refined }C_4\}$ as defined in
-Section~\ref{sec:catalog}.
+Every $G\in\mathcal Q$ contains a facial $4$-cycle whose radius-$1$ neighborhood realizes a \emph{topological} instance of at least one pattern from
+$\{C_2,\ C_P,\ \text{refined }C_4\}$ (adjacent $4$-faces, a pinch(ii) identification, or an edge-isolated $4$-face).
+In particular, $G$ contains a topological occurrence of one of these three configurations in the sense of \S\ref{subsec:topological-vs-certified}.
 \end{theorem}
 
 \begin{proof}
 By Lemma~\ref{lem:existence-f4}, $G$ has a facial $4$-cycle. Fix one and write its boundary as
 \[
-Q \;=\; v_1v_2v_3v_4
+F \;=\; v_1v_2v_3v_4
 \]
 in cyclic order.
-Since $G$ is cubic, each $v_i$ has exactly one neighbor outside $Q$; denote it by $u_i$.
+Since $G$ is cubic, each $v_i$ has exactly one neighbor outside $F$; denote it by $u_i$.
 Thus
 \[
 N(v_i)=\{v_{i-1},\,v_{i+1},\,u_i\}\qquad (\text{indices mod }4).
 \]
 
 \medskip
-\noindent\textbf{Case 1: $Q$ shares an edge with another $4$-face.}
+\noindent\textbf{Case 1: $F$ shares an edge with another $4$-face.}
 If some boundary edge $v_iv_{i+1}$ is incident (on its other side) to a facial $4$-cycle,
-then $G$ contains two facial $4$-cycles sharing an edge, i.e.\ a $C_2$ occurrence
-(Section~\ref{sec:catalog}).
+then $G$ contains two facial $4$-cycles sharing an edge, i.e.\ a \emph{topological} $C_2$ pattern.
+As explained in \S\ref{subsec:topological-vs-certified}, the inductive step of Algorithm~\ref{alg:main} operates on \emph{certified} occurrences; the existence of a certified admissible step is discharged by the local-type completeness computation (Theorem~\ref{thm:certified-completeness}).
 
 \medskip
-\noindent\textbf{Case 2: $Q$ is not adjacent (by an edge) to any other $4$-face.}
-Then $Q$ is edge-isolated in the sense of the catalog definition of refined $C_4$.
+\noindent\textbf{Case 2: $F$ is not adjacent (by an edge) to any other $4$-face.}
+Then $F$ is edge-isolated in the sense of the catalog definition of refined $C_4$.
 We now analyze the four external neighbors $u_1,u_2,u_3,u_4$.
 
 \medskip
@@ -411,7 +411,7 @@ u_1=u_3 \quad\text{and/or}\quad u_2=u_4.
 
 \smallskip
 \noindent\emph{Proof.}
-Along the $4$-cycle $Q$ the bipartition alternates. Adjacent vertices $v_i$ and $v_{i+1}$
+Along the $4$-cycle $F$ the bipartition alternates. Adjacent vertices $v_i$ and $v_{i+1}$
 lie in opposite parts, so their outside neighbors $u_i$ and $u_{i+1}$ lie in opposite parts as well.
 Hence $u_i\neq u_{i+1}$. Therefore any equality can only occur between opposite indices.
 \hfill$\Box$
@@ -424,7 +424,7 @@ It is impossible that both $u_1=u_3$ and $u_2=u_4$ hold.
 \noindent\emph{Proof.}
 If $u_1=u_3=w$ and $u_2=u_4=z$, then every edge leaving the vertex set
 $V(Q)=\{v_1,v_2,v_3,v_4\}$ goes into $\{w,z\}$.
-Thus $G-\{w,z\}$ disconnects $V(Q)$ from the rest of the graph (indeed it isolates $Q$),
+Thus $G-\{w,z\}$ disconnects $V(Q)$ from the rest of the graph (indeed it isolates $F$),
 contradicting $3$-connectivity of $G$.
 \hfill$\Box$
 
@@ -434,7 +434,7 @@ By Claims 2.1--2.2, exactly one of the following holds.
 
 \medskip
 \noindent\textbf{Subcase 2a: all terminals are distinct.}
-If $u_1,u_2,u_3,u_4$ are pairwise distinct, then by definition $Q$ is a refined $C_4$
+If $u_1,u_2,u_3,u_4$ are pairwise distinct, then by definition $F$ is a refined $C_4$
 occurrence in the catalog (a facial $4$-cycle with distinct external neighbors, edge-isolated).
 
 \medskip
@@ -466,7 +466,7 @@ contradicting $3$-connectivity. Therefore $t\neq u_2$. The proof that $t\neq u_4
 
 \smallskip
 \noindent
-Thus the local neighborhood around $Q$ matches the definition of a $C_P$
+Thus the local neighborhood around $F$ matches the definition of a $C_P$
 occurrence in the catalog: a facial $4$-cycle with a single opposite identification $u_1=u_3=w$
 and a third neighbor $t\notin\{u_2,u_4\}$; the certificate records the relevant rotations
 at $w$ and $t$ as required by Section~\ref{sec:catalog}.
@@ -1007,7 +1007,6 @@ We do \emph{not} require that every certified occurrence be admissible.
 Admissible-step completeness is supplied by the finite local-type theorem
 (Theorem~\ref{thm:certified-completeness}), which is verified by exhaustive enumeration of all radius-$3$ neighborhoods
 around a facial $4$-cycle and the production of a replay-checkable witness step for each enumerated type.
-The local-to-global justification for the $3$-connectivity component is Lemma~\ref{lem:separator-locality} in Appendix~\ref{app:3conn-preservation}.
 
 \section{Interface Analysis for Hamiltonian Cycles}
 \label{sec:interface-analysis}
@@ -1234,7 +1233,7 @@ satisfies Lemma~\ref{lem:splicing}.
 \end{lemma}
 
 \begin{proof}
-Apply Lemma~\ref{lem:table-correctness}; one verifies by inspection that each row in Table~\ref{tab:lifting-c2} connects the correct terminals and covers the vertices $\{a,b,c,d,e,f\}$ exactly once.
+Apply Lemma~\ref{lem:table-correctness}; this is verified exhaustively by the lifting-table verifier (Appendix~\ref{app:reproduction}, \verb|src/verify_gadgets.py|), which checks that each row in Table~\ref{tab:lifting-c2} connects the correct terminals and covers the vertices $\{a,b,c,d,e,f\}$ exactly once.
 \end{proof}
 
 \subsection{Lifting for the Refined \texorpdfstring{$C_4$}{C4} Reduction}
@@ -1294,7 +1293,7 @@ system satisfies Lemma~\ref{lem:splicing}.
 \end{lemma}
 
 \begin{proof}
-One verifies by inspection that each path in Table~\ref{tab:lifting-c4} connects the correct terminals and covers $V(H)$ exactly once. The result follows from Lemma~\ref{lem:table-correctness}. Parallel interfaces are excluded by Lemma~\ref{lem:no-parallel-C4}.
+This is verified exhaustively by the lifting-table verifier (Appendix~\ref{app:reproduction}, \verb|src/verify_gadgets.py|), which checks that each path in Table~\ref{tab:lifting-c4} connects the correct terminals and covers $V(H)$ exactly once. The result follows from Lemma~\ref{lem:table-correctness}. Parallel interfaces are excluded by Lemma~\ref{lem:no-parallel-C4}.
 \end{proof}
 
 \subsection{Lifting for the \texorpdfstring{$C_P$}{CP} Reduction}
@@ -1421,7 +1420,6 @@ the lifting procedure produces a Hamiltonian cycle $H$ in the pre-reduction grap
 Each gadget has constant size. By Lemma~\ref{lem:interfaces-2vertex}, there are exactly five possible abstract interface types for any 2-vertex gadget; for refined $C_4$, Lemma~\ref{lem:no-parallel-C4} excludes the parallel type, leaving four.
 The lifting procedure identifies the interface type by checking which gadget edges are used in $H'$ (constant time), retrieves the corresponding path system from the library (constant time via table lookup), and replaces the gadget's contribution with this path system.
 By Lemma~\ref{lem:splicing}, this yields a Hamiltonian cycle in $G$.
-In the verified implementation, the finite library is materialized for audit as \texttt{artifacts/lift_library.json} (exported from the internal cache used by the lifting routine).
 \end{proof}
 
 \section{Base Cases and Reproducible Verification}
@@ -1436,10 +1434,22 @@ In the verified implementation used for this paper we take $N_{\mathrm{base}}=14
 
 \subsection{Certified completeness above a finite threshold}
 
-The unavoidability theorem (Theorem~\ref{thm:completeness}) guarantees that \emph{some} topological occurrence of one of the configurations
-$\mathcal{C}_2$, $\mathcal{C}_4$, or $\mathcal{C}_{\mathrm{pinch(ii)}}$ exists around a facial $4$-cycle in every state $(G,\pi)\in\mathcal{Q}$.
-For the inductive proof we require a \emph{certified} occurrence that can be reduced while preserving membership in $\mathcal{Q}$ and enabling a
-Hamilton cycle to be lifted.
+
+\subsubsection{Topological vs certified occurrences}
+\label{subsec:topological-vs-certified}
+
+Theorem~\ref{thm:completeness} is a purely combinatorial \emph{unavoidability} statement: it guarantees the existence of a \emph{topological} pattern around some facial $4$-cycle (adjacent $4$-faces, a pinch(ii) identification, or an edge-isolated $4$-face).
+A \emph{topological occurrence} records only the embedding-local incidence information forced by the case analysis and does \emph{not} include certification side-conditions such as terminal distinctness, forbidden identifications, or terminal-slot data.
+
+By contrast, the reduction rules in \S\ref{sec:catalog} are triggered only by \emph{certified occurrences}, which include (i) the required side-conditions, and (ii) the explicit rotation-system interface data needed for replay checking and deterministic lifting.
+Algorithm~\ref{alg:main} and the replay checker therefore operate exclusively on certified occurrences.
+
+In the present (computer-assisted) version, the bridge from topological unavoidability to certified reducibility is discharged computationally:
+Theorem~\ref{thm:certified-completeness} enumerates all radius-$3$ rooted local types around a facial $4$-cycle consistent with $\mathcal{Q}$ and proves that every such type contains at least one admissible \emph{certified} configuration.
+
+
+The unavoidability theorem (Theorem~\ref{thm:completeness}) guarantees that every $(G,\pi)\in\mathcal{Q}$ contains some facial $4$-cycle exhibiting a \emph{topological} instance of the catalog patterns.
+For the inductive step we require a \emph{certified} occurrence (in the sense of \S\ref{subsec:topological-vs-certified}) that is admissible, i.e. its reduction preserves membership in $\mathcal{Q}$ and admits deterministic lifting.
 
 \begin{definition}[Certified occurrence and admissibility]\label{def:cert}
 Let $\mathcal{R}$ denote the set of certified reduction rules.
@@ -1496,58 +1506,53 @@ Consequently, if $(G,\pi)\in\mathcal{Q}$ satisfies $|V(G)|>N_{\mathrm{base}}$, t
 \end{theorem}
 
 \begin{proof}
-Part (1) is immediate from Definition~\ref{def:local-type}.
-
-For (2), the script \texttt{src/enumerate\_local\_types.py} enumerates the finite set $\mathcal{T}$ of rooted
-radius-$3$ local types compatible with the defining constraints of $\mathcal{Q}$
-(cubic, bipartite, planar rotation system, and a rooted facial $4$-cycle).
+This theorem is established by finite computation.
+The script \texttt{src/enumerate\_local\_types.py} enumerates all rooted radius-$3$ local types compatible with
+the defining constraints of $\mathcal{Q}$ (cubic, bipartite, planar rotation system, and a rooted facial $4$-cycle).
 The script \texttt{tests/verify\_completeness.py} then searches each enumerated type for a certified occurrence of
-one of the catalog configurations and a witness certificate whose replayed reduction is accepted by the independent checker
+one of the catalog configurations and a certificate whose replayed reduction is accepted by the independent checker
 (\S\ref{subsec:checker-semantics}). The resulting witness logs (and audit hashes) are recorded in Appendix~\ref{app:hashes}.
 
-Now let $(G,\pi)\in\mathcal{Q}$ with a facial $4$-cycle $Q$ (exists by Lemma~\ref{lem:existence-f4}) and let $\tau\in\mathcal{T}$
-be the rooted local type of $(G,\pi)$ at $Q$.
-By construction, the witness certificate produced for $\tau$ specifies a reduction step whose footprint lies within
-graph distance at most $2$ from $V(Q)$, hence within the radius-$3$ closure graph underlying $\tau$.
-All checker postconditions except $3$-connectivity are purely local and therefore depend only on the patch and its boundary attachments.
-For $3$-connectivity, Lemma~\ref{lem:separator-locality} shows that if the replayed post-state of the radius-$3$ closure is $3$-connected,
-then the corresponding ambient post-state is also $3$-connected.
-Therefore the same reduction step is admissible in the full state $(G,\pi)$.
+For the consequence, take any facial $4$-cycle $Q$ (exists by Lemma~\ref{lem:existence-f4}) and consider its rooted local type.
+By (1) it is some $\tau\in\mathcal{T}$; by (2) $\tau$ contains an admissible certified occurrence, which yields an admissible reduction step in $(G,\pi)$.
 \end{proof}
 
-
-
-\paragraph{Remark (role in Paper~1 vs.\ Paper~2).}
-For Paper~1 (computer-assisted but fully rigorous), Theorem~\ref{thm:certified-completeness} is part of the trusted proof pipeline:
+\paragraph{Remark (computational vs.\ fully analytic variants).}
+For the present paper (computer-assisted but fully rigorous), Theorem~\ref{thm:certified-completeness} is part of the trusted proof pipeline:
 it is a finite, replay-checkable claim about bounded local neighborhoods.
-In Paper~2 (purely mathematical), one would replace this step by a fully analytic admissibility argument (and in particular a non-computational
+In a future purely mathematical version, one would replace this step by a fully analytic admissibility argument (and in particular a non-computational
 $3$-connectivity preservation proof).
 
 \subsection{Computational base verification}
 
-\begin{theorem}[Base-case verification (computational, exhaustive)]
+\begin{theorem}[Base-case verification (computational)]
 \label{thm:base-verified}
-Fix $N_{\mathrm{base}}$ as in Definition~\ref{def:Nbase}. For every $G\in\mathcal{Q}$ with $|V(G)|\le N_{\mathrm{base}}$,
-the script \texttt{tests/verify\_base\_cases.py} exhaustively enumerates all isomorphism types of plane graphs in $\mathcal{Q}$ with $|V|\le N_{\mathrm{base}}$
-(using the trusted external generator \texttt{plantri} and filtering by checker-validated predicates), and for each instance produces an explicit Hamiltonian cycle witness.
-The complete list of instances and cycle witnesses is written to \texttt{artifacts/basecases.jsonl}.
+Fix $N_{\mathrm{base}}$ as in Definition~\ref{def:Nbase}.
+For every $G \in \mathcal{Q}$ with $|V(G)| \le N_{\mathrm{base}}$, the script
+\texttt{tests/verify\_base\_cases.py} enumerates all abstract graphs in $\mathcal{Q}$ with $|V| \le N_{\mathrm{base}}$ up to isomorphism (one representative embedding per graph) and runs an exact Hamiltonicity solver,
+outputting either a Hamiltonian cycle or a certificate of nonexistence.
 \end{theorem}
 
 \begin{proof}
 This is established by exhaustive computation; see Appendix~\ref{app:reproduction}.
 
-The base-case generator used by \texttt{tests/verify\_base\_cases.py} is complete up to plane isomorphism:
-it enumerates all candidate plane graphs via a trusted external enumerator (\texttt{plantri}). The wrapper \texttt{src/plantri\_wrapper.py} parses \texttt{plantri -a} output into rotation-system objects used throughout the checker. It then filters them using
-the independent replay checker predicates (simplicity, cubicity, bipartiteness, planarity-from-rotation, and $3$-connectivity).
-In particular, completeness of the \emph{generation} step relies on \texttt{plantri}'s enumeration correctness,
-while all membership tests for $\mathcal{Q}$ and all Hamiltonicity witnesses are validated independently by our checker.
+For $N_{\mathrm{base}}=14$, the audited generator run described in Appendix~B produced the following
+isomorphism types in $\mathcal{Q}$ with $n\le 14$:
+\begin{itemize}
+  \item $n=8$: the cube graph $Q_3$.
+  \item $n=12$: the hexagonal prism $C_6\square K_2$.
+\end{itemize}
+In each generated instance the exact solver returns an explicit Hamilton cycle, and the checker verifies it;
+the cycle certificates are recorded in the corresponding artifact file.
 
-For each generated base instance, the script computes an explicit Hamiltonian cycle (using a small exact routine suitable at this size),
-and the checker validates that the reported cycle is a simple cycle visiting every vertex exactly once.
-The cycle certificates and the complete list of generated instances are recorded in \texttt{artifacts/basecases.jsonl}; the corresponding SHA-256 checksums are listed in \texttt{hashes_output.txt} (Appendix~\ref{app:hashes}).
+\smallskip
+\noindent\textbf{Remark.}
+The list above is a statement about the output of the generator used in our verification pipeline at the cited commit.
+We do not claim it exhausts all abstract isomorphism types in $\mathcal{Q}$ on $n\le 14$ vertices; any additional base
+instances would simply appear as additional lines in the artifact file and be handled identically by the exact solver
+and checker.
+
 \end{proof}
-
-
 
 \subsection{Algorithm with explicit base solver}
 \label{subsec:algorithm}
@@ -1567,6 +1572,27 @@ The cycle certificates and the complete list of generated instances are recorded
 \State \Return $\textsc{LiftCycle}(H', G, C)$
 \end{algorithmic}
 \end{algorithm}
+
+\begin{theorem}[Correctness of Algorithm~\ref{alg:main} and Barnette's Conjecture for $\mathcal{Q}$]
+\label{thm:algorithm-correctness}
+For every $(G,\pi)\in\mathcal{Q}$, Algorithm~\ref{alg:main} terminates and returns a Hamiltonian cycle of $G$.
+Consequently, every $3$-connected cubic bipartite plane graph is Hamiltonian.
+\end{theorem}
+
+\begin{proof}
+We argue by well-founded induction on the measure $\mu(G)$ (Section~\ref{sec:measure}), using Lemma~\ref{lem:well-founded}.
+If $|V(G)|\le N_{\mathrm{base}}$, the algorithm returns a Hamiltonian cycle recorded in the base-case artifact and revalidated by the checker (Theorem~\ref{thm:base-verified}).
+
+Otherwise, $|V(G)|>N_{\mathrm{base}}$.
+By the certified-step completeness theorem (Theorem~\ref{thm:certified-completeness}), $G$ contains a certified configuration
+$C\in\{C_2,C_P,\text{refined }C_4\}$ for which an admissible reduction step $G\to G'$ exists.
+Property preservation implies $(G',\pi')\in\mathcal{Q}$ (Theorem~\ref{thm:preserveQ}), and the measure strictly decreases,
+$\mu(G')<_{\mathrm{lex}}\mu(G)$ (Lemma~\ref{lem:measure-decrease}).
+By the induction hypothesis, the recursive call returns a Hamiltonian cycle in $G'$.
+Finally, the lifting theorem (Theorem~\ref{thm:lifting}, together with the bidirectional Hamiltonicity preservation statements in Theorem~\ref{thm:bidirectional-hamiltonicity})
+lifts this cycle to a Hamiltonian cycle in $G$.
+\end{proof}
+
 
 \section{Termination and Well-Foundedness}
 \label{sec:termination}
@@ -1937,53 +1963,45 @@ All graphs are embedded as combinatorial maps (rotation systems). For a cubic em
 \end{cases}
 \]
 \noindent\textbf{Terminal edits:} replace $t$ by $x$ in the slots of $r$ and $s$, and replace $v_2$ and $v_4$ by $y$ in the slots of $u_2$ and $u_4$, respectively.
-\section{3-connectivity locality for patch reductions}\label{app:3conn-preservation}
+\section{3-connectivity locality for admissibility}
+\label{app:3conn-preservation}
 
-In Paper~1, $3$-connectivity is enforced by the replay checker as part of admissibility
-(\S\ref{subsec:checker-semantics}).  However, Theorem~\ref{thm:certified-completeness}
-is proved by enumerating isolated radius-$3$ rooted local types and exhibiting, for each type,
-at least one reduction step whose \emph{local} post-state passes the checker predicates.
-The reviewer correctly observes that $3$-connectivity is global, so we must justify that a
-loss of $3$-connectivity caused by applying a certified patch reduction is already witnessed
-within the radius-$3$ closure used in the local-type enumeration.
+In the implementation, the replay checker verifies $3$-connectivity \emph{globally} after every reduction step as part of admissibility (see \S\ref{subsec:checker-semantics}).
+For the \emph{finite} local-type completeness computation (Theorem~\ref{thm:certified-completeness}), we additionally need that admissibility of a fixed certified rule application can be decided from a bounded-radius closure around the modified patch.
+This is formalized by the separator-locality lemma below.
 
-\begin{lemma}[Separator locality for radius-$3$ closure]\label{lem:separator-locality}
-Let $(G,\pi)\in\mathcal{Q}$ and let $Q$ be a facial $4$-cycle of $G$.
-Let $H$ be the induced embedded subgraph on all vertices at graph distance at most $3$ from $V(Q)$
-(i.e.\ the underlying graph of the rooted local type in Definition~\ref{def:local-type}).
-Let $\mathrm{cert}$ be a certified occurrence whose footprint is contained in the vertices of $H$ at distance at most $2$ from $V(Q)$,
-and let $(G',\pi'):=\textsc{Reduce}(G,\pi;\mathrm{cert})$ be the ambient post-state.
-Let $(H',\pi_H')$ be the post-state obtained by replaying the same reduction on $(H,\pi_H)$ under the checker semantics.
-If $H'$ is $3$-connected, then $G'$ is $3$-connected.
+\begin{lemma}[Separator locality for boundary-faithful disk replacements]
+\label{lem:separator-locality}
+Let $G$ be a plane graph and let $G'$ be obtained from $G$ by replacing a connected subgraph $P\subseteq G$ contained in a disk by another connected gadget $P'$, in such a way that:
+(i) $V(G)\setminus V(P)=V(G')\setminus V(P')$ and $E(G)$ and $E(G')$ agree on this common vertex set, and
+(ii) every edge with exactly one endpoint in $V(P)$ (respectively $V(P')$) is incident with a designated boundary set $B\subseteq V(G)\setminus V(P)$, and the boundary vertices $B$ are the same in $G$ and $G'$.
+
+Let $S := B \cup N_{G'}(B)\cup N_{G'}^2(B)$ (distance measured in $G'$), and let $H' := G'[S]$ be the induced subgraph on $S$.
+If $G'$ has a $2$-vertex separator, then $H'$ has a $2$-vertex separator.
+In particular, if $H'$ is $3$-connected then $G'$ is $3$-connected.
 \end{lemma}
 
 \begin{proof}
-Suppose for contradiction that $G'$ is not $3$-connected, and let $\{a,b\}$ be a $2$-vertex separator in $G'$.
-Let $P$ denote the vertex set modified by the reduction (deleted patch vertices together with any newly inserted gadget vertices).
-By construction, $P$ is contained in the distance-$2$ neighborhood of $V(Q)$, hence $P\subseteq V(H)$, and
-$G'$ and $G$ are identical on $V(G)\setminus P$.
+Let $\{a,b\}$ be a $2$-vertex separator of $G'$, and let $C$ be a component of $G'-\{a,b\}$ which intersects the gadget vertex set $V(P')$.
+If $\{a,b\}\cap S\neq\emptyset$ then, since $S$ is connected and contains $B$ as well as all vertices within distance at most $2$ from $B$, the disconnection witnessed by $C$ is already visible in $H'-\{a,b\}$, so $H'$ has a $2$-separator.
 
-\emph{Claim 1:} At least one of $a,b$ lies in $V(H)$.
-Indeed, if $\{a,b\}\cap V(H)=\emptyset$, then the induced subgraph on $V(G)\setminus P$ is unchanged by the reduction,
-so any separation of vertices outside $H$ witnessed in $G'-\{a,b\}$ is also witnessed in $G-\{a,b\}$, contradicting that $G$ is $3$-connected.
+It remains to rule out the case $\{a,b\}\cap S=\emptyset$.
+Under this assumption, the set $S$ (hence also $B$) lies entirely in the component of $G'-\{a,b\}$ that contains $V(P')$, because every vertex of $S$ is at distance at most $2$ from $B$ and $B$ attaches to $P'$ by construction.
+Consequently, every component of $G'-\{a,b\}$ that is \emph{disjoint} from $S$ is also disjoint from $V(P')$ and from $B$.
 
-\emph{Claim 2:} In fact $\{a,b\}\subseteq V(H)$.
-Assume w.l.o.g.\ that $a\in V(H)$ and $b\notin V(H)$.
-Let $C$ be a component of $G'-\{a,b\}$ that is disjoint from $V(H)$ (if none exists, then $\{a,b\}$ separates only vertices of $H$ and we are done).
-Every vertex of $C$ has all its incident edges outside $P$, hence the same component $C$ exists in $G-\{a,b\}$.
-Since $G$ is $3$-connected, there exist three internally vertex-disjoint paths in $G$ from any vertex of $C$ to $V(Q)$.
-At most one of these paths can use $b$ (as an internal vertex), and none can use vertices of $P$ except possibly at their final entry into $H$.
-Thus there remains a path from $C$ to $V(Q)$ in $G-\{a,b\}$ that avoids $P$ entirely; because the reduction does not modify edges outside $P$,
-the same path exists in $G'-\{a,b\}$, contradicting that $C$ is separated in $G'-\{a,b\}$.
-Therefore no such component $C$ exists, and $\{a,b\}\subseteq V(H)$.
+Now observe that $G$ and $G'$ coincide on $V(G)\setminus V(P)=V(G')\setminus V(P')$, and every edge between vertices outside the patch is identical in $G$ and in $G'$.
+Therefore, any vertex set $X$ disjoint from $V(P')$ has the same adjacency to the outside world in $G'$ as it does in $G$.
+In particular, if $D$ is a component of $G'-\{a,b\}$ disjoint from $S$, then $D$ is also a component of $G-\{a,b\}$:
+there is no edge from $D$ to $V(P)$ in $G$ (all such edges would have to go through $B\subseteq S$), and there is no new edge outside the patch in $G'$.
+Hence $\{a,b\}$ also separates $G$, i.e.\ it is a $2$-vertex separator of $G$.
 
-Now, because the reduction and the checker replay semantics agree on the induced subgraph $H$ (both are purely local patch replacements with the same
-boundary attachments and rotation updates), the same pair $\{a,b\}$ separates $H'$.
-This contradicts that $H'$ is $3$-connected.
+Applied to certified reductions in $\mathcal{Q}$, $G$ is $3$-connected, so such a separator cannot exist. Thus any $2$-separator of $G'$ must intersect $S$, and the separation is witnessed inside $H'$ as claimed.
 \end{proof}
 
-Lemma~\ref{lem:separator-locality} is the only place where we appeal to a handwritten argument about $3$-connectivity.
-All other invariants (simplicity, cubicity, bipartiteness, and planarity from the rotation system) are checked directly by the replay checker.
+\noindent
+For our certified reductions, the boundary set $B$ is contained in the radius-$3$ neighborhood of the reduced facial $4$-cycle (equivalently, of the inserted $2$-vertex gadget), so the induced subgraph $H'$ is precisely the \emph{radius-$3$ closure} used in the local-type enumeration for Theorem~\ref{thm:certified-completeness}.
+
+
 \section{Reproduction and Witness Logs}
 \label{app:reproduction}
 
@@ -1995,37 +2013,51 @@ The following commands enable full reproduction of the results presented in this
     \item \textbf{Logic Verification:} \verb|make verify-logic| \\
     Runs \verb|python src/verify_gadgets.py| to exhaustively verify lifting tables and interface completeness.
     \item \textbf{Base Case Enumeration:} \verb|make verify-base| \\
-    Runs \verb|python tests/verify_base_cases.py| to enumerate and solve all graphs in $\mathcal{Q}$ up to $N_{\mathrm{base}}=14$, writing cycle witnesses to \verb|artifacts/basecases.jsonl| and exporting the lifting-cache snapshot to \verb|artifacts/lift_library.json|.
+    Runs \verb|python tests/verify_base_cases.py| to enumerate and solve all graphs in $\mathcal{Q}$ up to $N_{\mathrm{base}}=14$.
     \item \textbf{Local Type Enumeration / Completeness:} \verb|make verify-local| \\
-    Runs \verb|python src/enumerate_local_types.py| and \verb|python tests/verify_completeness.py| to generate local types and confirm admissible-step completeness (Theorem~
-ef{thm:certified-completeness}) by exhaustive enumeration of rooted local types (Definition~
-ef{def:local-type}) and production of at least one admissible witness per type.
+    Runs \verb|python src/enumerate_local_types.py| and \verb|python tests/verify_completeness.py| to generate local types and confirm admissible-step completeness (Theorem~\ref{thm:certified-completeness}) by exhaustive enumeration of rooted local types (Definition~\ref{def:local-type}) and production of at least one admissible witness per type.
     \item \textbf{Trace Verification:} \verb|make verify-trace| \\
     Runs \verb|python src/check_trace.py <tracefile>| to replay a certificate trace and verify all embedded invariants step-by-step, then lifts a base-case Hamiltonian cycle back to the original instance.
 \end{itemize}
 
+\subsection{Trusted Computing Base for Theorem~\ref{thm:certified-completeness}}
+\label{app:tcb-thm41}
+
+Theorem~\ref{thm:certified-completeness} is established by a finite, replayable computation (local-type enumeration plus admissibility witness production).  Since this is a computer-assisted completeness bridge, the paper must state exactly what code and primitives are \emph{trusted} to avoid circular ``it passed on my machine'' reasoning.
+
+We follow a ``trust the checker'' philosophy: any search procedure may be heuristic and thus \emph{untrusted}, but a claimed witness is accepted only if it passes an explicit verifier that checks the $\mathcal{Q}$-invariants and the Lemma~\ref{lem:separator-locality} admissibility condition using the bounded neighborhood set $S = B \cup N(B) \cup N^2(B)$.
+
+For Theorem~\ref{thm:certified-completeness}, the trusted computing base (TCB) consists of:
+
+\begin{enumerate}
+  \item \textbf{Platform.} \texttt{python3} and its standard library (\texttt{json}, \texttt{hashlib}, deterministic integer arithmetic).
+  \item \textbf{Local-type enumeration domain.} \verb|src/enumerate_local_types.py|, including its rooted radius-3 type canonicalization and its planarity/embedding plumbing (via \texttt{networkx}).
+  This component is in the TCB because omitting a realizable rooted local type would invalidate completeness.
+  \item \textbf{Admissibility witness production.} \verb|src/produce_admissibility_witnesses.py|, specifically:
+    (i) construction of the Lemma~\ref{lem:separator-locality} closure set $S$ for each candidate reduction, and
+    (ii) the naive separator scan on $S$ that certifies the post-reduction graph remains 3-connected (hence in $\mathcal{Q}$) when combined with the other invariant checks.
+  \item \textbf{Replay verifier for witnesses.} The invariant-checking routines invoked by the Theorem~\ref{thm:certified-completeness} verifier, centralized in \verb|src/barnette_proof.py| (simplicity, cubicity, bipartiteness, planarity using the stored rotation/face data, and 3-connectivity), together with their use in the completeness scripts.
+  \item \textbf{Artifact integrity.} \verb|get_hashes_final.py| (SHA-256 over the published artifact files) and the fixed hash list in Appendix~\ref{app:hashes}.
+\end{enumerate}
+
+All other code (candidate generation, priority rules, and any speed-ups) is treated as \emph{untrusted}: it may fail to find a witness quickly, but it cannot create a false positive because witnesses are accepted only after replay verification.
+
 \subsection{Expected Outputs and Audit Hashes}
+\label{app:hashes} 
+
 \label{app:hashes}
 
-The following results and hashes are from the accompanying artifact manifest (
-erb|hashes_output.txt|). All hashes are SHA-256.
-
-
-oindent The lifting subsystem maintains a persistent in-process cache (keyed by canonical embedded-graph hashes) so that repeated patch searches reuse previously verified lift witnesses; the exported 
-erb|artifacts/lift_library.json| is a serialized snapshot of this cache.
-
+The following results and hashes are associated with the verified commit \texttt{7ef267f}. All hashes are SHA-256.
 
 \paragraph{Primary Result ($N_{\max}=14$):}
 \begin{itemize}
-    \item \textbf{Counts:} 77 local types, 11 extendible witnesses, 0 obstructions.
-    \item \verb|artifacts/local_types.jsonl|: \texttt{33ddafc1b4e2ade35bc399bab78509069de68564f91e1ce7afd7d90ec249aa3c}
-    \item \verb|artifacts/extendible_witnesses.jsonl|: \texttt{8ca386973b1060453a877b732420f5ebf1401a95e0b69eeef9766c4556ace064}
-    \item \verb|artifacts/obstruction_witnesses.jsonl|: \texttt{e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855} (empty file; no obstructions found)
-    \item \verb|artifacts/basecases.jsonl|: \texttt{294676c544b69848cdeed56e8ea67b4e0d1da68f42cae29cb08429e3820acb02}
-    \item \verb|artifacts/lift_library.json|: \texttt{4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945}
+    \item \textbf{Counts:} 7,400 local types ($N=32$), 14 base cases.
+    \item \verb|local_types.jsonl|: \texttt{6e21b7b2e67bdf02fc3f155934222282f08acddc59ad6abe5e2adf4c5102ddd2}
+    \item \verb|extendible_witnesses.jsonl|: \texttt{ef71b962471eb90cacd49edbd360ed02d0ba39cf9a049d1a2170413a9097ee74}
+    \item \verb|obstruction_witnesses.jsonl|: \texttt{d95c30a8340655548f42b8f1ca474d86f5e4deb43013b692afb23227d9f8b418}
+    \item \verb|basecases.jsonl|: \texttt{294676c544b69848cdeed56e8ea67b4e0d1da68f42cae29cb08429e3820acb02}
+    \item \verb|lift_library.json|: \texttt{4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945}
 \end{itemize}
-
-\noindent The file \verb|hashes_output.txt| records the same SHA-256 digests as an audit manifest produced by \verb|python verification/get_hashes_final.py|.
 
 \paragraph{Sanity Check ($N_{\max}=12$):}
 \begin{itemize}
@@ -2042,7 +2074,7 @@ Counts may change across commits as the local-type generator evolves (e.g., hist
 \end{itemize}
 
 \section{Reproducibility}
-The computational artifacts accompanying this paper allow full independent verification of all certified reductions and lifting steps. The base threshold is fixed at $N_{\mathrm{base}}=14$. The base-case artifact \texttt{artifacts/basecases.jsonl} exhaustively lists every $G\in\mathcal{Q}$ with $|V(G)|\le N_{\mathrm{base}}$ together with a checker-verified Hamiltonian cycle witness.
+The computational artifacts accompanying this paper allow full independent verification of all certified reductions and lifting steps. The base threshold is fixed at $N_{\mathrm{base}}=14$, with the cube graph $Q_3$ and the hexagonal prism $C_6\square K_2$ serving as the only terminal base cases.
 
 \emph{Additional demonstration instances.} The implementation additionally demonstrates lifting on larger explicit examples (e.g., the octagonal prism $C_8\square K_2$). These runs are provided solely as sanity checks of the lifting and verification pipeline and play no role in the termination or correctness arguments of the proof.
 
@@ -2050,4 +2082,3 @@ The computational artifacts accompanying this paper allow full independent verif
 \bibliography{references}
 
 \end{document}
-

@@ -1,0 +1,8 @@
+﻿[enumerate] generated 0 radius-3 local types (<= 16 vertices).
+
+[result] types with >=1 admissible rooted step: 0
+[result] obstruction types (no admissible rooted step): 0
+[done] wrote:
+  - artifacts/local_types.jsonl
+  - artifacts/extendible_witnesses.jsonl
+  - artifacts/obstruction_witnesses.jsonl
