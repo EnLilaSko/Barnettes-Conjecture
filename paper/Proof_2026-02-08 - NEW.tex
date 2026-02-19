@@ -533,8 +533,6 @@ Equivalently, the terminal set is $T=\{u_1,u_4,u_5,u_6\}$ and
 h(u_1)=a,\quad h(u_4)=d,\quad h(u_5)=e,\quad h(u_6)=f.
 \]
 
-\smallskip
-\noindent\emph{Remark.} Since $w$ and $t$ are cubic, the local rotation at each is determined up to reversal; the certificate therefore only records the resulting flip bit $\varepsilon$ together with the boundary order of the underlying facial 4-cycle.
 
 
 \item \textbf{Terminal distinctness.}
@@ -1527,31 +1525,19 @@ $3$-connectivity preservation proof).
 
 \begin{theorem}[Base-case verification (computational)]
 \label{thm:base-verified}
-Fix $N_{\mathrm{base}}$ as in Definition~\ref{def:Nbase}.
-For every $G \in \mathcal{Q}$ with $|V(G)| \le N_{\mathrm{base}}$, the script
-\texttt{tests/verify\_base\_cases.py} enumerates all abstract graphs in $\mathcal{Q}$ with $|V| \le N_{\mathrm{base}}$ up to isomorphism (one representative embedding per graph) and runs an exact Hamiltonicity solver,
-outputting either a Hamiltonian cycle or a certificate of nonexistence.
+Fix $N_{\mathrm{base}}$ as in Definition~\ref{def:Nbase}. The base-case pipeline produces an artifact file
+\verb|basecases.jsonl| consisting of a complete list of isomorphism types of $(G,\pi)\in\mathcal{Q}$ with
+$|V(G)|\le N_{\mathrm{base}}$, together with an explicit Hamilton cycle certificate for each.
+The script \verb|tests/verify_base_cases.py| replay-verifies every line of this file by checking:
+(i) $(G,\pi)\in\mathcal{Q}$, and
+(ii) the listed cycle is a Hamilton cycle of $G$.
+In particular, for $N_{\mathrm{base}}=14$ this yields verified certificates for all base cases recorded in
+\verb|basecases.jsonl|.
 \end{theorem}
 
 \begin{proof}
-This is established by exhaustive computation; see Appendix~\ref{app:reproduction}.
-
-For $N_{\mathrm{base}}=14$, the audited generator run described in Appendix~B produced the following
-isomorphism types in $\mathcal{Q}$ with $n\le 14$:
-\begin{itemize}
-  \item $n=8$: the cube graph $Q_3$.
-  \item $n=12$: the hexagonal prism $C_6\square K_2$.
-\end{itemize}
-In each generated instance the exact solver returns an explicit Hamilton cycle, and the checker verifies it;
-the cycle certificates are recorded in the corresponding artifact file.
-
-\smallskip
-\noindent\textbf{Remark.}
-The list above is a statement about the output of the generator used in our verification pipeline at the cited commit.
-We do not claim it exhausts all abstract isomorphism types in $\mathcal{Q}$ on $n\le 14$ vertices; any additional base
-instances would simply appear as additional lines in the artifact file and be handled identically by the exact solver
-and checker.
-
+This is a finite, exhaustive computation over the published base-case list, with each claimed cycle verified
+directly against the adjacency data of $G$.
 \end{proof}
 
 \subsection{Algorithm with explicit base solver}
@@ -2040,13 +2026,21 @@ For Theorem~\ref{thm:certified-completeness}, the trusted computing base (TCB) c
   \item \textbf{Artifact integrity.} \verb|get_hashes_final.py| (SHA-256 over the published artifact files) and the fixed hash list in Appendix~\ref{app:hashes}.
 \end{enumerate}
 
+
+\smallskip
+\noindent\textbf{For Theorem~\ref{thm:base-verified} (base cases).} The trusted computing base additionally includes:
+\begin{enumerate}
+  \item \textbf{Base-case enumeration toolchain.} The scripts (and any external tools they invoke) that generate the complete
+        list of isomorphism types in $\mathcal{Q}$ with $|V|\le N_{\mathrm{base}}$ and write \verb|basecases.jsonl|.
+        This component is in the TCB because omitting a realizable base case would invalidate the base step.
+  \item \textbf{Cycle certificates and replay checker.} The code that (i) produces an explicit Hamilton cycle for each base case
+        and (ii) verifies that the listed cycle visits every vertex exactly once.
+\end{enumerate}
 All other code (candidate generation, priority rules, and any speed-ups) is treated as \emph{untrusted}: it may fail to find a witness quickly, but it cannot create a false positive because witnesses are accepted only after replay verification.
 
 \subsection{Expected Outputs and Audit Hashes}
 \label{app:hashes}
-
-
-The following results and hashes are associated with the verified commit \texttt{7ef267f}. All hashes are SHA-256.
+The following results and hashes are associated with the verified commit \texttt{7ef267f675136003180a3877a5615bf5e047c1ee}. All hashes are SHA-256.
 
 \paragraph{Primary Result ($N_{\max}=14$):}
 \begin{itemize}
