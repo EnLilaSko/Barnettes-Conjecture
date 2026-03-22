@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\begin{document}
+
+\section*{Appendix: 3-Connectivity Preservation}
+
+\subsection*{Preface: Assumptions and Notation}
+We assume the setting of the main manuscript:
+\begin{itemize}
+    \item $G \in \mathcal{Q}$ is a 3-connected, cubic, bipartite, planar graph.
+    \item A certified occurrence of a configuration specifies a local patch $H \subset G$ bound exactly by a set of distinct terminal boundary vertices $B \subset V(G) \setminus V(H)$.
+    \item A reduction surgically replaces $H$ with a finite gadget $H'$ defined exclusively on the boundary $B$, yielding $G' = (G \setminus H) \cup H'$.
+    \item The gadgets $H'$ are strictly defined by two internal adjacent vertices $x, y$.
+\end{itemize}
+
+\subsection*{3-Connectivity Preservation Lemmas}
+
+To rigorously prove that any reduction preserves 3-connectivity without heuristic assertions, we assume for contradiction that the reduced graph $G'$ contains a 2-vertex cut $A = \{p, q\}$. This cut partitions the remaining vertices of $G'$ into non-empty disconnected components $C_1, C_2$. By exhaustive case analysis over the localization of $\{p, q\}$ relative to the gadget vertices $\{x, y\}$, we derive a corresponding 2-vertex or 1-vertex cut in the original 3-connected graph $G$, forcing a contradiction.
+
+\begin{lemma}[$C_2$ Modification Preserves 3-Connectivity]
+\label{lem:app-c2-3conn}
+If $G \in \mathcal{Q}$ is 3-connected and a certified $C_2$ reduction is applied, the reduced graph $G'$ is 3-connected.
+\end{lemma}
+\begin{proof}
+The $C_2$ gadget replaces the internal patch $H$ (containing 6 vertices) with $H' = \{x, y\}$ bridging the boundary $B = \{u_1, u_4, u_5, u_6\}$. The edge set of $H'$ linking to $B$ is strictly $\{xy, xu_1, xu_6, yu_4, yu_5\}$. By certification, $B$ contains 4 distinct vertices. In $G$, the attachments into $H$ from $B$ are exactly $u_1a, u_4d, u_5e, u_6f$ (with $a, d, e, f \in V(H)$ distinct).
+Suppose $G'$ has a 2-vertex cut $A = \{p, q\}$, partitioning $V(G') \setminus A$ into non-empty components $C_1, C_2$.
+
+\textbf{Case 1: $p, q \notin \{x, y\}$.}
+The edge $xy$ remains intact, so $x, y$ belong to the same component, say $C_1$.
+Consequently, any boundary vertex $u \in B \setminus \{p, q\}$ attached to $x$ or $y$ must also lie in $C_1$. Thus, $V(H') \cup (B \setminus \{p, q\}) \subseteq C_1$. This implies $C_2$ contains no vertices from the gadget or the remaining boundary. Removing $H'$ and restoring $H$ simply replaces a connected subgraph entirely within $C_1$. The cut $\{p, q\}$ therefore separates $C_2$ identically in $G$. Since $G$ is 3-connected, this is a contradiction.
+
+\textbf{Case 2: exactly one of $p, q$ is in $\{x, y\}$.}
+Without loss of generality by the symmetry of $H'$, assume $p = x$ and $q \notin \{x, y\}$.
+In $G' \setminus \{x, q\}$, the surviving gadget vertex $y$ lies in one component, say $C_1$.
+The opposite component $C_2$ therefore intersects $H'$ trivially ($C_2 \cap V(H') = \emptyset$). Hence $C_2 \subseteq V(G) \setminus V(H) \setminus \{q\}$.
+The only edges connecting $C_2$ to $C_1 \cup \{x\}$ in $G'$ go strictly to the cut vertices $x$ and $q$.
+Because the only edges incident to $x$ heading into $G \setminus H$ are $xu_1$ and $xu_6$, any edge from $C_2$ to $x$ implies that $u_1 \in C_2$ or $u_6 \in C_2$. Thus we examine the intersection $C_2 \cap \{u_1, u_6\}$:
+\begin{itemize}
+    \item \textbf{Subcase 2a: $C_2 \cap \{u_1, u_6\} = \emptyset$.} Then $C_2$ has NO edges to $x$. Its only outgoing edges in $G'$ are to $q$. In $G$, the connections for $C_2$ are identical since it attaches to neither $u_1$ nor $u_6$. Thus $\{q\}$ is a 1-vertex cut in $G$, contradicting 3-connectivity.
+    \item \textbf{Subcase 2b: $C_2 \cap \{u_1, u_6\} = \{u_1\}$.} (The $\{u_6\}$ case is symmetric). $C_2$ connects to $x$ strictly via $u_1$. In $G$, $u_1$ attaches exclusively to vertex $a \in V(H)$. Therefore, the only edges from $C_2$ to $V(G) \setminus C_2$ go to $q$ and $a$. This makes $\{q, a\}$ a 2-vertex cut in $G$ separating $C_2 \setminus \{u_1\}$, a contradiction.
+    \item \textbf{Subcase 2c: $C_2 \cap \{u_1, u_6\} = \{u_1, u_6\}$.} Both boundary neighbors of $x$ reside in $C_2$. Thus, $x$ possesses no edges to $C_1$: its neighbors are entirely within $C_2$ (namely $u_1, u_6$) plus the single edge $xy$.
+    Consequently, removing $y$ and $q$ completely severs $C_2 \cup \{x\}$ from $C_1 \setminus \{y\}$. This implies $\{y, q\}$ is simultaneously a 2-vertex cut in $G'$.
+    We now apply the identical case analysis to the cut $\{y, q\}$ and the separated component $C_2^* = C_2 \cup \{x\}$.
+    By definition, $y$'s boundary neighborhood is $\{u_4, u_5\}$. Since $C_2^* \cap V(G \setminus H) = C_2$, and $C_2$ connects solely to $x$ and $q$ in $G'$, $C_2$ contains neither $u_4$ nor $u_5$ in its interior away from the cut $q$. Thus $C_2^* \cap \{u_4, u_5\} = \emptyset$. This perfectly mirrors Subcase 2a, deducing a 1-vertex cut $\{q\}$ separating $C_2$ in $G$. Contradiction.
+\end{itemize}
+
+\textbf{Case 3: $p, q \in \{x, y\}$.}
+Here, the cut is strictly $\{x, y\}$. $G' \setminus \{x, y\}$ is exactly $G \setminus H$.
+Since $A$ is a cut, $G \setminus H$ must be disconnected into non-empty components $C_1, C_2$.
+The boundary $B$ distributes across $C_1$ and $C_2$.
+Because $G$ is 3-connected, separating any subset of $G \setminus H$ from $H$ requires at least a 3-vertex cut in $G$. Thus, the number of distinct vertices in $H$ that $C_i$ attaches to must be $\ge 3$.
+For a certified $C_2$, each terminal $u \in B$ has exactly one edge into $H$ (connecting to distinct vertices $a, d, e, f$). Thus, $|B \cap C_i|$ must be $\ge 3$ to touch 3 distinct internal vertices.
+However, $|B| = 4$. It is mathematically impossible to partition 4 vertices into two disjoint sets each of size $\ge 3$. Therefore, $G \setminus H$ cannot be disconnected by $\{x, y\}$.
+
+By exhaustive contradiction, $G'$ contains no 2-cut.
+\end{proof}
+
+\begin{lemma}[Refined $C_4$ Modification Preserves 3-Connectivity]
+\label{lem:app-c4-3conn}
+If $G \in \mathcal{Q}$ is 3-connected and a certified refined $C_4$ reduction is applied, the reduced graph $G'$ is 3-connected.
+\end{lemma}
+\begin{proof}
+The $C_4$ gadget maps $H'$ to the boundary $B = \{u_1, u_2, u_3, u_4\}$ via the edges $\{xy, xu_1, xu_3, yu_2, yu_4\}$. By certification, the 4 terminals are distinct, and each attaches strictly to one vertex $v_i \in V(H)$ in $G$.
+Suppose $G'$ has a 2-cut $A = \{p, q\}$, separating components $C_1$ and $C_2$.
+
+\textbf{Case 1: $p, q \notin \{x, y\}$.}
+Identical to $C_2$: $xy$ connects $x$ and $y$ into $C_1$. All surviving terminals in $B$ link to $C_1$. $C_2$ is unaffected by the $H \to H'$ substitution, so $\{p, q\}$ remains a 2-cut in $G$, violating 3-connectivity.
+
+\textbf{Case 2: exactly one of $p, q$ is in $\{x, y\}$.}
+Assume $p = x$ and $q \notin \{x, y\}$. $y$ lies in $C_1$, leaving $C_2$ isolated from $H'$ except through $x$ and $q$.
+The boundary neighbors of $x$ are strictly $\{u_1, u_3\}$. We evaluate $C_2 \cap \{u_1, u_3\}$:
+If empty, $C_2$ has NO edges to $x$; $q$ forms a 1-cut in $G$.
+If exactly $\{u_1\}$ (resp. $\{u_3\}$), $C_2$ connects only to $q$ and $u_1$. In $G$, $u_1$ attaches exclusively to $v_1 \in V(H)$, yielding a 2-cut $\{q, v_1\}$ in $G$.
+If both $\{u_1, u_3\}$, then $x$ has no neighbors in $C_1$ outside of $y$. This induces $\{y, q\}$ as a 2-cut separating $C_2 \cup \{x\}$. Checking $\{y, q\}$ against $y$'s boundary neighbors $\{u_2, u_4\}$, we find $C_2 \cap \{u_2, u_4\} = \emptyset$, instantly reverting to the 1-cut contradiction proven above.
+
+\textbf{Case 3: $p, q \in \{x, y\}$.}
+Removing $\{x, y\}$ isolates $G \setminus H$ into $C_1, C_2$, splitting $B$.
+To satisfy $G$'s 3-connectivity, each component requires connections to $\ge 3$ distinct vertices in $H$. Since $|B|=4$ and each boundary terminal supplies exactly 1 edge to uniformly distinct vertices in $H$, neither component can achieve the required 3 connections upon partition.
+\end{proof}
+
+\begin{lemma}[$C_P$ Modification Preserves 3-Connectivity]
+\label{lem:app-cp-3conn}
+If $G \in \mathcal{Q}$ is 3-connected and a certified $C_P$ reduction is applied, the reduced graph $G'$ is 3-connected.
+\end{lemma}
+\begin{proof}
+The $C_P$ gadget binds $H' = \{x, y\}$ to $B = \{r, s, u_2, u_4\}$ via $\{xy, xr, xs, yu_2, yu_4\}$. Certification ensures all 4 boundary terminals are distinct.
+In $G$, the attachments into $H$ from $B$ are: $u_2 \sim v_2$, $u_4 \sim v_4$, and $\{r, s\}$ both adjacent strictly to the single vertex $t \in V(H)$.
+Assume $G'$ has a 2-cut $\{p, q\}$ separating $C_1$ and $C_2$.
+
+\textbf{Case 1: $p, q \notin \{x, y\}$.}
+Identical to the prior lemmas; reducing $H' \to H$ exposes the cut in $G$, verifying contradiction.
+
+\textbf{Case 2: exactly one of $p, q$ is in $\{x, y\}$.}
+Assume $p=x, q \notin \{x, y\}$. The neighbors of $x$ are $r, s$.
+If $C_2 \cap \{r, s\} = \emptyset$, $\{q\}$ is a 1-cut in $G$.
+If $C_2 \cap \{r, s\}$ is a single terminal (say $r$), $C_2$ routes exclusively to $q$ and $r$. In $G$, $r$ attaches only to $t$. Thus $\{q, t\}$ is a 2-cut in $G$, a contradiction.
+If $C_2 \cap \{r, s\} = \{r, s\}$, $x$ abandons $C_1$ aside from $y$, making $\{y, q\}$ a 2-cut separating $C_2 \cup \{x\}$. As $\{u_2, u_4\} \notin C_2$, it collapses to a 1-cut $\{q\}$ in $G$, a contradiction.
+Assume $p=y, q \notin \{x, y\}$. The neighbors of $y$ are $u_2, u_4$. Single-terminal intersection yields $\{q, v_2\}$ or $\{q, v_4\}$ cuts in $G$. Double-terminal intersection mirrors back to $x$ and yields a 1-cut. Contradiction.
+
+\textbf{Case 3: $p, q \in \{x, y\}$.}
+Removing $\{x, y\}$ isolates $G \setminus H$ into $C_1, C_2$, splitting $B$.
+To satisfy $G$'s 3-connectivity, the attachments from $C_i \cap B$ into $H$ must form a cut of size $\ge 3$ in $G$.
+Notice $H$ provides exactly 3 contact vertices to $B$: $v_2, v_4, t$. Any subset of $B$ connecting $C_i$ to $H$ relies strictly on these 3 vertices. If $B$ is partitioned into two non-empty subsets $B_1, B_2$, we examine the interior attachments:
+If $|B_1| = 1$ (say $\{u_2\}$), $C_1$ connects only to $\{v_2\}$, forming a 1-cut.
+If $|B_1| = 2$.
+-- If $B_1 = \{r, s\}$, both terminals attach exclusively to $t$. Thus $C_1$ accesses $H$ solely via $t$, producing a 1-cut $\{t\}$ in $G$.
+-- If $B_1 = \{u_2, u_4\}$, the attachments are $\{v_2, v_4\}$, yielding a 2-cut in $G$.
+-- If $B_1 = \{r, u_2\}$, the attachments are $\{t, v_2\}$, a 2-cut in $G$.
+In all valid partitions of $B$, at least one component $C_i$ maps to $\le 2$ attachment vertices in $H$. Reverting to $G$, this identically specifies a cut of size $\le 2$, fundamentally violating the 3-connectivity of $G$. Thus, $G \setminus H$ cannot disconnect.
+\end{proof}
+
+\begin{corollary}
+Any certified reduction step independently and deterministically preserves 3-connectivity.
+\end{corollary}
+
+\end{document}

@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+
+\section*{Pullback Lemma for Refined $C_4$ Reduction}
+
+This document provides a rigorous 2-vertex cut pullback for the refined $C_4$ reduction.
+We rely on the class $\mathcal{Q}$ of 3-connected cubic bipartite planar graphs and the definition of a certified occurrence $H$ and its boundary $B$.
+
+\begin{lemma}[Connectedness of $G \setminus H$]
+\label{lem:isolated_neighborhood}
+Let $G \in \mathcal{Q}$ contain a certified occurrence $H$. Then the induced subgraph $G[\,V(G)\setminus V(H)\,]$ is connected.
+\end{lemma}
+\begin{proof}
+Since $G$ is 3-connected, it is 3-edge-connected. Any component $C$ of $G[V(G)\setminus V(H)]$ would require $|E(C, V(H))| \ge 3$. If there were at least two such components, we would have $|E(V(G)\setminus V(H), V(H))| \ge 6$, contradicting the fact that a certified occurrence has exactly 4 boundary edges.
+\end{proof}
+
+\begin{lemma}[2-Vertex Cut Pullback for Refined $C_4$]
+\label{lem:pullback_cut_refinedC4}
+Assume $G \in \mathcal{Q}$ contains a certified refined $C_4$ occurrence $H$ with boundary $B = \{u_1, u_2, u_3, u_4\}$. Let $G' = (G \setminus H) \cup H'$ be the reduced graph, where $H'$ has adjacent gadget vertices $x, y$ such that $N_{G'}(x) \setminus \{y\} = \{u_1, u_3\} = B_x$ and $N_{G'}(y) \setminus \{x\} = \{u_2, u_4\} = B_y$.
+
+If $G'$ has a 2-vertex cut $A = \{p, q\}$, then either:
+\begin{enumerate}
+    \item[(i)] $A \subseteq V(G) \setminus V(H)$ and $A$ is a 2-vertex cut of $G$; or
+    \item[(ii)] exactly one of $\{p, q\}$ is a gadget vertex (w.l.o.g. $p=x$ or $p=y$) and $q \in V(G) \setminus V(H)$, and there exists a nonempty vertex set $K \subseteq V(G) \setminus V(H)$ such that every edge leaving $K$ in $G$ has its endpoint in $\{q\} \cup B_p$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $A = \{p, q\}$ be a 2-vertex cut in $G'$.
+
+\medskip
+\noindent\textbf{Case 1: $p, q \notin \{x, y\}$.} \\
+Since $x$ and $y$ are adjacent in $G'$, they lie in the same component of $G' - A$; let this component be $C_0$. Since $A$ is a 2-vertex cut, there exists another component $C_1$ of $G' - A$. 
+Note $C_1 \subseteq V(G') \setminus \{x, y\} = V(G) \setminus V(H)$.
+Any boundary terminal $b \in B$ not in $A$ is adjacent in $G'$ to either $x \in C_0$ or $y \in C_0$, hence $B \subseteq V(C_0) \cup A$.
+Restoring $H$ in $G$ only restores edges between $V(H)$ and $B$. Since $C_1 \cap B = \emptyset$ (as $C_1$ is a component disjoint from $C_0$ and $B \setminus A \subseteq C_0$), and $C_1$ is disjoint from $V(H)$, there are no edges in $G$ from $C_1$ to $V(H)$. The edges among vertices in $V(G) \setminus V(H)$ are identical in $G$ and $G'$. Thus, every neighbor of $C_1$ in $G$ must lie in $A$. This implies $A$ is a 2-vertex cut in $G$, proving (i).
+
+\medskip
+\noindent\textbf{Case 2: $\{p, q\} = \{x, y\}$.} \\
+Then $G' - \{x, y\} = G[\,V(G) \setminus V(H)\,]$. By Lemma~\ref{lem:isolated_neighborhood}, this induced subgraph is connected, so $\{x, y\}$ cannot be a 2-vertex cut of $G'$. Contradiction.
+
+\medskip
+\noindent\textbf{Case 3: Exactly one of $\{p, q\}$ lies in $\{x, y\}$.} \\
+By symmetry, assume $p = x$ and $q \in V(G) \setminus V(H)$. 
+Let $C_0$ be the component of $G' - \{x, q\}$ containing $y$. Since $\{x, q\}$ is a cut, there is another component $C_1$ of $G' - \{x, q\}$.
+Define $K = V(C_1) \setminus B_x$. 
+Note $V(C_1) \cap \{y\} = \emptyset$ (since $C_1$ is a component distinct from $C_0$). Thus $V(C_1) \subseteq V(G) \setminus V(H)$.
+Since $B_y \subseteq N_{G'}(y) \setminus \{x\}$, any $b \in B_y \setminus \{q\}$ is adjacent to $y \in C_0$ in $G' - \{x, q\}$, so $B_y \subseteq V(C_0) \cup \{q\}$.
+This implies $C_1 \cap B_y = \emptyset$. Since $B = B_x \cup B_y$, we have $C_1 \cap B \subseteq B_x$.
+It follows that $K = V(C_1) \setminus B_x = V(C_1) \setminus B$.
+
+If $V(C_1)\nsubseteq B_x$ then $K\neq\emptyset$ immediately. Otherwise pick $b\in V(C_1)\cap B_x$.
+In $G'$, the vertex $b$ has degree $3$ with neighbors $\{x\}\cup N$, where $N\subseteq V(G)\setminus V(H)$ consists of two distinct non-gadget neighbors.
+After deleting $\{x,q\}$, at most one of these two neighbors can equal $q$, so there exists $w\in N\setminus\{q\}$.
+Then $w\in V(C_1)$ (since $bw$ is an edge of $G'-\{x,q\}$), and $w\notin B_x$ (because $w\notin B$ and $B_x\subseteq B$).
+Hence $w\in K$, so $K\neq\emptyset$.
+
+Let $v\in K$. Since $K\cap B=\emptyset$, $v$ has no neighbor in $\{x,y\}$ in $G'$ (only terminals in $B$ are adjacent to gadget vertices).
+Also $v\in V(C_1)$, and $C_1$ is a connected component of $G'-\{x,q\}$.
+Therefore every neighbor of $v$ in $G'$ lies in $V(C_1)\cup\{q\}$.
+Hence every edge leaving $K$ in $G'$ has its endpoint in $(V(C_1)\setminus K)\cup\{q\}\subseteq B_x\cup\{q\}$.
+Finally, $K\cap B=\emptyset$ implies $K$ has no edges to $H$ in $G$; thus every edge leaving $
+
+\end{proof}
+
+\end{document}

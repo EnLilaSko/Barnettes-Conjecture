@@ -1,0 +1,64 @@
+{
+  "candidate_count": 0,
+  "exception_count": 3,
+  "gadget_vertices": 8,
+  "n_max": 24,
+  "n_min": 20,
+  "plantri_path": "C:\\Users\\charl\\Documents\\New Math Problem\\plantri.exe",
+  "results": [
+    {
+      "candidate": null,
+      "candidate_found": false,
+      "n_vertices": 20,
+      "occ": {
+        "a": 16,
+        "b": 11,
+        "c": 17,
+        "d": 19,
+        "e": 12,
+        "f": 7,
+        "u1": 10,
+        "u4": 15,
+        "u5": 13,
+        "u6": 3
+      },
+      "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,eop,fqg,hqr,hrn,ims,isj,jst,ktl,ltm,npo,prq"
+    },
+    {
+      "candidate": null,
+      "candidate_found": false,
+      "n_vertices": 24,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,ist,itp,jou,jlk,muv,nvw,nwo,pxr,rxs,sxt,uwv"
+    },
+    {
+      "candidate": null,
+      "candidate_found": false,
+      "n_vertices": 24,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,irs,itp,jou,jlk,mvn,nvw,owu,ptx,rxs,sxt,uwv"
+    }
+  ]
+}

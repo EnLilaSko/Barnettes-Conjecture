@@ -1,0 +1,5 @@
+--- DUPLICATE LABELS ---
+  sec:inductive-skeleton
+--- UNDEFINED REFS ---
+  #1
+--- THRESHOLD ISSUES ---

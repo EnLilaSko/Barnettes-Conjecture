@@ -172,7 +172,7 @@
           "properties": {
             "n_before": { "type": "integer", "minimum": 1 },
             "n_after": { "type": "integer", "minimum": 1 },
-            "delta_n": { "type": "integer", "enum": [-2] },
+            "delta_n": { "type": "integer", "enum": [-4, -2] },
 
             "mu_before": {
               "type": "array",

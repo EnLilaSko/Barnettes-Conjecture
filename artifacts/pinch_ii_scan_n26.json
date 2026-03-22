@@ -1,0 +1,14 @@
+{
+  "boundary_edge_patterns": {},
+  "fail_count": 0,
+  "first_fail": null,
+  "first_pass": null,
+  "graphs_with_occurrence": 0,
+  "n_max": 26,
+  "n_min": 26,
+  "occurrence_count": 0,
+  "pass_count": 0,
+  "plantri_path": "C:\\Users\\charl\\Documents\\New Math Problem\\plantri.exe",
+  "reduction_errors": {},
+  "scanned_graph_count": 57
+}

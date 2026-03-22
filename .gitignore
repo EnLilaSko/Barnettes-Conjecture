@@ -1,0 +1,5 @@
+.python313/
+.venv/
+__pycache__/
+*.pyc
+plantri.exe

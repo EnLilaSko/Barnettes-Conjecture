@@ -1,0 +1,1346 @@
+{
+  "gadget_sizes": [
+    6,
+    8
+  ],
+  "results": [
+    {
+      "family_name": "L=6,6,6,6|B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1",
+      "occurrence_count": 7,
+      "seed_example": {
+        "general_attachment_sizes": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "general_boundary_count": 4,
+        "general_deleted_size": 16,
+        "general_exterior_sizes": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2,
+          3,
+          3
+        ],
+        "n_vertices": 24,
+        "occ": {
+          "u1": 3,
+          "u2": 4,
+          "u3": 11,
+          "u4": 6,
+          "v1": 0,
+          "v2": 1,
+          "v3": 5,
+          "v4": 2
+        },
+        "outer_face_length_key": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "raw_line": "24 bcd,aef,afg,ahi,bjk,blc,cmn,dno,doj,eip,epq,fqr,grs,gsh,hti,juk,kvl,lvm,mwn,owu,ptx,qxr,sxt,uwv"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 8,
+          "verification": null
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,6,8,8|B=7|I=0,0,1,2,2,1,3,4,5,6|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1",
+      "occurrence_count": 3,
+      "seed_example": {
+        "general_attachment_sizes": [
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "general_boundary_count": 7,
+        "general_deleted_size": 20,
+        "general_exterior_sizes": [
+          1,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          2,
+          2,
+          1,
+          3,
+          4,
+          5,
+          6
+        ],
+        "n_vertices": 28,
+        "occ": {
+          "u1": 0,
+          "u2": 9,
+          "u3": 18,
+          "u4": 11,
+          "v1": 1,
+          "v2": 4,
+          "v3": 10,
+          "v4": 5
+        },
+        "outer_face_length_key": [
+          6,
+          6,
+          8,
+          8
+        ],
+        "raw_line": "28 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dop,eqr,esf,ftg,gur,hrv,ivw,iwq,jpx,jnm,kyz,lz{,m{y,nxo,oxp,qwv,su|,s|t,t|u,y{z"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 8,
+          "verification": null
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,6,6,10|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1",
+      "occurrence_count": 2,
+      "seed_example": {
+        "general_attachment_sizes": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "general_boundary_count": 4,
+        "general_deleted_size": 20,
+        "general_exterior_sizes": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          2,
+          3,
+          3,
+          2,
+          1
+        ],
+        "n_vertices": 24,
+        "occ": {
+          "u1": 0,
+          "u2": 11,
+          "u3": 16,
+          "u4": 13,
+          "v1": 3,
+          "v2": 7,
+          "v3": 12,
+          "v4": 8
+        },
+        "outer_face_length_key": [
+          6,
+          6,
+          6,
+          10
+        ],
+        "raw_line": "24 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dmn,eop,egf,gph,hqi,irs,jtu,jul,muv,nvw,nwt,osx,oqp,qxr,rxs,twv"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 8,
+          "verification": null
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,6,6,10|B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2",
+      "occurrence_count": 2,
+      "seed_example": {
+        "general_attachment_sizes": [
+          1,
+          2,
+          2,
+          2,
+          1
+        ],
+        "general_boundary_count": 5,
+        "general_deleted_size": 20,
+        "general_exterior_sizes": [
+          2,
+          1,
+          1,
+          1,
+          2
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          2,
+          3,
+          4,
+          2,
+          1
+        ],
+        "n_vertices": 30,
+        "occ": {
+          "u1": 0,
+          "u2": 14,
+          "u3": 24,
+          "u4": 16,
+          "v1": 2,
+          "v2": 6,
+          "v3": 15,
+          "v4": 7
+        },
+        "outer_face_length_key": [
+          6,
+          6,
+          6,
+          10
+        ],
+        "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cop,cpq,dqm,drk,ejs,est,fti,fuv,gwx,gyh,hui,jts,krl,lrm,nqz,nz{,o{|,o|},p}z,uyv,v~w,w~x,x~y,{}|"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": {
+            "boundary_slot_orders": [
+              [
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0
+              ]
+            ],
+            "gadget_orders": [
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ]
+            ],
+            "gadget_vertices": 8,
+            "internal_edges": [
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                5
+              ],
+              [
+                4,
+                6
+              ],
+              [
+                5,
+                7
+              ]
+            ],
+            "matrix": [
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "n_after": 18
+          },
+          "candidate_found": true,
+          "gadget_vertices": 8,
+          "verification": {
+            "failure": {
+              "error": "Euler fails: V=18 E=27 F=7",
+              "n_vertices": 30,
+              "occ": {
+                "u1": 5,
+                "u2": 16,
+                "u3": 24,
+                "u4": 26,
+                "v1": 13,
+                "v2": 20,
+                "v3": 25,
+                "v4": 21
+              },
+              "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cop,cpq,dqm,drk,ejs,est,fti,fuv,gwx,gyh,hui,jts,krl,lrm,nqz,nz{,o{|,o|},p}z,uyv,v~w,w~x,x~y,{}|"
+            },
+            "matched_pattern_count": 2,
+            "pass_count": 1,
+            "scanned_occurrences": 532,
+            "skipped_other_pattern": 0,
+            "skipped_other_shape": 530
+          }
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,1,1,2,2,1|E=2,2,2,1,1,2",
+      "occurrence_count": 2,
+      "seed_example": {
+        "general_attachment_sizes": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          1
+        ],
+        "general_boundary_count": 6,
+        "general_deleted_size": 16,
+        "general_exterior_sizes": [
+          2,
+          2,
+          2,
+          1,
+          1,
+          2
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "n_vertices": 30,
+        "occ": {
+          "u1": 1,
+          "u2": 6,
+          "u3": 14,
+          "u4": 8,
+          "v1": 0,
+          "v2": 2,
+          "v3": 7,
+          "v4": 3
+        },
+        "outer_face_length_key": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,ers,fst,ftg,guv,hvw,iwq,jpx,kxy,kyl,lzm,nz{,n|o,o|p,q}r,r~s,t~u,u~},v}w,x|{,y{z"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 8,
+          "verification": null
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,2,2,1,1,1|E=2,1,1,2,2,2",
+      "occurrence_count": 2,
+      "seed_example": {
+        "general_attachment_sizes": [
+          1,
+          2,
+          2,
+          1,
+          1,
+          1
+        ],
+        "general_boundary_count": 6,
+        "general_deleted_size": 16,
+        "general_exterior_sizes": [
+          2,
+          1,
+          1,
+          2,
+          2,
+          2
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "n_vertices": 30,
+        "occ": {
+          "u1": 1,
+          "u2": 18,
+          "u3": 25,
+          "u4": 6,
+          "v1": 5,
+          "v2": 11,
+          "v3": 19,
+          "v4": 12
+        },
+        "outer_face_length_key": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,ers,fst,ftg,guv,hvw,iwq,jpx,kxy,kyl,lzm,nz{,n|o,o|p,q}r,r~s,t~u,u~},v}w,x|{,y{z"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 8,
+          "verification": null
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=2,1,1,1,1,2|E=1,2,2,2,2,1",
+      "occurrence_count": 2,
+      "seed_example": {
+        "general_attachment_sizes": [
+          2,
+          1,
+          1,
+          1,
+          1,
+          2
+        ],
+        "general_boundary_count": 6,
+        "general_deleted_size": 16,
+        "general_exterior_sizes": [
+          1,
+          2,
+          2,
+          2,
+          2,
+          1
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "n_vertices": 30,
+        "occ": {
+          "u1": 3,
+          "u2": 4,
+          "u3": 23,
+          "u4": 22,
+          "v1": 8,
+          "v2": 9,
+          "v3": 16,
+          "v4": 15
+        },
+        "outer_face_length_key": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,ers,fst,ftg,guv,hvw,iwq,jpx,kxy,kyl,lzm,nz{,n|o,o|p,q}r,r~s,t~u,u~},v}w,x|{,y{z"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": {
+            "boundary_slot_orders": [
+              [
+                1,
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "gadget_orders": [
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ]
+            ],
+            "gadget_vertices": 8,
+            "internal_edges": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                4
+              ],
+              [
+                1,
+                5
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                6,
+                7
+              ]
+            ],
+            "matrix": [
+              [
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            ],
+            "n_after": 22
+          },
+          "candidate_found": true,
+          "gadget_vertices": 8,
+          "verification": {
+            "failure": {
+              "error": "Euler fails: V=22 E=33 F=7",
+              "n_vertices": 30,
+              "occ": {
+                "u1": 7,
+                "u2": 13,
+                "u3": 28,
+                "u4": 15,
+                "v1": 14,
+                "v2": 21,
+                "v3": 27,
+                "v4": 22
+              },
+              "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,ers,fst,ftg,guv,hvw,iwq,jpx,kxy,kyl,lzm,nz{,n|o,o|p,q}r,r~s,t~u,u~},v}w,x|{,y{z"
+            },
+            "matched_pattern_count": 2,
+            "pass_count": 1,
+            "scanned_occurrences": 211,
+            "skipped_other_pattern": 0,
+            "skipped_other_shape": 209
+          }
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,8,6,8|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1",
+      "occurrence_count": 2,
+      "seed_example": {
+        "general_attachment_sizes": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "general_boundary_count": 4,
+        "general_deleted_size": 20,
+        "general_exterior_sizes": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          2,
+          3,
+          3,
+          2,
+          1
+        ],
+        "n_vertices": 24,
+        "occ": {
+          "u1": 0,
+          "u2": 11,
+          "u3": 16,
+          "u4": 13,
+          "v1": 3,
+          "v2": 7,
+          "v3": 12,
+          "v4": 8
+        },
+        "outer_face_length_key": [
+          6,
+          8,
+          6,
+          8
+        ],
+        "raw_line": "24 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dmn,eop,egf,gph,hqi,iro,jns,jsl,mtu,nuv,owp,qwx,qxr,rxw,svt,tvu"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 8,
+          "verification": null
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,8,8,10|B=6|I=0,0,1,2,3,3,2,4,5,5,4,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1",
+      "occurrence_count": 2,
+      "seed_example": {
+        "general_attachment_sizes": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "general_boundary_count": 6,
+        "general_deleted_size": 24,
+        "general_exterior_sizes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          2,
+          3,
+          3,
+          2,
+          4,
+          5,
+          5,
+          4,
+          1
+        ],
+        "n_vertices": 30,
+        "occ": {
+          "u1": 0,
+          "u2": 9,
+          "u3": 16,
+          "u4": 11,
+          "v1": 1,
+          "v2": 4,
+          "v3": 10,
+          "v4": 5
+        },
+        "outer_face_length_key": [
+          6,
+          8,
+          8,
+          10
+        ],
+        "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dmn,eop,eqf,frg,gih,irs,jtu,juv,kwx,lyn,nyt,osz,ozp,pz{,q{|,q|},r}s,tvu,v~w,w~x,x~y,{}|"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": {
+            "boundary_slot_orders": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "gadget_orders": [
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                0,
+                1,
+                2
+              ],
+              [
+                2,
+                1,
+                0
+              ]
+            ],
+            "gadget_vertices": 8,
+            "internal_edges": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                3,
+                5
+              ],
+              [
+                6,
+                7
+              ]
+            ],
+            "matrix": [
+              [
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                1,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0
+              ]
+            ],
+            "n_after": 14
+          },
+          "candidate_found": true,
+          "gadget_vertices": 8,
+          "verification": {
+            "failure": {
+              "error": "Euler fails: V=14 E=21 F=3",
+              "n_vertices": 30,
+              "occ": {
+                "u1": 8,
+                "u2": 11,
+                "u3": 28,
+                "u4": 19,
+                "v1": 13,
+                "v2": 17,
+                "v3": 24,
+                "v4": 18
+              },
+              "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dmn,eop,eqf,frg,gih,irs,jtu,juv,kwx,lyn,nyt,osz,ozp,pz{,q{|,q|},r}s,tvu,v~w,w~x,x~y,{}|"
+            },
+            "matched_pattern_count": 2,
+            "pass_count": 1,
+            "scanned_occurrences": 411,
+            "skipped_other_pattern": 1,
+            "skipped_other_shape": 408
+          }
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,6,6,6|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1",
+      "occurrence_count": 1,
+      "seed_example": {
+        "general_attachment_sizes": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "general_boundary_count": 4,
+        "general_deleted_size": 16,
+        "general_exterior_sizes": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          2,
+          3,
+          3,
+          2,
+          1
+        ],
+        "n_vertices": 20,
+        "occ": {
+          "u1": 4,
+          "u2": 19,
+          "u3": 7,
+          "u4": 10,
+          "v1": 9,
+          "v2": 15,
+          "v3": 11,
+          "v4": 16
+        },
+        "outer_face_length_key": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,epq,fqg,hqp,hrn,ims,ist,jtl,jlk,mts,nro,orp"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 8,
+          "verification": null
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,6,6,6|B=5|I=0,0,1,1,2,2,3,4|A=1,2,2,2,1|E=2,1,1,1,2",
+      "occurrence_count": 1,
+      "seed_example": {
+        "general_attachment_sizes": [
+          1,
+          2,
+          2,
+          2,
+          1
+        ],
+        "general_boundary_count": 5,
+        "general_deleted_size": 16,
+        "general_exterior_sizes": [
+          2,
+          1,
+          1,
+          1,
+          2
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          1,
+          2,
+          2,
+          3,
+          4
+        ],
+        "n_vertices": 30,
+        "occ": {
+          "u1": 1,
+          "u2": 20,
+          "u3": 27,
+          "u4": 6,
+          "v1": 5,
+          "v2": 12,
+          "v3": 21,
+          "v4": 13
+        },
+        "outer_face_length_key": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cno,cop,dqr,drk,ejs,etu,fuv,fvg,gwh,hxy,iys,isj,krq,lz{,l{m,m|n,o|},p}z,pzq,tyx,t~u,v~w,w~x,{}|"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 8,
+          "verification": null
+        }
+      ]
+    },
+    {
+      "family_name": "L=6,6,6,6|B=5|I=0,0,1,2,3,3,2,4|A=1,2,1,2,2|E=2,1,2,1,1",
+      "occurrence_count": 1,
+      "seed_example": {
+        "general_attachment_sizes": [
+          1,
+          2,
+          1,
+          2,
+          2
+        ],
+        "general_boundary_count": 5,
+        "general_deleted_size": 16,
+        "general_exterior_sizes": [
+          2,
+          1,
+          2,
+          1,
+          1
+        ],
+        "general_interface_word_key": [
+          0,
+          0,
+          1,
+          2,
+          3,
+          3,
+          2,
+          4
+        ],
+        "n_vertices": 26,
+        "occ": {
+          "u1": 0,
+          "u2": 13,
+          "u3": 22,
+          "u4": 15,
+          "v1": 2,
+          "v2": 6,
+          "v3": 14,
+          "v4": 7
+        },
+        "outer_face_length_key": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "raw_line": "26 bcd,aef,agh,aij,bkl,bmn,cno,cop,dpq,dqr,est,etu,fuv,fvg,gwh,hxi,ixj,jxw,kyz,kzl,lzm,myn,oyr,prq,swv,sut"
+      },
+      "size_results": [
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 6,
+          "verification": null
+        },
+        {
+          "candidate": null,
+          "candidate_found": false,
+          "gadget_vertices": 8,
+          "verification": null
+        }
+      ]
+    }
+  ],
+  "selected_families": [
+    "L=6,6,6,6|B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1",
+    "L=6,6,8,8|B=7|I=0,0,1,2,2,1,3,4,5,6|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1",
+    "L=6,6,6,10|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1",
+    "L=6,6,6,10|B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2",
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,1,1,2,2,1|E=2,2,2,1,1,2",
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,2,2,1,1,1|E=2,1,1,2,2,2",
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=2,1,1,1,1,2|E=1,2,2,2,2,1",
+    "L=6,8,6,8|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1",
+    "L=6,8,8,10|B=6|I=0,0,1,2,3,3,2,4,5,5,4,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1",
+    "L=6,6,6,6|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1",
+    "L=6,6,6,6|B=5|I=0,0,1,1,2,2,3,4|A=1,2,2,2,1|E=2,1,1,1,2",
+    "L=6,6,6,6|B=5|I=0,0,1,2,3,3,2,4|A=1,2,1,2,2|E=2,1,2,1,1"
+  ],
+  "source_census": "artifacts\\unresolved_refined_c4_family_census_n30_after_refined_c4_library.json",
+  "summary": {
+    "candidate_result_count": 3,
+    "family_count": 12,
+    "per_size_found": {
+      "8": 3
+    },
+    "per_size_verified": {},
+    "verified_result_count": 0
+  }
+}

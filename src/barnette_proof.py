@@ -25,7 +25,13 @@ Proof references:
     - Lemma 2.1: total initial charge is -8
     - Lemma 3.1 / Cor. 3.2: a 4-face exists
     - Lemma 4.2: pinch(i) forces adjacent quad (C2)
-    - Theorem 5.1: every graph in Q contains C2 or refined C4 or C_pinch(ii)
+    - Theorem 5.1: local 4-face analysis yields C2 or refined C4 or C_pinch(ii) topologically
+
+Current Strategy-A status:
+  A detected local pattern is treated as a certified reduction step only after the reduced
+  post-state is revalidated in Q. In the current branch this supports the C2 pipeline and a
+  curated library of certified refined-C4 gadget subfamilies, while pinch(ii) and generalized
+  lift-back for the larger refined-C4 gadgets remain open.
 
 Files (recommended):
   - barnette_proof.py
@@ -382,11 +388,55 @@ DELTA_N = {
     "refined_C4": -2,
 }
 
-def check_delta_n(n_before: int, n_after: int, step_type: str) -> None:
-    expected = DELTA_N[step_type]
+def check_delta_n(n_before: int, n_after: int, step_type: str, rec: Optional[object] = None) -> None:
+    if isinstance(rec, dict) and "delta_n" in rec:
+        expected = int(rec["delta_n"])
+    else:
+        expected = DELTA_N[step_type]
     got = n_after - n_before
     if got != expected:
         raise ValueError(f"Δn mismatch for {step_type}: got {got}, expected {expected}")
+    if got >= 0:
+        raise ValueError(f"nondecreasing reduction for {step_type}: got {got}")
+
+
+def try_reduce_certified(
+    G: EmbeddedGraph,
+    step_type: str,
+    occ: object,
+    *,
+    include_generalized_refined_c4: bool = True,
+) -> Tuple[Optional[EmbeddedGraph], Optional[object], Optional[str]]:
+    """
+    Attempt a reduction and accept it only if the reduced state still lies in Q.
+
+    Strategy-A treats a local match as certified only when the post-state survives the
+    same embedding and Q-membership checks that the checker enforces on replay.
+    """
+    try:
+        if step_type == "C2":
+            Gred, rec = reduce_C2(G, occ)
+        elif step_type == "pinch(ii)":
+            Gred, rec = reduce_pinch(G, occ)
+        elif step_type == "refined_C4":
+            if include_generalized_refined_c4:
+                from refined_c4_verified_library import reduce_with_certified_family
+
+                generalized = reduce_with_certified_family(G, occ)
+                if generalized is not None:
+                    Gred, rec = generalized
+                else:
+                    Gred, rec = reduce_C4(G, occ)
+            else:
+                Gred, rec = reduce_C4(G, occ)
+        else:
+            raise ValueError(f"unknown reduction type {step_type}")
+
+        check_delta_n(len(G.adj), len(Gred.adj), step_type, rec)
+        validate_in_Q(Gred)
+        return Gred, rec, None
+    except Exception as exc:
+        return None, None, str(exc)
 
 
 # =============================================================================
@@ -583,6 +633,9 @@ def detect_C_pinch_ii(G: EmbeddedGraph) -> Optional[OccPinch]:
             if any(G.other_face_is_quad(a, b) for a, b in quad_edges):
                 continue
 
+            # Record which side of t the pinch sits on so traces can carry a flip bit.
+            p = G.rot[w][(G.pos[w][t] + 1) % 3]
+            q = G.rot[p][(G.pos[p][w] + 1) % 3]
             epsilon = 0 if q == v2 else 1
             occ = OccPinch(v1, v2, v3, v4, w, t, r, s, u2, u4, epsilon)
             if best is None or occ < best:
@@ -681,17 +734,24 @@ def verify_completeness(G: EmbeddedGraph) -> CompletenessWitness:
 
     occ2 = detect_C2(G)
     if occ2 is not None:
-        return CompletenessWitness("C2", occ2)
+        Gred, _, _ = try_reduce_certified(G, "C2", occ2)
+        if Gred is not None:
+            return CompletenessWitness("C2", occ2)
 
     occp = detect_C_pinch_ii(G)
     if occp is not None:
-        return CompletenessWitness("PINCH", occp)
+        Gred, _, _ = try_reduce_certified(G, "pinch(ii)", occp)
+        if Gred is not None:
+            return CompletenessWitness("PINCH", occp)
 
-    occ4 = detect_refined_C4(G)
-    if occ4 is not None:
-        return CompletenessWitness("C4", occ4)
+    from refined_c4_local import all_refined_c4_occurrences
 
-    raise AssertionError("No configuration found; violates Theorem 5.1 (or detector mismatch)")
+    for occ4 in all_refined_c4_occurrences(G):
+        Gred, _, _ = try_reduce_certified(G, "refined_C4", occ4)
+        if Gred is not None:
+            return CompletenessWitness("C4", occ4)
+
+    raise AssertionError("No currently certified reduction step found; completeness remains unresolved for this instance")
 
 
 # =============================================================================
@@ -789,11 +849,11 @@ def cube_hamilton_cycle(G: EmbeddedGraph) -> Cycle:
 
 def brute_force_hamiltonian_cycle(G: EmbeddedGraph) -> Cycle:
     """
-    Deterministic DFS Hamilton-cycle search for n <= 12.
+    Deterministic DFS Hamilton-cycle search for n <= 14.
     """
     V = G.vertices()
     n = len(V)
-    if n > 12:
+    if n > 14:
         raise ValueError("brute_force_hamiltonian_cycle: n too large")
 
     start = V[0]
@@ -827,7 +887,7 @@ def brute_force_hamiltonian_cycle(G: EmbeddedGraph) -> Cycle:
     return C
 
 
-def brute_force_hamiltonian(G, max_size=12):
+def brute_force_hamiltonian(G, max_size=14):
     """Find Hamiltonian cycle for small graphs via brute force"""
     from itertools import permutations
     
@@ -1373,7 +1433,7 @@ def find_hamiltonian_cycle(
 
     Base cases:
       - If is_cube: return stored cube cycle.
-      - If n <= 12: brute force.
+      - If n <= 14: brute force.
 
     Otherwise:
       - Reduce in priority order: C2, PINCH(ii), refined C4.
@@ -1384,49 +1444,59 @@ def find_hamiltonian_cycle(
     n = len(G.adj)
     if is_cube(G):
         return brute_force_hamiltonian(G)
-    if n <= 12:
+    if n <= 14:
         return brute_force_hamiltonian_cycle(G)
 
     occ2 = detect_C2(G)
     if occ2 is not None:
         if debug:
             print(f"[reduce] C2: {occ2}")
-        n_before = len(G.adj)
-        Gred, rec = reduce_C2(G, occ2)
-        check_delta_n(n_before, len(Gred.adj), "C2")
-        Cred = find_hamiltonian_cycle(Gred, debug=debug)
-        Clift = lift_C2(G, Gred, rec, Cred)
-        if debug:
-            Clift.validate_hamiltonian(G)
-        return Clift
+        Gred, rec, err = try_reduce_certified(G, "C2", occ2)
+        if Gred is not None and rec is not None:
+            Cred = find_hamiltonian_cycle(Gred, debug=debug)
+            Clift = lift_C2(G, Gred, rec, Cred)
+            if debug:
+                Clift.validate_hamiltonian(G)
+            return Clift
+        if debug and err is not None:
+            print(f"[reject] C2: {err}")
 
     occp = detect_C_pinch_ii(G)
     if occp is not None:
         if debug:
             print(f"[reduce] PINCH(ii): {occp}")
-        n_before = len(G.adj)
-        Gred, rec = reduce_pinch(G, occp)
-        check_delta_n(n_before, len(Gred.adj), "pinch(ii)")
-        Cred = find_hamiltonian_cycle(Gred, debug=debug)
-        Clift = lift_pinch(G, Gred, rec, Cred)
-        if debug:
-            Clift.validate_hamiltonian(G)
-        return Clift
+        Gred, rec, err = try_reduce_certified(G, "pinch(ii)", occp)
+        if Gred is not None and rec is not None:
+            Cred = find_hamiltonian_cycle(Gred, debug=debug)
+            Clift = lift_pinch(G, Gred, rec, Cred)
+            if debug:
+                Clift.validate_hamiltonian(G)
+            return Clift
+        if debug and err is not None:
+            print(f"[reject] PINCH(ii): {err}")
 
     occ4 = detect_refined_C4(G)
     if occ4 is not None:
         if debug:
             print(f"[reduce] C4: {occ4}")
-        n_before = len(G.adj)
-        Gred, rec = reduce_C4(G, occ4)
-        check_delta_n(n_before, len(Gred.adj), "refined_C4")
-        Cred = find_hamiltonian_cycle(Gred, debug=debug)
-        Clift = lift_C4(G, Gred, rec, Cred)
-        if debug:
-            Clift.validate_hamiltonian(G)
-        return Clift
+        # Keep the recursive solver on the old 2-vertex reducer until the larger
+        # refined-C4 gadget families have a certified lift-back library as well.
+        Gred, rec, err = try_reduce_certified(
+            G,
+            "refined_C4",
+            occ4,
+            include_generalized_refined_c4=False,
+        )
+        if Gred is not None and rec is not None:
+            Cred = find_hamiltonian_cycle(Gred, debug=debug)
+            Clift = lift_C4(G, Gred, rec, Cred)
+            if debug:
+                Clift.validate_hamiltonian(G)
+            return Clift
+        if debug and err is not None:
+            print(f"[reject] C4: {err}")
 
-    raise AssertionError("No reducible configuration found (completeness violated or detector mismatch)")
+    raise AssertionError("No currently certified reduction step found (completeness unresolved or detector mismatch)")
 
 
 # =============================================================================
@@ -1434,33 +1504,27 @@ def find_hamiltonian_cycle(
 # =============================================================================
 
 def run_examples() -> None:
-    print("=== Cube ===")
-    G = make_cube()
-    w = verify_completeness(G)
-    print("Witness:", w.kind)
-    C = find_hamiltonian_cycle(G, debug=False)
-    print("Cycle:", C.as_ordered_cycle(G))
+    def run_example(name: str, build_graph) -> None:
+        print(f"=== {name} ===")
+        G = build_graph()
+        try:
+            w = verify_completeness(G)
+            print("Witness:", w.kind, w.certificate if hasattr(w, "certificate") else "")
+            C = find_hamiltonian_cycle(G, debug=False)
+            ordered = C.as_ordered_cycle(G)
+            print("Cycle length:", len(ordered))
+            if len(G.adj) <= 8:
+                print("Cycle:", ordered)
+        except Exception as exc:
+            print("Status:", exc)
 
-    print("\n=== Octagonal prism (P8) ===")
-    P8 = make_prism(8)
-    w = verify_completeness(P8)
-    print("Witness:", w.kind, w.certificate)
-    C = find_hamiltonian_cycle(P8, debug=False)
-    print("Cycle length:", len(C.as_ordered_cycle(P8)))
-
-    print("\n=== Custom pinch(ii) example ===")
-    H = make_custom_pinch_example()
-    w = verify_completeness(H)
-    print("Witness:", w.kind, w.certificate)
-    C = find_hamiltonian_cycle(H, debug=False)
-    print("Cycle length:", len(C.as_ordered_cycle(H)))
-
-    print("\n=== Truncated octahedron ===")
-    TO = make_truncated_octahedron()
-    w = verify_completeness(TO)
-    print("Witness:", w.kind, w.certificate)
-    C = find_hamiltonian_cycle(TO, debug=False)
-    print("Cycle length:", len(C.as_ordered_cycle(TO)))
+    run_example("Cube", make_cube)
+    print()
+    run_example("Octagonal prism (P8)", lambda: make_prism(8))
+    print()
+    run_example("Custom pinch(ii) example", make_custom_pinch_example)
+    print()
+    run_example("Truncated octahedron", make_truncated_octahedron)
 
 def validate_cycle(G: EmbeddedGraph, cycle: Cycle) -> bool:
     """Standalone bridge to validate a Hamiltonian cycle."""

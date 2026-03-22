@@ -1,0 +1,136 @@
+{
+  "candidate": {
+    "boundary_orders": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "gadget_orders": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        2
+      ]
+    ],
+    "matching": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "matrix": [
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        0,
+        0
+      ]
+    ],
+    "n_after": 8
+  },
+  "patch": {
+    "boundary_vertices": [
+      13,
+      18,
+      0,
+      2
+    ],
+    "deleted_vertices": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      19
+    ],
+    "ring_pattern": [
+      0,
+      1,
+      1,
+      0,
+      2,
+      3,
+      3,
+      2
+    ]
+  },
+  "seed_graph_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,epq,fqg,hqp,hrn,ims,ist,jtl,jlk,mts,nro,orp",
+  "seed_occurrence": {
+    "u1": 4,
+    "u2": 19,
+    "u3": 7,
+    "u4": 10,
+    "v1": 9,
+    "v2": 15,
+    "v3": 11,
+    "v4": 16
+  },
+  "verification": {
+    "failure": {
+      "error": "could not orient outer face [18, 17, 9, 3, 0, 1, 4, 10] for edge (18,17) with terminals (10,9)",
+      "n_vertices": 22,
+      "occ": {
+        "u1": 6,
+        "u2": 10,
+        "u3": 9,
+        "u4": 14,
+        "v1": 13,
+        "v2": 18,
+        "v3": 17,
+        "v4": 20
+      },
+      "raw_line": "22 bcd,aef,agh,aij,bkl,blm,cmn,cop,dpq,dqr,est,etf,ftg,gsu,huv,hvi,ivj,jus,krn,kml,nro,oqp"
+    },
+    "matched_pattern_count": 1,
+    "pass_count": 1,
+    "scanned_occurrences": 3
+  }
+}

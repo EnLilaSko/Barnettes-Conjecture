@@ -1,5 +1,22 @@
 Verification Log - Base Case n=14
-Timestamp: Mon Feb  9 16:52:26 2026
-Commit: 821779f90e35e2946c0613338e45c285a9d130f2c
-Total instances checked: 2
-Manifest SHA256: 725b043728e32643b667e093cf6f0e9f1d1509c6c1e356eda300f9d80a9a3610
+Timestamp: Sat Mar 21 15:59:12 2026
+Commit: f416b83f4c8c2fa63116b529985da8935767d5e1
+Total instances checked: 3
+Counts by n:
+  n=8: 1
+  n=10: 0
+  n=12: 1
+  n=14: 1
+
+Solved instances:
+  Cube: n=8 sha256=abcab1e569fbd6a8dd1208dd122ff908513d7190df3170b8ece341402065d023
+    plantri: 8 bcd,aef,afg,age,bdh,bhc,chd,egf
+    witness: [0, 1, 4, 3, 6, 7, 5, 2]
+  Prism-6: n=12 sha256=323bcc238034545996249f684d6b8c3bce4bae9aa8462b6243a10ec098003da7
+    plantri: 12 bcd,aef,agh,ahe,bdi,bij,cjk,ckd,elf,flg,glh,ikj
+    witness: [0, 1, 4, 3, 7, 10, 11, 8, 5, 9, 6, 2]
+  graph_n14_1: n=14 sha256=8e0765d9c82a9b581352c9e5fd625b69bc1657f8595149757f9dc2a7786826ee
+    plantri: 14 bcd,aef,afg,agh,bij,bkc,ckd,dli,ehm,emn,fng,hnm,ilj,jlk
+    witness: [0, 1, 4, 8, 7, 11, 12, 9, 13, 10, 5, 2, 6, 3]
+
+Manifest SHA256: 298e2ef2e8e6d4f4aaf495f43ca9050456508e23f53d3b5b62eb19a9eac1edc5

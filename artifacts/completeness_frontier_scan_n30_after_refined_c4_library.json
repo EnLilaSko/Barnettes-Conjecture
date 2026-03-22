@@ -1,0 +1,219 @@
+{
+  "certified_kind_counts": {
+    "C2": 721,
+    "C4": 7,
+    "NONE": 35
+  },
+  "detector_pattern_counts": {
+    "C2=0|PINCH=0|C4=1": 2,
+    "C2=1|PINCH=0|C4=0": 340,
+    "C2=1|PINCH=0|C4=1": 421
+  },
+  "first_examples_by_certified_kind": {
+    "C2": {
+      "c2_certified": true,
+      "certified_kind": "C2",
+      "has_c2": true,
+      "has_pinch_ii": false,
+      "has_refined_c4": false,
+      "n_vertices": 12,
+      "pinch_certified": false,
+      "raw_line": "12 bcd,aef,agh,ahe,bdi,bij,cjk,ckd,elf,flg,glh,ikj",
+      "refined_c4_certified": false,
+      "unresolved_reason": null
+    },
+    "C4": {
+      "c2_certified": false,
+      "certified_kind": "C4",
+      "has_c2": true,
+      "has_pinch_ii": false,
+      "has_refined_c4": true,
+      "n_vertices": 30,
+      "pinch_certified": false,
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dop,eqr,esf,ftg,gqu,huv,ivw,iwx,jym,jz{,k{|,l|z,myn,n}o,o}p,p}y,qxu,rt~,r~s,s~t,vxw,z|{",
+      "refined_c4_certified": true,
+      "unresolved_reason": null
+    },
+    "NONE": {
+      "c2_certified": false,
+      "certified_kind": "NONE",
+      "has_c2": true,
+      "has_pinch_ii": false,
+      "has_refined_c4": false,
+      "n_vertices": 8,
+      "pinch_certified": false,
+      "raw_line": "8 bcd,aef,afg,age,bdh,bhc,chd,egf",
+      "refined_c4_certified": false,
+      "unresolved_reason": "detected_c2_but_not_certified"
+    }
+  },
+  "first_examples_by_pattern": {
+    "C2=0|PINCH=0|C4=1": {
+      "c2_certified": false,
+      "certified_kind": "NONE",
+      "has_c2": false,
+      "has_pinch_ii": false,
+      "has_refined_c4": true,
+      "n_vertices": 24,
+      "pinch_certified": false,
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,blc,cmn,dno,doj,eip,epq,fqr,grs,gsh,hti,juk,kvl,lvm,mwn,owu,ptx,qxr,sxt,uwv",
+      "refined_c4_certified": false,
+      "unresolved_reason": "detected_refined_c4_but_not_certified"
+    },
+    "C2=1|PINCH=0|C4=0": {
+      "c2_certified": false,
+      "certified_kind": "NONE",
+      "has_c2": true,
+      "has_pinch_ii": false,
+      "has_refined_c4": false,
+      "n_vertices": 8,
+      "pinch_certified": false,
+      "raw_line": "8 bcd,aef,afg,age,bdh,bhc,chd,egf",
+      "refined_c4_certified": false,
+      "unresolved_reason": "detected_c2_but_not_certified"
+    },
+    "C2=1|PINCH=0|C4=1": {
+      "c2_certified": true,
+      "certified_kind": "C2",
+      "has_c2": true,
+      "has_pinch_ii": false,
+      "has_refined_c4": true,
+      "n_vertices": 20,
+      "pinch_certified": false,
+      "raw_line": "20 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,doj,eip,epf,fqg,gqr,hrs,isp,jok,ltm,mtn,nto,qsr",
+      "refined_c4_certified": false,
+      "unresolved_reason": null
+    }
+  },
+  "first_unresolved_by_reason": {
+    "detected_c2_but_not_certified": {
+      "c2_certified": false,
+      "certified_kind": "NONE",
+      "has_c2": true,
+      "has_pinch_ii": false,
+      "has_refined_c4": false,
+      "n_vertices": 8,
+      "pinch_certified": false,
+      "raw_line": "8 bcd,aef,afg,age,bdh,bhc,chd,egf",
+      "refined_c4_certified": false,
+      "unresolved_reason": "detected_c2_but_not_certified"
+    },
+    "detected_refined_c4_but_not_certified": {
+      "c2_certified": false,
+      "certified_kind": "NONE",
+      "has_c2": true,
+      "has_pinch_ii": false,
+      "has_refined_c4": true,
+      "n_vertices": 20,
+      "pinch_certified": false,
+      "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,epq,fqg,hqp,hrn,ims,ist,jtl,jlk,mts,nro,orp",
+      "refined_c4_certified": false,
+      "unresolved_reason": "detected_refined_c4_but_not_certified"
+    }
+  },
+  "n_max": 30,
+  "n_min": 8,
+  "per_n_certified_counts": {
+    "12": {
+      "C2": 1
+    },
+    "14": {
+      "NONE": 1
+    },
+    "16": {
+      "C2": 2
+    },
+    "18": {
+      "C2": 2
+    },
+    "20": {
+      "C2": 5,
+      "NONE": 3
+    },
+    "22": {
+      "C2": 8
+    },
+    "24": {
+      "C2": 29,
+      "NONE": 3
+    },
+    "26": {
+      "C2": 45,
+      "NONE": 12
+    },
+    "28": {
+      "C2": 182,
+      "NONE": 3
+    },
+    "30": {
+      "C2": 447,
+      "C4": 7,
+      "NONE": 12
+    },
+    "8": {
+      "NONE": 1
+    }
+  },
+  "per_n_detector_pattern_counts": {
+    "12": {
+      "C2=1|PINCH=0|C4=0": 1
+    },
+    "14": {
+      "C2=1|PINCH=0|C4=0": 1
+    },
+    "16": {
+      "C2=1|PINCH=0|C4=0": 2
+    },
+    "18": {
+      "C2=1|PINCH=0|C4=0": 2
+    },
+    "20": {
+      "C2=1|PINCH=0|C4=0": 6,
+      "C2=1|PINCH=0|C4=1": 2
+    },
+    "22": {
+      "C2=1|PINCH=0|C4=0": 6,
+      "C2=1|PINCH=0|C4=1": 2
+    },
+    "24": {
+      "C2=0|PINCH=0|C4=1": 1,
+      "C2=1|PINCH=0|C4=0": 20,
+      "C2=1|PINCH=0|C4=1": 11
+    },
+    "26": {
+      "C2=1|PINCH=0|C4=0": 30,
+      "C2=1|PINCH=0|C4=1": 27
+    },
+    "28": {
+      "C2=1|PINCH=0|C4=0": 89,
+      "C2=1|PINCH=0|C4=1": 96
+    },
+    "30": {
+      "C2=0|PINCH=0|C4=1": 1,
+      "C2=1|PINCH=0|C4=0": 182,
+      "C2=1|PINCH=0|C4=1": 283
+    },
+    "8": {
+      "C2=1|PINCH=0|C4=0": 1
+    }
+  },
+  "per_n_graph_counts": {
+    "12": 1,
+    "14": 1,
+    "16": 2,
+    "18": 2,
+    "20": 8,
+    "22": 8,
+    "24": 32,
+    "26": 57,
+    "28": 185,
+    "30": 466,
+    "8": 1
+  },
+  "plantri_path": "C:\\Users\\charl\\Documents\\New Math Problem\\plantri.exe",
+  "scanned_graph_count": 763,
+  "unresolved_reason_counts": {
+    "detected_c2_but_not_certified": 12,
+    "detected_refined_c4_but_not_certified": 23
+  }
+}

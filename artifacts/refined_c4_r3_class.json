@@ -1,0 +1,632 @@
+{
+  "source_class_artifact": "artifacts\\refined_c4_recurrent_skeleton_classes.json",
+  "source_family_artifacts": [
+    "artifacts\\refined_c4_b6_family_00112345_a111221_e222112_g8_obstruction.json"
+  ],
+  "class_label": "R3",
+  "recurrent_class_record": {
+    "label": "R3",
+    "count": 2,
+    "family_count": 1,
+    "families": {
+      "b6_family_00112345_a111221_e222112_g8_obstruction": 2
+    },
+    "family_names": [
+      "b6_family_00112345_a111221_e222112_g8_obstruction"
+    ],
+    "cross_family": false,
+    "all_three_families": false,
+    "col_sum_profiles": {
+      "0,0,0,1,1,1,2,3": 2
+    },
+    "representative_internal_edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        5
+      ]
+    ],
+    "invariants": {
+      "vertex_count": 7,
+      "edge_count": 8,
+      "degree_sequence": [
+        3,
+        3,
+        3,
+        2,
+        2,
+        2,
+        1
+      ],
+      "leaf_vertices": [
+        6
+      ],
+      "bridge_count": 1,
+      "cycle_lengths": [
+        4,
+        4
+      ]
+    },
+    "examples": [
+      {
+        "family": "b6_family_00112345_a111221_e222112_g8_obstruction",
+        "col_sums": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          2,
+          3
+        ],
+        "matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        "internal_edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            5
+          ]
+        ]
+      },
+      {
+        "family": "b6_family_00112345_a111221_e222112_g8_obstruction",
+        "col_sums": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          2,
+          3
+        ],
+        "matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        ],
+        "internal_edges": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            5
+          ]
+        ]
+      }
+    ]
+  },
+  "families": [
+    {
+      "family": "b6_family_00112345_a111221_e222112_g8_obstruction",
+      "artifact": "artifacts\\refined_c4_b6_family_00112345_a111221_e222112_g8_obstruction.json",
+      "class_label": "R3",
+      "boundary_attachment_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "boundary_exterior_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "boundary_count": 6,
+      "col_sums": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        3
+      ],
+      "internal_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "canonical_matrix_count": 6,
+      "bipartite_count": 2,
+      "three_connected_count": 2,
+      "abstract_planar_count": 0,
+      "abstract_nonplanar_count": 2,
+      "kuratowski_core_counts": {
+        "K3,3": 2
+      },
+      "three_connected_candidates": [
+        {
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          ],
+          "boundary_support": [
+            [],
+            [],
+            [],
+            [
+              4
+            ],
+            [
+              3
+            ],
+            [
+              0
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              1,
+              2,
+              4
+            ]
+          ],
+          "abstract_planar": false,
+          "kuratowski_core": {
+            "type": "K3,3",
+            "nodes": 6,
+            "degree_sequence": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ]
+          }
+        },
+        {
+          "matrix": [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ]
+          ],
+          "boundary_support": [
+            [],
+            [],
+            [],
+            [
+              4
+            ],
+            [
+              3
+            ],
+            [
+              3
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              1,
+              2,
+              4
+            ]
+          ],
+          "abstract_planar": false,
+          "kuratowski_core": {
+            "type": "K3,3",
+            "nodes": 6,
+            "degree_sequence": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "global": {
+    "class_label": "R3",
+    "family_count": 1,
+    "col_sums": [
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      2,
+      3
+    ],
+    "internal_edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        5
+      ]
+    ],
+    "canonical_matrix_count": 6,
+    "bipartite_count": 2,
+    "three_connected_count": 2,
+    "abstract_planar_count": 0,
+    "abstract_nonplanar_count": 2,
+    "kuratowski_core_counts": {
+      "K3,3": 2
+    }
+  }
+}

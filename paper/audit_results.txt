@@ -1,0 +1,22 @@
+--- DUPLICATE LABELS ---
+--- UNDEFINED REFS ---
+  lem:3conn_concrete
+  #1
+  thm:unavoidability
+  lem:3conn_replacement
+--- INVALID N_BASE NOTATION ---
+--- STRAY 14 ---
+--- THRESHOLD LOGIC ---
+Line 482: If $G \in \mathcal{Q}$ contains a topological $C_2$ configuration consisting of adjacent 4-faces on vertices $\{a,b,c,d,e,f\}$ sharing edge $bc$, and $|V(G)| > N_{\mathrm{base}}$, then the four external neighbors $u_1, u_4, u_5, u_6$ (adjacent to $a, d, e, f$ respectively) are pairwise distinct, yielding a certified occurrence.
+Line 501: Since we assumed $|V(G)| > N_{\mathrm{base}} = 12$, this forces a contradiction.
+Line 502: Thus, for $|V(G)| > N_{\mathrm{base}}$, we conclude $u_1 \neq u_6$, and by symmetric argument $u_4 \neq u_5$, making all four terminals distinct.
+Line 517: For every $G \in \mathcal{Q}$ with $|V(G)| > N_{\mathrm{base}}$, the topological occurrences of $C_2$, $C_P$, or $C_4$ guaranteed by unavoidability can be refined to strictly satisfy all terminal distinctness side-conditions required for a certified occurrence.
+Line 520: For topological $C_2$ and $C_P$, Lemmas~\ref{lemma:certified_c2} and \ref{lemma:certified_cp} establish the necessary terminal distinctness. In particular, the $C_2$ terminal distinctness relies explicitly on the bound $|V(G)| > N_{\mathrm{base}} = 12$ to rule out the degenerate mapping onto the Cube base-case where distinctness fails. For refined $C_4$, the topological definition inherently bounds the four external neighbors to be distinct, satisfying the catalog certificate conditions natively (Definition~\ref{def:refinedC4-occ}).
+Line 591: Every graph $G \in \mathcal{Q}$ with $|V(G)| > N_{\mathrm{base}}$ contains a strictly certified, admissible reduction to a smaller graph $G' \in \mathcal{Q}$ via one of the configurations $C_2$, $C_4$, or $C_P$.
+Line 594: Let $G \in \mathcal{Q}$ with $|V(G)| > N_{\mathrm{base}} = 12$.
+Line 1510: Graphs with $|V(G)|\le N_{\mathrm{base}}$ are handled by the classification and explicit Hamilton cycles in Section~\ref{sec:base-cases} (Lemma~\ref{lem:base_case_classification}).
+Line 1526: For every $(G,\pi)\in\mathcal{Q}$ with $|V(G)|>N_{\mathrm{base}}$, there exists at least one certified occurrence of a configuration in
+Line 1548: There exists a finite constant $N_{\mathrm{base}} = 12$ such that every graph $G \in \mathcal{Q}$ with $|V(G)| \le N_{\mathrm{base}}$ contains a Hamiltonian cycle. (Specifically, the 8-vertex Cube $Q_3$ and the 12-vertex Hexagonal Prism; see Section \ref{sec:base-cases} for the deductive classification proof).
+Line 1559: \textbf{Base Case:} If $|V(G)| \le N_{\mathrm{base}}$, the graph $G$ contains a Hamiltonian cycle by Fact~\ref{fact:base-cases}.
+Line 1561: \textbf{Inductive Step:} Suppose $|V(G)| > N_{\mathrm{base}}$ and assume for induction that every graph $G' \in \mathcal{Q}$ with $\mu(G') <_{\text{lex}} \mu(G)$ contains a Hamiltonian cycle.
+Line 1726: In this section, we provide a complete, non-computational structural classification of all graphs in $\mathcal{Q}$ with $|V(G)| \le 12$ to ground the induction for our Main Theorem. We define the base threshold as $N_{\mathrm{base}} = 12$.

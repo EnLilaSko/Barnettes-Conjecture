@@ -1,0 +1,340 @@
+{
+  "candidate": null,
+  "patch": {
+    "boundary_attachment_sizes": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "boundary_exterior_sizes": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "boundary_vertices": [
+      13,
+      18,
+      0,
+      2
+    ],
+    "deleted_vertices": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      17,
+      19
+    ],
+    "interface_word": [
+      0,
+      1,
+      1,
+      0,
+      2,
+      3,
+      3,
+      2
+    ],
+    "interface_word_key": [
+      0,
+      0,
+      1,
+      2,
+      3,
+      3,
+      2,
+      1
+    ]
+  },
+  "seed_graph_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,epq,fqg,hqp,hrn,ims,ist,jtl,jlk,mts,nro,orp",
+  "seed_occurrence": {
+    "u1": 4,
+    "u2": 19,
+    "u3": 7,
+    "u4": 10,
+    "v1": 9,
+    "v2": 15,
+    "v3": 11,
+    "v4": 16
+  },
+  "sweep": {
+    "candidate_found": false,
+    "search_space": {
+      "gadget_vertices": 6,
+      "orientation_multiplier": 64,
+      "per_sequence": [
+        {
+          "col_sums": [
+            1,
+            1,
+            1,
+            1,
+            2,
+            2
+          ],
+          "internal_graph_count": 3,
+          "internal_graph_count_raw": 31,
+          "matrix_count": 21,
+          "matrix_count_raw": 468,
+          "orientation_multiplier": 64,
+          "raw_candidate_count": 64512,
+          "slot_multiplier": 16
+        },
+        {
+          "col_sums": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            3
+          ],
+          "internal_graph_count": 1,
+          "internal_graph_count_raw": 12,
+          "matrix_count": 4,
+          "matrix_count_raw": 240,
+          "orientation_multiplier": 64,
+          "raw_candidate_count": 4096,
+          "slot_multiplier": 16
+        },
+        {
+          "col_sums": [
+            0,
+            1,
+            1,
+            2,
+            2,
+            2
+          ],
+          "internal_graph_count": 3,
+          "internal_graph_count_raw": 15,
+          "matrix_count": 22,
+          "matrix_count_raw": 204,
+          "orientation_multiplier": 64,
+          "raw_candidate_count": 67584,
+          "slot_multiplier": 16
+        },
+        {
+          "col_sums": [
+            0,
+            1,
+            1,
+            1,
+            2,
+            3
+          ],
+          "internal_graph_count": 2,
+          "internal_graph_count_raw": 6,
+          "matrix_count": 24,
+          "matrix_count_raw": 108,
+          "orientation_multiplier": 64,
+          "raw_candidate_count": 49152,
+          "slot_multiplier": 16
+        },
+        {
+          "col_sums": [
+            0,
+            0,
+            2,
+            2,
+            2,
+            2
+          ],
+          "internal_graph_count": 1,
+          "internal_graph_count_raw": 6,
+          "matrix_count": 6,
+          "matrix_count_raw": 90,
+          "orientation_multiplier": 64,
+          "raw_candidate_count": 6144,
+          "slot_multiplier": 16
+        },
+        {
+          "col_sums": [
+            0,
+            0,
+            1,
+            2,
+            2,
+            3
+          ],
+          "internal_graph_count": 1,
+          "internal_graph_count_raw": 2,
+          "matrix_count": 24,
+          "matrix_count_raw": 48,
+          "orientation_multiplier": 64,
+          "raw_candidate_count": 24576,
+          "slot_multiplier": 16
+        },
+        {
+          "col_sums": [
+            0,
+            0,
+            1,
+            1,
+            3,
+            3
+          ],
+          "internal_graph_count": 1,
+          "internal_graph_count_raw": 1,
+          "matrix_count": 10,
+          "matrix_count_raw": 28,
+          "orientation_multiplier": 64,
+          "raw_candidate_count": 10240,
+          "slot_multiplier": 16
+        },
+        {
+          "col_sums": [
+            0,
+            0,
+            0,
+            2,
+            3,
+            3
+          ],
+          "internal_graph_count": 0,
+          "internal_graph_count_raw": 0,
+          "matrix_count": 6,
+          "matrix_count_raw": 12,
+          "orientation_multiplier": 64,
+          "raw_candidate_count": 0,
+          "slot_multiplier": 16
+        }
+      ],
+      "row_sums": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "slot_multiplier": 16,
+      "total_raw_candidate_count": 226304
+    },
+    "supported": true,
+    "tested_sequences": [
+      {
+        "candidate_found": false,
+        "col_sums": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "internal_graph_count": 3,
+        "matrix_count": 21,
+        "raw_candidate_count": 64512
+      },
+      {
+        "candidate_found": false,
+        "col_sums": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          3
+        ],
+        "internal_graph_count": 1,
+        "matrix_count": 4,
+        "raw_candidate_count": 4096
+      },
+      {
+        "candidate_found": false,
+        "col_sums": [
+          0,
+          1,
+          1,
+          2,
+          2,
+          2
+        ],
+        "internal_graph_count": 3,
+        "matrix_count": 22,
+        "raw_candidate_count": 67584
+      },
+      {
+        "candidate_found": false,
+        "col_sums": [
+          0,
+          1,
+          1,
+          1,
+          2,
+          3
+        ],
+        "internal_graph_count": 2,
+        "matrix_count": 24,
+        "raw_candidate_count": 49152
+      },
+      {
+        "candidate_found": false,
+        "col_sums": [
+          0,
+          0,
+          2,
+          2,
+          2,
+          2
+        ],
+        "internal_graph_count": 1,
+        "matrix_count": 6,
+        "raw_candidate_count": 6144
+      },
+      {
+        "candidate_found": false,
+        "col_sums": [
+          0,
+          0,
+          1,
+          2,
+          2,
+          3
+        ],
+        "internal_graph_count": 1,
+        "matrix_count": 24,
+        "raw_candidate_count": 24576
+      },
+      {
+        "candidate_found": false,
+        "col_sums": [
+          0,
+          0,
+          1,
+          1,
+          3,
+          3
+        ],
+        "internal_graph_count": 1,
+        "matrix_count": 10,
+        "raw_candidate_count": 10240
+      },
+      {
+        "candidate_found": false,
+        "col_sums": [
+          0,
+          0,
+          0,
+          2,
+          3,
+          3
+        ],
+        "internal_graph_count": 0,
+        "matrix_count": 6,
+        "raw_candidate_count": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,1360 @@
+{
+  "boundary_count_patterns": {
+    "4": 15,
+    "5": 2,
+    "6": 10
+  },
+  "consecutive_terminal_edge_patterns": {
+    "none": 27
+  },
+  "fail_count": 27,
+  "fail_patterns": {
+    "none": 27
+  },
+  "family_examples": {
+    "L=6,6,6,10|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 4,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1,
+        0
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "adjacent outer face is not a hexagon: [3, 8, 13, 18, 19, 14, 9, 4, 1, 0]",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 0,
+        "u2": 11,
+        "u3": 16,
+        "u4": 13,
+        "v1": 3,
+        "v2": 7,
+        "v3": 12,
+        "v4": 8
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        10
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        6,
+        10
+      ],
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dmn,eop,egf,gph,hqi,irs,jtu,jul,muv,nvw,nwt,osx,oqp,qxr,rxs,twv",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,6|B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 4,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        0
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": null,
+      "hex_ring_pattern": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        0
+      ],
+      "hex_ring_pattern_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3
+      ],
+      "n_vertices": 20,
+      "occ": {
+        "u1": 1,
+        "u2": 6,
+        "u3": 13,
+        "u4": 8,
+        "v1": 0,
+        "v2": 2,
+        "v3": 7,
+        "v4": 3
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "20 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,doj,eip,epf,fqg,gqr,hrs,isp,jok,ltm,mtn,nto,qsr",
+      "reduction_error": "Euler fails: V=18 E=27 F=9",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,6|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 4,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        3,
+        3,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": null,
+      "hex_ring_pattern": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        3,
+        3,
+        2
+      ],
+      "hex_ring_pattern_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1
+      ],
+      "n_vertices": 20,
+      "occ": {
+        "u1": 4,
+        "u2": 19,
+        "u3": 7,
+        "u4": 10,
+        "v1": 9,
+        "v2": 15,
+        "v3": 11,
+        "v4": 16
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,epq,fqg,hqp,hrn,ims,ist,jtl,jlk,mts,nro,orp",
+      "reduction_error": "Euler fails: V=18 E=27 F=9",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,6|B=5|I=0,0,1,1,2,2,3,4|A=1,2,2,2,1|E=2,1,1,1,2": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        1,
+        2,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        1,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        4
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "expected four boundary vertices, got {2: [0], 7: [3, 14], 13: [19, 18], 17: [21, 11], 12: [5]}",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 22,
+      "occ": {
+        "u1": 1,
+        "u2": 8,
+        "u3": 20,
+        "u4": 16,
+        "v1": 4,
+        "v2": 9,
+        "v3": 15,
+        "v4": 10
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "22 bcd,aef,agh,ahi,bjk,blm,cmn,cod,doj,eip,epq,fqr,frg,gst,hti,juk,kvl,lvm,nvu,nuo,pts,qsr",
+      "reduction_error": "Euler fails: V=20 E=30 F=10",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,1,1,2,2,1|E=2,2,2,1,1,2": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "expected four boundary vertices, got {11: [5], 18: [12], 19: [13], 23: [20, 21], 16: [15, 9], 10: [4]}",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 1,
+        "u2": 6,
+        "u3": 14,
+        "u4": 8,
+        "v1": 0,
+        "v2": 2,
+        "v3": 7,
+        "v4": 3
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,eqr,frs,fsg,gtu,huv,ivq,jpk,kwl,lwm,nwx,nxo,oxp,rts,tvu",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,2,2,1,1,1|E=2,1,1,2,2,2": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        1,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        4,
+        5
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "expected four boundary vertices, got {11: [5], 19: [12, 13], 23: [20, 21], 18: [15], 16: [9], 10: [4]}",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 1,
+        "u2": 6,
+        "u3": 14,
+        "u4": 8,
+        "v1": 0,
+        "v2": 2,
+        "v3": 7,
+        "v4": 3
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,eqr,frs,ftg,gtu,huv,ivs,jwk,kwl,lwp,mxn,nxo,oxp,qsr,tvu",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,6|B=6|I=0,0,1,2,3,3,4,5|A=1,2,1,1,2,1|E=2,1,2,2,1,2": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        1,
+        2,
+        1,
+        1,
+        2,
+        1
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        1,
+        2,
+        2,
+        1,
+        2
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "expected four boundary vertices, got {11: [5], 19: [12, 13], 23: [20], 22: [21], 16: [15, 9], 10: [4]}",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 1,
+        "u2": 6,
+        "u3": 14,
+        "u4": 8,
+        "v1": 0,
+        "v2": 2,
+        "v3": 7,
+        "v4": 3
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,eqr,frs,ftg,gtu,huv,ivq,jpk,kwl,lwx,mxn,nxo,owp,rvs,sut",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,6|B=6|I=0,0,1,2,3,4,5,1|A=1,1,1,1,2,2|E=2,2,2,2,1,1": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        5,
+        4
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        1
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "expected four boundary vertices, got {4: [1], 11: [5], 23: [19], 17: [22], 9: [16, 3], 15: [21, 8]}",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 0,
+        "u2": 12,
+        "u3": 20,
+        "u4": 14,
+        "v1": 2,
+        "v2": 6,
+        "v3": 13,
+        "v4": 7
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "24 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dpq,ers,esf,ftg,guh,hvi,ivj,jvu,kwx,kxl,mxw,nwq,oqp,rut,rts",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,8|B=4|I=0,0,1,1,2,3,3,2|A=2,2,2,2|E=1,1,1,1": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 4,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        2,
+        3,
+        3
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3,
+        3,
+        2
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "adjacent outer face is not a hexagon: [17, 18, 10, 4, 1, 0, 3, 9]",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 22,
+      "occ": {
+        "u1": 6,
+        "u2": 10,
+        "u3": 9,
+        "u4": 14,
+        "v1": 13,
+        "v2": 18,
+        "v3": 17,
+        "v4": 20
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "outer_face_lengths": [
+        6,
+        8,
+        6,
+        6
+      ],
+      "raw_line": "22 bcd,aef,agh,aij,bkl,blm,cmn,cop,dpq,dqr,est,etf,ftg,gsu,huv,hvi,ivj,jus,krn,kml,nro,oqp",
+      "reduction_error": "Euler fails: V=20 E=30 F=10",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,8|B=6|I=0,0,1,1,2,2,3,3,4,5|A=2,1,1,2,2,2|E=1,2,2,1,1,1": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5,
+        0
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "adjacent outer face is not a hexagon: [2, 0, 1, 5, 11, 18, 12, 6]",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 1,
+        "u2": 6,
+        "u3": 14,
+        "u4": 8,
+        "v1": 0,
+        "v2": 2,
+        "v3": 7,
+        "v4": 3
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "outer_face_lengths": [
+        8,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,bkl,cmn,cod,dpj,eiq,eqf,frs,gst,gtu,huv,ivq,jpk,lwx,lxm,mxn,nwo,owp,rvu,rts",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,8|B=6|I=0,0,1,1,2,2,3,3,4,5|A=2,2,1,1,2,2|E=1,1,2,2,1,1": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        1,
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        4,
+        5,
+        5,
+        0
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "adjacent outer face is not a hexagon: [7, 2, 6, 12, 17, 21, 18, 13]",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 1,
+        "u2": 6,
+        "u3": 13,
+        "u4": 8,
+        "v1": 0,
+        "v2": 2,
+        "v3": 7,
+        "v4": 3
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "outer_face_lengths": [
+        6,
+        8,
+        6,
+        6
+      ],
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,doj,eip,epf,fqg,gqr,hst,itp,jok,lum,muv,nvw,nwo,qxr,rxs,sxt,uwv",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,8|B=6|I=0,0,1,1,2,2,3,3,4,5|A=2,2,2,1,1,2|E=1,1,1,2,2,1": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        4,
+        5,
+        5,
+        0
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "adjacent outer face is not a hexagon: [21, 22, 17, 11, 5, 10, 16, 15]",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 7,
+        "u2": 13,
+        "u3": 17,
+        "u4": 15,
+        "v1": 14,
+        "v2": 20,
+        "v3": 22,
+        "v4": 21
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        8,
+        6
+      ],
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,bkl,cmn,cod,dpj,eiq,eqf,frs,gst,gtu,huv,ivq,jpk,lwx,lxm,mxn,nwo,owp,rvu,rts",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,8|B=6|I=0,0,1,1,2,3,4,4,3,5|A=2,2,1,2,2,1|E=1,1,2,1,1,2": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        2,
+        1,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        1,
+        1,
+        2,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        4,
+        3,
+        5,
+        0
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "adjacent outer face is not a hexagon: [12, 20, 13, 7, 3, 0, 2, 6]",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 6,
+        "u2": 23,
+        "u3": 16,
+        "u4": 13,
+        "v1": 12,
+        "v2": 19,
+        "v3": 22,
+        "v4": 20
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,blc,clm,dno,dop,eqr,ers,fsg,gtu,huv,hvi,ivq,jpw,jxk,kxl,mxw,mwn,npo,qut,rts",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,6,6,8|B=6|I=0,0,1,2,3,3,2,1,4,5|A=2,2,2,2,1,1|E=1,1,1,1,2,2": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        0,
+        2,
+        3,
+        3,
+        4,
+        5,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1,
+        4,
+        5
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "adjacent outer face is not a hexagon: [2, 7, 14, 21, 15, 8, 3, 0]",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 0,
+        "u2": 12,
+        "u3": 18,
+        "u4": 14,
+        "v1": 2,
+        "v2": 6,
+        "v3": 13,
+        "v4": 7
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "outer_face_lengths": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "24 bcd,aef,agh,aij,bkl,blm,cmn,cno,dpq,dqr,est,etf,ftg,gsh,huv,ivw,iwj,jus,krn,kml,orx,oxp,pxq,uwv",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,8,6,8|B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 4,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        0
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "adjacent outer face is not a hexagon: [10, 4, 9, 15, 13, 19, 20, 16]",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 0,
+        "u2": 9,
+        "u3": 16,
+        "u4": 11,
+        "v1": 1,
+        "v2": 4,
+        "v3": 10,
+        "v4": 5
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        8
+      ],
+      "outer_face_lengths": [
+        6,
+        8,
+        6,
+        8
+      ],
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,bkl,cmn,cod,doj,eip,eqf,frs,gst,gtp,hpi,jon,kuv,lvw,lwm,mun,qtx,qxr,rxs,uwv",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    },
+    "L=6,8,6,8|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": {
+      "consecutive_terminal_edges": [],
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 4,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word": [
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1,
+        0
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1
+      ],
+      "general_patch_error": null,
+      "hex_patch_error": "adjacent outer face is not a hexagon: [12, 7, 11, 15, 18, 22, 19, 16]",
+      "hex_ring_pattern": null,
+      "hex_ring_pattern_key": null,
+      "n_vertices": 24,
+      "occ": {
+        "u1": 0,
+        "u2": 11,
+        "u3": 16,
+        "u4": 13,
+        "v1": 3,
+        "v2": 7,
+        "v3": 12,
+        "v4": 8
+      },
+      "opposite_terminal_edges": [],
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        8
+      ],
+      "outer_face_lengths": [
+        6,
+        8,
+        6,
+        8
+      ],
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dmn,eop,egf,gph,hqi,iro,jns,jsl,mtu,nuv,owp,qwx,qxr,rxw,svt,tvu",
+      "reduction_error": "Euler fails: V=22 E=33 F=11",
+      "reduction_status": "FAIL"
+    }
+  },
+  "first_fail": {
+    "consecutive_terminal_edges": [],
+    "general_attachment_sizes": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "general_boundary_count": 4,
+    "general_deleted_size": 16,
+    "general_exterior_sizes": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "general_interface_word": [
+      0,
+      1,
+      1,
+      2,
+      2,
+      3,
+      3,
+      0
+    ],
+    "general_interface_word_key": [
+      0,
+      0,
+      1,
+      1,
+      2,
+      2,
+      3,
+      3
+    ],
+    "general_patch_error": null,
+    "hex_patch_error": null,
+    "hex_ring_pattern": [
+      0,
+      1,
+      1,
+      2,
+      2,
+      3,
+      3,
+      0
+    ],
+    "hex_ring_pattern_key": [
+      0,
+      0,
+      1,
+      1,
+      2,
+      2,
+      3,
+      3
+    ],
+    "n_vertices": 20,
+    "occ": {
+      "u1": 1,
+      "u2": 6,
+      "u3": 13,
+      "u4": 8,
+      "v1": 0,
+      "v2": 2,
+      "v3": 7,
+      "v4": 3
+    },
+    "opposite_terminal_edges": [],
+    "outer_face_length_key": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "outer_face_lengths": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "raw_line": "20 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,doj,eip,epf,fqg,gqr,hrs,isp,jok,ltm,mtn,nto,qsr",
+    "reduction_error": "Euler fails: V=18 E=27 F=9",
+    "reduction_status": "FAIL"
+  },
+  "first_pass": null,
+  "general_interface_patterns": {
+    "B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1": 9,
+    "B=4|I=0,0,1,1,2,3,3,2|A=2,2,2,2|E=1,1,1,1": 1,
+    "B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 5,
+    "B=5|I=0,0,1,1,2,2,3,4|A=1,2,2,2,1|E=2,1,1,1,2": 2,
+    "B=6|I=0,0,1,1,2,2,3,3,4,5|A=2,1,1,2,2,2|E=1,2,2,1,1,1": 1,
+    "B=6|I=0,0,1,1,2,2,3,3,4,5|A=2,2,1,1,2,2|E=1,1,2,2,1,1": 1,
+    "B=6|I=0,0,1,1,2,2,3,3,4,5|A=2,2,2,1,1,2|E=1,1,1,2,2,1": 1,
+    "B=6|I=0,0,1,1,2,3,4,4,3,5|A=2,2,1,2,2,1|E=1,1,2,1,1,2": 1,
+    "B=6|I=0,0,1,1,2,3,4,5|A=1,1,1,2,2,1|E=2,2,2,1,1,2": 1,
+    "B=6|I=0,0,1,1,2,3,4,5|A=1,2,2,1,1,1|E=2,1,1,2,2,2": 1,
+    "B=6|I=0,0,1,2,3,3,2,1,4,5|A=2,2,2,2,1,1|E=1,1,1,1,2,2": 1,
+    "B=6|I=0,0,1,2,3,3,4,5|A=1,2,1,1,2,1|E=2,1,2,2,1,2": 2,
+    "B=6|I=0,0,1,2,3,4,5,1|A=1,1,1,1,2,2|E=2,2,2,2,1,1": 1
+  },
+  "general_patch_errors": {
+    "none": 27
+  },
+  "hex_patch_errors": {
+    "adjacent outer face is not a hexagon: [10, 4, 9, 15, 13, 19, 20, 16]": 1,
+    "adjacent outer face is not a hexagon: [12, 20, 13, 7, 3, 0, 2, 6]": 1,
+    "adjacent outer face is not a hexagon: [12, 6, 2, 0, 1, 5, 11, 18]": 1,
+    "adjacent outer face is not a hexagon: [12, 7, 11, 15, 18, 22, 19, 16]": 1,
+    "adjacent outer face is not a hexagon: [14, 9, 4, 1, 0, 3, 8, 13, 18, 19]": 1,
+    "adjacent outer face is not a hexagon: [14, 9, 4, 1, 0, 3, 8, 13]": 1,
+    "adjacent outer face is not a hexagon: [17, 18, 10, 4, 1, 0, 3, 9]": 1,
+    "adjacent outer face is not a hexagon: [2, 0, 1, 5, 11, 18, 12, 6]": 1,
+    "adjacent outer face is not a hexagon: [2, 7, 14, 21, 15, 8, 3, 0]": 1,
+    "adjacent outer face is not a hexagon: [21, 22, 17, 11, 5, 10, 16, 15]": 1,
+    "adjacent outer face is not a hexagon: [3, 8, 13, 18, 19, 14, 9, 4, 1, 0]": 1,
+    "adjacent outer face is not a hexagon: [7, 2, 6, 12, 17, 21, 18, 13]": 1,
+    "expected four boundary vertices, got {0: [1], 9: [4, 16], 8: [15], 7: [14], 13: [20, 19], 6: [12]}": 1,
+    "expected four boundary vertices, got {11: [5], 18: [12], 19: [13], 23: [20, 21], 16: [15, 9], 10: [4]}": 1,
+    "expected four boundary vertices, got {11: [5], 19: [12, 13], 23: [20, 21], 18: [15], 16: [9], 10: [4]}": 1,
+    "expected four boundary vertices, got {11: [5], 19: [12, 13], 23: [20], 22: [21], 16: [15, 9], 10: [4]}": 1,
+    "expected four boundary vertices, got {2: [0], 7: [3, 14], 13: [19, 18], 17: [21, 11], 12: [5]}": 1,
+    "expected four boundary vertices, got {4: [1], 11: [5], 23: [19], 17: [22], 9: [16, 3], 15: [21, 8]}": 1,
+    "expected four boundary vertices, got {5: [12], 11: [17, 16], 4: [10, 9], 3: [8, 7], 0: [2]}": 1,
+    "none": 8
+  },
+  "hex_ring_patterns": {
+    "0,0,1,1,2,2,3,3": 7,
+    "0,0,1,2,3,3,2,1": 1
+  },
+  "n_max": 24,
+  "n_min": 8,
+  "occurrence_count": 27,
+  "occurrence_families": {
+    "L=6,6,6,10|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 2,
+    "L=6,6,6,6|B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1": 7,
+    "L=6,6,6,6|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 1,
+    "L=6,6,6,6|B=5|I=0,0,1,1,2,2,3,4|A=1,2,2,2,1|E=2,1,1,1,2": 2,
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,1,1,2,2,1|E=2,2,2,1,1,2": 1,
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,2,2,1,1,1|E=2,1,1,2,2,2": 1,
+    "L=6,6,6,6|B=6|I=0,0,1,2,3,3,4,5|A=1,2,1,1,2,1|E=2,1,2,2,1,2": 2,
+    "L=6,6,6,6|B=6|I=0,0,1,2,3,4,5,1|A=1,1,1,1,2,2|E=2,2,2,2,1,1": 1,
+    "L=6,6,6,8|B=4|I=0,0,1,1,2,3,3,2|A=2,2,2,2|E=1,1,1,1": 1,
+    "L=6,6,6,8|B=6|I=0,0,1,1,2,2,3,3,4,5|A=2,1,1,2,2,2|E=1,2,2,1,1,1": 1,
+    "L=6,6,6,8|B=6|I=0,0,1,1,2,2,3,3,4,5|A=2,2,1,1,2,2|E=1,1,2,2,1,1": 1,
+    "L=6,6,6,8|B=6|I=0,0,1,1,2,2,3,3,4,5|A=2,2,2,1,1,2|E=1,1,1,2,2,1": 1,
+    "L=6,6,6,8|B=6|I=0,0,1,1,2,3,4,4,3,5|A=2,2,1,2,2,1|E=1,1,2,1,1,2": 1,
+    "L=6,6,6,8|B=6|I=0,0,1,2,3,3,2,1,4,5|A=2,2,2,2,1,1|E=1,1,1,1,2,2": 1,
+    "L=6,8,6,8|B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1": 2,
+    "L=6,8,6,8|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 2
+  },
+  "outer_face_length_patterns": {
+    "6,6,6,10": 2,
+    "6,6,6,6": 15,
+    "6,6,6,8": 6,
+    "6,8,6,8": 4
+  },
+  "pass_count": 0,
+  "pass_patterns": {},
+  "plantri_path": "C:\\Users\\charl\\Documents\\New Math Problem\\plantri.exe",
+  "scanned_graph_count": 55
+}

@@ -1,33 +1,105 @@
 {
-    "version": "821779f90e35e2946c0613338e45c285a9d130f2c",
-    "results": [
-        {
-            "n": 8,
-            "graph_path": "artifacts/traces\\graph_n8.json",
-            "trace_path": "artifacts/traces\\trace_n8.jsonl",
-            "success": true,
-            "trace_sha256": "c1b143133e29dd576a9a0e26e529dae8365f4ea8e488d591e7200e5d7e32ab31"
-        },
-        {
-            "n": 12,
-            "graph_path": "artifacts/traces\\graph_n12.json",
-            "trace_path": "artifacts/traces\\trace_n12.jsonl",
-            "success": true,
-            "trace_sha256": "5df9396cb2f44b1c81f12259d8be3c3d29c472391e289411bc9f5a455b76d5eb"
-        },
-        {
-            "n": 48,
-            "graph_path": "artifacts/traces\\graph_n48.json",
-            "trace_path": "artifacts/traces\\trace_n48.jsonl",
-            "success": true,
-            "trace_sha256": "ce02b44b98ed3daa8137c35ef2e3692eeefb6884fb72007291056ea1801157ec"
-        },
-        {
-            "n": 128,
-            "graph_path": "artifacts/traces\\graph_n128.json",
-            "trace_path": "artifacts/traces\\trace_n128.jsonl",
-            "success": true,
-            "trace_sha256": "fe5138e9b480b6dd63133cfd08d25ba0791c968294dbe2bca191cb53b41371b9"
-        }
-    ]
+  "diagnostic_summary": {
+    "job_count": 2,
+    "open_count": 2,
+    "open_issues": [
+      {
+        "error": "Euler fails: V=18 E=27 F=9",
+        "name": "rule_refined_c4",
+        "trace_path": "artifacts\\traces\\trace_rule_refined_c4.json"
+      },
+      {
+        "error": "Euler fails: V=20 E=30 F=8",
+        "name": "rule_pinch_ii",
+        "trace_path": "artifacts\\traces\\trace_rule_pinch_ii.json"
+      }
+    ],
+    "pass_count": 0
+  },
+  "results": [
+    {
+      "category": "verified_trace",
+      "graph_path": "artifacts\\traces\\graph_n8.json",
+      "mode": "solver",
+      "name": "cube",
+      "status": "PASS",
+      "step_count": 0,
+      "success": true,
+      "trace_path": "artifacts\\traces\\trace_n8.json",
+      "trace_sha256": "90c99c181fc2522ce9a2b28f4c311b2601e6599d9634a16fa6d9d47185c6dbad"
+    },
+    {
+      "category": "verified_trace",
+      "graph_path": "artifacts\\traces\\graph_n12.json",
+      "mode": "solver",
+      "name": "prism12",
+      "status": "PASS",
+      "step_count": 0,
+      "success": true,
+      "trace_path": "artifacts\\traces\\trace_n12.json",
+      "trace_sha256": "5e7b565e3d7f62e9bd7697feedd8756e65faae2a3a82ceaf8d7cec3aa02d6960"
+    },
+    {
+      "category": "verified_trace",
+      "graph_path": "artifacts\\traces\\graph_n48.json",
+      "mode": "solver",
+      "name": "prism48",
+      "status": "PASS",
+      "step_count": 9,
+      "success": true,
+      "trace_path": "artifacts\\traces\\trace_n48.json",
+      "trace_sha256": "e8db0d85e064a8901747e67eb32cb848461c63eb48279c7e92411d21d0d35268"
+    },
+    {
+      "category": "verified_trace",
+      "graph_path": "artifacts\\traces\\graph_n128.json",
+      "mode": "solver",
+      "name": "prism128",
+      "status": "PASS",
+      "step_count": 29,
+      "success": true,
+      "trace_path": "artifacts\\traces\\trace_n128.json",
+      "trace_sha256": "c55d82cf18562a4264fe98f4037871b4c7e9a5d95031e6b257d3f0d3356cfb61"
+    },
+    {
+      "category": "verified_trace",
+      "graph_path": "artifacts\\traces\\graph_rule_c2.json",
+      "mode": "forced",
+      "name": "rule_c2",
+      "status": "PASS",
+      "step_count": 1,
+      "success": true,
+      "trace_path": "artifacts\\traces\\trace_rule_c2.json",
+      "trace_sha256": "5a03441c5813d97fa7d9ffccac420c31fabee0a01f58097212a98fc7831d608c"
+    },
+    {
+      "category": "diagnostic_probe",
+      "error": "Euler fails: V=18 E=27 F=9",
+      "graph_path": "artifacts\\traces\\graph_rule_refined_c4.json",
+      "mode": "forced",
+      "name": "rule_refined_c4",
+      "status": "OPEN",
+      "success": false,
+      "trace_path": "artifacts\\traces\\trace_rule_refined_c4.json",
+      "trace_sha256": "c146fdd0b855f5515045c183b337fb374a8dd5e839af6b10ddd4e8b4adfc6f20"
+    },
+    {
+      "category": "diagnostic_probe",
+      "error": "Euler fails: V=20 E=30 F=8",
+      "graph_path": "artifacts\\traces\\graph_rule_pinch_ii.json",
+      "mode": "forced",
+      "name": "rule_pinch_ii",
+      "status": "OPEN",
+      "success": false,
+      "trace_path": "artifacts\\traces\\trace_rule_pinch_ii.json",
+      "trace_sha256": "0887bd0e3eeeab3dfd1f72db13aca49b1339c3406e997e2e4540381e080db4e8"
+    }
+  ],
+  "verified_trace_summary": {
+    "all_passed": true,
+    "fail_count": 0,
+    "job_count": 5,
+    "pass_count": 5
+  },
+  "version": "f416b83f4c8c2fa63116b529985da8935767d5e1"
 }

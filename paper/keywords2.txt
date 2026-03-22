@@ -1,0 +1,9 @@
+1593: \subsection{Algorithm and correctness proof}
+1595: \label{subsec:algorithm}
+1597: \begin{algorithm}[ht]
+1600: \begin{algorithmic}[1]
+1610: \end{algorithmic}
+1611: \end{algorithm}
+1613: \begin{theorem}[Correctness of Algorithm~\ref{alg:main} and Barnette's Conjecture for $\mathcal{Q}$]
+1614: \label{thm:algorithm-correctness}
+1615: For every $(G,\pi)\in\mathcal{Q}$, Algorithm~\ref{alg:main} terminates and returns a Hamiltonian cycle of $G$.

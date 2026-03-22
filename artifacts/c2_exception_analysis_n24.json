@@ -1,0 +1,199 @@
+{
+  "exception_count": 3,
+  "exceptions": [
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            8
+          ],
+          "cut": [
+            1,
+            20
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            7
+          ],
+          "cut": [
+            1,
+            21
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            7
+          ],
+          "cut": [
+            4,
+            20
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            8
+          ],
+          "cut": [
+            4,
+            21
+          ]
+        }
+      ],
+      "n_vertices": 20,
+      "occ": {
+        "a": 16,
+        "b": 11,
+        "c": 17,
+        "d": 19,
+        "e": 12,
+        "f": 7,
+        "u1": 10,
+        "u4": 15,
+        "u5": 13,
+        "u6": 3
+      },
+      "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,eop,fqg,hqr,hrn,ims,isj,jst,ktl,ltm,npo,prq",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 16
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            12
+          ],
+          "cut": [
+            9,
+            24
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            11
+          ],
+          "cut": [
+            9,
+            25
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            11
+          ],
+          "cut": [
+            15,
+            24
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            10
+          ],
+          "cut": [
+            15,
+            25
+          ]
+        }
+      ],
+      "n_vertices": 24,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,ist,itp,jou,jlk,muv,nvw,nwo,pxr,rxs,sxt,uwv",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 20
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            12
+          ],
+          "cut": [
+            9,
+            24
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            11
+          ],
+          "cut": [
+            9,
+            25
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            11
+          ],
+          "cut": [
+            15,
+            24
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            10
+          ],
+          "cut": [
+            15,
+            25
+          ]
+        }
+      ],
+      "n_vertices": 24,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,irs,itp,jou,jlk,mvn,nvw,owu,ptx,rxs,sxt,uwv",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 20
+    }
+  ],
+  "gadget_edge_cut_count": 0,
+  "n_max": 24,
+  "n_min": 8,
+  "plantri_path": "C:\\Users\\charl\\Documents\\New Math Problem\\plantri.exe",
+  "two_cut_frequency": {
+    "1,20": 1,
+    "1,21": 1,
+    "15,24": 2,
+    "15,25": 2,
+    "4,20": 1,
+    "4,21": 1,
+    "9,24": 2,
+    "9,25": 2
+  }
+}

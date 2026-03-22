@@ -1,0 +1,252 @@
+{
+  "aggregate_c2_errors": {
+    "face orbit did not close": 29,
+    "not 3-connected": 1,
+    "not cubic": 19
+  },
+  "aggregate_pinch_errors": {},
+  "aggregate_refined_c4_errors": {
+    "Euler fails: V=18 E=27 F=9": 1,
+    "Euler fails: V=22 E=33 F=11": 10
+  },
+  "face_length_patterns": {
+    "4,4,4,4,4,4": 1,
+    "4,4,4,4,4,4,4,4,6,6,6,6,6,10": 1,
+    "4,4,4,4,4,4,4,4,6,6,6,6,8,8": 1,
+    "4,4,4,4,4,4,4,4,6,6,8,8": 1,
+    "4,4,4,4,4,4,4,6,6,6,6,8": 1,
+    "4,4,4,4,4,4,6,6,6": 1,
+    "4,4,4,4,4,4,6,6,6,6,6,6": 1,
+    "4,4,4,4,4,4,6,6,6,6,6,6,6,6": 1
+  },
+  "graphs": [
+    {
+      "c2_count": 12,
+      "c2_error_counts": {
+        "face orbit did not close": 12
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "n_vertices": 8,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "8 bcd,aef,afg,age,bdh,bhc,chd,egf",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not cubic": 3
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6
+      ],
+      "n_vertices": 14,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "14 bcd,aef,afg,agh,bij,bkc,ckd,dli,ehm,emn,fng,hnm,ilj,jlk",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 7,
+      "c2_error_counts": {
+        "face orbit did not close": 5,
+        "not 3-connected": 1,
+        "not cubic": 1
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 20,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,eop,fqg,hqr,hrn,ims,isj,jst,ktl,ltm,npo,prq",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not cubic": 3
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8
+      ],
+      "n_vertices": 20,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,epq,fqg,hqp,hrn,ims,ist,jtl,jlk,mts,nro,orp",
+      "refined_c4_count": 1,
+      "refined_c4_error_counts": {
+        "Euler fails: V=18 E=27 F=9": 1
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "n_vertices": 20,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "20 bcd,aef,agh,aij,bkl,bmn,cno,cop,dpm,dqk,ejr,ers,fsi,ftg,gth,hti,jsr,kql,lqm,npo",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 2,
+        "not cubic": 4
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 24,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dmn,eop,egf,gph,hqi,iro,jns,jsl,mtu,nuv,owp,qwx,qxr,rxw,svt,tvu",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=22 E=33 F=11": 2
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not cubic": 3
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        10
+      ],
+      "n_vertices": 24,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dmn,eop,egf,gph,hqi,irs,jtu,jul,muv,nvw,nwt,osx,oqp,qxr,rxs,twv",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=22 E=33 F=11": 2
+      }
+    },
+    {
+      "c2_count": 0,
+      "c2_error_counts": {},
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "n_vertices": 24,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,blc,cmn,dno,doj,eip,epq,fqr,grs,gsh,hti,juk,kvl,lvm,mwn,owu,ptx,qxr,sxt,uwv",
+      "refined_c4_count": 6,
+      "refined_c4_error_counts": {
+        "Euler fails: V=22 E=33 F=11": 6
+      }
+    }
+  ],
+  "n_max": 24,
+  "n_min": 8,
+  "plantri_path": "C:\\Users\\charl\\Documents\\New Math Problem\\plantri.exe",
+  "unresolved_counts_by_n": {
+    "14": 1,
+    "20": 3,
+    "24": 3,
+    "8": 1
+  },
+  "unresolved_graph_count": 8
+}

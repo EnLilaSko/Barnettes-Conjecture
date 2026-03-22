@@ -45,17 +45,16 @@
 \maketitle
 
 \begin{abstract}
-We give a certified reduction framework for Hamilton cycles in $3$-connected cubic bipartite plane graphs.
+We develop a certified reduction framework for Hamilton cycles in $3$-connected cubic bipartite plane graphs.
 Using Euler's formula and the fact that bipartite plane graphs have only even face lengths, we obtain a short
 non-discharging proof that every such graph contains a facial $4$-cycle. A purely local neighborhood analysis
 around a $4$-face yields an unavoidable certified configuration among $C_2$ (adjacent $4$-faces), $C_{\text{pinch}(ii)}$,
 or Refined $C_4$ (an edge-isolated $4$-face with distinct terminals). For each configuration we specify an explicit
-rotation-system edit implementing the planar surgery, verify preservation of the class invariants (cubic, bipartite,
-and $3$-connected), and provide finite lifting tables that reconstruct a Hamiltonian cycle of the original graph
-from a Hamiltonian cycle of the reduced graph. The recursive algorithm reduces until a fixed base threshold
+rotation-system edit implementing the intended planar surgery and provide finite lifting tables that reconstruct a Hamiltonian cycle of the original graph
+from a Hamiltonian cycle of the reduced graph whenever the corresponding reduction step is accepted by the checker. The recursive algorithm reduces until a fixed base threshold
 $N_{\mathrm{base}}$, where an exact backtracking solver is invoked. All base instances up to $N_{\mathrm{base}}$ are
 enumerated and verified by an open-source pipeline whose checker independently replays the recorded rotation edits
-and validates planarity, invariant preservation, and measure decrease.
+and validates planarity, invariant preservation, and measure decrease. In the current repository state, this verification is complete for the base cases, the gadget lifting tables, and the stored $C_2$ traces; the present two-vertex implementations of refined $C_4$ and $C_{\text{pinch}(ii)}$ are still rejected by the checker on diagnostic one-step probes and therefore remain open obligations rather than completed certificates in this branch.
 \end{abstract}
 
 % ========== FRONT MATTER ========== 
@@ -141,7 +140,7 @@ Graphs are finite, simple, undirected unless noted. An embedded plane graph is r
 \label{sec:introduction}
 
 \subsection{Barnette Context and the Certified-Reduction Thesis}
-Barnette's Conjecture (1969) asserts every 3-connected, cubic, bipartite planar graph is Hamiltonian. We present a proof via the Certified Reduction Framework (CRF): a systematic method for establishing global properties in constrained graph classes through local simplifications with guaranteed reconstruction.
+Barnette's Conjecture (1969) asserts every 3-connected, cubic, bipartite planar graph is Hamiltonian. We present a proof blueprint and verification pipeline via the Certified Reduction Framework (CRF): a systematic method for establishing global properties in constrained graph classes through local simplifications with guaranteed reconstruction.
 
 \subsection{Definitions: The Class $\mathcal{Q}$}
 \begin{definition}[Class $\mathcal{Q}$]
@@ -159,7 +158,7 @@ A certified reduction for $\mathcal{Q}$ satisfies:
 \begin{enumerate}
     \item[(CRF1)] \textbf{Bounded-radius certificates}: Local configurations verifiable in constant-size neighborhoods.
     \item[(CRF2)] \textbf{Measure decrease}: Produces $G' \in \mathcal{Q}$ with $\mu(G') <_{\text{lex}} \mu(G)$ where $\mu$ is the lexicographic measure defined in Section~\ref{sec:measure}.
-    \item[(CRF3)] \textbf{Property preservation}: Maintains planarity, bipartiteness, and cubicity; 3-connectivity is enforced by mandatory checker invariant.
+    \item[(CRF3)] \textbf{Property preservation on accepted steps}: A reduction step is accepted only if the checker replays it and verifies planarity, bipartiteness, cubicity, and 3-connectivity in the post-state.
     \item[(CRF4)] \textbf{Bidirectional Hamiltonicity preservation}: 
     \begin{itemize}
         \item \textbf{Lifting}: From $H'$ Hamiltonian in $G'$, constructs $H$ Hamiltonian in $G$.
@@ -1019,7 +1018,7 @@ For every reduction step recorded in a certificate trace, the checker recomputes
 If the replayed graph $G'$ at any step $i$ fails the 3-connectivity test, the checker rejects the trace. Consequently, any successfully verified trace provides a computational proof that the entire reduction sequence $G_0, G_1, \dots, G_m$ consists exclusively of 3-connected graphs.
 
 \bigskip
-Requirement (CRF3) of the Certified Reduction Framework is thus satisfied by the checker's mandatory operational validation, ensuring that membership in $\mathcal{Q}$ is maintained throughout the reduction process.
+Requirement (CRF3) is therefore satisfied for any \emph{accepted trace step}: the checker certifies membership in $\mathcal{Q}$ only after replaying the claimed edit and revalidating the post-state. In the current branch, this gives end-to-end evidence for the accepted $C_2$ traces, while the diagnostic refined $C_4$ and pinch(ii) probes remain rejected and therefore do not yet contribute certified preservation results.
 
 \bigskip
 
@@ -1453,7 +1452,7 @@ $L(H', G)$ produces a Hamiltonian cycle $H$ in $G$ in $O(1)$ time.
 \end{theorem}
 
 \begin{proof}
-Each gadget has constant size. By the interface analysis in Section~\ref{sec:interface-analysis}, there are exactly five (or six for refined $C_4$) possible ways a Hamiltonian cycle can intersect each gadget. For each interface type, the lifting library provides a precomputed path system in the original configuration that connects the same terminals. 
+Each gadget has constant size. By the interface analysis in Section~\ref{sec:interface-analysis}, the two-vertex gadgets have five generic interface types. For $C_2$ and $C_{\mathrm{pinch}(ii)}$, all five are admissible. For refined $C_4$, Lemma~\ref{lem:no-parallel-C4} excludes the generic parallel type, leaving exactly four admissible cross types. For each admissible interface type, the lifting library provides a precomputed path system in the original configuration that connects the same terminals. 
 
 The lifting procedure identifies the interface type by checking which gadget edges are used in $H'$ (constant time), retrieves the corresponding path system from the library (constant time via table lookup), and replaces the gadget's contribution with this path system. By Lemma~\ref{lemma:splicing}, this yields a Hamiltonian cycle in $G$.
 
@@ -1489,47 +1488,25 @@ Since the maximum vertex-count decrease is 4 (for $C_2$ and $C_{\text{pinch}(ii)
 Thus $|V(G')| \ge 12$. Since our exact solver handles all graphs with $|V| \le 14$ (and indeed our base verification covers up to 14, while the minimum size in $\mathcal{Q}$ is 8), the reduced graph is safely handled.
 \end{definition}
 
-\begin{theorem}[Certified completeness above $N_{\mathrm{base}}$]
+\begin{theorem}[Current completeness target above $N_{\mathrm{base}}$]
 \label{thm:certified-completeness-above}
-With $N_{\mathrm{base}}$ as fixed in Definition~\ref{def:Nbase}, every $G\in\mathcal Q$ with
+To complete the computer-assisted branch, it remains to show that every $G\in\mathcal Q$ with
 $|V(G)|>N_{\mathrm{base}}$ contains a certified occurrence of $C_2$, $C_{\mathrm{pinch}(ii)}$, or refined $C_4$.
 \end{theorem}
 
-\begin{proof}
+\begin{proof}[Current status]
 By Lemma~\ref{lem:existence-f4} (Euler counting), $G$ contains a facial $4$-cycle $Q$.
 By the local $4$-face neighborhood analysis (Section~\ref{sec:unavoidability}),
 $Q$ yields a topological occurrence of one of the catalog configurations.
-It remains to show that when $|V(G)|>N_{\mathrm{base}}$, at least one such occurrence
-satisfies the corresponding certification predicates.
-
-For refined $C_4$, we use the relaxed certificate (Section~\ref{subsec:red-c4})
-in which the diagonal-isolation condition is dropped, justified operationally 
-because the checker recomputes and enforces 3-connectivity after every reduction step; 
-any trace step that violates 3-connectivity is rejected. Section~\ref{subsec:3conn-preservation} 
-provides intuition/proof sketches, but the proof obligation is discharged by checker-verified invariants.
-
-For $C_2$ and $C_{\mathrm{pinch}(ii)}$, the remaining certification predicates are
-purely local and exclude only finitely many small obstructions arising from vertex
-identifications among terminals. The implication `topological occurrence $\Rightarrow$ certified occurrence' for $C_2$ and Pinch(ii) is discharged by the finite enumeration Lemma~\ref{lem:small-obstructions}, which proves that every certification failure occurs on at most 14 vertices.
-
-Therefore if $|V(G)|>N_{\mathrm{base}}$, some topological occurrence is certified.
+The exhaustive base computation of Theorem~\ref{thm:base-verified} is now in place, but the repository does not yet contain the promised local-neighborhood enumeration needed to upgrade a topological occurrence to a certified occurrence uniformly above the base threshold. In particular, the script \texttt{enumerate\_local\_types.py} referenced below is not present in this branch, and the current diagnostic trace probes for refined $C_4$ and $C_{\mathrm{pinch}(ii)}$ are rejected by the checker. Thus the completeness implication remains an explicit implementation obligation rather than a discharged theorem in the current computer-assisted artifact.
 \end{proof}
 
-\begin{lemma}[Small obstructions to certification are finite]
+\begin{lemma}[Remaining small-obstruction computation]
 \label{lem:small-obstructions}
-For the certification predicates used in Definition~\ref{def:cert},
-the radius-$3$ neighborhood of a $4$-face admits only finitely many combinatorial types in a cubic bipartite plane graph.
-An exhaustive enumeration of these types (together with $3$-connectivity filtering) shows that every obstruction to
-certification occurs on at most $14$ vertices. Consequently, for every $G\in\mathcal Q$ with $|V(G)|>14$,
-the local $4$-face classification yields at least one \emph{certified} occurrence of $C_2$, $C_{\text{pinch}(ii)}$,
-or Refined $C_4$.
+For the certification predicates used in Definition~\ref{def:cert}, the remaining computational task is to enumerate the radius-$3$ neighborhoods of a $4$-face in cubic bipartite plane graphs, filter those extending to $3$-connected instances, and determine whether every certification obstruction occurs on at most $14$ vertices.
 \end{lemma}
-\begin{proof}
-This is established by a finite, reproducible computation.
-The script \texttt{enumerate\_local\_types.py} enumerates all radius-$3$ rotation-system neighborhoods of a facial $4$-cycle
-compatible with cubicity and bipartiteness, filters those extending to $3$-connected instances, and tests the
-certification predicates. The maximum vertex count among failing neighborhoods is $14$, and the script emits the full
-list of witness neighborhoods. See Appendix~\ref{app:reproducibility} for the repository and one-command reproduction.
+\begin{proof}[Status]
+This computation is not yet implemented in the repository. The statement is retained here as the concrete finite search obligation needed to turn the present proof blueprint into a completed computer-assisted proof.
 \end{proof}
 
 \subsection{Computational base verification}
@@ -1539,7 +1516,7 @@ list of witness neighborhoods. See Appendix~\ref{app:reproducibility} for the re
 Fix $N_{\mathrm{base}}$ as in Theorem~\ref{thm:certified-completeness-above}.
 For every $G \in \mathcal{Q}$ with $|V(G)| \le N_{\mathrm{base}}$, the script
 \texttt{verify\_base\_cases.py} enumerates all abstract graphs in $\mathcal{Q}$ with $|V| \le N_{\mathrm{base}}$ up to isomorphism (one representative embedding per graph) and runs an exact Hamiltonicity solver,
-outputting either a Hamiltonian cycle or a certificate of nonexistence.
+recording a Hamiltonian cycle for each enumerated instance and halting if any instance fails.
 \end{theorem}
 
 \begin{proof}
@@ -1820,6 +1797,175 @@ The reduction algorithm (\emph{reducer}) emits a machine-readable \emph{certific
 A separate, small \emph{checker} replays the trace and verifies every precondition and invariant
 directly from the encoded embedding.
 
+\paragraph{Current verification scope.}
+The present repository certifies three layers of evidence:
+\begin{enumerate}
+  \item exhaustive base-case enumeration up to $N_{\mathrm{base}}=14$,
+  \item exhaustive lifting-table validation on the finite gadget graphs, and
+  \item structured trace replay for the stored accepted traces \texttt{trace\_n8.json}, \texttt{trace\_n12.json}, \texttt{trace\_n48.json}, \texttt{trace\_n128.json}, and \texttt{trace\_rule\_c2.json}.
+\end{enumerate}
+The batch artifact \texttt{artifacts/traces/batch\_verification.json} also records diagnostic one-step probes for refined $C_4$ and $C_{\mathrm{pinch}(ii)}$; in the current branch those probes are rejected because the replayed post-state fails the embedding/Euler check. The companion scan artifact \texttt{artifacts/refined\_c4\_scan.json}, generated by \texttt{src/refined\_c4\_scan.py}, examines all $108$ refined $C_4$ occurrences found by \texttt{plantri} in $\mathcal Q$ up to $24$ vertices and finds zero accepted post-states for the current two-vertex refined $C_4$ reducer. The separate artifact \texttt{artifacts/pinch\_ii\_scan.json}, generated by \texttt{src/pinch\_ii\_scan.py}, scans the $243547$ Barnette graphs found by \texttt{plantri} up to $40$ vertices and finds zero genuine $C_{\mathrm{pinch}(ii)}$ occurrences in that range. The stronger local census artifact \texttt{artifacts/pinch\_ii\_local\_census.json}, generated by \texttt{src/pinch\_ii\_local\_census.py}, scans the same $243547$ graphs and finds zero facial $4$-cycles with an opposite identification $u_1=u_3$ or $u_2=u_4$. Accordingly, Strategy-A presently certifies the $C_2$ trace pipeline end-to-end, while the refined $C_4$ reduction remains open at the reduction-validation layer and the pinch(ii) branch still lacks a genuine small-instance benchmark in $\mathcal Q$; in fact, the underlying opposite-pinched local shape itself does not occur in the scanned range.
+
+The new completeness-frontier artifact \texttt{artifacts/completeness\_frontier\_scan\_n24.json}, generated by \texttt{src/completeness\_frontier\_scan.py}, shows that the completeness gap is not confined to refined $C_4$: among the $55$ Barnette graphs up to $24$ vertices, the current branch certifies a reduction witness for $47$ and leaves $8$ unresolved. The companion occurrence artifact \texttt{artifacts/c2\_scan\_n24.json}, generated by \texttt{src/c2\_scan.py}, explains most of the $C_2$ side of this behavior: among $317$ adjacent-quad occurrences up to $24$ vertices, all $203$ accepted occurrences have four distinct terminals, while every occurrence with a terminal identification fails in the current two-vertex reduction layer. The follow-up artifact \texttt{artifacts/c2\_exception\_analysis\_n30.json}, generated by \texttt{src/c2\_exception\_analysis.py}, shows that even the distinct-terminal $C_2$ case has a recurring non-$3$-connected exception family: there are $69$ such exceptions up to $30$ vertices, with counts $1,2,7,12,47$ at $n=20,24,26,28,30$, and every one fails by creating mixed $2$-cuts involving one new gadget vertex and one old vertex.
+
+\begin{lemma}[No opposite-pinched facial quadrilateral up to $40$ vertices]
+\label{lem:pinch-local-census}
+The artifact \texttt{artifacts/pinch\_ii\_local\_census.json}, generated by \texttt{src/pinch\_ii\_local\_census.py}, exhaustively scans the $243547$ Barnette graphs produced by \texttt{plantri} on $8$ through $40$ vertices and finds no facial $4$-cycle $Q=v_1v_2v_3v_4$ with an opposite equality among its external neighbors: neither $u_1=u_3$ nor $u_2=u_4$ occurs in that range.
+\end{lemma}
+
+\begin{proof}
+For each graph in the scan range, the script enumerates every facial quadrilateral exactly once, computes the four external neighbors $u_1,u_2,u_3,u_4$, and records the quadrilateral only when an opposite equality $u_1=u_3$ or $u_2=u_4$ is present. The resulting artifact reports \texttt{pinched\_quad\_count = 0}. Therefore no opposite-pinched facial quadrilateral occurs in $\mathcal Q$ up to $40$ vertices. Since every $C_{\mathrm{pinch}(ii)}$ occurrence is, in particular, an opposite-pinched facial quadrilateral, no $C_{\mathrm{pinch}(ii)}$ configuration can appear in that range.
+\end{proof}
+
+\begin{lemma}[Eight-vertex nonplanarity obstruction for three recurrent refined $C_4$ families]
+\label{lem:refined-c4-nonplanarity-obstruction}
+Consider the three recurrent generalized refined-$C_4$ interface families
+\[
+\begin{aligned}
+&B=4,\ I=00123321,\ A=2222,\ E=1111,\\
+&B=5,\ I=00112234,\ A=12221,\ E=21112,\\
+&B=6,\ I=00112345,\ A=111221,\ E=222112.
+\end{aligned}
+\]
+In the current attachment-sum-eight search framework, every $8$-vertex candidate for these families that survives the cubic, bipartite, and $3$-connected graph-level filters is already abstractly nonplanar. Equivalently, no planar $8$-vertex replacement gadget exists for any of these three families in the present framework.
+\end{lemma}
+
+\begin{proof}[Computational certificate]
+The exhaustive family sweeps \texttt{artifacts/refined\_c4\_b4\_family\_00123321\_a2222\_e1111\_g8\_sweep.json}, \texttt{artifacts/refined\_c4\_b5\_family\_00112234\_a12221\_e21112\_g8\_sweep.json}, and \texttt{artifacts/refined\_c4\_b6\_family\_00112345\_a111221\_e222112\_g8\_sweep.json} enumerate all canonical attachment matrices and internal graphs in the $8$-vertex layer and find no accepted gadget. The companion obstruction artifacts \texttt{artifacts/refined\_c4\_b4\_family\_00123321\_a2222\_e1111\_g8\_obstruction.json}, \texttt{artifacts/refined\_c4\_b5\_family\_00112234\_a12221\_e21112\_g8\_obstruction.json}, and \texttt{artifacts/refined\_c4\_b6\_family\_00112345\_a111221\_e222112\_g8\_obstruction.json} refine the failure analysis. Their totals report
+\[
+(\texttt{three\_connected\_pairs},\texttt{abstract\_planar\_pairs})=(2,0),\ (4,0),\ (13,0)
+\]
+for the three families, respectively. Thus a small number of graph-level candidates survive the bipartite and $3$-connected filters, but none of those survivors is planar even as an abstract graph. Hence no choice of local rotations can realize a planar replacement gadget in these three families at $8$ vertices. The summary artifact \texttt{artifacts/refined\_c4\_k33\_templates.json} shows that these $19$ nonplanar survivors do not arise from $19$ unrelated gadget-side graphs: up to internal-graph isomorphism they collapse to $12$ distinct $8$-vertex skeleton classes. The focused class artifact \texttt{artifacts/refined\_c4\_recurrent\_skeleton\_classes.json} extracts the five recurrent classes $R_1,\dots,R_5$, which already account for $12$ of the $19$ survivors. These recurrent classes live on only four column-sum profiles,
+\[
+(0,0,1,1,1,1,2,2),\ (0,0,0,1,1,1,2,3),\ (0,0,0,1,1,2,2,2),\ (1,1,1,1,1,1,1,1),
+\]
+with $R_1,R_2$ supported on the first profile, $R_3$ on the second, $R_4$ on the third, and $R_5$ on the fourth. Moreover, $R_2$ recurs in all three unresolved interface families, $R_1,R_4,R_5$ recur across two families, and only $R_3$ repeats within a single family. So while the explicit $K_{3,3}$ witnesses vary from survivor to survivor, the underlying gadget-side obstruction is already concentrated into a small recurrent catalog across the unresolved refined-$C_4$ families.
+\end{proof}
+
+\begin{corollary}[Class-level exclusion for the recurrent skeleton $R_2$]
+\label{cor:r2-class-exclusion}
+Let $R_2$ denote the recurrent $8$-vertex internal skeleton with edge set
+\[
+\{(0,2),(0,3),(0,4),(1,2),(1,3),(1,5),(4,6),(5,7)\},
+\]
+written on gadget vertices $\{0,\dots,7\}$, and let the column-sum profile be $(0,0,1,1,1,1,2,2)$. Then every canonical candidate built from this fixed skeleton in the three unresolved refined-$C_4$ families of Lemma~\ref{lem:refined-c4-nonplanarity-obstruction} is already abstractly nonplanar. In particular, the class $R_2$ is excluded uniformly across those three families at the graph level.
+\end{corollary}
+
+\begin{proof}[Computational certificate]
+The focused artifact \texttt{artifacts/refined\_c4\_r2\_class.json}, generated by \texttt{src/refined\_c4\_r2\_class\_analysis.py}, fixes the $R_2$ skeleton and enumerates all canonical matrices with column profile $(0,0,1,1,1,1,2,2)$ for the three unresolved interface families. The total canonical matrix counts are $(3,5,11)$ across the three families, respectively. Among those $19$ canonical matrices, exactly six pass the bipartite and $3$-connected filters, with counts $(2,2,2)$ by family, and the same artifact reports
+\[
+(\texttt{abstract\_planar\_count},\texttt{abstract\_nonplanar\_count})=(0,2),\ (0,2),\ (0,2)
+\]
+for those six candidates. Every one of the six surviving candidates has Kuratowski core type \texttt{K3,3}. Hence the recurrent class $R_2$ is uniformly excluded, across all three families in which it appears, before any embedding-rotation choices are considered.
+\end{proof}
+
+\begin{corollary}[Class-level exclusion for the recurrent skeleton $R_1$]
+\label{cor:r1-class-exclusion}
+Let $R_1$ denote the recurrent $8$-vertex internal skeleton with edge set
+\[
+\{(0,1),(0,2),(0,6),(1,3),(1,7),(2,4),(3,5),(4,5)\},
+\]
+written on gadget vertices $\{0,\dots,7\}$, and let the column-sum profile be $(0,0,1,1,1,1,2,2)$. Then every canonical candidate built from this fixed skeleton in the two unresolved refined-$C_4$ families in which it appears,
+\[
+(B,I,A,E)=(5,00112234,12221,21112)\quad\text{and}\quad (6,00112345,111221,222112),
+\]
+is already abstractly nonplanar. In particular, the class $R_1$ is excluded uniformly across those two families at the graph level.
+\end{corollary}
+
+\begin{proof}[Computational certificate]
+The focused artifact \texttt{artifacts/refined\_c4\_r1\_class.json}, generated by \texttt{src/refined\_c4\_recurrent\_class\_analysis.py}, fixes the $R_1$ skeleton and enumerates all canonical matrices with column profile $(0,0,1,1,1,1,2,2)$ for the two unresolved interface families in which $R_1$ occurs. The total canonical matrix counts are $(5,11)$ across those two families. Among those $16$ canonical matrices, exactly three pass the bipartite and $3$-connected filters, with counts $(1,2)$ by family, and the same artifact reports
+\[
+(\texttt{abstract\_planar\_count},\texttt{abstract\_nonplanar\_count})=(0,1),\ (0,2)
+\]
+for those three candidates. Every one of the three surviving candidates has Kuratowski core type \texttt{K3,3}. Hence the recurrent class $R_1$ is uniformly excluded, across both families in which it appears, before any embedding-rotation choices are considered.
+\end{proof}
+
+\begin{corollary}[Class-level exclusion for the recurrent skeleton $R_4$]
+\label{cor:r4-class-exclusion}
+Let $R_4$ denote the recurrent $8$-vertex internal skeleton with edge set
+\[
+\{(0,1),(0,2),(0,5),(1,3),(1,4),(2,3),(2,4),(6,7)\},
+\]
+written on gadget vertices $\{0,\dots,7\}$, and let the column-sum profile be $(0,0,0,1,1,2,2,2)$. Then every canonical candidate built from this fixed skeleton in the two unresolved refined-$C_4$ families in which it appears,
+\[
+(B,I,A,E)=(5,00112234,12221,21112)\quad\text{and}\quad (6,00112345,111221,222112),
+\]
+is already abstractly nonplanar. In particular, the class $R_4$ is excluded uniformly across those two families at the graph level.
+\end{corollary}
+
+\begin{proof}[Computational certificate]
+The focused artifact \texttt{artifacts/refined\_c4\_r4\_class.json}, generated by \texttt{src/refined\_c4\_recurrent\_class\_analysis.py}, fixes the $R_4$ skeleton and enumerates all canonical matrices with column profile $(0,0,0,1,1,2,2,2)$ for the two unresolved interface families in which $R_4$ occurs. The total canonical matrix counts are $(4,6)$ across those two families. Among those $10$ canonical matrices, exactly five pass the bipartite and $3$-connected filters, with counts $(2,3)$ by family, and the same artifact reports
+\[
+(\texttt{abstract\_planar\_count},\texttt{abstract\_nonplanar\_count})=(0,2),\ (0,3)
+\]
+for those five candidates. Every one of the five surviving candidates has Kuratowski core type \texttt{K3,3}. Hence the recurrent class $R_4$ is uniformly excluded, across both families in which it appears, before any embedding-rotation choices are considered.
+\end{proof}
+
+\begin{corollary}[Class-level exclusion for the recurrent skeleton $R_5$]
+\label{cor:r5-class-exclusion}
+Let $R_5$ denote the recurrent $8$-vertex internal skeleton with edge set
+\[
+\{(0,1),(0,2),(1,3),(2,4),(3,5),(4,6),(5,7),(6,7)\},
+\]
+written on gadget vertices $\{0,\dots,7\}$, and let the column-sum profile be $(1,1,1,1,1,1,1,1)$. Then every canonical candidate built from this fixed skeleton in the two unresolved refined-$C_4$ families in which it appears,
+\[
+(B,I,A,E)=(5,00112234,12221,21112)\quad\text{and}\quad (6,00112345,111221,222112),
+\]
+is already abstractly nonplanar. In particular, the class $R_5$ is excluded uniformly across those two families at the graph level.
+\end{corollary}
+
+\begin{proof}[Computational certificate]
+The focused artifact \texttt{artifacts/refined\_c4\_r5\_class.json}, generated by \texttt{src/refined\_c4\_recurrent\_class\_analysis.py}, fixes the $R_5$ skeleton and enumerates all canonical matrices with column profile $(1,1,1,1,1,1,1,1)$ for the two unresolved interface families in which $R_5$ occurs. The total canonical matrix counts are $(1,1)$ across those two families. Both canonical candidates pass the bipartite and $3$-connected filters, and the same artifact reports
+\[
+(\texttt{abstract\_planar\_count},\texttt{abstract\_nonplanar\_count})=(0,1),\ (0,1)
+\]
+for those two candidates. Each surviving candidate has Kuratowski core type \texttt{K3,3}. Hence the recurrent class $R_5$ is uniformly excluded, across both families in which it appears, before any embedding-rotation choices are considered.
+\end{proof}
+
+\begin{corollary}[Class-level exclusion for the recurrent skeleton $R_3$]
+\label{cor:r3-class-exclusion}
+Let $R_3$ denote the recurrent $8$-vertex internal skeleton with edge set
+\[
+\{(0,1),(0,2),(0,3),(1,4),(1,5),(2,4),(2,6),(3,5)\},
+\]
+written on gadget vertices $\{0,\dots,7\}$, and let the column-sum profile be $(0,0,0,1,1,1,2,3)$. Then every canonical candidate built from this fixed skeleton in the unresolved refined-$C_4$ family
+\[
+(B,I,A,E)=(6,00112345,111221,222112)
+\]
+is already abstractly nonplanar. In particular, the class $R_3$ is excluded uniformly at the graph level within that family.
+\end{corollary}
+
+\begin{proof}[Computational certificate]
+The focused artifact \texttt{artifacts/refined\_c4\_r3\_class.json}, generated by \texttt{src/refined\_c4\_recurrent\_class\_analysis.py}, fixes the $R_3$ skeleton and enumerates all canonical matrices with column profile $(0,0,0,1,1,1,2,3)$ for the unique unresolved interface family in which $R_3$ occurs. The total canonical matrix count is $6$. Among those six canonical matrices, exactly two pass the bipartite and $3$-connected filters, and the same artifact reports
+\[
+(\texttt{abstract\_planar\_count},\texttt{abstract\_nonplanar\_count})=(0,2)
+\]
+for those two candidates. Both surviving candidates have Kuratowski core type \texttt{K3,3}. Hence the recurrent class $R_3$ is uniformly excluded, within its unique family, before any embedding-rotation choices are considered.
+\end{proof}
+
+\paragraph{Residual census at the current $8$-vertex layer.}
+After removing the five recurrent classes $R_1,\dots,R_5$, the residual artifact \texttt{artifacts/refined\_c4\_nonrecurrent\_survivors.json}, generated by \texttt{src/refined\_c4\_nonrecurrent\_census.py}, lists exactly seven nonrecurrent one-off survivors. Six of these belong to the family $(B,I,A,E)=(6,00112345,111221,222112)$, one belongs to $(4,00123321,2222,1111)$, and none belong to $(5,00112234,12221,21112)$. Four of the seven residual survivors still lie on the profile $(0,0,1,1,1,1,2,2)$, while the remaining three lie on
+\[
+(0,0,0,1,1,1,2,3),\ (0,0,0,0,1,2,2,3),\ (0,0,0,1,1,2,2,2).
+\]
+Thus the unresolved refined-$C_4$ burden at the present $8$-vertex layer is already reduced to a finite, sharply localized exceptional list.
+
+\begin{corollary}[Class-level exclusion for the seven nonrecurrent classes]
+Let $U_1,\dots,U_7$ denote the seven nonrecurrent obstruction classes listed in \texttt{artifacts/refined\_c4\_nonrecurrent\_survivors.json}. Then every canonical candidate built from any of these fixed skeletons in its supported refined-$C_4$ family is already abstractly nonplanar. In particular, each of the seven nonrecurrent classes is excluded uniformly at the graph level.
+\end{corollary}
+
+\begin{proof}[Computational certificate]
+The focused artifact \texttt{artifacts/refined\_c4\_nonrecurrent\_class\_analysis.json}, generated by \texttt{src/refined\_c4\_nonrecurrent\_class\_analysis.py}, analyzes the seven nonrecurrent classes one by one in their supported families. Across these seven classes there are $54$ canonical matrices. Exactly eight pass the bipartite and $3$-connected filters, with per-class surviving counts
+\[
+(1,1,1,1,1,2,1)
+\]
+for $U_1,\dots,U_7$, respectively. The same artifact reports
+\[
+(\texttt{abstract\_planar\_count},\texttt{abstract\_nonplanar\_count})=(0,8)
+\]
+globally across those eight candidates, and every one of the eight has Kuratowski core type \texttt{K3,3}. Hence each of the seven nonrecurrent classes is uniformly excluded before any embedding-rotation choices are considered.
+\end{proof}
+
 \subsection{Component 1: Exhaustive Logic Verification of Gadgets}
 \label{subsec:logic-verification}
 
@@ -1836,16 +1982,16 @@ An \emph{interface instance} is an edge-set $S \subseteq E(K)$ satisfying:
   \item Every component of $(V(K),S)$ is a path whose endpoints are terminals (no internal cycles).
 \end{enumerate}
 The induced pairing of terminal endpoints is the \emph{interface type}.
-The script enumerates all $S \subseteq E(K)$ and extracts all realizable interface types.
+The script enumerates all $S \subseteq E(K)$ and extracts all realizable generic interface types.
 
 \paragraph{Completeness and correctness checks.}
-For each realizable interface type of $K$, the script queries the lifting library for a corresponding
-edge-set $S_H \subseteq E(H)$ and verifies:
+For $C_2$ and $C_{\mathrm{pinch}(ii)}$, every realizable generic interface type is admissible and the script queries the lifting library for a corresponding
+edge-set $S_H \subseteq E(H)$. For refined $C_4$, the script verifies the four admissible cross types and separately confirms that the generic parallel type has no covering lift through $H_{C_4}$, in agreement with Lemma~\ref{lem:no-parallel-C4}. In each admissible case it verifies:
 \begin{enumerate}
   \item The terminal endpoint structure in $S_H$ matches that of $S$.
   \item Every vertex of $H$ that is deleted by the reduction is covered exactly once (degree $2$ internally).
 \end{enumerate}
-Thus the lifting library is validated as both complete (covers all realizable interfaces) and correct
+Thus the lifting library is validated as both complete over the admissible interface types and correct
 (each listed lift is valid).
 
 \subsection{Checker semantics}
@@ -1994,14 +2140,17 @@ The checker accepts iff:
 \item the lifted cycle at the end is a Hamiltonian cycle of the original input graph.
 \end{itemize}
 
+Any rejected trace should be read as evidence that the corresponding reduction certificate is incomplete or incorrect in its present form, not as a failure of the checker.
+
 \subsection{Reproducibility}
-The public repository (archived release) contains scripts and a \texttt{Makefile} providing:
+The public repository contains the scripts used for the currently verified artifacts:
 \begin{itemize}
-  \item \texttt{make verify-logic}: runs exhaustive gadget/interface verification,
-  \item \texttt{make verify-base}: generates all $G\in\mathcal{Q}$ up to $N_{\text{base}}$ and checks Hamiltonicity,
-  \item \texttt{make check-random}: generates random instances, runs the reducer, and validates traces.
+  \item \texttt{python src/verify\_gadgets.py}: exhaustive gadget/interface verification,
+  \item \texttt{python tests/verify\_base\_cases.py}: exhaustive enumeration of all $G\in\mathcal{Q}$ up to $N_{\text{base}}=14$ followed by exact Hamiltonicity checks,
+  \item \texttt{python src/check\_trace.py artifacts/traces/trace\_n48.json}: replay of a successful structured trace, and
+  \item \texttt{python src/check\_trace.py}: regeneration of \texttt{artifacts/traces/batch\_verification.json}, which separates verified traces from open diagnostic failures.
 \end{itemize}
-All commands print tool versions and a commit hash to ensure exact reproducibility.
+The JSON artifacts record the Git commit used for each run to ensure exact reproducibility.
 
 \section{Related Work}
 \label{sec:related}
@@ -2017,17 +2166,14 @@ Our approach builds on:
 \section{Conclusion}
 \label{sec:conclusion}
 
-We have presented a constructive proof of Barnette's Conjecture using certified 
-reductions. The proof is accompanied by an efficient implementation that finds 
-Hamiltonian cycles in graphs with over 1000 vertices. The unavoidable set 
-$\{C_2, \text{Refined } C_4, C_{\text{pinch}(ii)}\}$ and their certified reductions provide a complete 
-solution to this 50-year-old conjecture.
+We have presented a computer-assisted proof blueprint for Barnette's Conjecture using certified 
+reductions. The repository now gives exhaustive base verification up to $14$ vertices, exhaustive lifting-table verification on the finite gadgets, and end-to-end certified trace replay for several $C_2$-based reduction sequences. At the same time, the completeness argument above the base threshold and the current implementations of refined $C_4$ and $C_{\text{pinch}(ii)}$ remain open obligations in Strategy-A, because their diagnostic probes are still rejected by the checker. In particular, the scan artifact \texttt{artifacts/refined\_c4\_scan.json} finds no accepted real refined-$C_4$ reduction among the $108$ occurrences encountered up to $24$ vertices, so the present two-vertex refined-$C_4$ reducer should be regarded as an experimental candidate rather than a certified rule. The family-sweep artifacts \texttt{artifacts/refined\_c4\_b5\_family\_00112234\_a12221\_e21112\_g6\_sweep.json}, \texttt{artifacts/refined\_c4\_b6\_family\_00112345\_a111221\_e222112\_g6\_sweep.json}, and \texttt{artifacts/refined\_c4\_b4\_family\_00123321\_a2222\_e1111\_g6\_sweep.json} show that three recurrent refined-$C_4$ interface families admit no six-vertex replacement gadget anywhere in the full attachment-sum-eight search space currently implemented. After adding bipartite precolor pruning and a faster internal-graph generator to the search tool, the stronger artifacts \texttt{artifacts/refined\_c4\_b4\_family\_00123321\_a2222\_e1111\_g8\_sweep.json}, \texttt{artifacts/refined\_c4\_b5\_family\_00112234\_a12221\_e21112\_g8\_sweep.json}, and \texttt{artifacts/refined\_c4\_b6\_family\_00112345\_a111221\_e222112\_g8\_sweep.json} further show that these same three families also admit no eight-vertex replacement gadget in that search layer. The companion obstruction artifacts \texttt{artifacts/refined\_c4\_b4\_family\_00123321\_a2222\_e1111\_g8\_obstruction.json}, \texttt{artifacts/refined\_c4\_b5\_family\_00112234\_a12221\_e21112\_g8\_obstruction.json}, and \texttt{artifacts/refined\_c4\_b6\_family\_00112345\_a111221\_e222112\_g8\_obstruction.json} sharpen this further: every graph-level candidate that survives the bipartite and $3$-connected filters is already abstractly nonplanar, so the present obstruction at this layer is graph-theoretic rather than merely a failure of local rotation choices. The summary artifacts \texttt{artifacts/refined\_c4\_k33\_templates.json}, \texttt{artifacts/refined\_c4\_recurrent\_skeleton\_classes.json}, \texttt{artifacts/refined\_c4\_r1\_class.json}, \texttt{artifacts/refined\_c4\_r2\_class.json}, \texttt{artifacts/refined\_c4\_r3\_class.json}, \texttt{artifacts/refined\_c4\_r4\_class.json}, \texttt{artifacts/refined\_c4\_r5\_class.json}, and \texttt{artifacts/refined\_c4\_nonrecurrent\_class\_analysis.json} now show that all current $8$-vertex obstruction classes are isolated at class level: the five recurrent classes cover $12$ recurrent survivors, and the seven nonrecurrent classes account for the remaining seven one-off survivors. Across those nonrecurrent classes there are $54$ canonical matrices, exactly eight survive the bipartite and $3$-connected filters, and all eight are already abstractly nonplanar with Kuratowski core type \texttt{K3,3}. The companion artifacts \texttt{artifacts/pinch\_ii\_scan.json} and \texttt{artifacts/pinch\_ii\_local\_census.json} now show a stronger fact about the pinch branch up to $40$ vertices: among the $243547$ Barnette graphs scanned in that range there is not only no genuine $C_{\text{pinch}(ii)}$ occurrence, but no opposite-pinched facial quadrilateral at all. The newer completeness-frontier artifacts \texttt{artifacts/completeness\_frontier\_scan\_n30\_after\_refined\_c4\_library.json} and \texttt{artifacts/completeness\_unresolved\_analysis\_n30\_after\_refined\_c4\_library.json} show that incorporating the curated refined-$C_4$ gadget library lowers the unresolved frontier through $30$ vertices from $42$ graphs to $35$: there are now $7$ graphs certified via refined $C_4$, $23$ remaining unresolved graphs with refined-$C_4$, and $12$ unresolved graphs whose only detected local structure is uncertified $C_2$. The focused census artifact \texttt{artifacts/unresolved\_refined\_c4\_family\_census\_n30\_after\_refined\_c4\_library.json} refines this further: these $23$ unresolved refined-$C_4$ graphs contribute $52$ occurrences, with the dominant residual families still led by the attachment-sum-eight $A$-type obstruction $L=(6,6,6,6)$ and a smaller collection of two-occurrence families at outer-face types $(6,6,6,10)$, $(6,6,6,6)$, $(6,8,6,8)$, and $(6,8,8,10)$. The earlier search artifacts \texttt{artifacts/refined\_c4\_b7\_sum10\_g6\_search.json}, \texttt{artifacts/refined\_c4\_b7\_sum10\_g8\_search.json}, and \texttt{artifacts/refined\_c4\_b7\_sum10\_g8\_outer6888.json} already showed the first genuinely positive higher-attachment result: for a dominant $B=7$ interface family of total attachment $10$, no six-vertex gadget exists, an eight-vertex gadget exists on the seed instance, and that gadget verifies on the entire outer-face subfamily with key $(6,8,8,8)$ through $30$ vertices. The newer targeted artifacts \texttt{artifacts/refined\_c4\_universal\_b5\_66610\_allcols\_limit200.json}, \texttt{artifacts/refined\_c4\_universal\_b6\_6666\_allcols\_limit200.json}, and \texttt{artifacts/refined\_c4\_universal\_b6\_68810\_allcols\_limit200.json} sharpen three residual two-occurrence families further: in the $(6,6,6,10)$/$B=5$ family the full searched eight-vertex layer yields exactly one viable seed candidate and it fails on the sibling occurrence, while the residual $(6,6,6,6)$/$B=6$ and $(6,8,8,10)$/$B=6$ families yield only three and two viable eight-vertex seed candidates respectively, and none universalizes across both occurrences. Thus the current refined-$C_4$ frontier is now seen to split not only by boundary/interface signature and outer-face pattern, but also by a small list of residual higher-complexity families for which even the universal eight-vertex search space is nearly exhausted. The newer $C_2$ artifacts \texttt{artifacts/c2\_scan\_n24.json} and \texttt{artifacts/c2\_exception\_analysis\_n30.json} show that the generic $C_2$ reduction is also only partial: terminal identifications systematically fail, and a recurring distinct-terminal non-$3$-connected exception family grows quickly through $30$ vertices. What remains is the continued search for larger replacement gadgets and sharper family splittings, together with the separate open obligations around pinch(ii) and the completeness argument above the base threshold. The present branch should therefore be read as an auditable framework with substantial verified components, rather than as a finished proof of the conjecture.
 
 \section*{Data Availability}
 All code, scripts, and verification artifacts are available at:
 \url{https://github.com/EnLilaSko/Barnettes-Conjecture} \\
-Verified release: commit \texttt{821779f90e35e2946c0613338e45c285a9d130f2c} \\
-Reproduction: \verb|make verify-logic|, \verb|make verify-base|, \verb|make verify-trace| (see Appendix~\ref{app:reproduction}).
+The generated artifacts record the Git commit used for each run inside their JSON headers. \\
+Reproduction commands are listed in Appendix~\ref{app:reproduction}.
 
 \bibliographystyle{plain}
 \bibliography{references}
@@ -2152,15 +2298,21 @@ The following commands enable full reproduction of the results presented in this
     Verifies the lifting tables and interface completeness for all certified gadgets.
     \item \textbf{Base Case Enumeration:} \verb|python tests/verify_base_cases.py| \\
     Enumerates and solves all graphs in $\mathcal{Q}$ up to $N_{\mathrm{base}}=14$.
-    \item \textbf{Trace Verification:} \verb|python src/check_trace.py artifacts/traces/trace_n48.jsonl| \\
-    Replays a reduction trace and verifies all embedded invariants.
+    \item \textbf{Trace Verification:} \verb|python src/check_trace.py artifacts/traces/trace_n48.json| \\
+    Replays a successful structured reduction trace and verifies all embedded invariants.
+    \item \textbf{Trace Batch Status:} \verb|python src/check_trace.py| \\
+    Regenerates \verb|artifacts/traces/batch_verification.json|, which separates verified traces from open diagnostic failures.
+    \item \textbf{Refined $C_4$ Scan:} \verb|python src/refined_c4_scan.py --n-min 8 --n-max 24| \\
+    Scans real \verb|plantri| instances for refined $C_4$ occurrences and records whether the current two-vertex reducer yields an accepted post-state.
 \end{itemize}
 
 \subsection{Expected Outputs and Hashes}
 
 \begin{itemize}
-    \item \textbf{Lemma 48 Witnesses:} Discovered irreducible obstructions for $n \le 14$ are emitted to \verb|artifacts/base_cases_n14.log|. The total count of combinatorial types is 2.
-    \item \textbf{Base Case Log:} The solver results for all 2 graphs with $n \le 14$ are recorded in \verb|artifacts/base_cases_n14.json| with the final SHA-256 hash \texttt{725b043728e32643b667e093cf6f0e9f1d1509c6c1e356eda300f9d80a9a3610}.
+    \item \textbf{Base Case Summary:} The exhaustive run of \verb|python tests/verify_base_cases.py| writes \verb|artifacts/base_cases_n14.log| with counts $1,0,1,1$ for $n=8,10,12,14$, respectively, for a total of $3$ combinatorial types in $\mathcal{Q}$ up to $14$ vertices.
+    \item \textbf{Base Case Log:} The solver results for all $3$ graphs with $n \le 14$ are recorded in \verb|artifacts/base_cases_n14.json| with the final SHA-256 hash \texttt{298e2ef2e8e6d4f4aaf495f43ca9050456508e23f53d3b5b62eb19a9eac1edc5}.
+    \item \textbf{Trace Batch Summary:} The batch run of \verb|python src/check_trace.py| writes \verb|artifacts/traces/batch_verification.json|. In the current branch it marks \verb|trace_n8.json|, \verb|trace_n12.json|, \verb|trace_n48.json|, \verb|trace_n128.json|, and \verb|trace_rule_c2.json| as verified traces, and records open diagnostic failures for \verb|trace_rule_refined_c4.json| and \verb|trace_rule_pinch_ii.json|.
+    \item \textbf{Refined $C_4$ Scan Summary:} The run of \verb|python src/refined_c4_scan.py --n-min 8 --n-max 24| writes \verb|artifacts/refined_c4_scan.json|. In the current branch it scans $55$ real \verb|plantri| graphs, finds $108$ refined $C_4$ occurrences, and records \verb|pass_count = 0| for the present two-vertex reducer.
     \item \textbf{Reproduction Check:} Every command outputs the current commit hash and a timestamped log to ensure auditability.
 \end{itemize}
 

@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+
+\section*{Extremal Minimal Witness Lemma}
+
+\begin{lemma}[Extremal Minimal Witness]
+Assume $G \in \mathcal{Q}$ and $|V(G)| > 12$.
+Suppose every certified occurrence $H \subset G$ becomes non-admissible (its reduction creates a 2-vertex cut).
+Then there exists a certified occurrence $H^*$ whose pullback set $K^*$ is minimal by cardinality among all such witnesses.
+\end{lemma}
+
+\begin{proof}
+\textbf{(A) Pullback association.}
+For each non-admissible certified occurrence $H \subset G$, its reduction produces a graph $G'$ with a 2-vertex cut.
+Applying the Generic 2-Vertex Cut Pullback Lemma to this reduction, we obtain a nonempty set
+$K_H \subseteq V(G)\setminus V(H)$ and vertices $q_H \in V(G)\setminus V(H)$ and $p_H \in \{x,y\}$
+(specific to the gadget used for $H$) such that
+\[
+N_G(K_H) \subseteq \{q_H\} \cup B_{p_H},
+\]
+where $B_{p_H}$ is the terminal pair in $B$ adjacent to $p_H$ in the gadget.
+
+\medskip
+\textbf{(B) Minimal choice.}
+Since $G$ is finite and, by assumption, there exists at least one non-admissible certified occurrence,
+the collection $\{K_H\}$ is a finite nonempty family of finite sets.
+Hence there exists a choice minimizing cardinality.
+Define $K^*$ to be such a minimizer, i.e.
+\[
+|K^*| = \min_H |K_H|.
+\]
+Let $H^*$ be a certified occurrence whose pullback witness set is $K^*$.
+\end{proof}
+
+\end{document}

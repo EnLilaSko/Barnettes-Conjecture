@@ -1,0 +1,4257 @@
+{
+  "counts_by_n": {
+    "20": 1,
+    "24": 2,
+    "26": 7,
+    "28": 12,
+    "30": 47
+  },
+  "cut_profile_counts": {
+    "10-12|11-11|11-11|10-12": 4,
+    "10-14|11-13|11-13|12-12": 6,
+    "11-13|12-12|10-14|11-13": 1,
+    "12-12|11-13|11-13|10-14": 5,
+    "6-12|7-11|7-11|8-10": 2,
+    "6-14|7-13|7-13|8-12": 3,
+    "6-16|7-15|7-15|8-14": 6,
+    "6-18|7-17|7-17|8-16": 17,
+    "6-8|7-7|7-7|6-8": 1,
+    "7-13|8-12|6-14|7-13": 1,
+    "7-17|6-18|8-16|7-17": 2,
+    "7-17|8-16|6-18|7-17": 1,
+    "8-12|7-13|7-13|6-14": 3,
+    "8-14|7-15|7-15|6-16": 2,
+    "8-16|7-17|7-17|6-18": 15
+  },
+  "exception_count": 69,
+  "exceptions": [
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            8
+          ],
+          "cut": [
+            1,
+            20
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            7
+          ],
+          "cut": [
+            1,
+            21
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            7
+          ],
+          "cut": [
+            4,
+            20
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            8
+          ],
+          "cut": [
+            4,
+            21
+          ]
+        }
+      ],
+      "n_vertices": 20,
+      "occ": {
+        "a": 16,
+        "b": 11,
+        "c": 17,
+        "d": 19,
+        "e": 12,
+        "f": 7,
+        "u1": 10,
+        "u4": 15,
+        "u5": 13,
+        "u6": 3
+      },
+      "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,eop,fqg,hqr,hrn,ims,isj,jst,ktl,ltm,npo,prq",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 16
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            12
+          ],
+          "cut": [
+            9,
+            24
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            11
+          ],
+          "cut": [
+            9,
+            25
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            11
+          ],
+          "cut": [
+            15,
+            24
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            10
+          ],
+          "cut": [
+            15,
+            25
+          ]
+        }
+      ],
+      "n_vertices": 24,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,ist,itp,jou,jlk,muv,nvw,nwo,pxr,rxs,sxt,uwv",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 20
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            12
+          ],
+          "cut": [
+            9,
+            24
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            11
+          ],
+          "cut": [
+            9,
+            25
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            11
+          ],
+          "cut": [
+            15,
+            24
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            10
+          ],
+          "cut": [
+            15,
+            25
+          ]
+        }
+      ],
+      "n_vertices": 24,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "24 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,irs,itp,jou,jlk,mvn,nvw,owu,ptx,rxs,sxt,uwv",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 20
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            14
+          ],
+          "cut": [
+            9,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            9,
+            27
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            15,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            12
+          ],
+          "cut": [
+            15,
+            27
+          ]
+        }
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "26 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,ist,itu,jvw,jlk,mwx,nxy,nyo,oyv,puz,pzr,rzs,sut,vxw",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 22
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            12
+          ],
+          "cut": [
+            3,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            3,
+            27
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            8,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            14
+          ],
+          "cut": [
+            8,
+            27
+          ]
+        }
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "a": 15,
+        "b": 22,
+        "c": 25,
+        "d": 21,
+        "e": 23,
+        "f": 17,
+        "u1": 9,
+        "u4": 20,
+        "u5": 18,
+        "u6": 12
+      },
+      "raw_line": "26 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,ist,itu,jvw,jlk,mwx,nxy,nyo,oyv,puz,pzr,rzs,sut,vxw",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 22
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            14
+          ],
+          "cut": [
+            0,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            0,
+            27
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            1,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            12
+          ],
+          "cut": [
+            1,
+            27
+          ]
+        }
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "a": 12,
+        "b": 20,
+        "c": 21,
+        "d": 19,
+        "e": 15,
+        "f": 14,
+        "u1": 6,
+        "u4": 11,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "26 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,gtu,gih,iup,jov,jwx,kxy,lyw,lvm,mvo,put,qsz,qzr,rzs,wyx",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 22
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            12
+          ],
+          "cut": [
+            0,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            0,
+            27
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            3,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            14
+          ],
+          "cut": [
+            3,
+            27
+          ]
+        }
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "a": 10,
+        "b": 19,
+        "c": 24,
+        "d": 18,
+        "e": 22,
+        "f": 25,
+        "u1": 4,
+        "u4": 17,
+        "u5": 15,
+        "u6": 20
+      },
+      "raw_line": "26 bcd,aef,agh,aij,bkl,blm,cmn,cno,dpq,dqr,est,euf,fvg,gvh,hvu,iwx,ixj,jxs,kry,kyz,lzo,mon,pzy,prq,swt,twu",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 22
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            14
+          ],
+          "cut": [
+            0,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            0,
+            27
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            3,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            12
+          ],
+          "cut": [
+            3,
+            27
+          ]
+        }
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "a": 9,
+        "b": 16,
+        "c": 22,
+        "d": 15,
+        "e": 17,
+        "f": 11,
+        "u1": 4,
+        "u4": 21,
+        "u5": 23,
+        "u6": 6
+      },
+      "raw_line": "26 bcd,aef,afg,ahi,bjk,bkc,ckl,dmn,dno,epq,egf,gqr,hst,hti,itu,jvw,jwl,lwx,mxy,mon,oyv,puz,prq,rzs,szu,vyx",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 22
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            0,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            12
+          ],
+          "cut": [
+            0,
+            27
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            14
+          ],
+          "cut": [
+            3,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            3,
+            27
+          ]
+        }
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "a": 18,
+        "b": 24,
+        "c": 25,
+        "d": 23,
+        "e": 21,
+        "f": 20,
+        "u1": 12,
+        "u4": 17,
+        "u5": 15,
+        "u6": 14
+      },
+      "raw_line": "26 bcd,aef,afg,ahi,bjk,bkc,ckl,dmn,dno,epq,egf,gqr,hst,hti,itu,jvw,jwl,lwx,mxy,mon,oyv,puz,prq,rzs,szu,vyx",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 22
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            12
+          ],
+          "cut": [
+            5,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            5,
+            27
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            13
+          ],
+          "cut": [
+            13,
+            26
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            14
+          ],
+          "cut": [
+            13,
+            27
+          ]
+        }
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "a": 2,
+        "b": 7,
+        "c": 15,
+        "d": 6,
+        "e": 23,
+        "f": 16,
+        "u1": 0,
+        "u4": 14,
+        "u5": 24,
+        "u6": 8
+      },
+      "raw_line": "26 bcd,aef,agh,aij,bkl,bmn,cop,cpq,dqm,drk,ejs,est,fti,fuv,gvw,gxh,hxi,jts,krl,lrm,nyz,nzo,ozy,pyq,uxw,uwv",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 22
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            16
+          ],
+          "cut": [
+            9,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            9,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            15,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            14
+          ],
+          "cut": [
+            15,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,ist,itp,jou,jlk,muv,nwx,nxo,pyr,ryz,sz{,s{t,u|v,v|w,w|x,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            10,
+            12
+          ],
+          "cut": [
+            9,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            11
+          ],
+          "cut": [
+            9,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            11
+          ],
+          "cut": [
+            16,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            10,
+            12
+          ],
+          "cut": [
+            16,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 13,
+        "e": 3,
+        "f": 0,
+        "u1": 12,
+        "u4": 20,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dop,eqr,esf,fst,gtr,guh,ivw,iwq,jpx,jmy,kyl,lym,nxz,oz{,o{p,q|u,rts,u|v,v|w,x{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            16
+          ],
+          "cut": [
+            0,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            0,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            1,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            14
+          ],
+          "cut": [
+            1,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 13,
+        "b": 22,
+        "c": 23,
+        "d": 21,
+        "e": 16,
+        "f": 15,
+        "u1": 6,
+        "u4": 26,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cno,cod,dop,eqr,ers,fst,ftu,gvw,gih,iwq,jpx,jyk,kyl,lzm,mz{,n{x,nxp,qwv,r|s,t|u,u|v,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            16
+          ],
+          "cut": [
+            0,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            0,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            1,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            14
+          ],
+          "cut": [
+            1,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 13,
+        "b": 22,
+        "c": 23,
+        "d": 21,
+        "e": 16,
+        "f": 15,
+        "u1": 6,
+        "u4": 12,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cno,cod,dop,eqr,ers,fst,fuv,gvw,gih,iwq,jpx,jyk,kzl,lz{,m{y,mxn,nxp,qwv,ru|,s|t,t|u,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            14
+          ],
+          "cut": [
+            3,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            3,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            8,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            16
+          ],
+          "cut": [
+            8,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 4,
+        "b": 10,
+        "c": 18,
+        "d": 9,
+        "e": 26,
+        "f": 19,
+        "u1": 1,
+        "u4": 17,
+        "u5": 23,
+        "u6": 11
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cno,cod,dpq,ers,est,ftu,fuv,gvw,gwh,ixy,iyr,jqz,j{k,k{l,l|m,m|n,n|o,p{z,pzq,ryx,sxt,uwv",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            10,
+            12
+          ],
+          "cut": [
+            3,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            11
+          ],
+          "cut": [
+            3,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            11
+          ],
+          "cut": [
+            8,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            10,
+            12
+          ],
+          "cut": [
+            8,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 4,
+        "b": 10,
+        "c": 17,
+        "d": 9,
+        "e": 23,
+        "f": 18,
+        "u1": 1,
+        "u4": 16,
+        "u5": 27,
+        "u6": 11
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cmn,cnd,dop,eqr,ers,fst,ftg,gth,iuv,ivq,jpw,jxk,kxl,lnm,oyz,ozp,q{|,r|s,u|{,u{v,wzy,wyx",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            14
+          ],
+          "cut": [
+            3,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            3,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            8,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            16
+          ],
+          "cut": [
+            8,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 4,
+        "b": 10,
+        "c": 17,
+        "d": 9,
+        "e": 25,
+        "f": 18,
+        "u1": 1,
+        "u4": 16,
+        "u5": 22,
+        "u6": 26
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cmn,cnd,dop,eqr,ers,ftu,fug,gvh,iwx,ixq,jpy,jzk,kz{,l{|,l|m,n|{,ozy,oyp,qxw,rws,svt,tvu",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            10,
+            12
+          ],
+          "cut": [
+            3,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            11
+          ],
+          "cut": [
+            3,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            11
+          ],
+          "cut": [
+            8,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            10,
+            12
+          ],
+          "cut": [
+            8,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 4,
+        "b": 10,
+        "c": 17,
+        "d": 9,
+        "e": 24,
+        "f": 18,
+        "u1": 1,
+        "u4": 16,
+        "u5": 20,
+        "u6": 11
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cmn,cnd,dop,eqr,ers,fst,ftg,gth,iuv,iwq,jpx,jyk,kyl,lnm,oyz,oz{,p{x,qw|,rus,u|v,v|w,x{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            10,
+            12
+          ],
+          "cut": [
+            3,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            11
+          ],
+          "cut": [
+            3,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            11
+          ],
+          "cut": [
+            8,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            10,
+            12
+          ],
+          "cut": [
+            8,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 4,
+        "b": 10,
+        "c": 17,
+        "d": 9,
+        "e": 25,
+        "f": 18,
+        "u1": 1,
+        "u4": 16,
+        "u5": 20,
+        "u6": 11
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cmn,cnd,dop,eqr,ers,fst,ftg,gth,iuv,ivw,jxy,jzk,kzl,lnm,ozy,o{p,p{x,qw|,q|u,rus,v|w,x{y",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            16
+          ],
+          "cut": [
+            0,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            0,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            1,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            14
+          ],
+          "cut": [
+            1,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 12,
+        "b": 20,
+        "c": 26,
+        "d": 19,
+        "e": 21,
+        "f": 14,
+        "u1": 6,
+        "u4": 25,
+        "u5": 22,
+        "u6": 8
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,eqf,frs,gtu,gih,iuv,jwx,jxk,lxy,lyz,mz{,m{o,o{w,pv|,prq,r|s,s|t,tvu,wzy",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            16
+          ],
+          "cut": [
+            0,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            0,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            1,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            14
+          ],
+          "cut": [
+            1,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 13,
+        "b": 23,
+        "c": 24,
+        "d": 22,
+        "e": 16,
+        "f": 15,
+        "u1": 6,
+        "u4": 25,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cno,cod,dop,eqr,est,ftu,fuv,gwx,gih,ixq,jpy,jz{,k{|,k|l,l|m,m{z,nzy,nyp,qxw,rwv,rvs,sut",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            16
+          ],
+          "cut": [
+            0,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            0,
+            29
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            15
+          ],
+          "cut": [
+            1,
+            28
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            14
+          ],
+          "cut": [
+            1,
+            29
+          ]
+        }
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "a": 12,
+        "b": 21,
+        "c": 22,
+        "d": 20,
+        "e": 15,
+        "f": 14,
+        "u1": 6,
+        "u4": 23,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,guv,gih,ivp,jow,jxy,kyz,lz{,l{x,mxw,mwo,pvu,qut,q|r,r|s,s|t,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 24
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            16,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            16,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            25,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            25,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 1,
+        "b": 0,
+        "c": 2,
+        "d": 5,
+        "e": 6,
+        "f": 3,
+        "u1": 4,
+        "u4": 10,
+        "u5": 11,
+        "u6": 7
+      },
+      "raw_line": "30 bcd,aef,afg,agh,bij,bkc,cld,dmn,eop,epq,frs,gst,hqu,huv,iwx,iyj,jmz,kz{,k{l,l{z,myn,n|w,ov},o}~,p~u,qtr,rts,v~},w|x,x|y",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 13,
+        "b": 22,
+        "c": 23,
+        "d": 21,
+        "e": 16,
+        "f": 15,
+        "u1": 6,
+        "u4": 12,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cno,cod,dop,eqr,ers,ftu,fuv,gvw,gih,iwq,jpx,jyk,kz{,l{|,lym,mxn,nxp,qwv,ru},s}~,s~t,t~},y|z,z|{",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            21,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            21,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            27,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            27,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 1,
+        "b": 5,
+        "c": 10,
+        "d": 4,
+        "e": 17,
+        "f": 11,
+        "u1": 0,
+        "u4": 9,
+        "u5": 23,
+        "u6": 18
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,frs,gst,gih,itu,jvw,jwx,kxl,lym,mzo,oz{,p|},p}q,q}r,s|~,t~u,u~|,v{y,vxw,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            23,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            23,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            28,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            28,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 1,
+        "b": 5,
+        "c": 10,
+        "d": 4,
+        "e": 18,
+        "f": 11,
+        "u1": 0,
+        "u4": 9,
+        "u5": 25,
+        "u6": 19
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cod,dop,eqr,esf,fst,gtu,gvw,hwi,iwv,jxy,jyz,kzl,l{m,m{|,n|p,npo,q}~,q~r,r~s,t}u,u}v,x|{,xzy",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 20,
+        "c": 26,
+        "d": 19,
+        "e": 28,
+        "f": 27,
+        "u1": 6,
+        "u4": 11,
+        "u5": 23,
+        "u6": 21
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cod,dop,eqr,esf,fst,gtu,gvw,hwi,iwv,jxy,jyz,kzl,l{m,m{|,n|p,npo,q}~,q~r,r~s,t}u,u}v,x|{,xzy",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 13,
+        "b": 22,
+        "c": 28,
+        "d": 21,
+        "e": 23,
+        "f": 15,
+        "u1": 6,
+        "u4": 12,
+        "u5": 24,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cno,cod,dop,eqr,est,ftu,fuv,gvw,gih,iwx,jyz,jz{,k{|,k|l,l|m,m}n,n}p,p}y,qx~,q~r,r~s,sut,vxw,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 20,
+        "c": 27,
+        "d": 19,
+        "e": 21,
+        "f": 14,
+        "u1": 6,
+        "u4": 26,
+        "u5": 22,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,frs,gtu,gih,iuv,jwx,jxy,kzl,lz{,m{|,m|o,o|w,pv},p}q,q}~,r~s,s~t,tvu,wyx,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            20,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            20,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            21,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            21,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 1,
+        "b": 5,
+        "c": 10,
+        "d": 4,
+        "e": 17,
+        "f": 11,
+        "u1": 0,
+        "u4": 9,
+        "u5": 24,
+        "u6": 18
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,frs,gst,gih,itu,jvw,jwx,kyl,lzm,mzo,ozv,pu{,p|q,q|},r}{,sut,vy~,w~x,x~y,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 19,
+        "c": 25,
+        "d": 18,
+        "e": 20,
+        "f": 14,
+        "u1": 6,
+        "u4": 11,
+        "u5": 21,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,frs,gst,gih,itu,jvw,jwx,kyl,lzm,mzo,ozv,pu{,p|q,q|},r}{,sut,vy~,w~x,x~y,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            20,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            20,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            21,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            21,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 1,
+        "b": 5,
+        "c": 10,
+        "d": 4,
+        "e": 17,
+        "f": 11,
+        "u1": 0,
+        "u4": 9,
+        "u5": 24,
+        "u6": 18
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,frs,gst,gih,itu,jvw,jxy,kyl,lzm,mzo,ozv,pu{,p{|,q|},q}r,sut,v~w,w~x,x~y,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 19,
+        "c": 25,
+        "d": 18,
+        "e": 20,
+        "f": 14,
+        "u1": 6,
+        "u4": 11,
+        "u5": 21,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,frs,gst,gih,itu,jvw,jxy,kyl,lzm,mzo,ozv,pu{,p{|,q|},q}r,sut,v~w,w~x,x~y,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 19,
+        "c": 25,
+        "d": 18,
+        "e": 20,
+        "f": 14,
+        "u1": 6,
+        "u4": 11,
+        "u5": 21,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,eqf,frs,gst,gih,itu,jvw,jwk,lxy,lzm,mzo,ozv,pu{,p|q,r|},r}{,sut,vy~,w~x,x~y,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 13,
+        "b": 22,
+        "c": 23,
+        "d": 21,
+        "e": 16,
+        "f": 15,
+        "u1": 6,
+        "u4": 12,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cno,cod,dop,eqr,est,ftu,fuv,gvw,gih,iwq,jpx,jyz,kz{,k|l,l|m,mxn,nxp,qwv,r}~,r~s,s~},t}u,y|{,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 13,
+        "b": 23,
+        "c": 25,
+        "d": 22,
+        "e": 18,
+        "f": 17,
+        "u1": 6,
+        "u4": 12,
+        "u5": 10,
+        "u6": 9
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cno,cop,dpq,dqr,est,euf,fvw,gwx,gyh,hyi,iyj,jxs,krz,k{|,l|},m}{,mzn,nzr,oqp,sxw,tv~,t~u,u~v,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 21,
+        "c": 25,
+        "d": 20,
+        "e": 16,
+        "f": 24,
+        "u1": 6,
+        "u4": 11,
+        "u5": 9,
+        "u6": 22
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cod,dop,eqr,esf,ftu,guv,gwx,hxi,ixw,jyz,j{|,k|},l}{,lzm,mzy,nyp,npo,qwv,qvu,rt~,r~s,s~t,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 20,
+        "c": 21,
+        "d": 19,
+        "e": 15,
+        "f": 14,
+        "u1": 6,
+        "u4": 11,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,gtu,gih,iup,jov,jwx,kxy,lyz,lvm,mvo,put,q{|,q|r,r}s,s}{,wz~,w~x,y~z,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 21,
+        "c": 22,
+        "d": 20,
+        "e": 15,
+        "f": 14,
+        "u1": 6,
+        "u4": 27,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,guv,gih,ivp,jow,jxy,kyz,lz{,l{|,m|w,mwo,pvu,q}~,q~r,r~s,s}t,t}u,x|{,xzy",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 20,
+        "c": 21,
+        "d": 19,
+        "e": 15,
+        "f": 14,
+        "u1": 6,
+        "u4": 11,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,gtu,gih,iup,jov,jwx,kxy,lzw,lvm,mvo,put,qs{,q|r,r|},s}{,wz~,x~y,y~z,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 21,
+        "c": 22,
+        "d": 20,
+        "e": 15,
+        "f": 14,
+        "u1": 6,
+        "u4": 23,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,guv,gih,ivp,jow,jxy,kz{,l{|,lyx,mxw,mwo,pvu,qut,qt},r}~,r~s,s~},y|z,z|{",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 21,
+        "c": 22,
+        "d": 20,
+        "e": 15,
+        "f": 14,
+        "u1": 6,
+        "u4": 23,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,guv,gih,ivp,jow,jxy,kyz,lz{,l{|,mxw,mwo,pvu,qu},q}r,r~s,s~t,t~},x|y,z|{",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            3,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            3,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 9,
+        "b": 17,
+        "c": 24,
+        "d": 16,
+        "e": 22,
+        "f": 25,
+        "u1": 4,
+        "u4": 15,
+        "u5": 13,
+        "u6": 18
+      },
+      "raw_line": "30 bcd,aef,afg,ahi,bjk,blc,clm,dno,dop,eqr,est,ftg,guv,hwx,hxi,ixq,jpy,jyz,kz{,k|l,m|},m}{,nzy,npo,qwr,rws,sv~,t~u,u~v,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            3,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            3,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 10,
+        "b": 19,
+        "c": 25,
+        "d": 18,
+        "e": 29,
+        "f": 26,
+        "u1": 4,
+        "u4": 17,
+        "u5": 27,
+        "u6": 20
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dpq,dqr,est,euf,fvg,gvh,hvu,iwx,ixj,jys,krz,kz{,l{o,mon,p|},p}q,r}|,s~t,t~u,w~y,wyx,z|{",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            3,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            3,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 10,
+        "b": 20,
+        "c": 27,
+        "d": 19,
+        "e": 25,
+        "f": 28,
+        "u1": 4,
+        "u4": 18,
+        "u5": 16,
+        "u6": 24
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cno,cop,dqr,drs,etu,evf,fvw,gwx,gxh,hxy,iz{,i{j,j{t,ks|,k|},l~m,m~n,npo,p~},q}|,qsr,tzu,uzy,vyw",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            9,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            9,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            15,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            15,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,irs,isp,jot,jlk,mun,nvo,pwx,rxy,syz,t{|,t|u,u}v,v}{,wz~,w~x,y~z,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            9,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            9,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            15,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            15,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,irs,isp,jot,jlk,mun,nvo,pwx,rxy,szw,tv{,t|u,u|},v}{,wz~,x~y,y~z,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            9,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            9,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            15,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            15,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 17,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,ist,itp,jou,jlk,mvw,nwx,nyo,pz{,r{|,r|s,s|},t}z,uy~,u~v,vxw,x~y,z}{",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            9,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            9,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            16,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            16,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 13,
+        "e": 3,
+        "f": 0,
+        "u1": 12,
+        "u4": 20,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dop,eqr,esf,fst,gtr,guh,iuv,ivq,jpw,jmx,kxl,lxm,nyo,ozp,q{|,rts,u|},v}{,wz~,w~y,y~z,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            20,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            20,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            21,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            21,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 6,
+        "b": 2,
+        "c": 7,
+        "d": 12,
+        "e": 3,
+        "f": 0,
+        "u1": 11,
+        "u4": 18,
+        "u5": 8,
+        "u6": 1
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,frg,gsh,ist,itu,jvw,jwk,lwv,mxn,nyo,ozv,pur,prq,s{|,t|},u}{,xz~,x~y,y~z,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 12,
+        "b": 20,
+        "c": 27,
+        "d": 19,
+        "e": 21,
+        "f": 14,
+        "u1": 6,
+        "u4": 26,
+        "u5": 22,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,eqf,frs,gtu,gih,iuv,jwx,jyk,lyz,lz{,m{|,m|o,o|w,pv},p}~,q~r,r~s,s}t,tvu,w{x,xzy",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            0,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            0,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            1,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            1,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 13,
+        "b": 23,
+        "c": 24,
+        "d": 22,
+        "e": 16,
+        "f": 15,
+        "u1": 6,
+        "u4": 25,
+        "u5": 9,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cno,cod,dop,eqr,est,ftu,fuv,gwx,gih,ixq,jpy,jz{,k{|,k}l,l}m,m}|,nzy,nyp,qxw,rw~,r~s,s~v,tvu,z|{",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            8,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            8,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            15,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            15,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 1,
+        "b": 5,
+        "c": 10,
+        "d": 4,
+        "e": 18,
+        "f": 11,
+        "u1": 0,
+        "u4": 9,
+        "u5": 25,
+        "u6": 6
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dop,eqr,esf,fsg,gtu,huv,ivw,ixq,jpy,jyz,kzl,m{|,m|n,n}o,o}{,pzy,qxr,rxs,tw~,t~u,v~w,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            21,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            21,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            22,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            22,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 1,
+        "b": 5,
+        "c": 10,
+        "d": 4,
+        "e": 17,
+        "f": 11,
+        "u1": 0,
+        "u4": 9,
+        "u5": 24,
+        "u6": 6
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dno,epq,erf,frg,gst,hui,iuv,jwx,jxy,kyl,mz{,m{|,n|o,ozw,pv},p}q,q}r,sv~,s~t,t~u,wyx,z|{",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            3,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            3,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            7,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            7,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 22,
+        "b": 28,
+        "c": 29,
+        "d": 27,
+        "e": 25,
+        "f": 24,
+        "u1": 16,
+        "u4": 21,
+        "u5": 19,
+        "u6": 18
+      },
+      "raw_line": "30 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,eop,fpg,hqr,hrs,itu,iuj,jvk,lwx,lxm,mxy,nz{,n{o,p{|,q|},qsr,s}z,ty~,tvu,v~w,w~y,z}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            8,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            8,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            14,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            14,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 9,
+        "b": 16,
+        "c": 23,
+        "d": 15,
+        "e": 29,
+        "f": 24,
+        "u1": 4,
+        "u4": 22,
+        "u5": 26,
+        "u6": 19
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,frs,gst,gih,iuv,jwx,jxy,kzl,lzm,mzy,o{|,o|w,pv},p~q,q~t,rts,u~},u}v,w|{,x{y",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            8,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            8,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            15,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            15,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 1,
+        "b": 5,
+        "c": 10,
+        "d": 4,
+        "e": 18,
+        "f": 11,
+        "u1": 0,
+        "u4": 9,
+        "u5": 25,
+        "u6": 19
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dop,eqr,esf,fst,gtu,guh,iut,ivw,jxy,jyz,kzl,lom,mon,p{|,p|x,qw},q~r,r~s,v~},v}w,x|{,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            8,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            8,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            15,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            15,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 9,
+        "b": 17,
+        "c": 24,
+        "d": 16,
+        "e": 29,
+        "f": 25,
+        "u1": 4,
+        "u4": 23,
+        "u5": 26,
+        "u6": 18
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dop,eqr,esf,fst,gtu,guh,iut,ivw,jxy,jyz,kzl,lom,mon,p{|,p|x,qw},q~r,r~s,v~},v}w,x|{,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            9,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            9,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            16,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            16,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 1,
+        "b": 5,
+        "c": 11,
+        "d": 4,
+        "e": 19,
+        "f": 12,
+        "u1": 0,
+        "u4": 10,
+        "u5": 25,
+        "u6": 6
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dpq,ers,etf,ftg,guh,hui,iuj,jvw,kxy,kyz,lzm,npo,q{|,q|x,rw},r~s,s~t,v~},v}w,x|{,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            9,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            9,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            16,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            16,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 10,
+        "b": 18,
+        "c": 24,
+        "d": 17,
+        "e": 29,
+        "f": 25,
+        "u1": 4,
+        "u4": 23,
+        "u5": 26,
+        "u6": 19
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dpq,ers,etf,ftg,guh,hui,iuj,jvw,kxy,kyz,lzm,npo,q{|,q|x,rw},r~s,s~t,v~},v}w,x|{,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            15,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            15,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            23,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            23,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 20,
+        "b": 13,
+        "c": 21,
+        "d": 24,
+        "e": 14,
+        "f": 6,
+        "u1": 12,
+        "u4": 28,
+        "u5": 22,
+        "u6": 2
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cno,cpq,dqr,drk,ejs,etf,ftu,guv,gvw,hxt,hsi,isj,krq,lpm,myn,nyo,oz{,p{|,u}v,w}~,w~x,x~},y|z,z|{",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            5,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            5,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            12,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            12,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 2,
+        "b": 7,
+        "c": 14,
+        "d": 6,
+        "e": 24,
+        "f": 15,
+        "u1": 0,
+        "u4": 13,
+        "u5": 28,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cno,cop,dpq,drs,etu,euf,fvw,gwx,gyh,hyi,iuz,jz{,j{t,ks|,kql,m}~,m~n,n~},o}p,q|r,r|s,t{z,vyx,vxw",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            5,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            5,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            13,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            13,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 2,
+        "b": 7,
+        "c": 15,
+        "d": 6,
+        "e": 23,
+        "f": 16,
+        "u1": 0,
+        "u4": 14,
+        "u5": 27,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cop,cpq,dqm,drk,ejs,est,fti,fuv,gvw,gxh,hxi,jts,krl,lrm,nyz,nzo,o{|,p|q,u}~,u~v,w~},w}x,y|{,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            12,
+            12
+          ],
+          "cut": [
+            5,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            5,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            11,
+            13
+          ],
+          "cut": [
+            13,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            10,
+            14
+          ],
+          "cut": [
+            13,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 2,
+        "b": 7,
+        "c": 15,
+        "d": 6,
+        "e": 23,
+        "f": 16,
+        "u1": 0,
+        "u4": 14,
+        "u5": 24,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cop,cpq,dqm,drk,ejs,est,fti,fuv,gvw,gxh,hxi,jts,krl,lrm,nyz,n{o,o{|,pyq,ux},u}~,v~w,w~},y|z,z|{",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            5,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            5,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            13,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            13,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 2,
+        "b": 7,
+        "c": 15,
+        "d": 6,
+        "e": 26,
+        "f": 16,
+        "u1": 0,
+        "u4": 14,
+        "u5": 28,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cop,cpq,dqr,drs,etu,euv,fvw,fxy,gyz,g{h,h{i,iwj,jwt,ks|,k|l,l|m,msr,n}~,n~o,o~},p}q,tvu,x{z,xzy",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            17,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            17,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            22,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            22,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 11,
+        "b": 19,
+        "c": 24,
+        "d": 18,
+        "e": 20,
+        "f": 12,
+        "u1": 4,
+        "u4": 23,
+        "u5": 25,
+        "u6": 5
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cno,cop,dpq,dqk,ejr,est,ftu,frg,gvh,hvi,ivj,knw,lxy,lym,myz,oqp,r{|,s|},sut,u}{,wz~,w~x,x~z,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            13,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            13,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            17,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            17,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 14,
+        "b": 19,
+        "c": 24,
+        "d": 18,
+        "e": 29,
+        "f": 25,
+        "u1": 9,
+        "u4": 23,
+        "u5": 26,
+        "u6": 20
+      },
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dnj,eio,epf,fpg,gqh,iqr,jst,kul,mun,nvw,oxy,oyz,pzq,r{|,r|x,sw},s~t,t~u,v~},v}w,x|{,y{z",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            20,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            20,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            26,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            26,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 2,
+        "b": 7,
+        "c": 14,
+        "d": 6,
+        "e": 23,
+        "f": 15,
+        "u1": 0,
+        "u4": 13,
+        "u5": 28,
+        "u6": 8
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cno,cop,dpq,drk,ejs,etf,ftu,gvw,gxh,hxi,iuy,jys,krz,lzm,mq{,n{|,n|},o}p,qzr,syt,u~v,v~w,w~x,{}|",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    },
+    {
+      "all_two_cuts": [
+        {
+          "component_sizes": [
+            8,
+            16
+          ],
+          "cut": [
+            2,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            2,
+            31
+          ]
+        },
+        {
+          "component_sizes": [
+            7,
+            17
+          ],
+          "cut": [
+            7,
+            30
+          ]
+        },
+        {
+          "component_sizes": [
+            6,
+            18
+          ],
+          "cut": [
+            7,
+            31
+          ]
+        }
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "a": 8,
+        "b": 17,
+        "c": 26,
+        "d": 16,
+        "e": 28,
+        "f": 22,
+        "u1": 3,
+        "u4": 25,
+        "u5": 23,
+        "u6": 13
+      },
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cop,dqr,dns,etu,euf,fvg,gjw,hxy,hyz,iz{,i{w,jvt,ks|,k|l,m|s,nr},o}~,o~p,p~q,q}r,tvu,w{x,xzy",
+      "reduced_edge_gadget_cut": false,
+      "reduced_vertices": 26
+    }
+  ],
+  "gadget_edge_cut_count": 0,
+  "n_max": 30,
+  "n_min": 8,
+  "plantri_path": "C:\\Users\\charl\\Documents\\New Math Problem\\plantri.exe",
+  "two_cut_frequency": {
+    "0,26": 4,
+    "0,27": 4,
+    "0,28": 5,
+    "0,29": 5,
+    "0,30": 20,
+    "0,31": 20,
+    "1,20": 1,
+    "1,21": 1,
+    "1,26": 1,
+    "1,27": 1,
+    "1,28": 5,
+    "1,29": 5,
+    "1,30": 17,
+    "1,31": 17,
+    "12,30": 1,
+    "12,31": 1,
+    "13,26": 1,
+    "13,27": 1,
+    "13,30": 4,
+    "13,31": 4,
+    "14,30": 1,
+    "14,31": 1,
+    "15,24": 2,
+    "15,25": 2,
+    "15,26": 1,
+    "15,27": 1,
+    "15,28": 1,
+    "15,29": 1,
+    "15,30": 7,
+    "15,31": 7,
+    "16,28": 1,
+    "16,29": 1,
+    "16,30": 4,
+    "16,31": 4,
+    "17,30": 2,
+    "17,31": 2,
+    "2,30": 1,
+    "2,31": 1,
+    "20,30": 4,
+    "20,31": 4,
+    "21,30": 5,
+    "21,31": 5,
+    "22,30": 2,
+    "22,31": 2,
+    "23,30": 2,
+    "23,31": 2,
+    "25,30": 1,
+    "25,31": 1,
+    "26,30": 1,
+    "26,31": 1,
+    "27,30": 1,
+    "27,31": 1,
+    "28,30": 1,
+    "28,31": 1,
+    "3,26": 4,
+    "3,27": 4,
+    "3,28": 5,
+    "3,29": 5,
+    "3,30": 4,
+    "3,31": 4,
+    "4,20": 1,
+    "4,21": 1,
+    "5,26": 1,
+    "5,27": 1,
+    "5,30": 4,
+    "5,31": 4,
+    "7,30": 2,
+    "7,31": 2,
+    "8,26": 1,
+    "8,27": 1,
+    "8,28": 5,
+    "8,29": 5,
+    "8,30": 4,
+    "8,31": 4,
+    "9,24": 2,
+    "9,25": 2,
+    "9,26": 1,
+    "9,27": 1,
+    "9,28": 2,
+    "9,29": 2,
+    "9,30": 6,
+    "9,31": 6
+  }
+}

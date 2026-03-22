@@ -1,0 +1,40 @@
+{
+  "fail_count": 24,
+  "failure_errors": {
+    "Euler fails: V=18 E=27 F=9": 4,
+    "Euler fails: V=22 E=33 F=11": 8,
+    "not bipartite": 12
+  },
+  "first_fail": {
+    "n_vertices": 20,
+    "occ": {
+      "a": 16,
+      "b": 11,
+      "c": 17,
+      "d": 19,
+      "e": 12,
+      "f": 7,
+      "u1": 10,
+      "u4": 15,
+      "u5": 13,
+      "u6": 3
+    },
+    "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,eop,fqg,hqr,hrn,ims,isj,jst,ktl,ltm,npo,prq",
+    "reduction_error": "Euler fails: V=18 E=27 F=9",
+    "reduction_status": "FAIL",
+    "terminal_order": [
+      "u1",
+      "u6",
+      "u5",
+      "u4"
+    ]
+  },
+  "first_pass": null,
+  "n_max": 24,
+  "n_min": 8,
+  "pass_count": 0,
+  "plantri_path": "C:\\Users\\charl\\Documents\\New Math Problem\\plantri.exe",
+  "success_graphs": 0,
+  "successful_orders": {},
+  "tested_exception_occurrences": 3
+}

@@ -1,20 +1,886 @@
 {
-    "version": "821779f90e35e2946c0613338e45c285a9d130f2c",
-    "summary": [
+  "gadgets": [
+    {
+      "admissible_interface_count": 4,
+      "excluded_interface_types": [
+        "parallel"
+      ],
+      "excluded_type_violations": [],
+      "expected_interface_count": 5,
+      "interfaces": [
         {
-            "name": "Refined C4",
-            "status": "PASS",
-            "verified_count": 5
+          "pairing": [
+            [
+              "u1",
+              "u2"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "u1",
+              "v1"
+            ],
+            [
+              "u2",
+              "v2"
+            ],
+            [
+              "v1",
+              "v4"
+            ],
+            [
+              "v2",
+              "v3"
+            ],
+            [
+              "v3",
+              "v4"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "u1",
+              "x"
+            ],
+            [
+              "u2",
+              "y"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:u1-u2"
         },
         {
-            "name": "C2",
-            "status": "PASS",
-            "verified_count": 5
+          "pairing": [
+            [
+              "u1",
+              "u4"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "u1",
+              "v1"
+            ],
+            [
+              "u4",
+              "v4"
+            ],
+            [
+              "v1",
+              "v2"
+            ],
+            [
+              "v2",
+              "v3"
+            ],
+            [
+              "v3",
+              "v4"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "u1",
+              "x"
+            ],
+            [
+              "u4",
+              "y"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:u1-u4"
         },
         {
-            "name": "Pinch(ii)",
-            "status": "PASS",
-            "verified_count": 5
+          "pairing": [
+            [
+              "u2",
+              "u3"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "u2",
+              "v2"
+            ],
+            [
+              "u3",
+              "v3"
+            ],
+            [
+              "v1",
+              "v2"
+            ],
+            [
+              "v1",
+              "v4"
+            ],
+            [
+              "v3",
+              "v4"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "u2",
+              "y"
+            ],
+            [
+              "u3",
+              "x"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:u3-u2"
+        },
+        {
+          "pairing": [
+            [
+              "u3",
+              "u4"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "u3",
+              "v3"
+            ],
+            [
+              "u4",
+              "v4"
+            ],
+            [
+              "v1",
+              "v2"
+            ],
+            [
+              "v1",
+              "v4"
+            ],
+            [
+              "v2",
+              "v3"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "u3",
+              "x"
+            ],
+            [
+              "u4",
+              "y"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:u3-u4"
+        },
+        {
+          "pairing": [
+            [
+              "u1",
+              "u3"
+            ],
+            [
+              "u2",
+              "u4"
+            ]
+          ],
+          "patch_witness_edges": [],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "u1",
+              "x"
+            ],
+            [
+              "u2",
+              "y"
+            ],
+            [
+              "u3",
+              "x"
+            ],
+            [
+              "u4",
+              "y"
+            ]
+          ],
+          "status": "EXCLUDED",
+          "type": "parallel"
         }
-    ]
+      ],
+      "missing_interface_types": [],
+      "missing_lift_witnesses": [],
+      "name": "Refined C4",
+      "realized_interface_count": 5,
+      "status": "PASS",
+      "terminals": [
+        "u1",
+        "u3",
+        "u2",
+        "u4"
+      ],
+      "unexpected_interface_types": []
+    },
+    {
+      "admissible_interface_count": 5,
+      "excluded_interface_types": [],
+      "excluded_type_violations": [],
+      "expected_interface_count": 5,
+      "interfaces": [
+        {
+          "pairing": [
+            [
+              "u1",
+              "u4"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "a",
+              "u1"
+            ],
+            [
+              "b",
+              "f"
+            ],
+            [
+              "c",
+              "d"
+            ],
+            [
+              "c",
+              "e"
+            ],
+            [
+              "d",
+              "u4"
+            ],
+            [
+              "e",
+              "f"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "u1",
+              "x"
+            ],
+            [
+              "u4",
+              "y"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:u1-u4"
+        },
+        {
+          "pairing": [
+            [
+              "u1",
+              "u5"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "a",
+              "d"
+            ],
+            [
+              "a",
+              "u1"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "b",
+              "f"
+            ],
+            [
+              "c",
+              "d"
+            ],
+            [
+              "e",
+              "f"
+            ],
+            [
+              "e",
+              "u5"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "u1",
+              "x"
+            ],
+            [
+              "u5",
+              "y"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:u1-u5"
+        },
+        {
+          "pairing": [
+            [
+              "u4",
+              "u6"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "a",
+              "d"
+            ],
+            [
+              "b",
+              "c"
+            ],
+            [
+              "c",
+              "e"
+            ],
+            [
+              "d",
+              "u4"
+            ],
+            [
+              "e",
+              "f"
+            ],
+            [
+              "f",
+              "u6"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "u4",
+              "y"
+            ],
+            [
+              "u6",
+              "x"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:u6-u4"
+        },
+        {
+          "pairing": [
+            [
+              "u5",
+              "u6"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "a",
+              "d"
+            ],
+            [
+              "b",
+              "f"
+            ],
+            [
+              "c",
+              "d"
+            ],
+            [
+              "c",
+              "e"
+            ],
+            [
+              "e",
+              "u5"
+            ],
+            [
+              "f",
+              "u6"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "u5",
+              "y"
+            ],
+            [
+              "u6",
+              "x"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:u6-u5"
+        },
+        {
+          "pairing": [
+            [
+              "u1",
+              "u6"
+            ],
+            [
+              "u4",
+              "u5"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "a",
+              "b"
+            ],
+            [
+              "a",
+              "u1"
+            ],
+            [
+              "b",
+              "f"
+            ],
+            [
+              "c",
+              "d"
+            ],
+            [
+              "c",
+              "e"
+            ],
+            [
+              "d",
+              "u4"
+            ],
+            [
+              "e",
+              "u5"
+            ],
+            [
+              "f",
+              "u6"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "u1",
+              "x"
+            ],
+            [
+              "u4",
+              "y"
+            ],
+            [
+              "u5",
+              "y"
+            ],
+            [
+              "u6",
+              "x"
+            ]
+          ],
+          "status": "PASS",
+          "type": "parallel"
+        }
+      ],
+      "missing_interface_types": [],
+      "missing_lift_witnesses": [],
+      "name": "C2",
+      "realized_interface_count": 5,
+      "status": "PASS",
+      "terminals": [
+        "u1",
+        "u6",
+        "u4",
+        "u5"
+      ],
+      "unexpected_interface_types": []
+    },
+    {
+      "admissible_interface_count": 5,
+      "excluded_interface_types": [],
+      "excluded_type_violations": [],
+      "expected_interface_count": 5,
+      "interfaces": [
+        {
+          "pairing": [
+            [
+              "r",
+              "u2"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "r",
+              "t"
+            ],
+            [
+              "t",
+              "w"
+            ],
+            [
+              "u2",
+              "v2"
+            ],
+            [
+              "v1",
+              "v4"
+            ],
+            [
+              "v1",
+              "w"
+            ],
+            [
+              "v2",
+              "v3"
+            ],
+            [
+              "v3",
+              "v4"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "r",
+              "x"
+            ],
+            [
+              "u2",
+              "y"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:r-u2"
+        },
+        {
+          "pairing": [
+            [
+              "r",
+              "u4"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "r",
+              "t"
+            ],
+            [
+              "t",
+              "w"
+            ],
+            [
+              "u4",
+              "v4"
+            ],
+            [
+              "v1",
+              "v2"
+            ],
+            [
+              "v1",
+              "w"
+            ],
+            [
+              "v2",
+              "v3"
+            ],
+            [
+              "v3",
+              "v4"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "r",
+              "x"
+            ],
+            [
+              "u4",
+              "y"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:r-u4"
+        },
+        {
+          "pairing": [
+            [
+              "s",
+              "u2"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "s",
+              "t"
+            ],
+            [
+              "t",
+              "w"
+            ],
+            [
+              "u2",
+              "v2"
+            ],
+            [
+              "v1",
+              "v4"
+            ],
+            [
+              "v1",
+              "w"
+            ],
+            [
+              "v2",
+              "v3"
+            ],
+            [
+              "v3",
+              "v4"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "s",
+              "x"
+            ],
+            [
+              "u2",
+              "y"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:s-u2"
+        },
+        {
+          "pairing": [
+            [
+              "s",
+              "u4"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "s",
+              "t"
+            ],
+            [
+              "t",
+              "w"
+            ],
+            [
+              "u4",
+              "v4"
+            ],
+            [
+              "v1",
+              "v2"
+            ],
+            [
+              "v1",
+              "w"
+            ],
+            [
+              "v2",
+              "v3"
+            ],
+            [
+              "v3",
+              "v4"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "s",
+              "x"
+            ],
+            [
+              "u4",
+              "y"
+            ],
+            [
+              "x",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "cross:s-u4"
+        },
+        {
+          "pairing": [
+            [
+              "r",
+              "s"
+            ],
+            [
+              "u2",
+              "u4"
+            ]
+          ],
+          "patch_witness_edges": [
+            [
+              "r",
+              "t"
+            ],
+            [
+              "s",
+              "t"
+            ],
+            [
+              "u2",
+              "v2"
+            ],
+            [
+              "u4",
+              "v4"
+            ],
+            [
+              "v1",
+              "v2"
+            ],
+            [
+              "v1",
+              "w"
+            ],
+            [
+              "v3",
+              "v4"
+            ],
+            [
+              "v3",
+              "w"
+            ]
+          ],
+          "reduced_instance_count": 1,
+          "reduced_witness_edges": [
+            [
+              "r",
+              "x"
+            ],
+            [
+              "s",
+              "x"
+            ],
+            [
+              "u2",
+              "y"
+            ],
+            [
+              "u4",
+              "y"
+            ]
+          ],
+          "status": "PASS",
+          "type": "parallel"
+        }
+      ],
+      "missing_interface_types": [],
+      "missing_lift_witnesses": [],
+      "name": "Pinch(ii)",
+      "realized_interface_count": 5,
+      "status": "PASS",
+      "terminals": [
+        "r",
+        "s",
+        "u2",
+        "u4"
+      ],
+      "unexpected_interface_types": []
+    }
+  ],
+  "summary": [
+    {
+      "admissible_type_count": 4,
+      "covered_type_count": 4,
+      "name": "Refined C4",
+      "realized_type_count": 5,
+      "status": "PASS"
+    },
+    {
+      "admissible_type_count": 5,
+      "covered_type_count": 5,
+      "name": "C2",
+      "realized_type_count": 5,
+      "status": "PASS"
+    },
+    {
+      "admissible_type_count": 5,
+      "covered_type_count": 5,
+      "name": "Pinch(ii)",
+      "realized_type_count": 5,
+      "status": "PASS"
+    }
+  ],
+  "version": "f416b83f4c8c2fa63116b529985da8935767d5e1"
 }

@@ -1,0 +1,4 @@
+Unavoidability: NOT FOUND
+Disk Replacement: lemma:disk_replacement_3conn
+3Conn Preserv: lemma:3conn_preservation
+Fact Base: fact:base-cases

@@ -1,0 +1,1393 @@
+{
+  "aggregate_c2_errors": {
+    "face orbit did not close": 111,
+    "not 3-connected": 12,
+    "not cubic": 162
+  },
+  "aggregate_pinch_errors": {},
+  "aggregate_refined_c4_errors": {
+    "Euler fails: V=18 E=27 F=9": 1,
+    "Euler fails: V=22 E=33 F=11": 10,
+    "Euler fails: V=24 E=36 F=12": 8,
+    "Euler fails: V=26 E=39 F=13": 6,
+    "Euler fails: V=28 E=42 F=14": 41
+  },
+  "face_length_patterns": {
+    "4,4,4,4,4,4": 1,
+    "4,4,4,4,4,4,4,4,4,4,4,6,6,8,8,8,10": 1,
+    "4,4,4,4,4,4,4,4,4,4,6,6,6,10,10": 1,
+    "4,4,4,4,4,4,4,4,4,4,6,6,6,6,6,8,12": 2,
+    "4,4,4,4,4,4,4,4,4,4,6,6,6,6,8,8,10": 5,
+    "4,4,4,4,4,4,4,4,4,4,6,6,6,8,8,8,8": 1,
+    "4,4,4,4,4,4,4,4,4,4,6,6,8,8,10": 2,
+    "4,4,4,4,4,4,4,4,4,6,6,6,6,6,6,6,12": 2,
+    "4,4,4,4,4,4,4,4,4,6,6,6,6,6,6,8,10": 3,
+    "4,4,4,4,4,4,4,4,4,6,6,6,6,6,8,8,8": 1,
+    "4,4,4,4,4,4,4,4,4,6,6,6,6,8,10": 1,
+    "4,4,4,4,4,4,4,4,4,6,6,6,8,8,8": 3,
+    "4,4,4,4,4,4,4,4,6,6,6,6,6,10": 1,
+    "4,4,4,4,4,4,4,4,6,6,6,6,6,6,10": 1,
+    "4,4,4,4,4,4,4,4,6,6,6,6,6,6,6,6,10": 1,
+    "4,4,4,4,4,4,4,4,6,6,6,6,6,6,6,8,8": 2,
+    "4,4,4,4,4,4,4,4,6,6,6,6,6,6,8,8": 3,
+    "4,4,4,4,4,4,4,4,6,6,6,6,6,8,8": 2,
+    "4,4,4,4,4,4,4,4,6,6,6,6,8,8": 1,
+    "4,4,4,4,4,4,4,4,6,6,8,8": 1,
+    "4,4,4,4,4,4,4,6,6,6,6,6,6,6,8": 1,
+    "4,4,4,4,4,4,4,6,6,6,6,8": 1,
+    "4,4,4,4,4,4,6,6,6": 1,
+    "4,4,4,4,4,4,6,6,6,6,6,6": 1,
+    "4,4,4,4,4,4,6,6,6,6,6,6,6,6": 1,
+    "4,4,4,4,4,4,6,6,6,6,6,6,6,6,6": 1,
+    "4,4,4,4,4,4,6,6,6,6,6,6,6,6,6,6,6": 1
+  },
+  "graphs": [
+    {
+      "c2_count": 12,
+      "c2_error_counts": {
+        "face orbit did not close": 12
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "n_vertices": 8,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "8 bcd,aef,afg,age,bdh,bhc,chd,egf",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not cubic": 3
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6
+      ],
+      "n_vertices": 14,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "14 bcd,aef,afg,agh,bij,bkc,ckd,dli,ehm,emn,fng,hnm,ilj,jlk",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 7,
+      "c2_error_counts": {
+        "face orbit did not close": 5,
+        "not 3-connected": 1,
+        "not cubic": 1
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 20,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,eop,fqg,hqr,hrn,ims,isj,jst,ktl,ltm,npo,prq",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not cubic": 3
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8
+      ],
+      "n_vertices": 20,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,epq,fqg,hqp,hrn,ims,ist,jtl,jlk,mts,nro,orp",
+      "refined_c4_count": 1,
+      "refined_c4_error_counts": {
+        "Euler fails: V=18 E=27 F=9": 1
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "n_vertices": 20,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "20 bcd,aef,agh,aij,bkl,bmn,cno,cop,dpm,dqk,ejr,ers,fsi,ftg,gth,hti,jsr,kql,lqm,npo",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 2,
+        "not cubic": 4
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 24,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dmn,eop,egf,gph,hqi,iro,jns,jsl,mtu,nuv,owp,qwx,qxr,rxw,svt,tvu",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=22 E=33 F=11": 2
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not cubic": 3
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        10
+      ],
+      "n_vertices": 24,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dmn,eop,egf,gph,hqi,irs,jtu,jul,muv,nvw,nwt,osx,oqp,qxr,rxs,twv",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=22 E=33 F=11": 2
+      }
+    },
+    {
+      "c2_count": 0,
+      "c2_error_counts": {},
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "n_vertices": 24,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,blc,cmn,dno,doj,eip,epq,fqr,grs,gsh,hti,juk,kvl,lvm,mwn,owu,ptx,qxr,sxt,uwv",
+      "refined_c4_count": 6,
+      "refined_c4_error_counts": {
+        "Euler fails: V=22 E=33 F=11": 6
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "not cubic": 6
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,agh,aij,bkl,bmn,cno,cop,dpm,dqk,ejr,ers,fsi,ftg,guh,hvi,jsr,kql,lqm,nwx,oxy,pyw,tvz,tzu,uzv,wyx",
+      "refined_c4_count": 1,
+      "refined_c4_error_counts": {
+        "Euler fails: V=24 E=36 F=12": 1
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not cubic": 3
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        10
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,agh,aij,bkl,bmn,cno,cop,dpq,dqr,est,etu,fuv,fvg,gwh,hxi,ixj,jxw,kyz,kzl,lzm,myn,oyr,prq,swv,sut",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=24 E=36 F=12": 2
+      }
+    },
+    {
+      "c2_count": 9,
+      "c2_error_counts": {
+        "face orbit did not close": 4,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        8,
+        8,
+        10
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,afg,ahi,bjk,bkc,ckl,dmn,dno,epq,egf,gqr,hrs,hsi,ist,juv,jwl,lwm,mon,oxu,pty,pyz,qzr,tzy,uxv,vxw",
+      "refined_c4_count": 1,
+      "refined_c4_error_counts": {
+        "Euler fails: V=24 E=36 F=12": 1
+      }
+    },
+    {
+      "c2_count": 9,
+      "c2_error_counts": {
+        "face orbit did not close": 5,
+        "not cubic": 4
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        8,
+        8,
+        8
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,agh,aij,bkl,blm,cno,cop,dpq,drs,etu,euf,fuv,gvw,gwh,hwi,ivx,jxy,jyt,ksz,kml,mqn,npo,qzr,rzs,tyx",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 8,
+      "c2_error_counts": {
+        "face orbit did not close": 4,
+        "not 3-connected": 2,
+        "not cubic": 2
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        8,
+        8,
+        10
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dno,epq,eqf,fqg,grh,ist,itu,jvw,jlk,mwx,nxy,nyo,oyv,puz,pzr,rzs,sut,vxw",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 7,
+      "c2_error_counts": {
+        "face orbit did not close": 2,
+        "not 3-connected": 1,
+        "not cubic": 4
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        8,
+        8,
+        8
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,gtu,gih,iup,jov,jwx,kxy,lyw,lvm,mvo,put,qsz,qzr,rzs,wyx",
+      "refined_c4_count": 1,
+      "refined_c4_error_counts": {
+        "Euler fails: V=24 E=36 F=12": 1
+      }
+    },
+    {
+      "c2_count": 7,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not 3-connected": 1,
+        "not cubic": 3
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8,
+        10
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,agh,aij,bkl,blm,cmn,cno,dpq,dqr,est,euf,fvg,gvh,hvu,iwx,ixj,jxs,kry,kyz,lzo,mon,pzy,prq,swt,twu",
+      "refined_c4_count": 1,
+      "refined_c4_error_counts": {
+        "Euler fails: V=24 E=36 F=12": 1
+      }
+    },
+    {
+      "c2_count": 8,
+      "c2_error_counts": {
+        "face orbit did not close": 4,
+        "not 3-connected": 2,
+        "not cubic": 2
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        10,
+        10
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,afg,ahi,bjk,bkc,ckl,dmn,dno,epq,egf,gqr,hst,hti,itu,jvw,jwl,lwx,mxy,mon,oyv,puz,prq,rzs,szu,vyx",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 9,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not cubic": 6
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        8,
+        8,
+        8
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,agh,aij,bkl,blm,cmn,cop,dpq,dqr,est,etf,ftg,guv,hvw,hxi,ixj,jxs,kry,kml,nyz,nzo,ozy,prq,swu,uwv",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dpq,ers,etf,fug,grh,hvi,ivj,jvr,kqn,kwx,lxy,myw,oqp,suz,szt,tzu,wyx",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=24 E=36 F=12": 2
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,agh,aij,bkl,bmn,cno,clp,dpq,dqk,ejr,ehs,fst,fug,gvs,hri,irj,kqp,lom,mwx,nxy,oyw,tvz,tzu,uzv,wyx",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 7,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not 3-connected": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 26,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "26 bcd,aef,agh,aij,bkl,bmn,cop,cpq,dqm,drk,ejs,est,fti,fuv,gvw,gxh,hxi,jts,krl,lrm,nyz,nzo,ozy,pyq,uxw,uwv",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 28,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dop,eqr,esf,ftg,gur,hrv,ivw,iwq,jpx,jnm,kyz,lz{,m{y,nxo,oxp,qwv,su|,s|t,t|u,y{z",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=26 E=39 F=13": 2
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 28,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,bkl,cmn,cod,dpq,ers,etf,fuv,gvw,gts,hsx,ixy,iyr,jqz,jon,kn{,l{|,l|m,m|{,ozp,pzq,ryx,twu,uwv",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=26 E=39 F=13": 2
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 2,
+        "not cubic": 4
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 28,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpq,ers,etu,fuv,fwg,gws,hsx,ixy,iyr,jqz,jon,k{|,k|l,l|{,m{n,ozp,pzq,ryx,twv,tvu",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=26 E=39 F=13": 2
+      }
+    },
+    {
+      "c2_count": 0,
+      "c2_error_counts": {},
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,ers,fst,ftg,guv,hvw,iwq,jpx,kxy,kyl,lzm,nz{,n|o,o|p,q}r,r~s,t~u,u~},v}w,x|{,y{z",
+      "refined_c4_count": 6,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 6
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "not cubic": 6
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cop,dpq,dqr,est,euf,fvg,gwx,hxy,hvi,iuj,jzs,kr{,k{|,l|q,mp},n}~,n~o,o~},r|{,szt,tzu,vyw,wyx",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 2
+      }
+    },
+    {
+      "c2_count": 9,
+      "c2_error_counts": {
+        "face orbit did not close": 5,
+        "not cubic": 4
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        8,
+        8,
+        8,
+        10
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dmn,eop,eqf,frg,gih,irs,jtu,juv,kwx,lyn,nyt,osz,ozp,pz{,q{|,q|},r}s,tvu,v~w,w~x,x~y,{}|",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 2
+      }
+    },
+    {
+      "c2_count": 7,
+      "c2_error_counts": {
+        "not 3-connected": 1,
+        "not cubic": 6
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8,
+        10
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,afg,agh,bij,bkc,cld,dmn,eop,epq,frs,gst,hqu,huv,iwx,iyj,jmz,kz{,k{l,l{z,myn,n|w,ov},o}~,p~u,qtr,rts,v~},w|x,x|y",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 2
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        10
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dop,eqr,esf,ftg,gqu,huv,ivw,iwx,jym,jz{,k{|,l|z,myn,n}o,o}p,p}y,qxu,rt~,r~s,s~t,vxw,z|{",
+      "refined_c4_count": 3,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 3
+      }
+    },
+    {
+      "c2_count": 9,
+      "c2_error_counts": {
+        "face orbit did not close": 4,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8,
+        10
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dqr,est,euf,fvg,gvh,hvi,iuw,jwx,jxy,kz{,k{|,l|p,mon,p}q,q}r,r}z,sy~,s~t,t~u,wyx,z|{",
+      "refined_c4_count": 1,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 1
+      }
+    },
+    {
+      "c2_count": 7,
+      "c2_error_counts": {
+        "face orbit did not close": 2,
+        "not 3-connected": 1,
+        "not cubic": 4
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        8,
+        8,
+        8,
+        8
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cno,cod,dop,eqr,ers,ftu,fuv,gvw,gih,iwq,jpx,jyk,kz{,l{|,lym,mxn,nxp,qwv,ru},s}~,s~t,t~},y|z,z|{",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 2
+      }
+    },
+    {
+      "c2_count": 7,
+      "c2_error_counts": {
+        "face orbit did not close": 2,
+        "not 3-connected": 1,
+        "not cubic": 4
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8,
+        10
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,guv,gih,ivp,jow,jxy,kz{,l{|,lyx,mxw,mwo,pvu,qut,qt},r}~,r~s,s~},y|z,z|{",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 2
+      }
+    },
+    {
+      "c2_count": 7,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not 3-connected": 1,
+        "not cubic": 3
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        12
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,guv,gih,ivp,jow,jxy,kyz,lz{,l{|,mxw,mwo,pvu,qu},q}r,r~s,s~t,t~},x|y,z|{",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 2
+      }
+    },
+    {
+      "c2_count": 9,
+      "c2_error_counts": {
+        "face orbit did not close": 4,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8,
+        10
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dpq,dqr,est,etf,ftg,guh,hvw,iwx,ixj,jxs,kry,kml,nz{,o{|,oyp,prq,sw},u}~,u~v,v~},y|z,z|{",
+      "refined_c4_count": 1,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 1
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 4,
+        "not cubic": 2
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        12
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cnd,dno,epq,eqr,frs,fsg,gih,ist,juv,jwk,kxl,lom,oxy,pz{,p{|,q|},r}t,t}z,uy~,u~v,v~w,wyx,z|{",
+      "refined_c4_count": 3,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 3
+      }
+    },
+    {
+      "c2_count": 9,
+      "c2_error_counts": {
+        "face orbit did not close": 5,
+        "not cubic": 4
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        12
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dno,epq,egf,gqh,hrs,ist,itu,jvw,jxl,mxy,mzn,nzo,ozy,p{|,p|},q}r,r{u,sut,vy~,v~w,w~x,{}|",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    },
+    {
+      "c2_count": 9,
+      "c2_error_counts": {
+        "face orbit did not close": 5,
+        "not cubic": 4
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8,
+        10
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dpq,dqr,est,euf,fvg,gvh,hvw,iwx,ixj,jxy,kz{,k{|,l|},mon,o}p,prq,r}z,sy~,s~t,t~u,uyw,z|{",
+      "refined_c4_count": 1,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 1
+      }
+    },
+    {
+      "c2_count": 9,
+      "c2_error_counts": {
+        "face orbit did not close": 4,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        12
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,afg,ahi,bjk,bkc,ckl,dmn,dno,epq,egf,gqr,hrs,hsi,ist,juv,jvl,lwm,mon,owx,pyz,p{q,r{t,t|y,ux},u}~,v~w,x~},y|z,z|{",
+      "refined_c4_count": 1,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 1
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        10
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dpq,ers,etf,fug,guh,hui,itj,jvw,kxy,kz{,l{p,mon,q{z,q|x,rw},r}~,s~v,svt,w~},x|y,y|z",
+      "refined_c4_count": 3,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 3
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8,
+        8
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,afg,ahi,bjk,blc,cmn,dop,dqr,est,euv,fwx,gxy,gyz,hzw,hwv,ivu,i{s,jr|,j|},k}q,kqp,lpo,l~m,m~n,n~o,r}|,s{t,t{u,xzy",
+      "refined_c4_count": 3,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 3
+      }
+    },
+    {
+      "c2_count": 6,
+      "c2_error_counts": {
+        "face orbit did not close": 1,
+        "not cubic": 5
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        10
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cop,cpq,dqm,drk,ejs,est,fti,fuv,gwx,gyh,hui,jts,krl,lrm,nqz,nz{,o{|,o|},p}z,uyv,v~w,w~x,x~y,{}|",
+      "refined_c4_count": 2,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 2
+      }
+    },
+    {
+      "c2_count": 3,
+      "c2_error_counts": {
+        "face orbit did not close": 2,
+        "not cubic": 1
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        8
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cno,cop,dqr,drk,ejs,etu,fuv,fvg,gwh,hxy,iys,isj,krq,lz{,l{m,m|n,o|},p}z,pzq,tyx,t~u,v~w,w~x,{}|",
+      "refined_c4_count": 5,
+      "refined_c4_error_counts": {
+        "Euler fails: V=28 E=42 F=14": 5
+      }
+    },
+    {
+      "c2_count": 9,
+      "c2_error_counts": {
+        "face orbit did not close": 3,
+        "not cubic": 6
+      },
+      "face_lengths": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        8,
+        10
+      ],
+      "n_vertices": 30,
+      "pinch_count": 0,
+      "pinch_error_counts": {},
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cop,dpq,drs,etu,euf,fug,gtv,hwx,hxi,ixw,jwy,jzt,ksn,kml,n{|,orq,oqp,r|},s}{,vz~,v~y,y~z,{}|",
+      "refined_c4_count": 0,
+      "refined_c4_error_counts": {}
+    }
+  ],
+  "n_max": 30,
+  "n_min": 8,
+  "plantri_path": "C:\\Users\\charl\\Documents\\New Math Problem\\plantri.exe",
+  "unresolved_counts_by_n": {
+    "14": 1,
+    "20": 3,
+    "24": 3,
+    "26": 12,
+    "28": 3,
+    "30": 19,
+    "8": 1
+  },
+  "unresolved_graph_count": 42
+}

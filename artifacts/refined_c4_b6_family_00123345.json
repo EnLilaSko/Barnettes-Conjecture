@@ -1,0 +1,180 @@
+{
+  "candidate": {
+    "boundary_slot_orders": [
+      [
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0
+      ]
+    ],
+    "gadget_orders": [
+      [
+        2,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        2
+      ]
+    ],
+    "matching": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "matrix": [
+      [
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "n_after": 12
+  },
+  "patch": {
+    "boundary_attachment_sizes": [
+      1,
+      2,
+      1,
+      1,
+      2,
+      1
+    ],
+    "boundary_exterior_sizes": [
+      2,
+      1,
+      2,
+      2,
+      1,
+      2
+    ],
+    "boundary_vertices": [
+      11,
+      19,
+      23,
+      22,
+      16,
+      10
+    ],
+    "deleted_vertices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      13,
+      14,
+      15,
+      20,
+      21
+    ],
+    "interface_word": [
+      0,
+      1,
+      1,
+      2,
+      3,
+      4,
+      4,
+      5
+    ],
+    "interface_word_key": [
+      0,
+      0,
+      1,
+      2,
+      3,
+      3,
+      4,
+      5
+    ]
+  },
+  "seed_graph_line": "24 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,eqr,frs,ftg,gtu,huv,ivq,jpk,kwl,lwx,mxn,nxo,owp,rvs,sut",
+  "seed_occurrence": {
+    "u1": 1,
+    "u2": 6,
+    "u3": 14,
+    "u4": 8,
+    "v1": 0,
+    "v2": 2,
+    "v3": 7,
+    "v4": 3
+  },
+  "verification": {
+    "failure": null,
+    "matched_pattern_count": 2,
+    "pass_count": 2,
+    "scanned_occurrences": 27,
+    "skipped_other_pattern": 0,
+    "skipped_other_shape": 25
+  }
+}

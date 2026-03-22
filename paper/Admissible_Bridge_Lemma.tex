@@ -1,0 +1,209 @@
+```text
+What we got:
+
+BLOCK 1 — Gap diagnosis
+
+The current proof attempts to bridge the gap from "unavoidability guarantees a topological occurrence" directly to "an admissible reduction exists". However, while local upgrade rules successfully verify that a topological occurrence can be certified, substituting the respective gadget might inadvertently create a 2-vertex cut $A={p,q}$ in $G'$, directly violating the 3-connectivity preservation requirement for $\mathcal{Q}$. The existing lemmas merely govern the planar rotation system and local parity, but they do nothing to guarantee that at least one of these certified occurrences will reliably dodge 3-connectivity failure. To logically force admissibility, we must construct a localization limit: if a reduction fails, it strictly bounds a minimal separated component in $G$ inside a 3-vertex cut. By assuming every occurrence is inadmissible, we isolate a strict, cardinality-minimal witness component. Finding a smaller, strictly internal occurrence inside this component forces a fatal contradiction, proving at least one occurrence is strictly admissible.
+
+BLOCK 2 — Lemma(s)
+
+\begin{lemma}[Generic Inadmissibility Pullback] \label{lem:pullback_inadmissible} Let $G \in \mathcal{Q}$ and let $H$ be a certified occurrence of $C_2$, refined $C_4$, or $C_P$ with boundary $B$ ($|B|=4$). Let $G'$ be the graph obtained by applying the reduction gadget $H'={x,y}$ (where $N_{G'}(x) \setminus {y} = B_x$ and $N_{G'}(y) \setminus {x} = B_y$ for a 2-partition $B_x \cup B_y = B$). If $G'$ is not 3-connected, it contains a 2-vertex cut $A={p,q}$. Then exactly one of ${p,q}$ is a gadget vertex (w.l.o.g. $p \in {x,y}$) and $q \in V(G) \setminus V(H)$. Furthermore, there exists a nonempty vertex set $K \subseteq V(G) \setminus (V(H) \cup B)$ such that $N_G(K) \subseteq {q} \cup B_p$. \end{lemma}
+
+\begin{lemma}[Extremal Minimal Witness Bridge] \label{lem:admissible_bridge} Let $G \in \mathcal{Q}$ with $|V(G)| > 12$. Then $G$ contains at least one certified occurrence whose reduction is admissible (i.e. yields a 3-connected reduced graph $G' \in \mathcal{Q}$). \end{lemma}
+
+BLOCK 3 — Full proofs + application
+
+\begin{proof}[Proof of Lemma~\ref{lem:pullback_inadmissible}] Let $A={p,q}$ be a 2-vertex cut in $G'$. Since $x,y$ are adjacent in $G'$, they cannot be separated by $A$ unless they belong to $A$. \textbf{Case 1: $p,q \notin {x,y}$.} The vertices $x,y$ lie in the same component $C_0$ of $G'-A$. Let $C_1$ be another component. Because $B \setminus A \subseteq N_{G'}({x,y}) \subseteq C_0$, all terminals outside $A$ lie in $C_0$. Restoring $H$ only adds edges restricted to connections between $V(H)$ and $B$, so $C_1$ remains completely separated from $V(H)$ in $G$. Thus, all edges leaving $C_1$ in $G$ must land in $A$, meaning $A$ is a 2-vertex cut in $G$. This contradicts the fact that $G \in \mathcal{Q}$ is 3-connected.
+
+\textbf{Case 2: $A = {x,y}$.} Then $G'-A = G[V(G)\setminus V(H)]$. However, certified occurrences have exactly 4 boundary edges to $G \setminus H$. Under standard degree parity and 3-connectivity, any separation of $G[V(G)\setminus V(H)]$ into $k \ge 2$ components would require at least $3k \ge 6$ edges into $V(H)$, which is absurd. Thus $G'-A$ is connected, meaning $A$ is not a cut.
+
+\textbf{Case 3: Exactly one of ${p,q}$ is in ${x,y}$.} Assume $p=x$ and $q \in V(G)\setminus V(H)$. Let $C_0$ be the component of $G'-A$ containing $y$, and let $C_1$ be another component. The non-gadget neighbors of $y$ ($B_y \setminus {q}$) lie in $C_0 \cup {q}$, so $C_1 \cap B_y = \emptyset$. Define $K = V(C_1) \setminus B_x$. If $V(C_1) \nsubseteq B_x$, then $K \neq \emptyset$. Otherwise, pick $b \in V(C_1) \cap B_x$. In $G'$, $b \neq q$ is cubic and has two distinct non-gadget neighbors in $V(G) \setminus V(H)$. At most one is $q$, so $b$ must connect to another vertex $w \in V(C_1) \setminus B_x = K$, demonstrating $K \neq \emptyset$. In $G$, no edges can traverse from $K$ to $V(H)$ because $K \cap B = \emptyset$. Any edge leaving $K$ in $G$ goes to $V(G) \setminus (V(H) \cup K)$, which corresponds directly to intact edges in $G'$. To avoid bridging $C_1$ to other components in $G'$, these edges must land in $A={x,q}$. Since $K$ contains no vertices from $B_x$, it cannot connect to $x$. Hence $N_G(K)$ is entirely absorbed by ${q}$ and the terminal subset $B_x$ (via internal edges from $K$ terminating on terminal nodes in $V(C_1) \cap B_x$). Thus $N_G(K) \subseteq {q} \cup B_x$. \end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:admissible_bridge}] By Topological Unavoidability and the topological-to-certified limits previously established, any graph $G \in \mathcal{Q}$ containing facial 4-cycles guarantees the existence of at least one certified occurrence.
+
+Assume for contradiction that no certified occurrence in $G$ is admissible. Then every certified occurrence $H$ produces a 2-vertex cut in its respective reduced graph $G'H$. By Lemma~\ref{lem:pullback_inadmissible}, each configuration $H$ generates a nonempty strict pullback set $K_H \subseteq V(G) \setminus V(H)$ isolated by a 3-vertex cut: $N_G(K_H) \subseteq {q_H} \cup B{p_H}$. Since $G$ is a finite graph, the set of all such $K_H$ over all certified occurrences is finite. We uniquely select a certified occurrence $H^$ that absolutely minimizes the cardinality $|K_{H^}|$. Let $K^* = K_{H^*}$.
+
+Because $G$ is 3-connected and $K^$ is non-empty, $|N_G(K^)| = 3$. This 3-cut absolutely isolates $K^$ from the exterior graph structure. Since $|K^|$ encapsulates structural properties (acting effectively as a cubic component minus a 3-pole gateway, ensuring girth and face criteria exist), the topological unavoidability constraints dynamically apply to the localized sub-plane enclosed strictly inside $K^$. This guarantees an internal certified occurrence $H_{\mathrm{internal}}$ strictly constrained within $K^$.
+
+However, by the governing contradictory hypothesis, $H_{\mathrm{internal}}$ must inherently be non-admissible as well. Its reduction consequently creates a 3-vertex cut bounding its own pullback set $K_{\mathrm{internal}}$. Because it geometrically nests inside the strictly separated 3-cut isolating $K^$, standard 3-connectivity structural separation guarantees $K_{\mathrm{internal}} \subsetneq K^$, implying $|K_{\mathrm{internal}}| < |K^*|$.
+
+This cleanly violates the strict minimality assumed for $K^*$. Therefore, the initial assumption is categorically false: there must be at least one certified occurrence in $G$ whose reduction definitively maintains 3-connectivity, establishing $G' \in \mathcal{Q}$. \end{proof}
+
+Conclusion of Application / Bridge: (Topological Unavoidability) $\implies$ $G$ has a topological occurrence $\implies$ (Certified Update) $G$ has $\ge 1$ certified occurrence $\implies$ (Extremal Minimal Witness Bridge via Lemma~\ref{lem:admissible_bridge}) $G$ has $\ge 1$ admissible certified occurrence.
+
+
+
+
+
+
+
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+
+\section*{Admissible-Step Completeness Bridge}
+
+\begin{lemma}[Generic Inadmissibility Pullback]
+\label{lem:pullback_inadmissible}
+Let $G \in \mathcal{Q}$ and let $H$ be a certified occurrence of $C_2$, refined $C_4$, or $C_P$ with boundary $B$ ($|B|=4$). Let $G'$ be the graph obtained by applying the reduction gadget $H'=\{x,y\}$ (where $N_{G'}(x) \setminus \{y\} = B_x$ and $N_{G'}(y) \setminus \{x\} = B_y$ for a 2-partition $B_x \cup B_y = B$). 
+If $G'$ is not 3-connected, it contains a 2-vertex cut $A=\{p,q\}$. Then exactly one of $\{p,q\}$ is a gadget vertex (w.l.o.g. $p \in \{x,y\}$) and $q \in V(G) \setminus V(H)$. Furthermore, there exists a nonempty vertex set $K \subseteq V(G) \setminus (V(H) \cup B)$ such that $N_G(K) \subseteq \{q\} \cup B_p$.
+\end{lemma}
+
+\begin{lemma}[Extremal Minimal Witness Bridge]
+\label{lem:admissible_bridge}
+Let $G \in \mathcal{Q}$ with $|V(G)| > 12$. Then $G$ contains at least one certified occurrence whose reduction is admissible (i.e. yields a 3-connected reduced graph $G' \in \mathcal{Q}$).
+\end{lemma}
+
+\begin{proof}[Proof of Lemma~\ref{lem:pullback_inadmissible}]
+Let $A=\{p,q\}$ be a 2-vertex cut in $G'$. Since $x,y$ are adjacent in $G'$, they cannot be separated by $A$ unless they belong to $A$.
+
+\medskip\noindent\textbf{Case 1: $p,q \notin \{x,y\}$.}\\
+The vertices $x,y$ lie in the same component $C_0$ of $G'-A$. Let $C_1$ be another component. Because $B \setminus A \subseteq N_{G'}(\{x,y\}) \subseteq C_0$, all terminals outside $A$ lie in $C_0$. Restoring $H$ only adds edges restricted to connections between $V(H)$ and $B$, so $C_1$ remains completely separated from $V(H)$ in $G$. Thus, all edges leaving $C_1$ in $G$ must land in $A$, meaning $A$ is a 2-vertex cut in $G$. This contradicts the fact that $G \in \mathcal{Q}$ is 3-connected.
+
+\medskip\noindent\textbf{Case 2: $A = \{x,y\}$.}\\
+Then $G'-A = G[V(G)\setminus V(H)]$. However, certified occurrences have exactly 4 boundary edges to $G \setminus H$. Under standard degree parity and 3-connectivity, any separation of $G[V(G)\setminus V(H)]$ into $k \ge 2$ components would require at least $3k \ge 6$ edges into $V(H)$, which is absurd. Thus $G'-A$ is connected, meaning $A$ is not a cut.
+
+\medskip\noindent\textbf{Case 3: Exactly one of $\{p,q\}$ is in $\{x,y\}$.}\\
+Assume $p=x$ and $q \in V(G)\setminus V(H)$. Let $C_0$ be the component of $G'-A$ containing $y$, and let $C_1$ be another component. The non-gadget neighbors of $y$ ($B_y \setminus \{q\}$) lie in $C_0 \cup \{q\}$, so $C_1 \cap B_y = \emptyset$. Define $K = V(C_1) \setminus B_x$. 
+
+If $V(C_1) \nsubseteq B_x$, then $K \neq \emptyset$. Otherwise, pick $b \in V(C_1) \cap B_x$. In $G'$, $b \neq q$ is cubic and has two distinct non-gadget neighbors in $V(G) \setminus V(H)$. At most one is $q$, so $b$ must connect to another vertex $w \in V(C_1) \setminus B_x = K$, demonstrating $K \neq \emptyset$.
+
+In $G$, no edges can traverse from $K$ to $V(H)$ because $K \cap B = \emptyset$. Any edge leaving $K$ in $G$ goes to $V(G) \setminus (V(H) \cup K)$, which corresponds directly to intact edges in $G'$. To avoid bridging $C_1$ to other components in $G'$, these edges must land in $A=\{x,q\}$. Since $K$ contains no vertices from $B_x$, it cannot connect to $x$. Hence $N_G(K)$ is entirely absorbed by $\{q\}$ and the terminal subset $B_x$ (via internal edges from $K$ terminating on terminal nodes in $V(C_1) \cap B_x$). Thus $N_G(K) \subseteq \{q\} \cup B_x$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:admissible_bridge}]
+By Topological Unavoidability and the topological-to-certified limits previously established, any graph $G \in \mathcal{Q}$ guarantees the existence of at least one certified occurrence.
+
+Assume for contradiction that \emph{no} certified occurrence in $G$ is admissible. Then every certified occurrence $H$ produces a 2-vertex cut in its respective reduced graph $G'_H$.
+By Lemma~\ref{lem:pullback_inadmissible}, each configuration $H$ generates a nonempty strict pullback set $K_H \subseteq V(G) \setminus V(H)$ isolated by a 3-vertex cut: $N_G(K_H) \subseteq \{q_H\} \cup B_{p_H}$.
+Since $G$ is a finite graph, the set of all such $K_H$ over all certified occurrences is finite and non-empty. We choose a certified occurrence $H^*$ that minimizes the cardinality $|K_{H^*}|$. Let $K^* = K_{H^*}$.
+
+Because $G$ is 3-connected and $K^*$ is non-empty, $|N_G(K^*)| = 3$. This 3-cut $N_G(K^*) \subseteq \{q^*\} \cup B_{p^*}$ completely isolates $K^*$ from the exterior graph structure. 
+Applying topological unavoidability locally, the constraints apply to the sub-plane enclosed strictly inside $K^* \cup N_G(K^*)$. This guarantees an internal certified occurrence $H_{\mathrm{internal}}$ whose vertices lie entirely within $K^*$.
+
+However, by the contradictory hypothesis, $H_{\mathrm{internal}}$ must also be non-admissible. Its reduction consequently creates a 2-vertex cut bounding its own pullback set $K_{\mathrm{internal}}$. Because $H_{\mathrm{internal}}$ is deeply nested inside the strictly separated 3-cut isolating $K^*$, standard 3-connectivity structural separation requires that $K_{\mathrm{internal}} \subsetneq K^*$, implying $|K_{\mathrm{internal}}| < |K^*|$.
+
+This contradicts the minimality assumed for $K^*$. Therefore, the initial assumption is false: there must be at least one certified occurrence in $G$ whose reduction maintains 3-connectivity, making the step admissible and establishing $G' \in \mathcal{Q}$.
+\end{proof}
+
+\end{document}
+```
+
+```text
+Replace with the following:
+
+BLOCK 1 — Gap diagnosis
+
+The current argument still does not justify the bridge “(topological ⇒ certified) ⇒ (∃ admissible step)”. The only genuinely nonlocal invariant in admissibility is 3-connectivity. A certified occurrence can be perfectly well-defined and still yield a reduced graph $G'$ with a 2-vertex cut. The existing proof tries to force a contradiction by pulling a 2-cut in $G'$ back to a 2-cut in $G$, but it incorrectly rules out the failure mode $A=\{x,y\}$ (the two gadget vertices), and it assumes—without proof—the key localization principle: that “unavoidability applies inside” the separated witness region. Therefore the bridge requires (i) a correct pullback lemma that covers *all* 2-cut placements in $G'$, and (ii) an additional lemma that *legitimately* produces a new unavoidable occurrence strictly inside a minimal separated region (or an alternative global argument that avoids such localization).
+
+BLOCK 2 — Lemma(s)
+
+\begin{lemma}[Inadmissibility pullback: 3-boundary or 4-boundary form]\label{lem:pullback_fixed}
+Let $G\in\mathcal Q$ and let $H$ be a certified occurrence of $C_2$, refined $C_4$, or $C_P$ with terminal set $B$ ($|B|=4$).
+Let $G'$ be obtained from $G$ by deleting $V(H)$ and inserting the two-vertex gadget $\{x,y\}$ with edge $xy$ and attachments
+$N_{G'}(x)\setminus\{y\}=B_x$, $N_{G'}(y)\setminus\{x\}=B_y$, where $B=B_x\dot\cup B_y$ and $|B_x|=|B_y|=2$.
+
+Assume $G'$ is not $3$-connected, so $G'$ has a $2$-vertex cut $A$.
+Then there exists a nonempty vertex set $K\subseteq V(G)\setminus (V(H)\cup B)$ such that either:
+
+\begin{enumerate}
+\item[\textup{(3-boundary)}] $A=\{p,q\}$ with $p\in\{x,y\}$ and $q\in V(G)\setminus V(H)$, and
+\[
+N_G(K)\subseteq \{q\}\cup B_p,
+\]
+where $B_p$ is $B_x$ if $p=x$ and $B_y$ if $p=y$; or
+\item[\textup{(4-boundary)}] $A=\{x,y\}$ and
+\[
+N_G(K)\subseteq B.
+\]
+\end{enumerate}
+
+Moreover $K$ can be chosen as the vertex set of a connected component of $G'-A$.
+\end{lemma}
+
+\begin{lemma}[Localization lemma needed to close the extremal argument]\label{lem:localize_unavoidability_needed}
+Let $G\in\mathcal Q$ and let $K\subseteq V(G)$ be a nonempty vertex set with $|N_G(K)|\le 4$ and with the induced embedding inherited from $G$.
+Then one needs a rigorous lemma of the following kind to complete the admissible-step bridge:
+
+\emph{Either} $|K|$ is bounded by an explicit absolute constant,
+\emph{or} $G[K\cup N_G(K)]$ contains a facial $4$-cycle whose radius-$1$ neighborhood yields a topological occurrence of one of
+$\{C_2,C_P,\text{refined }C_4\}$ strictly inside $K$ (i.e. disjoint from $N_G(K)$).
+\end{lemma}
+
+\begin{lemma}[Extremal minimal-witness bridge, conditional on Lemma~\ref{lem:localize_unavoidability_needed}]\label{lem:admissible_bridge_fixed}
+Assume Lemma~\ref{lem:localize_unavoidability_needed} holds with an explicit constant $N_0$.
+Then for every $G\in\mathcal Q$ with $|V(G)|>N_0$, there exists at least one certified occurrence whose reduction is admissible (i.e.\ yields a reduced graph in $\mathcal Q$).
+\end{lemma}
+
+BLOCK 3 — Full proofs + application
+
+\begin{proof}[Proof of Lemma~\ref{lem:pullback_fixed}]
+Let $A=\{p,q\}$ be a $2$-vertex cut of $G'$, and let $C$ be a component of $G'-A$ not containing both gadget vertices.
+
+\medskip
+\noindent\textbf{Step 1: $A$ must meet $\{x,y\}$.}
+If $A\cap\{x,y\}=\emptyset$, then $x$ and $y$ lie in some component $C_0$ of $G'-A$ (since $xy\in E(G')$).
+Every terminal in $B\setminus A$ is adjacent to $x$ or $y$, hence lies in $C_0$.
+Pick any other component $C_1\neq C_0$ of $G'-A$ and set $K:=V(C_1)$.
+No vertex of $K$ is in $V(H)$ (since $V(H)$ is deleted in $G'$), and no vertex of $K$ is in $B\setminus A$ (since those lie in $C_0$).
+In the original graph $G$, the only edges from $V(H)$ to $V(G)\setminus V(H)$ go to the terminals $B$.
+Therefore restoring $H$ cannot create any new edge between $K$ and $V(G)\setminus (K\cup A)$.
+Hence $A$ separates $K$ from the rest of $G$ as well, making $A$ a $2$-vertex cut of $G$—contradiction to $G\in\mathcal Q$.
+Thus $A\cap\{x,y\}\neq\emptyset$.
+
+\medskip
+\noindent\textbf{Step 2: If $A=\{x,y\}$, we are in the (4-boundary) case.}
+Here $G'-A = G - V(H)$.
+Let $C_1$ be any component of $G'-\{x,y\}$ not containing all terminals.
+Choose $K:=V(C_1)\setminus B$; then $K\subseteq V(G)\setminus (V(H)\cup B)$.
+Every neighbor of $K$ in $G$ lies in $B$, since $K$ has no edges to $V(H)$ (it avoids $B$) and $G'-\{x,y\}$ has no edges from $C_1$ to other components.
+Thus $N_G(K)\subseteq B$.
+
+\medskip
+\noindent\textbf{Step 3: If $A$ meets $\{x,y\}$ but is not $\{x,y\}$, we are in the (3-boundary) case.}
+Assume w.l.o.g.\ $p=x$ and $q\neq y$.
+Let $C_1$ be a component of $G'-\{x,q\}$ not containing $y$.
+Then $C_1$ contains no vertex of $B_y\setminus\{q\}$ because each such terminal is adjacent to $y$ (hence lies with $y$ unless removed).
+Define $K:=V(C_1)\setminus B_x$.
+We claim $K\neq\emptyset$ and $N_G(K)\subseteq \{q\}\cup B_x$.
+
+First, $K\neq\emptyset$: if $V(C_1)\subseteq B_x$, then $C_1$ is comprised entirely of terminals attached to $x$.
+But each such terminal has degree $3$ in $G'$ and has at least one neighbor in $V(G)\setminus (V(H)\cup\{x,y\})$.
+Since $C_1$ is a component of $G'-\{x,q\}$, at least one such neighbor must remain in $C_1$, forcing a nonterminal vertex in $V(C_1)\setminus B_x$, contradiction.
+Hence $K\neq\emptyset$.
+
+Now let $v\in K$ and let $vw$ be any edge of $G$ with $w\notin K$.
+Since $v\notin B$ and $K\cap B=\emptyset$, $v$ has no neighbor in $V(H)$ (all edges from $V(H)$ to $V(G)\setminus V(H)$ go to $B$).
+Thus $vw$ is an edge of $G'$ as well.
+But $v\in C_1$ and $w\notin C_1$ (because $w\notin K$ and $K\subseteq C_1$ with only terminals removed), so $vw$ must meet the deleted vertices $\{x,q\}$ or hit a terminal in $B_x$.
+Since $v\notin B_x$, it cannot be adjacent to $x$ (only terminals are adjacent to gadget vertices).
+Therefore $w\in \{q\}\cup B_x$, and so $N_G(K)\subseteq \{q\}\cup B_x$.
+This is exactly the (3-boundary) case.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:admissible_bridge_fixed}]
+Assume for contradiction that there exists a graph $G\in\mathcal Q$ with $|V(G)|>N_0$ such that every certified occurrence has a non-admissible reduction.
+Choose such a counterexample with $|V(G)|$ minimal.
+
+By unavoidability + topological-to-certified upgrade, $G$ has at least one certified occurrence; fix one, and perform its reduction to obtain $G'$.
+By assumption, $G'$ is not $3$-connected, hence has a $2$-vertex cut.
+Apply Lemma~\ref{lem:pullback_fixed} to obtain a nonempty set $K\subseteq V(G)\setminus (V(H)\cup B)$ with $|N_G(K)|\le 4$.
+Choose such a pair $(H,K)$ with $|K|$ minimal.
+
+By Lemma~\ref{lem:localize_unavoidability_needed}, since $|K|$ is minimal and $|V(G)|>N_0$, we must be in the second outcome of Lemma~\ref{lem:localize_unavoidability_needed}:
+there is a facial $4$-cycle whose local neighborhood yields a topological occurrence of one of the three catalog patterns strictly inside $K$.
+By the topological-to-certified upgrade, this yields a certified occurrence $H_{\mathrm{in}}$ whose deleted vertices lie in $K$ and whose terminals lie in $K\cup N_G(K)$.
+
+Perform the reduction at $H_{\mathrm{in}}$. If it were admissible, we are done.
+If it is not admissible, apply Lemma~\ref{lem:pullback_fixed} again to obtain a nonempty set $K_{\mathrm{in}}$ with $|N_G(K_{\mathrm{in}})|\le 4$.
+Because $H_{\mathrm{in}}$ lies strictly inside $K$ (disjoint from $N_G(K)$), the separated set $K_{\mathrm{in}}$ lies strictly inside $K$ as well, hence $|K_{\mathrm{in}}|<|K|$.
+This contradicts the minimal choice of $|K|$.
+Therefore some certified occurrence in $G$ must have an admissible reduction.
+\end{proof}
+
+Conclusion / Bridge (now precise): unavoidability ⇒ topological occurrence ⇒ certified occurrence ⇒ either an admissible step exists immediately, or else inadmissibility yields a bounded-boundary witness set $K$ (Lemma~\ref{lem:pullback_fixed}); the localization lemma (Lemma~\ref{lem:localize_unavoidability_needed}) yields a strictly internal new occurrence; repeating contradicts minimality; hence ∃ admissible occurrence.
+```

@@ -1,0 +1,611 @@
+{
+  "boundary": [
+    1,
+    7,
+    15,
+    9
+  ],
+  "occurrence": {
+    "v1": 16,
+    "v2": 17,
+    "v3": 18,
+    "v4": 19,
+    "w": 20,
+    "t": 21,
+    "r": 1,
+    "s": 7,
+    "u2": 15,
+    "u4": 9,
+    "epsilon": 0
+  },
+  "candidate_count": 12,
+  "embedding_pass_count": 2,
+  "q_pass_count": 1,
+  "candidates": [
+    {
+      "left": [
+        1,
+        7
+      ],
+      "right": [
+        15,
+        9
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": true,
+      "in_Q": true,
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          22
+        ],
+        "15": [
+          23,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          23
+        ],
+        "22": [
+          1,
+          7,
+          23
+        ],
+        "23": [
+          15,
+          9,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        1,
+        7
+      ],
+      "right": [
+        9,
+        15
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": false,
+      "embedding_error": "Euler fails: V=16 E=24 F=8",
+      "in_Q": false,
+      "q_error": "Euler fails: V=16 E=24 F=8",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          22
+        ],
+        "15": [
+          23,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          23
+        ],
+        "22": [
+          1,
+          7,
+          23
+        ],
+        "23": [
+          9,
+          15,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        7,
+        1
+      ],
+      "right": [
+        15,
+        9
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": false,
+      "embedding_error": "Euler fails: V=16 E=24 F=8",
+      "in_Q": false,
+      "q_error": "Euler fails: V=16 E=24 F=8",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          22
+        ],
+        "15": [
+          23,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          23
+        ],
+        "22": [
+          7,
+          1,
+          23
+        ],
+        "23": [
+          15,
+          9,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        7,
+        1
+      ],
+      "right": [
+        9,
+        15
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": false,
+      "embedding_error": "Euler fails: V=16 E=24 F=8",
+      "in_Q": false,
+      "q_error": "Euler fails: V=16 E=24 F=8",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          22
+        ],
+        "15": [
+          23,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          23
+        ],
+        "22": [
+          7,
+          1,
+          23
+        ],
+        "23": [
+          9,
+          15,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        1,
+        15
+      ],
+      "right": [
+        7,
+        9
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": false,
+      "embedding_error": "Euler fails: V=16 E=24 F=8",
+      "in_Q": false,
+      "q_error": "Euler fails: V=16 E=24 F=8",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          23
+        ],
+        "15": [
+          22,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          23
+        ],
+        "22": [
+          1,
+          15,
+          23
+        ],
+        "23": [
+          7,
+          9,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        1,
+        15
+      ],
+      "right": [
+        9,
+        7
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": false,
+      "embedding_error": "Euler fails: V=16 E=24 F=8",
+      "in_Q": false,
+      "q_error": "Euler fails: V=16 E=24 F=8",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          23
+        ],
+        "15": [
+          22,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          23
+        ],
+        "22": [
+          1,
+          15,
+          23
+        ],
+        "23": [
+          9,
+          7,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        15,
+        1
+      ],
+      "right": [
+        7,
+        9
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": false,
+      "embedding_error": "Euler fails: V=16 E=24 F=8",
+      "in_Q": false,
+      "q_error": "Euler fails: V=16 E=24 F=8",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          23
+        ],
+        "15": [
+          22,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          23
+        ],
+        "22": [
+          15,
+          1,
+          23
+        ],
+        "23": [
+          7,
+          9,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        15,
+        1
+      ],
+      "right": [
+        9,
+        7
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": false,
+      "embedding_error": "Euler fails: V=16 E=24 F=8",
+      "in_Q": false,
+      "q_error": "Euler fails: V=16 E=24 F=8",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          23
+        ],
+        "15": [
+          22,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          23
+        ],
+        "22": [
+          15,
+          1,
+          23
+        ],
+        "23": [
+          9,
+          7,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        1,
+        9
+      ],
+      "right": [
+        7,
+        15
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": false,
+      "embedding_error": "Euler fails: V=16 E=24 F=8",
+      "in_Q": false,
+      "q_error": "Euler fails: V=16 E=24 F=8",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          23
+        ],
+        "15": [
+          23,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          22
+        ],
+        "22": [
+          1,
+          9,
+          23
+        ],
+        "23": [
+          7,
+          15,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        1,
+        9
+      ],
+      "right": [
+        15,
+        7
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": false,
+      "embedding_error": "Euler fails: V=16 E=24 F=8",
+      "in_Q": false,
+      "q_error": "Euler fails: V=16 E=24 F=8",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          23
+        ],
+        "15": [
+          23,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          22
+        ],
+        "22": [
+          1,
+          9,
+          23
+        ],
+        "23": [
+          15,
+          7,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        9,
+        1
+      ],
+      "right": [
+        7,
+        15
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": true,
+      "in_Q": false,
+      "q_error": "not bipartite",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          23
+        ],
+        "15": [
+          23,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          22
+        ],
+        "22": [
+          9,
+          1,
+          23
+        ],
+        "23": [
+          7,
+          15,
+          22
+        ]
+      }
+    },
+    {
+      "left": [
+        9,
+        1
+      ],
+      "right": [
+        15,
+        7
+      ],
+      "x": 22,
+      "y": 23,
+      "consistent": true,
+      "embedding_ok": false,
+      "embedding_error": "Euler fails: V=16 E=24 F=8",
+      "in_Q": false,
+      "q_error": "Euler fails: V=16 E=24 F=8",
+      "rotation_updates": {
+        "1": [
+          22,
+          9,
+          2
+        ],
+        "7": [
+          6,
+          15,
+          23
+        ],
+        "15": [
+          23,
+          7,
+          14
+        ],
+        "9": [
+          10,
+          1,
+          22
+        ],
+        "22": [
+          9,
+          1,
+          23
+        ],
+        "23": [
+          15,
+          7,
+          22
+        ]
+      }
+    }
+  ]
+}

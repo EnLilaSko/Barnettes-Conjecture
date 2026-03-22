@@ -1,0 +1,43 @@
+{
+  "family": {
+    "boundary_attachment_sizes": [2, 2, 2, 2],
+    "boundary_exterior_sizes": [1, 1, 1, 1],
+    "boundary_count": 4,
+    "interface_word_key": [0, 0, 1, 2, 3, 3, 2, 1]
+  },
+  "seed_graph_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,epq,fqg,hqp,hrn,ims,ist,jtl,jlk,mts,nro,orp",
+  "seed_occurrence": {
+    "u1": 4,
+    "u2": 19,
+    "u3": 7,
+    "u4": 10,
+    "v1": 9,
+    "v2": 15,
+    "v3": 11,
+    "v4": 16
+  },
+  "search_space": {
+    "gadget_vertices": 8,
+    "row_sums": [2, 2, 2, 2],
+    "slot_multiplier": 16,
+    "orientation_multiplier": 256,
+    "total_raw_candidate_count": 6324224
+  },
+  "tested_profiles": [
+    {
+      "col_sums": [1, 1, 1, 1, 1, 1, 1, 1],
+      "raw_candidate_count": 12288,
+      "candidate_found": false
+    },
+    {
+      "col_sums": [0, 0, 0, 0, 0, 2, 3, 3],
+      "raw_candidate_count": 24576,
+      "candidate_found": false
+    },
+    {
+      "col_sums": [0, 0, 0, 0, 2, 2, 2, 2],
+      "raw_candidate_count": 98304,
+      "candidate_found": false
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "candidate_limit": 200,
+  "candidates_tested": 1,
+  "col_sums": null,
+  "family_name": "L=6,6,6,10|B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2",
+  "first_failure": {
+    "error": "Euler fails: V=18 E=27 F=7",
+    "n_vertices": 30,
+    "occ": {
+      "u1": 5,
+      "u2": 16,
+      "u3": 24,
+      "u4": 26,
+      "v1": 13,
+      "v2": 20,
+      "v3": 25,
+      "v4": 21
+    },
+    "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cop,cpq,dqm,drk,ejs,est,fti,fuv,gwx,gyh,hui,jts,krl,lrm,nqz,nz{,o{|,o|},p}z,uyv,v~w,w~x,x~y,{}|"
+  },
+  "gadget_vertices": 8,
+  "matching_occurrence_count": 2,
+  "n_max": 30,
+  "n_min": 8,
+  "plantri_path": "C:\\Users\\charl\\Documents\\New Math Problem\\plantri.exe",
+  "seed_pattern": [
+    0,
+    1,
+    2,
+    3,
+    3,
+    2,
+    1,
+    4
+  ],
+  "source_census": "artifacts\\unresolved_refined_c4_family_census_n30_after_refined_c4_library.json",
+  "universal_candidate": null,
+  "universal_candidate_found": false
+}

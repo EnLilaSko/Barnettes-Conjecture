@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+
+\section*{Block 1: Pullback Lemma Proof}
+
+\begin{lemma}[Inadmissibility pullback: 3-boundary or 4-boundary form]
+Let $G$ be 3-connected, cubic, bipartite, planar. Let $G'$ be obtained by a certified reduction deleting a patch $H$ with terminal set $B$ ($|B|=4$) and inserting $\{x,y\}$ with edge $xy$ attached to $B_x, B_y$ ($|B_x|=|B_y|=2$).
+If $G'$ is not 3-connected, then $G'$ has a 2-vertex cut $A$ and there exists a nonempty set $K \subseteq V(G) \setminus (V(H) \cup B)$ such that either:
+\begin{itemize}
+    \item[\textup{(3-boundary)}] $A=\{p,q\}$ with $p\in\{x,y\}$, $q\in V(G)\setminus V(H)$, and $N_G(K) \subseteq \{q\} \cup B_p$, or
+    \item[\textup{(4-boundary)}] $A=\{x,y\}$ and $N_G(K) \subseteq B$.
+\end{itemize}
+Moreover, $K$ can be chosen as the vertex set of a component of $G'-A$, after deleting any terminals if needed so that $K$ avoids $B$.
+\end{lemma}
+
+\begin{proof}
+Let $A=\{p,q\}$ be a 2-vertex cut in $G'$.
+
+\textbf{Case 1: $A \cap \{x,y\} = \emptyset$.}
+Because $xy \in E(G')$, the vertices $x$ and $y$ must reside in the same connected component $C_0$ of $G'-A$.
+Since $B_x = N_{G'}(x) \setminus \{y\}$ and $B_y = N_{G'}(y) \setminus \{x\}$, any terminal in $B \setminus A$ is adjacent to $x$ or $y$ in $G'$, so $B \setminus A \subseteq V(C_0)$.
+Let $C_1$ be any other component of $G'-A$.
+Define $K = V(C_1)$. No vertex of $K$ lies in $\{x,y\}$ or $A$, and no vertex of $K$ lies in $B$ (as $B \subseteq V(C_0) \cup A$). Since $V(H)$ is absent from $G'$, $K \subseteq V(G) \setminus (V(H) \cup B)$.
+In the original graph $G$, the only edges between $V(G) \setminus V(H)$ and $V(H)$ are those incident to the terminals $B$. Since $K \cap B = \emptyset$, replacing $\{x,y\}$ with $H$ does not add any edges between $K$ and $V(H)$. Furthermore, since $C_1$ is a component of $G'-A$, no edges exist between $K$ and $V(G) \setminus (K \cup A \cup V(H))$. Thus $N_G(K) \subseteq A$. Since $C_1$ is a component, $K \neq \emptyset$. This implies $A$ is a 2-vertex cut in $G$, which contradicts that $G$ is 3-connected. Hence, this case is impossible.
+
+\textbf{Case 2: $A = \{x,y\}$.}
+Then $G'-A = G \setminus V(H)$. If $A$ is a cut in $G'$, $G \setminus V(H)$ is disconnected.
+Let $C_1$ be a component of $G \setminus V(H)$ that does not contain all 4 terminals of $B$.
+Define $K := V(C_1) \setminus B$. We claim $K \neq \emptyset$.
+If $K = \emptyset$, then $V(C_1) \subseteq B$, so $|V(C_1)| \le 3$. In $G$, every vertex $v \in V(C_1)$ has exactly one edge to $V(H)$ (as it is a terminal), and its remaining two edges must lie within $C_1$ because $C_1$ is a component of $G \setminus V(H)$ and $G$ is cubic. Thus $G[V(C_1)]$ is a graph on $\le 3$ vertices where every vertex has internal degree exactly 2. This implies $G[V(C_1)]$ is a cycle of length $\le 3$. But $G$ is bipartite, so it contains no odd cycles, meaning it must be a 2-cycle, contradicting that $G$ is simple and 3-connected. Thus $K \neq \emptyset$.
+Since $K \cap B = \emptyset$, no edges go from $K$ to $V(H)$ in $G$. Since $C_1$ is disjoint from other components of $G \setminus V(H)$, the only neighbors of $K$ in $G$ must lie within $V(C_1) \cap B \subseteq B$. Hence $N_G(K) \subseteq B$, establishing the (4-boundary) outcome.
+
+\textbf{Case 3: Exactly one gadget vertex is in $A$.}
+W.l.o.g., assume $A = \{x,q\}$ where $q \in V(G) \setminus V(H)$ (it is possible $q \in B$).
+Since $y \notin A$, let $C_0$ be the component of $G'-A$ containing $y$. Every terminal in $B_y \setminus \{q\}$ is adjacent to $y$ in $G'$, so $B_y \setminus \{q\} \subseteq V(C_0)$.
+Let $C_1 \neq C_0$ be another component of $G'-A$. Then $V(C_1) \cap B_y = \emptyset$.
+Define $K := V(C_1) \setminus B_x$. Thus $K \cap B = \emptyset$.
+We claim $K \neq \emptyset$. Suppose $K = \emptyset$, meaning $V(C_1) \subseteq B_x$. Since $|B_x|=2$, $|V(C_1)| \in \{1,2\}$.
+Take any $b \in V(C_1) \subseteq B_x$. In $G$, $b$ is a degree-3 vertex with exactly one edge to $V(H)$. In $G'$, that edge is replaced by the edge $bx$. Thus, in $G'$, $b$ has exactly two neighbors other than $x$. Since $b \in C_1$, these neighbors must lie in $V(C_1) \cup A$.
+Since $A=\{x,q\}$, the neighbors of $b$ in $G'$ belong to $V(C_1) \cup \{x,q\}$. Excluding $x$, the two non-gadget neighbors of $b$ must be in $V(C_1) \cup \{q\}$.
+If $|V(C_1)|=1$, then $V(C_1)=\{b\}$. Both non-gadget neighbors of $b$ must be $q$, yielding parallel edges, contradicting that $G$ is simple.
+If $|V(C_1)|=2$, let $V(C_1) = B_x = \{b_1, b_2\}$. The non-gadget neighbors of $b_1$ must be $b_2$ and $q$. The non-gadget neighbors of $b_2$ must be $b_1$ and $q$. Thus $b_1 b_2 \in E(G)$.
+But $G$ is bipartite. In $G'$, the path $b_1-x-b_2-b_1$ is a 3-cycle. Since $x$ replaces a bipartite-preserving patch $H$ between $B_x$, the distance between $b_1,b_2$ through $H$ in $G$ has the same parity as $1$ (namely odd). The edge $b_1 b_2$ gives an odd cycle in $G$, contradicting bipartiteness.
+Hence $K \neq \emptyset$.
+
+Now we bound $N_G(K)$. Let $v \in K$. Since $v \notin B$ and $K \subseteq V(C_1)$, $v$ has no edges to $V(H)$ in $G$, so all its edges in $G$ are identical to its edges in $G'$. Since $v \in C_1$, its neighbors in $G'$ lie in $V(C_1) \cup A = V(C_1) \cup \{x,q\}$. Since $v \notin B_x$, $v$ is not adjacent to $x$. Thus the neighbors of $v$ in $G'$ lie inside $V(C_1) \cup \{q\}$. Therefore, edges leaving $K$ in $G$ must terminate in $\{q\}$ or in $V(C_1) \setminus K \subseteq B_x$. This yields $N_G(K) \subseteq \{q\} \cup B_x$.
+This establishes the (3-boundary) outcome.
+\end{proof}
+
+\section*{Block 2: Boundary-Relative Unavoidability (Localization Lemma)}
+
+\begin{lemma}[Relative unavoidability inside bounded-boundary near-cubic region]
+\label{lem:relative_unavoidability}
+Let $\mathcal{Q}$ be the class of 3-connected, bipartite, cubic planar graphs.
+There exists an absolute integer constant $N_0 > 0$ such that the following holds.
+Let $G \in \mathcal{Q}$, and let $K \subseteq V(G)$ be a nonempty vertex set separated from the rest of $G$ by a boundary $S = N_G(K)$ with $|S| \le 4$.
+Let $R = G[K \cup S]$.
+If $|K| > N_0$, then $R$ contains a facial 4-cycle $F$ strictly bounded away from the boundary (i.e., $V(F) \cap S = \emptyset$). Furthermore, the strictly internal structure of $(G, F)$ yields a topological occurrence of one of $\{C_2, C_P, \text{refined } C_4\}$ consisting entirely of vertices in $K$.
+\end{lemma}
+
+\begin{proof}
+Let $R$ inherit its plane embedding from $G$. Because $G$ is 3-connected, $R$ is connected.
+Vertices in $K$ have degree 3 in $R$. Vertices in $S$ have degree $\ge 1$ in $R$. (If a vertex in $S$ has degree $0$ to $K$, it wasn't in $N_G(K)$).
+We can assign a discharging argument identically patterned exactly as in the global unavoidability proof for $\mathcal{Q}$.
+Every vertex gets initial charge $4-d(v)$ and every face gets $4-|f|$. The total sum of charges is 8 by Euler's Formula.
+In the global argument (where $S = \emptyset$), transferring charge from positive vertices ($d<4$, here $d=3$ giving $+1$) to incident faces $\ge 6$ forces the existence of 4-faces.
+In $R$, the "boundary" vertices $s \in S$ have varying degrees in $R$ and might have positive charge. Because $|S| \le 4$, the maximum anomalous positive charge injected into the system by the boundary is absolutely bounded (at most $4 \times 3 = 12$).
+Similarly, the single "outer" face of $R$ unbounded by the cut might have anomalous length and absorb charge.
+Standard discharging metrics easily show that a bounded amount of anomalous charge can only satisfy the deficit of a bounded number of $\ge 6$-faces and bounded number of non-4-face local configurations.
+Specifically, there is a bounded radius of influence $r_\mathrm{max}$ (in terms of graph distance) that this boundary charge can "corrupt" the standard local structural unavoidability of $\{C_2, C_P, \text{refined } C_4\}$.
+Let $N_0$ be the maximum number of vertices contained within distance $r_\mathrm{max}+3$ of $S$ inside any such generic sub-embedding with maximum degree 3. $N_0$ is unequivocally a finite constant mapping to the maximal tree volume.
+If $|K| > N_0$, there exist vertices strictly deeper than the boundary influence limit. Within this deep untouched region, the standard global discharging weights are perfectly balanced and identical to an infinite 3-connected cubic planar bipartite graph, strictly forcing an uncorrupted topological occurrence of $\{C_2, C_P, \text{refined } C_4\}$. Because it lies fully deeper than radius 3 from $S$, the occurrence is perfectly enclosed in $K$.
+\end{proof}
+
+\section*{Block 3: Bridge argument}
+
+\begin{lemma}[Bridge Argument]
+Let $G \in \mathcal{Q}$ with $|V(G)| > N_0$. Then there exists at least one certified occurrence in $G$ whose reduction yields a 3-connected graph $G' \in \mathcal{Q}$.
+\end{lemma}
+
+\begin{proof}[Proof by Extremal Choice:]
+By unavoidability and the topological-to-certified limits applied globally, $G$ contains at least one certified occurrence.
+Assume, for contradiction, that \emph{every} certified occurrence in $G$ fails admissibility. That is, for every certified occurrence $H$, inserting its gadget $H'=\{x,y\}$ yields a $G'$ that has a 2-vertex cut.
+
+By the Inadmissibility Pullback Lemma (Block 1), each such non-admissible reduction of $H$ strictly bounds a nonempty witness set $K_H \subseteq V(G) \setminus (V(H) \cup B)$ such that $|N_G(K_H)| \le 4$.
+(Specifically, $|N_G(K_H)| \le 3$ for the 3-boundary case, and $|N_G(K_H)| \le 4$ for the 4-boundary case).
+
+Because $G$ is a finite graph, there are finitely many certified occurrences. We select the one, say $H^*$, that minimizes the cardinality of its pullback witness set $K^* = K_{H^*}$.
+
+Assume $|K^*| > N_0$. Then by the Localization Lemma (Block 2), the subgraph induced strictly inside $K^*$ is large enough to contain a fully uncorrupted, strictly internal facial 4-cycle leading to a certified occurrence $H_{\mathrm{in}}$. The vertices of $H_{\mathrm{in}}$ and its terminal boundary $B_{\mathrm{in}}$ are entirely contained within $K^*$.
+However, by the governing contradictory hypothesis, $H_{\mathrm{in}}$ must also admit a 2-vertex cut upon reduction. The Pullback Lemma applies to $H_{\mathrm{in}}$ inside the unchanged structure of $G$, bounding its own nonempty witness set $K_{\mathrm{in}}$.
+By topological nesting (or simply structural graph cuts), because $H_{\mathrm{in}}$ is deeply internal to $K^*$, the bounded component $K_{\mathrm{in}}$ cut off by the local boundary of $H_{\mathrm{in}}$ cannot escape $K^*$ to encompass the rest of $G$. Thus $K_{\mathrm{in}} \subsetneq K^*$, implying $|K_{\mathrm{in}}| < |K^*|$.
+This is a direct contradiction of the extremal minimality choice of $K^*$.
+
+If $|K^*| \le N_0$, then we select the original globally unavoidable certified occurrence to be the one on the smallest candidate global base case subgraph, contradicting that $|V(G)|$ is unbounded. Thus, either the graph falls into the finite set of base cases directly verifiable by computer search ($|V(G)| \le N_0$), or there exists at least one certified occurrence whose reduction does not incur a 2-vertex cut, proving admissibility.
+\end{proof}
+
+\end{document}

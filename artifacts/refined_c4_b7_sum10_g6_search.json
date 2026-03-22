@@ -1,0 +1,91 @@
+{
+  "candidate": null,
+  "patch": {
+    "boundary_attachment_sizes": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2
+    ],
+    "boundary_exterior_sizes": [
+      1,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "boundary_vertices": [
+      16,
+      26,
+      27,
+      19,
+      20,
+      29,
+      24
+    ],
+    "deleted_vertices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      21,
+      22,
+      23,
+      25
+    ],
+    "interface_word": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      0,
+      5,
+      6,
+      6,
+      5
+    ],
+    "interface_word_key": [
+      0,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      2,
+      1
+    ]
+  },
+  "seed_graph_line": "30 bcd,aef,afg,ahi,bjk,blc,cmn,dop,dqr,est,euv,fwx,gxy,gyz,hzw,hwv,ivu,i{s,jr|,j|},k}q,kqp,lpo,l~m,m~n,n~o,r}|,s{t,t{u,xzy",
+  "seed_occurrence": {
+    "u1": 3,
+    "u2": 4,
+    "u3": 11,
+    "u4": 6,
+    "v1": 0,
+    "v2": 1,
+    "v3": 5,
+    "v4": 2
+  }
+}

@@ -1,0 +1,2721 @@
+{
+  "boundary_count_patterns": {
+    "4": 12,
+    "5": 13,
+    "6": 16,
+    "7": 20,
+    "8": 5
+  },
+  "deleted_size_patterns": {
+    "16": 20,
+    "18": 9,
+    "20": 17,
+    "22": 16,
+    "24": 4
+  },
+  "family_examples": {
+    "L=6,6,6,10|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 4,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1
+      ],
+      "n_vertices": 24,
+      "occ": {
+        "u1": 0,
+        "u2": 11,
+        "u3": 16,
+        "u4": 13,
+        "v1": 3,
+        "v2": 7,
+        "v3": 12,
+        "v4": 8
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        10
+      ],
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dmn,eop,egf,gph,hqi,irs,jtu,jul,muv,nvw,nwt,osx,oqp,qxr,rxs,twv"
+    },
+    "L=6,6,6,10|B=5|I=0,0,1,2,3,3,2,4|A=2,1,2,2,1|E=1,2,1,1,2": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        2,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 1,
+        "u2": 6,
+        "u3": 13,
+        "u4": 8,
+        "v1": 0,
+        "v2": 2,
+        "v3": 7,
+        "v4": 3
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dop,eqr,esf,ftg,gqu,huv,ivw,iwx,jym,jz{,k{|,l|z,myn,n}o,o}p,p}y,qxu,rt~,r~s,s~t,vxw,z|{"
+    },
+    "L=6,6,6,10|B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2": {
+      "general_attachment_sizes": [
+        1,
+        2,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        2,
+        1,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 14,
+        "u3": 24,
+        "u4": 16,
+        "v1": 2,
+        "v2": 6,
+        "v3": 15,
+        "v4": 7
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cop,cpq,dqm,drk,ejs,est,fti,fuv,gwx,gyh,hui,jts,krl,lrm,nqz,nz{,o{|,o|},p}z,uyv,v~w,w~x,x~y,{}|"
+    },
+    "L=6,6,6,10|B=8|I=0,0,1,2,3,3,2,1,4,5,6,7|A=2,1,1,1,1,2,2,2|E=1,2,2,2,2,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 8,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1,
+        4,
+        5,
+        6,
+        7
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 9,
+        "u3": 18,
+        "u4": 11,
+        "v1": 1,
+        "v2": 4,
+        "v3": 10,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dop,eqr,esf,ftg,gqu,huv,ivw,iwx,jym,jz{,k{|,l|z,myn,n}o,o}p,p}y,qxu,rt~,r~s,s~t,vxw,z|{"
+    },
+    "L=6,6,6,12|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,2,1,1,1,2,2|E=2,1,2,2,2,1,1": {
+      "general_attachment_sizes": [
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        2,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4,
+        5,
+        6
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 9,
+        "u2": 20,
+        "u3": 27,
+        "u4": 17,
+        "v1": 16,
+        "v2": 23,
+        "v3": 28,
+        "v4": 24
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        12
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,guv,gih,ivp,jow,jxy,kyz,lz{,l{|,mxw,mwo,pvu,qu},q}r,r~s,s~t,t~},x|y,z|{"
+    },
+    "L=6,6,6,12|B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": {
+      "general_attachment_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 1,
+        "u2": 15,
+        "u3": 22,
+        "u4": 17,
+        "v1": 4,
+        "v2": 9,
+        "v3": 16,
+        "v4": 10
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        12
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cnd,dno,epq,eqr,frs,fsg,gih,ist,juv,jwk,kxl,lom,oxy,pz{,p{|,q|},r}t,t}z,uy~,u~v,v~w,wyx,z|{"
+    },
+    "L=6,6,6,12|B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,2,2,2,1,1,1|E=2,1,1,1,2,2,2": {
+      "general_attachment_sizes": [
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 14,
+        "u2": 17,
+        "u3": 22,
+        "u4": 25,
+        "v1": 19,
+        "v2": 23,
+        "v3": 28,
+        "v4": 24
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        12
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cnd,dno,epq,eqr,frs,fsg,gih,ist,juv,jwk,kxl,lom,oxy,pz{,p{|,q|},r}t,t}z,uy~,u~v,v~w,wyx,z|{"
+    },
+    "L=6,6,6,12|B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=2,2,1,1,1,2,2,1|E=1,1,2,2,2,1,1,2": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 8,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        4,
+        3,
+        5,
+        6,
+        7,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 4,
+        "u2": 20,
+        "u3": 26,
+        "u4": 11,
+        "v1": 9,
+        "v2": 15,
+        "v3": 21,
+        "v4": 16
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        12
+      ],
+      "raw_line": "30 bcd,aef,afg,ahi,bjk,bkc,ckl,dmn,dno,epq,egf,gqr,hrs,hsi,ist,juv,jvl,lwm,mon,owx,pyz,p{q,r{t,t|y,ux},u}~,v~w,x~},y|z,z|{"
+    },
+    "L=6,6,6,6|B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 4,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3
+      ],
+      "n_vertices": 24,
+      "occ": {
+        "u1": 3,
+        "u2": 4,
+        "u3": 11,
+        "u4": 6,
+        "v1": 0,
+        "v2": 1,
+        "v3": 5,
+        "v4": 2
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,blc,cmn,dno,doj,eip,epq,fqr,grs,gsh,hti,juk,kvl,lvm,mwn,owu,ptx,qxr,sxt,uwv"
+    },
+    "L=6,6,6,6|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 4,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1
+      ],
+      "n_vertices": 20,
+      "occ": {
+        "u1": 4,
+        "u2": 19,
+        "u3": 7,
+        "u4": 10,
+        "v1": 9,
+        "v2": 15,
+        "v3": 11,
+        "v4": 16
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "20 bcd,aef,afg,agh,bij,bkc,ckd,dlm,eno,epq,fqg,hqp,hrn,ims,ist,jtl,jlk,mts,nro,orp"
+    },
+    "L=6,6,6,6|B=5|I=0,0,1,1,2,2,3,4|A=1,2,2,2,1|E=2,1,1,1,2": {
+      "general_attachment_sizes": [
+        1,
+        2,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        1,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        4
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 1,
+        "u2": 20,
+        "u3": 27,
+        "u4": 6,
+        "v1": 5,
+        "v2": 12,
+        "v3": 21,
+        "v4": 13
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cno,cop,dqr,drk,ejs,etu,fuv,fvg,gwh,hxy,iys,isj,krq,lz{,l{m,m|n,o|},p}z,pzq,tyx,t~u,v~w,w~x,{}|"
+    },
+    "L=6,6,6,6|B=5|I=0,0,1,2,3,3,2,4|A=1,2,1,2,2|E=2,1,2,1,1": {
+      "general_attachment_sizes": [
+        1,
+        2,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        1,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "u1": 0,
+        "u2": 13,
+        "u3": 22,
+        "u4": 15,
+        "v1": 2,
+        "v2": 6,
+        "v3": 14,
+        "v4": 7
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "26 bcd,aef,agh,aij,bkl,bmn,cno,cop,dpq,dqr,est,etu,fuv,fvg,gwh,hxi,ixj,jxw,kyz,kzl,lzm,myn,oyr,prq,swv,sut"
+    },
+    "L=6,6,6,6|B=5|I=0,0,1,2,3,3,2,4|A=2,2,1,2,1|E=1,1,2,1,2": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        1,
+        1,
+        2,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "u1": 1,
+        "u2": 20,
+        "u3": 24,
+        "u4": 6,
+        "v1": 5,
+        "v2": 12,
+        "v3": 21,
+        "v4": 13
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "26 bcd,aef,agh,aij,bkl,bmn,cno,cop,dpq,dqr,est,etu,fuv,fvg,gwh,hxi,ixj,jxw,kyz,kzl,lzm,myn,oyr,prq,swv,sut"
+    },
+    "L=6,6,6,6|B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2": {
+      "general_attachment_sizes": [
+        1,
+        2,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        1,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        2,
+        1
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "u1": 0,
+        "u2": 13,
+        "u3": 20,
+        "u4": 15,
+        "v1": 2,
+        "v2": 6,
+        "v3": 14,
+        "v4": 7
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "26 bcd,aef,agh,aij,bkl,bmn,cno,cop,dpm,dqk,ejr,ers,fsi,ftg,guh,hvi,jsr,kql,lqm,nwx,oxy,pyw,tvz,tzu,uzv,wyx"
+    },
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,1,1,2,2,1|E=2,2,2,1,1,2": {
+      "general_attachment_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 1,
+        "u2": 6,
+        "u3": 14,
+        "u4": 8,
+        "v1": 0,
+        "v2": 2,
+        "v3": 7,
+        "v4": 3
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,ers,fst,ftg,guv,hvw,iwq,jpx,kxy,kyl,lzm,nz{,n|o,o|p,q}r,r~s,t~u,u~},v}w,x|{,y{z"
+    },
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,2,2,1,1,1|E=2,1,1,2,2,2": {
+      "general_attachment_sizes": [
+        1,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 1,
+        "u2": 18,
+        "u3": 25,
+        "u4": 6,
+        "v1": 5,
+        "v2": 11,
+        "v3": 19,
+        "v4": 12
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,ers,fst,ftg,guv,hvw,iwq,jpx,kxy,kyl,lzm,nz{,n|o,o|p,q}r,r~s,t~u,u~},v}w,x|{,y{z"
+    },
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=2,1,1,1,1,2|E=1,2,2,2,2,1": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 3,
+        "u2": 4,
+        "u3": 23,
+        "u4": 22,
+        "v1": 8,
+        "v2": 9,
+        "v3": 16,
+        "v4": 15
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpj,eiq,ers,fst,ftg,guv,hvw,iwq,jpx,kxy,kyl,lzm,nz{,n|o,o|p,q}r,r~s,t~u,u~},v}w,x|{,y{z"
+    },
+    "L=6,6,6,6|B=6|I=0,0,1,2,3,4,5,1|A=1,1,1,1,2,2|E=2,2,2,2,1,1": {
+      "general_attachment_sizes": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 1,
+        "u2": 17,
+        "u3": 14,
+        "u4": 6,
+        "v1": 5,
+        "v2": 11,
+        "v3": 18,
+        "v4": 12
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cmn,cnd,dno,epq,eqr,frs,fsg,gih,ist,juv,jwk,kxl,lom,oxy,pz{,p{|,q|},r}t,t}z,uy~,u~v,v~w,wyx,z|{"
+    },
+    "L=6,6,6,6|B=6|I=0,0,1,2,3,4,5,1|A=2,2,1,1,1,1|E=1,1,2,2,2,2": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 16,
+      "general_exterior_sizes": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 10,
+        "u2": 29,
+        "u3": 16,
+        "u4": 19,
+        "v1": 18,
+        "v2": 25,
+        "v3": 21,
+        "v4": 26
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dpq,ers,etf,fug,guh,hui,itj,jvw,kxy,kz{,l{p,mon,q{z,q|x,rw},r}~,s~v,svt,w~},x|y,y|z"
+    },
+    "L=6,6,6,8|B=5|I=0,0,1,2,2,1,3,4|A=1,2,2,2,1|E=2,1,1,1,2": {
+      "general_attachment_sizes": [
+        1,
+        2,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        2,
+        1,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        3,
+        4
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "u1": 1,
+        "u2": 6,
+        "u3": 14,
+        "u4": 8,
+        "v1": 0,
+        "v2": 2,
+        "v3": 7,
+        "v4": 3
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpq,ers,etu,fuv,fwg,gws,hsx,ixy,iyr,jqz,jon,k{|,k|l,l|{,m{n,ozp,pzq,ryx,twv,tvu"
+    },
+    "L=6,6,6,8|B=5|I=0,0,1,2,2,1,3,4|A=2,1,1,2,2|E=1,2,2,1,1": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        3,
+        4
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "u1": 1,
+        "u2": 6,
+        "u3": 13,
+        "u4": 8,
+        "v1": 0,
+        "v2": 2,
+        "v3": 7,
+        "v4": 3
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dop,eqr,esf,ftg,gur,hrv,ivw,iwq,jpx,jnm,kyz,lz{,m{y,nxo,oxp,qwv,su|,s|t,t|u,y{z"
+    },
+    "L=6,6,6,8|B=5|I=0,0,1,2,2,1,3,4|A=2,2,2,1,1|E=1,1,1,2,2": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        3,
+        4
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "u1": 2,
+        "u2": 5,
+        "u3": 26,
+        "u4": 18,
+        "v1": 6,
+        "v2": 12,
+        "v3": 22,
+        "v4": 13
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,blm,cmn,cod,dpq,ers,etu,fuv,fwg,gws,hsx,ixy,iyr,jqz,jon,k{|,k|l,l|{,m{n,ozp,pzq,ryx,twv,tvu"
+    },
+    "L=6,6,6,8|B=6|I=0,0,1,2,3,3,2,1,4,5|A=2,2,2,2,1,1|E=1,1,1,1,2,2": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1,
+        4,
+        5
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 4,
+        "u2": 28,
+        "u3": 8,
+        "u4": 15,
+        "v1": 10,
+        "v2": 20,
+        "v3": 16,
+        "v4": 21
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "30 bcd,aef,afg,ahi,bjk,blc,cmn,dop,dqr,est,euv,fwx,gxy,gyz,hzw,hwv,ivu,i{s,jr|,j|},k}q,kqp,lpo,l~m,m~n,n~o,r}|,s{t,t{u,xzy"
+    },
+    "L=6,6,6,8|B=7|I=0,0,1,1,2,2,3,4,5,6|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": {
+      "general_attachment_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 4,
+        "u2": 25,
+        "u3": 29,
+        "u4": 12,
+        "v1": 11,
+        "v2": 19,
+        "v3": 26,
+        "v4": 20
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cno,cop,dqr,drk,ejs,etu,fuv,fvg,gwh,hxy,iys,isj,krq,lz{,l{m,m|n,o|},p}z,pzq,tyx,t~u,v~w,w~x,{}|"
+    },
+    "L=6,6,6,8|B=7|I=0,0,1,1,2,2,3,4,5,6|A=1,2,2,2,1,1,1|E=2,1,1,1,2,2,2": {
+      "general_attachment_sizes": [
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 13,
+        "u3": 22,
+        "u4": 15,
+        "v1": 2,
+        "v2": 6,
+        "v3": 14,
+        "v4": 7
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cno,cop,dqr,drk,ejs,etu,fuv,fvg,gwh,hxy,iys,isj,krq,lz{,l{m,m|n,o|},p}z,pzq,tyx,t~u,v~w,w~x,{}|"
+    },
+    "L=6,6,6,8|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,1,1,2,1,2,2|E=2,2,2,1,2,1,1": {
+      "general_attachment_sizes": [
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        2,
+        2,
+        2,
+        1,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4,
+        5,
+        6
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "u1": 0,
+        "u2": 10,
+        "u3": 20,
+        "u4": 12,
+        "v1": 1,
+        "v2": 4,
+        "v3": 11,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "26 bcd,aef,agh,aij,bkl,blm,cmn,cno,dpq,dqr,est,euf,fvg,gvh,hvu,iwx,ixj,jxs,kry,kyz,lzo,mon,pzy,prq,swt,twu"
+    },
+    "L=6,6,6,8|B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": {
+      "general_attachment_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        2,
+        1
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "u1": 0,
+        "u2": 10,
+        "u3": 19,
+        "u4": 12,
+        "v1": 1,
+        "v2": 4,
+        "v3": 11,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "26 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dpq,ers,etf,fug,grh,hvi,ivj,jvr,kqn,kwx,lxy,myw,oqp,suz,szt,tzu,wyx"
+    },
+    "L=6,6,6,8|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 18,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        2,
+        1
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "u1": 0,
+        "u2": 12,
+        "u3": 17,
+        "u4": 14,
+        "v1": 2,
+        "v2": 6,
+        "v3": 13,
+        "v4": 7
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        6,
+        8
+      ],
+      "raw_line": "26 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dpq,ers,etf,fug,grh,hvi,ivj,jvr,kqn,kwx,lxy,myw,oqp,suz,szt,tzu,wyx"
+    },
+    "L=6,6,8,10|B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,1,1,1,2,2,1|E=1,2,2,2,1,1,2": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4,
+        5,
+        6
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 3,
+        "u2": 16,
+        "u3": 24,
+        "u4": 21,
+        "v1": 7,
+        "v2": 12,
+        "v3": 20,
+        "v4": 13
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        8,
+        10
+      ],
+      "raw_line": "30 bcd,aef,afg,agh,bij,bkc,cld,dmn,eop,epq,frs,gst,hqu,huv,iwx,iyj,jmz,kz{,k{l,l{z,myn,n|w,ov},o}~,p~u,qtr,rts,v~},w|x,x|y"
+    },
+    "L=6,6,8,10|B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,1,2,2,1,1,1|E=1,2,1,1,2,2,2": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4,
+        5,
+        6
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 1,
+        "u2": 14,
+        "u3": 24,
+        "u4": 16,
+        "v1": 4,
+        "v2": 8,
+        "v3": 15,
+        "v4": 9
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        8,
+        10
+      ],
+      "raw_line": "30 bcd,aef,afg,agh,bij,bkc,cld,dmn,eop,epq,frs,gst,hqu,huv,iwx,iyj,jmz,kz{,k{l,l{z,myn,n|w,ov},o}~,p~u,qtr,rts,v~},w|x,x|y"
+    },
+    "L=6,6,8,10|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 6,
+        "u2": 9,
+        "u3": 23,
+        "u4": 13,
+        "v1": 12,
+        "v2": 16,
+        "v3": 24,
+        "v4": 20
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        8,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dop,eqr,esf,ftg,gqu,huv,ivw,iwx,jym,jz{,k{|,l|z,myn,n}o,o}p,p}y,qxu,rt~,r~s,s~t,vxw,z|{"
+    },
+    "L=6,6,8,12|B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 24,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 9,
+        "u3": 17,
+        "u4": 11,
+        "v1": 1,
+        "v2": 4,
+        "v3": 10,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        8,
+        12
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,guv,gih,ivp,jow,jxy,kyz,lz{,l{|,mxw,mwo,pvu,qu},q}r,r~s,s~t,t~},x|y,z|{"
+    },
+    "L=6,6,8,8|B=6|I=0,0,1,1,2,2,3,4,5,5,4,3|A=2,2,2,2,2,2|E=1,1,1,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 7,
+        "u2": 28,
+        "u3": 19,
+        "u4": 16,
+        "v1": 15,
+        "v2": 23,
+        "v3": 25,
+        "v4": 24
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        8,
+        8
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,bmn,cno,cop,dqr,drk,ejs,etu,fuv,fvg,gwh,hxy,iys,isj,krq,lz{,l{m,m|n,o|},p}z,pzq,tyx,t~u,v~w,w~x,{}|"
+    },
+    "L=6,6,8,8|B=6|I=0,0,1,2,3,3,2,4,5,5,4,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4,
+        5,
+        5,
+        4,
+        1
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "u1": 6,
+        "u2": 9,
+        "u3": 25,
+        "u4": 12,
+        "v1": 11,
+        "v2": 16,
+        "v3": 22,
+        "v4": 17
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        8,
+        8
+      ],
+      "raw_line": "26 bcd,aef,afg,ahi,bjk,bkc,ckl,dmn,dno,epq,egf,gqr,hrs,hsi,ist,juv,jwl,lwm,mon,oxu,pty,pyz,qzr,tzy,uxv,vxw"
+    },
+    "L=6,6,8,8|B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "n_vertices": 26,
+      "occ": {
+        "u1": 0,
+        "u2": 9,
+        "u3": 17,
+        "u4": 11,
+        "v1": 1,
+        "v2": 4,
+        "v3": 10,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        8,
+        8
+      ],
+      "raw_line": "26 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,gtu,gih,iup,jov,jwx,kxy,lyw,lvm,mvo,put,qsz,qzr,rzs,wyx"
+    },
+    "L=6,6,8,8|B=7|I=0,0,1,2,2,1,3,4,5,6|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        2,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "n_vertices": 28,
+      "occ": {
+        "u1": 0,
+        "u2": 9,
+        "u3": 18,
+        "u4": 11,
+        "v1": 1,
+        "v2": 4,
+        "v3": 10,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        6,
+        8,
+        8
+      ],
+      "raw_line": "28 bcd,aef,agh,ahi,bjk,bkl,clm,cnd,dop,eqr,esf,ftg,gur,hrv,ivw,iwq,jpx,jnm,kyz,lz{,m{y,nxo,oxp,qwv,su|,s|t,t|u,y{z"
+    },
+    "L=6,8,6,10|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,2,1,1,1,2,2|E=2,1,2,2,2,1,1": {
+      "general_attachment_sizes": [
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        2,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4,
+        5,
+        6
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 9,
+        "u2": 20,
+        "u3": 11,
+        "u4": 28,
+        "v1": 16,
+        "v2": 23,
+        "v3": 19,
+        "v4": 24
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,guv,gih,ivp,jow,jxy,kz{,l{|,lyx,mxw,mwo,pvu,qut,qt},r}~,r~s,s~},y|z,z|{"
+    },
+    "L=6,8,6,10|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 10,
+        "u3": 19,
+        "u4": 12,
+        "v1": 1,
+        "v2": 4,
+        "v3": 11,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dpq,ers,etf,fug,guh,hui,itj,jvw,kxy,kz{,l{p,mon,q{z,q|x,rw},r}~,s~v,svt,w~},x|y,y|z"
+    },
+    "L=6,8,6,10|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,2,2,1,1,1,1|E=1,1,1,2,2,2,2": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 14,
+        "u3": 19,
+        "u4": 16,
+        "v1": 3,
+        "v2": 8,
+        "v3": 15,
+        "v4": 9
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dpq,ers,etf,fug,guh,hui,itj,jvw,kxy,kz{,l{p,mon,q{z,q|x,rw},r}~,s~v,svt,w~},x|y,y|z"
+    },
+    "L=6,8,6,10|B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=1,1,1,2,2,1,2,2|E=2,2,2,1,1,2,1,1": {
+      "general_attachment_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 8,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        4,
+        3,
+        5,
+        6,
+        7,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 10,
+        "u3": 20,
+        "u4": 12,
+        "v1": 1,
+        "v2": 4,
+        "v3": 11,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dop,dqr,est,euf,fvg,gvh,hvi,iuw,jwx,jxy,kz{,k{|,l|p,mon,p}q,q}r,r}z,sy~,s~t,t~u,wyx,z|{"
+    },
+    "L=6,8,6,10|B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=2,2,1,2,2,1,1,1|E=1,1,2,1,1,2,2,2": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1
+      ],
+      "general_boundary_count": 8,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        1,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        4,
+        3,
+        5,
+        6,
+        7,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 12,
+        "u3": 20,
+        "u4": 14,
+        "v1": 2,
+        "v2": 6,
+        "v3": 13,
+        "v4": 7
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cno,dpq,dqr,est,etf,ftg,guh,hvw,iwx,ixj,jxs,kry,kml,nz{,o{|,oyp,prq,sw},u}~,u~v,v~},y|z,z|{"
+    },
+    "L=6,8,6,8|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 4,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        1
+      ],
+      "n_vertices": 24,
+      "occ": {
+        "u1": 0,
+        "u2": 11,
+        "u3": 16,
+        "u4": 13,
+        "v1": 3,
+        "v2": 7,
+        "v3": 12,
+        "v4": 8
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        8
+      ],
+      "raw_line": "24 bcd,aef,afg,ahi,bjk,bkc,ckl,dlm,dmn,eop,egf,gph,hqi,iro,jns,jsl,mtu,nuv,owp,qwx,qxr,rxw,svt,tvu"
+    },
+    "L=6,8,6,8|B=5|I=0,0,1,2,3,3,2,4|A=2,2,1,2,1|E=1,1,2,1,2": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        1,
+        2,
+        1,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 3,
+        "u2": 25,
+        "u3": 11,
+        "u4": 21,
+        "v1": 7,
+        "v2": 14,
+        "v3": 22,
+        "v4": 15
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        8
+      ],
+      "raw_line": "30 bcd,aef,afg,ahi,bjk,blc,cmn,dop,dqr,est,euv,fwx,gxy,gyz,hzw,hwv,ivu,i{s,jr|,j|},k}q,kqp,lpo,l~m,m~n,n~o,r}|,s{t,t{u,xzy"
+    },
+    "L=6,8,6,8|B=5|I=0,0,1,2,3,4,2,1|A=2,1,1,2,2|E=1,2,2,1,1": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 15,
+        "u3": 20,
+        "u4": 17,
+        "v1": 3,
+        "v2": 8,
+        "v3": 16,
+        "v4": 9
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        8
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cop,dpq,dqr,est,euf,fvg,gwx,hxy,hvi,iuj,jzs,kr{,k{|,l|q,mp},n}~,n~o,o~},r|{,szt,tzu,vyw,wyx"
+    },
+    "L=6,8,6,8|B=5|I=0,0,1,2,3,4,2,1|A=2,2,2,1,1|E=1,1,1,2,2": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_boundary_count": 5,
+      "general_deleted_size": 20,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 10,
+        "u3": 20,
+        "u4": 12,
+        "v1": 1,
+        "v2": 4,
+        "v3": 11,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        6,
+        8
+      ],
+      "raw_line": "30 bcd,aef,agh,aij,bkl,blm,cmn,cop,dpq,dqr,est,euf,fvg,gwx,hxy,hvi,iuj,jzs,kr{,k{|,l|q,mp},n}~,n~o,o~},r|{,szt,tzu,vyw,wyx"
+    },
+    "L=6,8,8,10|B=6|I=0,0,1,2,3,3,2,4,5,5,4,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 24,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4,
+        5,
+        5,
+        4,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 9,
+        "u3": 16,
+        "u4": 11,
+        "v1": 1,
+        "v2": 4,
+        "v3": 10,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        8,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,clm,cmd,dmn,eop,eqf,frg,gih,irs,jtu,juv,kwx,lyn,nyt,osz,ozp,pz{,q{|,q|},r}s,tvu,v~w,w~x,x~y,{}|"
+    },
+    "L=6,8,8,10|B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "general_boundary_count": 6,
+      "general_deleted_size": 24,
+      "general_exterior_sizes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 0,
+        "u2": 9,
+        "u3": 17,
+        "u4": 11,
+        "v1": 1,
+        "v2": 4,
+        "v3": 10,
+        "v4": 5
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        8,
+        10
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,bkl,cmn,cnd,dno,epq,erf,fst,guv,gih,ivp,jow,jxy,kz{,l{|,lyx,mxw,mwo,pvu,qut,qt},r}~,r~s,s~},y|z,z|{"
+    },
+    "L=6,8,8,8|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,1,1,2,1,2,2|E=2,2,2,1,2,1,1": {
+      "general_attachment_sizes": [
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        2,
+        2,
+        2,
+        1,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4,
+        5,
+        6
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 1,
+        "u2": 16,
+        "u3": 24,
+        "u4": 18,
+        "v1": 4,
+        "v2": 9,
+        "v3": 17,
+        "v4": 10
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        8,
+        8
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cno,cod,dop,eqr,ers,ftu,fuv,gvw,gih,iwq,jpx,jyk,kz{,l{|,lym,mxn,nxp,qwv,ru},s}~,s~t,t~},y|z,z|{"
+    },
+    "L=6,8,8,8|B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,2,1,2,1,1,1|E=1,1,2,1,2,2,2": {
+      "general_attachment_sizes": [
+        2,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        1,
+        1,
+        2,
+        1,
+        2,
+        2,
+        2
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        3,
+        2,
+        4,
+        5,
+        6
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 1,
+        "u2": 19,
+        "u3": 24,
+        "u4": 21,
+        "v1": 5,
+        "v2": 11,
+        "v3": 20,
+        "v4": 12
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        8,
+        8
+      ],
+      "raw_line": "30 bcd,aef,agh,ahi,bjk,blm,cno,cod,dop,eqr,ers,ftu,fuv,gvw,gih,iwq,jpx,jyk,kz{,l{|,lym,mxn,nxp,qwv,ru},s}~,s~t,t~},y|z,z|{"
+    },
+    "L=6,8,8,8|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": {
+      "general_attachment_sizes": [
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "general_boundary_count": 7,
+      "general_deleted_size": 22,
+      "general_exterior_sizes": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ],
+      "general_interface_word_key": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        2,
+        1
+      ],
+      "n_vertices": 30,
+      "occ": {
+        "u1": 3,
+        "u2": 4,
+        "u3": 11,
+        "u4": 6,
+        "v1": 0,
+        "v2": 1,
+        "v3": 5,
+        "v4": 2
+      },
+      "outer_face_length_key": [
+        6,
+        8,
+        8,
+        8
+      ],
+      "raw_line": "30 bcd,aef,afg,ahi,bjk,blc,cmn,dop,dqr,est,euv,fwx,gxy,gyz,hzw,hwv,ivu,i{s,jr|,j|},k}q,kqp,lpo,l~m,m~n,n~o,r}|,s{t,t{u,xzy"
+    }
+  },
+  "family_graph_support": {
+    "L=6,6,6,10|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 1,
+    "L=6,6,6,10|B=5|I=0,0,1,2,3,3,2,4|A=2,1,2,2,1|E=1,2,1,1,2": 1,
+    "L=6,6,6,10|B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "L=6,6,6,10|B=8|I=0,0,1,2,3,3,2,1,4,5,6,7|A=2,1,1,1,1,2,2,2|E=1,2,2,2,2,1,1,1": 1,
+    "L=6,6,6,12|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,2,1,1,1,2,2|E=2,1,2,2,2,1,1": 1,
+    "L=6,6,6,12|B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": 1,
+    "L=6,6,6,12|B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,2,2,2,1,1,1|E=2,1,1,1,2,2,2": 1,
+    "L=6,6,6,12|B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=2,2,1,1,1,2,2,1|E=1,1,2,2,2,1,1,2": 1,
+    "L=6,6,6,6|B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1": 2,
+    "L=6,6,6,6|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 1,
+    "L=6,6,6,6|B=5|I=0,0,1,1,2,2,3,4|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "L=6,6,6,6|B=5|I=0,0,1,2,3,3,2,4|A=1,2,1,2,2|E=2,1,2,1,1": 1,
+    "L=6,6,6,6|B=5|I=0,0,1,2,3,3,2,4|A=2,2,1,2,1|E=1,1,2,1,2": 1,
+    "L=6,6,6,6|B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,1,1,2,2,1|E=2,2,2,1,1,2": 1,
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,2,2,1,1,1|E=2,1,1,2,2,2": 1,
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=2,1,1,1,1,2|E=1,2,2,2,2,1": 1,
+    "L=6,6,6,6|B=6|I=0,0,1,2,3,4,5,1|A=1,1,1,1,2,2|E=2,2,2,2,1,1": 1,
+    "L=6,6,6,6|B=6|I=0,0,1,2,3,4,5,1|A=2,2,1,1,1,1|E=1,1,2,2,2,2": 1,
+    "L=6,6,6,8|B=5|I=0,0,1,2,2,1,3,4|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "L=6,6,6,8|B=5|I=0,0,1,2,2,1,3,4|A=2,1,1,2,2|E=1,2,2,1,1": 1,
+    "L=6,6,6,8|B=5|I=0,0,1,2,2,1,3,4|A=2,2,2,1,1|E=1,1,1,2,2": 1,
+    "L=6,6,6,8|B=6|I=0,0,1,2,3,3,2,1,4,5|A=2,2,2,2,1,1|E=1,1,1,1,2,2": 1,
+    "L=6,6,6,8|B=7|I=0,0,1,1,2,2,3,4,5,6|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": 1,
+    "L=6,6,6,8|B=7|I=0,0,1,1,2,2,3,4,5,6|A=1,2,2,2,1,1,1|E=2,1,1,1,2,2,2": 1,
+    "L=6,6,6,8|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,1,1,2,1,2,2|E=2,2,2,1,2,1,1": 1,
+    "L=6,6,6,8|B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": 1,
+    "L=6,6,6,8|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 1,
+    "L=6,6,8,10|B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,1,1,1,2,2,1|E=1,2,2,2,1,1,2": 1,
+    "L=6,6,8,10|B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,1,2,2,1,1,1|E=1,2,1,1,2,2,2": 1,
+    "L=6,6,8,10|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 1,
+    "L=6,6,8,12|B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,6,8,8|B=6|I=0,0,1,1,2,2,3,4,5,5,4,3|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,6,8,8|B=6|I=0,0,1,2,3,3,2,4,5,5,4,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,6,8,8|B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,6,8,8|B=7|I=0,0,1,2,2,1,3,4,5,6|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 2,
+    "L=6,8,6,10|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,2,1,1,1,2,2|E=2,1,2,2,2,1,1": 1,
+    "L=6,8,6,10|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 1,
+    "L=6,8,6,10|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,2,2,1,1,1,1|E=1,1,1,2,2,2,2": 1,
+    "L=6,8,6,10|B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=1,1,1,2,2,1,2,2|E=2,2,2,1,1,2,1,1": 2,
+    "L=6,8,6,10|B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=2,2,1,2,2,1,1,1|E=1,1,2,1,1,2,2,2": 1,
+    "L=6,8,6,8|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 1,
+    "L=6,8,6,8|B=5|I=0,0,1,2,3,3,2,4|A=2,2,1,2,1|E=1,1,2,1,2": 1,
+    "L=6,8,6,8|B=5|I=0,0,1,2,3,4,2,1|A=2,1,1,2,2|E=1,2,2,1,1": 1,
+    "L=6,8,6,8|B=5|I=0,0,1,2,3,4,2,1|A=2,2,2,1,1|E=1,1,1,2,2": 1,
+    "L=6,8,8,10|B=6|I=0,0,1,2,3,3,2,4,5,5,4,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,8,8,10|B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,8,8,8|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,1,1,2,1,2,2|E=2,2,2,1,2,1,1": 1,
+    "L=6,8,8,8|B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,2,1,2,1,1,1|E=1,1,2,1,2,2,2": 1,
+    "L=6,8,8,8|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 1
+  },
+  "family_occurrence_counts": {
+    "L=6,6,6,10|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 2,
+    "L=6,6,6,10|B=5|I=0,0,1,2,3,3,2,4|A=2,1,2,2,1|E=1,2,1,1,2": 1,
+    "L=6,6,6,10|B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2": 2,
+    "L=6,6,6,10|B=8|I=0,0,1,2,3,3,2,1,4,5,6,7|A=2,1,1,1,1,2,2,2|E=1,2,2,2,2,1,1,1": 1,
+    "L=6,6,6,12|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,2,1,1,1,2,2|E=2,1,2,2,2,1,1": 1,
+    "L=6,6,6,12|B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": 1,
+    "L=6,6,6,12|B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,2,2,2,1,1,1|E=2,1,1,1,2,2,2": 1,
+    "L=6,6,6,12|B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=2,2,1,1,1,2,2,1|E=1,1,2,2,2,1,1,2": 1,
+    "L=6,6,6,6|B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1": 7,
+    "L=6,6,6,6|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 1,
+    "L=6,6,6,6|B=5|I=0,0,1,1,2,2,3,4|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "L=6,6,6,6|B=5|I=0,0,1,2,3,3,2,4|A=1,2,1,2,2|E=2,1,2,1,1": 1,
+    "L=6,6,6,6|B=5|I=0,0,1,2,3,3,2,4|A=2,2,1,2,1|E=1,1,2,1,2": 1,
+    "L=6,6,6,6|B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,1,1,2,2,1|E=2,2,2,1,1,2": 2,
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=1,2,2,1,1,1|E=2,1,1,2,2,2": 2,
+    "L=6,6,6,6|B=6|I=0,0,1,1,2,3,4,5|A=2,1,1,1,1,2|E=1,2,2,2,2,1": 2,
+    "L=6,6,6,6|B=6|I=0,0,1,2,3,4,5,1|A=1,1,1,1,2,2|E=2,2,2,2,1,1": 1,
+    "L=6,6,6,6|B=6|I=0,0,1,2,3,4,5,1|A=2,2,1,1,1,1|E=1,1,2,2,2,2": 1,
+    "L=6,6,6,8|B=5|I=0,0,1,2,2,1,3,4|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "L=6,6,6,8|B=5|I=0,0,1,2,2,1,3,4|A=2,1,1,2,2|E=1,2,2,1,1": 1,
+    "L=6,6,6,8|B=5|I=0,0,1,2,2,1,3,4|A=2,2,2,1,1|E=1,1,1,2,2": 1,
+    "L=6,6,6,8|B=6|I=0,0,1,2,3,3,2,1,4,5|A=2,2,2,2,1,1|E=1,1,1,1,2,2": 1,
+    "L=6,6,6,8|B=7|I=0,0,1,1,2,2,3,4,5,6|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": 1,
+    "L=6,6,6,8|B=7|I=0,0,1,1,2,2,3,4,5,6|A=1,2,2,2,1,1,1|E=2,1,1,1,2,2,2": 1,
+    "L=6,6,6,8|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,1,1,2,1,2,2|E=2,2,2,1,2,1,1": 1,
+    "L=6,6,6,8|B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": 1,
+    "L=6,6,6,8|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 1,
+    "L=6,6,8,10|B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,1,1,1,2,2,1|E=1,2,2,2,1,1,2": 1,
+    "L=6,6,8,10|B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,1,2,2,1,1,1|E=1,2,1,1,2,2,2": 1,
+    "L=6,6,8,10|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 1,
+    "L=6,6,8,12|B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,6,8,8|B=6|I=0,0,1,1,2,2,3,4,5,5,4,3|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,6,8,8|B=6|I=0,0,1,2,3,3,2,4,5,5,4,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,6,8,8|B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,6,8,8|B=7|I=0,0,1,2,2,1,3,4,5,6|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 3,
+    "L=6,8,6,10|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,2,1,1,1,2,2|E=2,1,2,2,2,1,1": 1,
+    "L=6,8,6,10|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 1,
+    "L=6,8,6,10|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,2,2,1,1,1,1|E=1,1,1,2,2,2,2": 1,
+    "L=6,8,6,10|B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=1,1,1,2,2,1,2,2|E=2,2,2,1,1,2,1,1": 2,
+    "L=6,8,6,10|B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=2,2,1,2,2,1,1,1|E=1,1,2,1,1,2,2,2": 1,
+    "L=6,8,6,8|B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 2,
+    "L=6,8,6,8|B=5|I=0,0,1,2,3,3,2,4|A=2,2,1,2,1|E=1,1,2,1,2": 1,
+    "L=6,8,6,8|B=5|I=0,0,1,2,3,4,2,1|A=2,1,1,2,2|E=1,2,2,1,1": 1,
+    "L=6,8,6,8|B=5|I=0,0,1,2,3,4,2,1|A=2,2,2,1,1|E=1,1,1,2,2": 1,
+    "L=6,8,8,10|B=6|I=0,0,1,2,3,3,2,4,5,5,4,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 2,
+    "L=6,8,8,10|B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "L=6,8,8,8|B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,1,1,2,1,2,2|E=2,2,2,1,2,1,1": 1,
+    "L=6,8,8,8|B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,2,1,2,1,1,1|E=1,1,2,1,2,2,2": 1,
+    "L=6,8,8,8|B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 1
+  },
+  "interface_graph_support": {
+    "B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1": 2,
+    "B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 3,
+    "B=5|I=0,0,1,1,2,2,3,4|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "B=5|I=0,0,1,2,2,1,3,4|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "B=5|I=0,0,1,2,2,1,3,4|A=2,1,1,2,2|E=1,2,2,1,1": 1,
+    "B=5|I=0,0,1,2,2,1,3,4|A=2,2,2,1,1|E=1,1,1,2,2": 1,
+    "B=5|I=0,0,1,2,3,3,2,4|A=1,2,1,2,2|E=2,1,2,1,1": 1,
+    "B=5|I=0,0,1,2,3,3,2,4|A=2,1,2,2,1|E=1,2,1,1,2": 1,
+    "B=5|I=0,0,1,2,3,3,2,4|A=2,2,1,2,1|E=1,1,2,1,2": 2,
+    "B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2": 2,
+    "B=5|I=0,0,1,2,3,4,2,1|A=2,1,1,2,2|E=1,2,2,1,1": 1,
+    "B=5|I=0,0,1,2,3,4,2,1|A=2,2,2,1,1|E=1,1,1,2,2": 1,
+    "B=6|I=0,0,1,1,2,2,3,4,5,5,4,3|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "B=6|I=0,0,1,1,2,3,4,5|A=1,1,1,2,2,1|E=2,2,2,1,1,2": 1,
+    "B=6|I=0,0,1,1,2,3,4,5|A=1,2,2,1,1,1|E=2,1,1,2,2,2": 1,
+    "B=6|I=0,0,1,1,2,3,4,5|A=2,1,1,1,1,2|E=1,2,2,2,2,1": 1,
+    "B=6|I=0,0,1,2,3,3,2,1,4,5|A=2,2,2,2,1,1|E=1,1,1,1,2,2": 1,
+    "B=6|I=0,0,1,2,3,3,2,4,5,5,4,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 2,
+    "B=6|I=0,0,1,2,3,4,5,1|A=1,1,1,1,2,2|E=2,2,2,2,1,1": 1,
+    "B=6|I=0,0,1,2,3,4,5,1|A=2,2,1,1,1,1|E=1,1,2,2,2,2": 1,
+    "B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 3,
+    "B=7|I=0,0,1,1,2,2,3,4,5,6|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": 1,
+    "B=7|I=0,0,1,1,2,2,3,4,5,6|A=1,2,2,2,1,1,1|E=2,1,1,1,2,2,2": 1,
+    "B=7|I=0,0,1,2,2,1,3,4,5,6|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 2,
+    "B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,1,1,2,1,2,2|E=2,2,2,1,2,1,1": 2,
+    "B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,2,1,1,1,2,2|E=2,1,2,2,2,1,1": 2,
+    "B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,1,1,1,2,2,1|E=1,2,2,2,1,1,2": 1,
+    "B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,1,2,2,1,1,1|E=1,2,1,1,2,2,2": 1,
+    "B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,2,1,2,1,1,1|E=1,1,2,1,2,2,2": 1,
+    "B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": 2,
+    "B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,2,2,2,1,1,1|E=2,1,1,1,2,2,2": 1,
+    "B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 4,
+    "B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,2,2,1,1,1,1|E=1,1,1,2,2,2,2": 1,
+    "B=8|I=0,0,1,2,3,3,2,1,4,5,6,7|A=2,1,1,1,1,2,2,2|E=1,2,2,2,2,1,1,1": 1,
+    "B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=1,1,1,2,2,1,2,2|E=2,2,2,1,1,2,1,1": 2,
+    "B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=2,2,1,1,1,2,2,1|E=1,1,2,2,2,1,1,2": 1,
+    "B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=2,2,1,2,2,1,1,1|E=1,1,2,1,1,2,2,2": 1
+  },
+  "interface_occurrence_counts": {
+    "B=4|I=0,0,1,1,2,2,3,3|A=2,2,2,2|E=1,1,1,1": 7,
+    "B=4|I=0,0,1,2,3,3,2,1|A=2,2,2,2|E=1,1,1,1": 5,
+    "B=5|I=0,0,1,1,2,2,3,4|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "B=5|I=0,0,1,2,2,1,3,4|A=1,2,2,2,1|E=2,1,1,1,2": 1,
+    "B=5|I=0,0,1,2,2,1,3,4|A=2,1,1,2,2|E=1,2,2,1,1": 1,
+    "B=5|I=0,0,1,2,2,1,3,4|A=2,2,2,1,1|E=1,1,1,2,2": 1,
+    "B=5|I=0,0,1,2,3,3,2,4|A=1,2,1,2,2|E=2,1,2,1,1": 1,
+    "B=5|I=0,0,1,2,3,3,2,4|A=2,1,2,2,1|E=1,2,1,1,2": 1,
+    "B=5|I=0,0,1,2,3,3,2,4|A=2,2,1,2,1|E=1,1,2,1,2": 2,
+    "B=5|I=0,0,1,2,3,4,2,1|A=1,2,2,2,1|E=2,1,1,1,2": 3,
+    "B=5|I=0,0,1,2,3,4,2,1|A=2,1,1,2,2|E=1,2,2,1,1": 1,
+    "B=5|I=0,0,1,2,3,4,2,1|A=2,2,2,1,1|E=1,1,1,2,2": 1,
+    "B=6|I=0,0,1,1,2,2,3,4,5,5,4,3|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 1,
+    "B=6|I=0,0,1,1,2,3,4,5|A=1,1,1,2,2,1|E=2,2,2,1,1,2": 2,
+    "B=6|I=0,0,1,1,2,3,4,5|A=1,2,2,1,1,1|E=2,1,1,2,2,2": 2,
+    "B=6|I=0,0,1,1,2,3,4,5|A=2,1,1,1,1,2|E=1,2,2,2,2,1": 2,
+    "B=6|I=0,0,1,2,3,3,2,1,4,5|A=2,2,2,2,1,1|E=1,1,1,1,2,2": 1,
+    "B=6|I=0,0,1,2,3,3,2,4,5,5,4,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 3,
+    "B=6|I=0,0,1,2,3,4,5,1|A=1,1,1,1,2,2|E=2,2,2,2,1,1": 1,
+    "B=6|I=0,0,1,2,3,4,5,1|A=2,2,1,1,1,1|E=1,1,2,2,2,2": 1,
+    "B=6|I=0,0,1,2,3,4,5,5,4,3,2,1|A=2,2,2,2,2,2|E=1,1,1,1,1,1": 3,
+    "B=7|I=0,0,1,1,2,2,3,4,5,6|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": 1,
+    "B=7|I=0,0,1,1,2,2,3,4,5,6|A=1,2,2,2,1,1,1|E=2,1,1,1,2,2,2": 1,
+    "B=7|I=0,0,1,2,2,1,3,4,5,6|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 3,
+    "B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,1,1,2,1,2,2|E=2,2,2,1,2,1,1": 2,
+    "B=7|I=0,0,1,2,3,3,2,4,5,6|A=1,2,1,1,1,2,2|E=2,1,2,2,2,1,1": 2,
+    "B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,1,1,1,2,2,1|E=1,2,2,2,1,1,2": 1,
+    "B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,1,2,2,1,1,1|E=1,2,1,1,2,2,2": 1,
+    "B=7|I=0,0,1,2,3,3,2,4,5,6|A=2,2,1,2,1,1,1|E=1,1,2,1,2,2,2": 1,
+    "B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,1,1,2,2,2,1|E=2,2,2,1,1,1,2": 2,
+    "B=7|I=0,0,1,2,3,4,5,6,2,1|A=1,2,2,2,1,1,1|E=2,1,1,1,2,2,2": 1,
+    "B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,1,1,1,1,2,2|E=1,2,2,2,2,1,1": 4,
+    "B=7|I=0,0,1,2,3,4,5,6,2,1|A=2,2,2,1,1,1,1|E=1,1,1,2,2,2,2": 1,
+    "B=8|I=0,0,1,2,3,3,2,1,4,5,6,7|A=2,1,1,1,1,2,2,2|E=1,2,2,2,2,1,1,1": 1,
+    "B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=1,1,1,2,2,1,2,2|E=2,2,2,1,1,2,1,1": 2,
+    "B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=2,2,1,1,1,2,2,1|E=1,1,2,2,2,1,1,2": 1,
+    "B=8|I=0,0,1,2,3,4,4,3,5,6,7,1|A=2,2,1,2,2,1,1,1|E=1,1,2,1,1,2,2,2": 1
+  },
+  "outer_face_length_patterns": {
+    "6,6,6,10": 6,
+    "6,6,6,12": 4,
+    "6,6,6,6": 20,
+    "6,6,6,8": 9,
+    "6,6,8,10": 3,
+    "6,6,8,12": 1,
+    "6,6,8,8": 6,
+    "6,8,6,10": 6,
+    "6,8,6,8": 5,
+    "6,8,8,10": 3,
+    "6,8,8,8": 3
+  },
+  "per_n_refined_c4_graph_counts": {
+    "20": 1,
+    "24": 3,
+    "26": 6,
+    "28": 3,
+    "30": 17
+  },
+  "per_n_refined_c4_occurrence_counts": {
+    "20": 1,
+    "24": 10,
+    "26": 8,
+    "28": 6,
+    "30": 41
+  },
+  "source_unresolved_artifact": "artifacts\\completeness_unresolved_analysis_n30.json",
+  "unresolved_graph_count": 42,
+  "unresolved_refined_c4_graph_count": 30,
+  "unresolved_refined_c4_occurrence_count": 66
+}
